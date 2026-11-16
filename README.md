@@ -92,6 +92,25 @@ mes y GitHub redondea cada job al minuto. Si cada despertar tarda 2-3 minutos (*
 
 Revisa *Settings → Billing → Usage* después de la primera semana.
 
+## Correo después de cada despertar
+
+Al terminar cada despertar llega un correo con la hora en que empezó y terminó, cuánto duró,
+lo que costó en LLM ese despertar y en el mes, y lo que hizo el agente (órdenes con su razón,
+stops, investigaciones y su resumen). También llega si no operó (feriado, faltan llaves) o si
+el job falló. Son hasta 32 correos por día hábil; un filtro de Gmail por el asunto
+"Agente trader" los junta en una etiqueta.
+
+El costo lo calcula el bot con los tokens y la tabla de precios de `config.yaml`; la cifra
+oficial está en la consola de Anthropic. GitHub Actions no cobra porque el repo es público.
+
+Para activarlo (se manda desde tu Gmail a ti mismo):
+1. Activa la verificación en dos pasos de Google y crea una contraseña de aplicación en
+   myaccount.google.com/apppasswords (Google la muestra una sola vez).
+2. Secrets del repo: `GMAIL_USER` (tu dirección de Gmail) y `GMAIL_APP_PASSWORD` (esa
+   contraseña). Opcional: `EMAIL_TO` si quieres recibirlo en otra dirección.
+
+Sin esos secrets no se manda nada y el bot sigue igual. Si el correo falla, el despertar no falla.
+
 ## Limitaciones que debes conocer
 
 - **Fuera de horario solo hay órdenes limitadas** y los stops no se activan: protegen de

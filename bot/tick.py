@@ -115,6 +115,13 @@ def run_tick(*, cfg: dict, sd: Path, broker, now: datetime, prep: dict, intraday
     return tick
 
 
+def report(**info) -> None:
+    """Deja el resultado del despertar donde el aviso por correo lo lee (BOT_RESULT_PATH)."""
+    path = os.environ.get("BOT_RESULT_PATH")
+    if path:
+        save_json(Path(path), info)
+
+
 def real_tick(args) -> int:
     from .agents import Analyst
     from .broker import AlpacaPaperBroker
@@ -125,15 +132,18 @@ def real_tick(args) -> int:
     if missing:
         save_json(sd / "status.json", {"setup": "incomplete", "missing": missing, "updated_at": now_iso()})
         log(f"configuración incompleta, faltan: {', '.join(missing)}. No se hizo nada.")
+        report(outcome="setup_incomplete", detail=f"faltan los secrets {', '.join(missing)}")
         return 0
     broker = AlpacaPaperBroker()
     session = session_of(now)
     if not args.force:
         if not broker.is_market_day(now.date()):
             log(f"{now.date()}: el mercado no abre hoy.")
+            report(outcome="market_holiday", detail="el mercado no abre hoy")
             return 0
         if session == "closed":
             log(f"{now:%H:%M}: fuera de horario.")
+            report(outcome="closed", detail="fuera de horario (antes de 4:00 o después de 20:00 NY)")
             return 0
     dry = args.dry_run or cfg["mode"] == "dry_run"
     with tempfile.TemporaryDirectory(prefix="bot_work_") as tmp:
@@ -146,9 +156,11 @@ def real_tick(args) -> int:
             prep, prices = prepare_day(cfg, sd, now.date(), work, list(broker.positions()))
             prep["warnings"] = prep.get("warnings", []) + housekeeping(sd, broker, prices, cfg, now.date())
         prev = {s: x["close"] for s, x in prep["stats"].items()}
-        run_tick(cfg=cfg, sd=sd, broker=broker, now=now, prep=prep, intraday=Intraday(prev),
-                 make_llm=lambda tracker, desk: make_trader_llm(cfg, tracker),
-                 make_analyst=lambda tracker: Analyst(cfg, sd, work, tracker), dry_run=dry)
+        tick = run_tick(cfg=cfg, sd=sd, broker=broker, now=now, prep=prep, intraday=Intraday(prev),
+                        make_llm=lambda tracker, desk: make_trader_llm(cfg, tracker),
+                        make_analyst=lambda tracker: Analyst(cfg, sd, work, tracker), dry_run=dry)
+    report(outcome="tick", dry_run=dry, **{k: tick.get(k) for k in ("time", "session", "status", "final", "error", "orders",
+                                                                     "research", "cost", "account", "positions")})
     return 0
 
 
