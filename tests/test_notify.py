@@ -23,7 +23,7 @@ def test_email_has_start_end_duration_cost_and_what_it_did(tmp_path):
                                  "https://github.com/x/y/actions/runs/1", "https://x.github.io/y/")
     assert subject == "Agente trader · 10:08 NY · horario regular · 1 orden · $0.0460"
     for needle in ("Empezó:   10:08:05 hora de Nueva York (15:08 UTC)", "Terminó:  10:10:36", "Duró:     2 min 31 s",
-                   "LLM en este despertar: $0.0460 (investigaciones: $0.0410)", "LLM en el mes:         $0.35 de $20.00",
+                   "LLM en este despertar: $0.0460 (investigaciones: $0.0410)", "LLM en el mes:         $0.35 de $4.50",
                    "GitHub Actions:        $0", "Compra 10 MU a mercado → filled", "Por qué: momentum #1", "Stop de MU en 640.0",
                    "Investigó MU: Buy", "P&L de hoy +$1,250", "Compré MU por momentum", "actions/runs/1", "x.github.io/y"):
         assert needle in body, needle
@@ -119,4 +119,32 @@ def test_a_second_tick_within_ten_minutes_is_skipped_and_sends_no_email(tmp_path
     monkeypatch.setenv("GMAIL_USER", "yo@example.com")
     monkeypatch.setenv("GMAIL_APP_PASSWORD", "x")
     monkeypatch.setattr(notify.smtplib, "SMTP_SSL", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no debía mandar")))
-    assert notify.main(["send"]) == 0 and "no se manda correo" in capsys.readouterr().out
+    assert notify.main(["send"]) == 0 and "no se mandó correo" not in capsys.readouterr().out
+
+
+def test_email_only_for_orders_problems_or_the_close(tmp_path):
+    quiet = {"outcome": "tick", "status": "ok", "orders": [], "research": [{"symbol": "MU"}]}
+    assert not notify.worth_sending(quiet, "success")
+    assert notify.worth_sending({**quiet, "orders": [{"side": "buy"}]}, "success")
+    assert notify.worth_sending({**quiet, "status": "aborted_budget"}, "success")
+    assert notify.worth_sending({**quiet, "last": True}, "success")
+    assert notify.worth_sending(quiet, "failure") and notify.worth_sending(None, "success")
+    assert notify.worth_sending({"outcome": "setup_incomplete"}, "success")
+    assert not notify.worth_sending({"outcome": "market_holiday"}, "success")
+
+
+def test_closing_email_carries_the_day_summary(tmp_path, monkeypatch, capsys):
+    sd = tmp_path
+    monkeypatch.setenv("BOT_STATE_DIR", str(sd))
+    monkeypatch.setenv("BOT_START", START.isoformat())
+    save_json(sd / "days" / "2026-11-16.json", {"ticks": [
+        {"status": "ok", "cost": {"usd": 0.004}, "orders": [{"time": "10:08", "side": "buy", "qty": 5, "symbol": "MU", "status": "filled"}]},
+        {"status": "error", "cost": {"usd": 0.001}, "orders": []}]})
+    lines = "\n".join(notify.day_summary(sd, "2026-11-16"))
+    assert "2 despertares · 1 órdenes · 0 investigaciones · 1 con problemas" in lines and "LLM hoy: $0.0050" in lines
+    assert "10:08 Compra 5 MU (mercado) → filled" in lines
+    (tmp_path / "r.json").write_text(json.dumps({**TICK, "orders": [], "last": True}))
+    monkeypatch.setenv("BOT_RESULT_PATH", str(tmp_path / "r.json"))
+    monkeypatch.delenv("GMAIL_USER", raising=False)
+    notify.main(["send"])
+    assert "CIERRE DEL DÍA" in capsys.readouterr().out

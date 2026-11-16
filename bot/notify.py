@@ -1,4 +1,7 @@
-"""Correo después de cada despertar: cuándo empezó, cuándo terminó y cuánto costó.
+"""Correo de un despertar: cuándo empezó, cuándo terminó y cuánto costó.
+
+Se manda solo si hubo órdenes, algún problema, o es el último despertar del día (ese lleva
+además el resumen del día). Los despertares sin novedad no mandan nada.
 
 Solo usa la librería estándar, así corre aunque falle la instalación del bot.
 
@@ -142,6 +145,36 @@ def build(start: datetime, end: datetime, spent: float, result: dict | None, job
     return subject, "\n".join(lines) + "\n"
 
 
+def day_summary(sd: Path, day: str) -> list[str]:
+    """Resumen del día para el correo de cierre, leído de state/days/<fecha>.json."""
+    try:
+        ticks = json.loads((sd / "days" / f"{day}.json").read_text(encoding="utf-8")).get("ticks", [])
+    except (OSError, ValueError):
+        return []
+    orders = [o for t in ticks for o in t.get("orders") or [] if not str(o.get("side", "")).startswith("stop")]
+    research = [x for t in ticks for x in t.get("research") or []]
+    bad = [t for t in ticks if t.get("status") not in ("ok", "max_steps")]
+    lines = ["", "RESUMEN DEL DÍA",
+             f"  {len(ticks)} despertares · {len(orders)} órdenes · {len(research)} investigaciones · {len(bad)} con problemas",
+             f"  LLM hoy: {usd(sum((t.get('cost') or {}).get('usd') or 0 for t in ticks))}"]
+    for o in orders:
+        px = f"lím. {o['limit_price']}" if o.get("limit_price") else "mercado"
+        lines.append(f"  {o.get('time', '')} {'Compra' if o['side'] == 'buy' else 'Venta'} {o['qty']} {o['symbol']} ({px}) → {o.get('status')}")
+    return lines
+
+
+def worth_sending(result: dict | None, job_status: str) -> bool:
+    """Correo solo si hay algo que contar: órdenes, problemas o el cierre del día."""
+    r = result or {}
+    if job_status not in ("success", "") or not r:
+        return True
+    if r.get("outcome") in ("closed", "market_holiday", "duplicate"):
+        return False
+    if r.get("outcome") != "tick":
+        return True                                     # p. ej. faltan llaves
+    return bool(r.get("orders")) or r.get("status") != "ok" or bool(r.get("error")) or bool(r.get("last"))
+
+
 def send(subject: str, body: str) -> str:
     user, pw = os.environ.get("GMAIL_USER", "").strip(), os.environ.get("GMAIL_APP_PASSWORD", "").replace(" ", "").strip()
     if not user or not pw:
@@ -172,9 +205,13 @@ def main(argv: list[str]) -> int:
             result = None
     subject, body = build(start, datetime.now(timezone.utc), spent, result, os.environ.get("JOB_STATUS", ""), sd,
                           os.environ.get("RUN_URL", ""), os.environ.get("PAGES_URL", ""))
+    if (result or {}).get("last"):
+        subject = subject.replace("Agente trader ·", "Agente trader · CIERRE DEL DÍA ·", 1)
+        extra = day_summary(sd, start.astimezone(NY).strftime("%Y-%m-%d"))
+        body = body.rstrip("\n") + "\n" + "\n".join(extra) + "\n" if extra else body
     print(subject)
-    if (result or {}).get("outcome") in ("closed", "market_holiday", "duplicate"):
-        print("sin novedad (mercado cerrado o despertar repetido): no se manda correo")
+    if not worth_sending(result, os.environ.get("JOB_STATUS", "")):
+        print("sin novedad (sin órdenes ni errores): no se manda correo")
         return 0
     try:
         print(send(subject, body))

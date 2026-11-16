@@ -63,7 +63,7 @@ corrida tarda más porque instala todo; las siguientes reusan el entorno guardad
 
 ## Cuánto cuesta
 
-**LLM (tope de $20 al mes, `budget.monthly_usd`).** Cómo se respeta:
+**LLM (tope de $4.50 al mes, `budget.monthly_usd`; súbelo si recargas crédito en Anthropic).** Cómo se respeta:
 - Cada día recibe lo que queda del mes (menos 5% de colchón) entre los días hábiles que faltan.
 - Cada despertar puede gastar lo del día **menos** lo que necesitan los despertares que
   faltan. Así el de las 4:08 no se come el día.
@@ -92,13 +92,12 @@ mes y GitHub redondea cada job al minuto. Si cada despertar tarda 2-3 minutos (*
 
 Revisa *Settings → Billing → Usage* después de la primera semana.
 
-## Correo después de cada despertar
+## Correos del agente
 
-Al terminar cada despertar llega un correo con la hora en que empezó y terminó, cuánto duró,
-lo que costó en LLM ese despertar y en el mes, y lo que hizo el agente (órdenes con su razón,
-stops, investigaciones y su resumen). También llega si no operó (feriado, faltan llaves) o si
-el job falló. Son hasta 32 correos por día hábil; un filtro de Gmail por el asunto
-"Agente trader" los junta en una etiqueta.
+Llega un correo cuando un despertar envía órdenes, cuando algo falla (error, sin presupuesto,
+faltan llaves) y en el último despertar del día, que trae además el resumen del día
+(despertares, órdenes, investigaciones y gasto). Los despertares sin novedad no mandan nada.
+Cada correo dice cuándo empezó y terminó el despertar, cuánto duró y cuánto costó en LLM.
 
 El costo lo calcula el bot con los tokens y la tabla de precios de `config.yaml`; la cifra
 oficial está en la consola de Anthropic. GitHub Actions no cobra porque el repo es público.
@@ -216,7 +215,7 @@ llamada real al LLM ni una orden real a Alpaca.** Qué vigilar la primera semana
 - Que el agente use bien las órdenes limitadas fuera de horario. Si repite errores, lo verás
   en el dashboard en amarillo.
 - Que TradingAgents acepte `claude-haiku-5-5` (no está en su menú; avisa pero continúa).
-- El analista `social` lee StockTwits y Reddit; si falla, quítalo de `llm.analysts`.
+- El analista `social` está desactivado: Reddit bloquea las consultas desde GitHub (403).
 
 ## Cambiar cosas
 

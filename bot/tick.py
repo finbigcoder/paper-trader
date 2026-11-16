@@ -166,7 +166,7 @@ def real_tick(args) -> int:
         tick = run_tick(cfg=cfg, sd=sd, broker=broker, now=now, prep=prep, intraday=Intraday(prev),
                         make_llm=lambda tracker, desk: make_trader_llm(cfg, tracker),
                         make_analyst=lambda tracker: Analyst(cfg, sd, work, tracker), dry_run=dry)
-    report(outcome="tick", dry_run=dry, **{k: tick.get(k) for k in ("time", "session", "status", "final", "error", "orders",
+    report(outcome="tick", dry_run=dry, **{k: tick.get(k) for k in ("time", "session", "status", "final", "error", "orders", "last",
                                                                      "research", "cost", "account", "positions")})
     return 0
 
