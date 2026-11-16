@@ -1,0 +1,23 @@
+# Dependencias directas del bot. La instalación real usa requirements.lock
+# (todas las versiones transitivas fijadas). Para regenerarlo:
+#   uv pip compile requirements.txt -o requirements.lock --python-version 3.12 --python-platform x86_64-unknown-linux-gnu
+
+# Datos · OpenBB (solo el núcleo, equity y el proveedor Cboe que no pide API key)
+openbb-core==2.0.1
+openbb-equity==2.0.0
+openbb-cboe==2.0.0
+openbb-nasdaq==2.0.0     # calendario de resultados, sin API key
+
+# Ranking · Qlib
+pyqlib==0.9.7
+mlflow>=3.13         # las anteriores exigen pandas<3 (choca con TradingAgents)
+scikit-learn         # la regresión Ridge del banco de pruebas (research/)
+
+# Debate · TradingAgents (no está en PyPI: se fija al commit escaneado el 2026-11-15)
+tradingagents @ git+https://github.com/TauricResearch/TradingAgents@9fa1196fffbcfd9de5146d2dd2869df84ab99838
+
+# Ejecución · Alpaca paper
+alpaca-py==0.45.0
+
+PyYAML
+pytest

@@ -1,0 +1,139 @@
+name: Agente trader
+
+# El agente despierta cada 30 minutos de 4:08 a 19:38, hora de Nueva York (el campo
+# timezone maneja el cambio de horario de verano), de lunes a viernes. GitHub puede atrasar
+# o saltarse corridas programadas cuando tiene mucha carga; el agente lo tolera porque cada
+# despertar mira el estado real de la cuenta.
+on:
+  schedule:
+    - cron: "8,38 4-19 * * 1-5"             # 32 despertares al día
+      timezone: "America/New_York"
+    # Si se acaban los minutos gratis (repo privado), cambia la línea de arriba por estas dos:
+    # pre y post-market cada hora, horario regular cada 30 minutos (23 despertares al día).
+    #   - cron: "8 4-19 * * 1-5"
+    #     timezone: "America/New_York"
+    #   - cron: "38 9-15 * * 1-5"
+    #     timezone: "America/New_York"
+    - cron: "17 20 * * 1-5"                 # foto de la cuenta y bitácora, ya cerrado el post-market
+      timezone: "America/New_York"
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Qué correr"
+        type: choice
+        options: [tick, snapshot]
+        default: tick
+      dry_run:
+        description: "El agente decide, pero sus órdenes no se envían"
+        type: boolean
+        default: false
+      force:
+        description: "Correr aunque sea feriado o fuera de horario"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write     # el bot guarda su estado en el repo
+
+concurrency:
+  group: bot
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule != '17 20 * * 1-5') ||
+      (github.event_name == 'workflow_dispatch' && inputs.job == 'tick')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        id: py
+        with:
+          python-version: "3.12"
+      - name: Restaurar el entorno de Python ya instalado
+        id: venv
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.py.outputs.python-version }}-${{ hashFiles('requirements.lock') }}
+      - name: Instalar dependencias (solo si cambió requirements.lock)
+        if: steps.venv.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r requirements.lock
+      - name: Despertar al agente
+        timeout-minutes: 20
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}                  # opcional
+          SEC_EDGAR_USER_AGENT: ${{ vars.SEC_EDGAR_USER_AGENT }}     # opcional
+        run: .venv/bin/python -m bot.tick ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.force && '--force' || '' }}
+      - name: Guardar estado en el repo
+        if: always()
+        run: |
+          git config user.name "paper-trader-bot"
+          git config user.email "paper-trader-bot@users.noreply.github.com"
+          git add state
+          git diff --cached --quiet && exit 0
+          git commit -m "estado: despertar $(TZ=America/New_York date '+%F %H:%M')"
+          for i in 1 2 3; do git pull --rebase --autostash && git push && exit 0; sleep 5; done
+          exit 1
+
+  snapshot:
+    if: >-
+      (github.event_name == 'schedule' && github.event.schedule == '17 20 * * 1-5') ||
+      (github.event_name == 'workflow_dispatch' && inputs.job == 'snapshot')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install alpaca-py==0.45.0 PyYAML pandas
+      - name: Foto de la cuenta
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python -m bot.snapshot
+      - name: Guardar estado en el repo
+        run: |
+          git config user.name "paper-trader-bot"
+          git config user.email "paper-trader-bot@users.noreply.github.com"
+          git add state
+          git diff --cached --quiet && exit 0
+          git commit -m "estado: foto $(TZ=America/New_York date +%F)"
+          for i in 1 2 3; do git pull --rebase --autostash && git push && exit 0; sleep 5; done
+          exit 1
+
+  # Dashboard en la web (opcional). Se activa creando la variable de repo
+  # PUBLISH_DASHBOARD = true y eligiendo Settings → Pages → Source: GitHub Actions.
+  # OJO: el sitio es público en internet (con GitHub Free el repo también tiene que serlo).
+  publish:
+    needs: [tick, snapshot]
+    if: ${{ !cancelled() && vars.PUBLISH_DASHBOARD == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}        # el commit que acaba de subir el despertar, no el que lo disparó
+      - name: Armar la página
+        run: python3 dashboard/app.py --export _site
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

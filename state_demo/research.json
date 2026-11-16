@@ -1,0 +1,241 @@
+[
+ {
+  "date": "2026-10-20",
+  "time": "09:38",
+  "symbol": "CRWD",
+  "rating": "Buy",
+  "report": "reports/2026-10-20/CRWD.md",
+  "usd": 0.03139,
+  "fwd_ret": 0.06011,
+  "fwd_spy": -0.01876,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-20",
+  "time": "15:38",
+  "symbol": "MRNA",
+  "rating": "Hold",
+  "report": "reports/2026-10-20/MRNA.md",
+  "usd": 0.026217,
+  "fwd_ret": -0.02671,
+  "fwd_spy": -0.01876,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-21",
+  "time": "12:08",
+  "symbol": "AMD",
+  "rating": "Overweight",
+  "report": "reports/2026-10-21/AMD.md",
+  "usd": 0.025523,
+  "fwd_ret": -0.09507,
+  "fwd_spy": -0.01911,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-22",
+  "time": "12:08",
+  "symbol": "CRWD",
+  "rating": "Hold",
+  "report": "reports/2026-10-22/CRWD.md",
+  "usd": 0.025889,
+  "fwd_ret": 0.00694,
+  "fwd_spy": -0.00812,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-23",
+  "time": "15:38",
+  "symbol": "CRWD",
+  "rating": "Overweight",
+  "report": "reports/2026-10-23/CRWD.md",
+  "usd": 0.027696,
+  "fwd_ret": -0.08716,
+  "fwd_spy": -0.04053,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-26",
+  "time": "12:08",
+  "symbol": "MU",
+  "rating": "Sell",
+  "report": "reports/2026-10-26/MU.md",
+  "usd": 0.025514,
+  "fwd_ret": -0.21372,
+  "fwd_spy": -0.03247,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-28",
+  "time": "09:38",
+  "symbol": "INTC",
+  "rating": "Overweight",
+  "report": "reports/2026-10-28/INTC.md",
+  "usd": 0.024265,
+  "fwd_ret": -0.37988,
+  "fwd_spy": -0.02565,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-29",
+  "time": "12:08",
+  "symbol": "AMD",
+  "rating": "Hold",
+  "report": "reports/2026-10-29/AMD.md",
+  "usd": 0.027131,
+  "fwd_ret": -0.04415,
+  "fwd_spy": -0.01619,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-29",
+  "time": "15:38",
+  "symbol": "MRNA",
+  "rating": "Hold",
+  "report": "reports/2026-10-29/MRNA.md",
+  "usd": 0.027462,
+  "fwd_ret": 0.16123,
+  "fwd_spy": -0.01619,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-30",
+  "time": "09:38",
+  "symbol": "MRNA",
+  "rating": "Hold",
+  "report": "reports/2026-10-30/MRNA.md",
+  "usd": 0.027483,
+  "fwd_ret": 0.03856,
+  "fwd_spy": -0.01591,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-30",
+  "time": "12:08",
+  "symbol": "MRNA",
+  "rating": "Hold",
+  "report": "reports/2026-10-30/MRNA.md",
+  "usd": 0.027483,
+  "fwd_ret": 0.03856,
+  "fwd_spy": -0.01591,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-10-30",
+  "time": "15:38",
+  "symbol": "MU",
+  "rating": "Hold",
+  "report": "reports/2026-10-30/MU.md",
+  "usd": 0.029729,
+  "fwd_ret": -0.14539,
+  "fwd_spy": -0.01591,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-11-02",
+  "time": "09:38",
+  "symbol": "AMD",
+  "rating": "Hold",
+  "report": "reports/2026-11-02/AMD.md",
+  "usd": 0.027874,
+  "fwd_ret": 0.05796,
+  "fwd_spy": -0.00179,
+  "fwd_days": 10
+ },
+ {
+  "date": "2026-11-03",
+  "time": "09:38",
+  "symbol": "MRVL",
+  "rating": "Overweight",
+  "report": "reports/2026-11-03/MRVL.md",
+  "usd": 0.030321
+ },
+ {
+  "date": "2026-11-03",
+  "time": "12:08",
+  "symbol": "MU",
+  "rating": "Overweight",
+  "report": "reports/2026-11-03/MU.md",
+  "usd": 0.03157
+ },
+ {
+  "date": "2026-11-03",
+  "time": "15:38",
+  "symbol": "MU",
+  "rating": "Overweight",
+  "report": "reports/2026-11-03/MU.md",
+  "usd": 0.03157
+ },
+ {
+  "date": "2026-11-04",
+  "time": "09:38",
+  "symbol": "AMD",
+  "rating": "Hold",
+  "report": "reports/2026-11-04/AMD.md",
+  "usd": 0.029221
+ },
+ {
+  "date": "2026-11-04",
+  "time": "15:38",
+  "symbol": "CRWD",
+  "rating": "Buy",
+  "report": "reports/2026-11-04/CRWD.md",
+  "usd": 0.027585
+ },
+ {
+  "date": "2026-11-05",
+  "time": "09:38",
+  "symbol": "INTC",
+  "rating": "Underweight",
+  "report": "reports/2026-11-05/INTC.md",
+  "usd": 0.022113
+ },
+ {
+  "date": "2026-11-05",
+  "time": "15:38",
+  "symbol": "INTC",
+  "rating": "Underweight",
+  "report": "reports/2026-11-05/INTC.md",
+  "usd": 0.022113
+ },
+ {
+  "date": "2026-11-06",
+  "time": "15:38",
+  "symbol": "MRVL",
+  "rating": "Hold",
+  "report": "reports/2026-11-06/MRVL.md",
+  "usd": 0.028808
+ },
+ {
+  "date": "2026-11-09",
+  "time": "09:38",
+  "symbol": "MRVL",
+  "rating": "Hold",
+  "report": "reports/2026-11-09/MRVL.md",
+  "usd": 0.02713
+ },
+ {
+  "date": "2026-11-10",
+  "time": "12:08",
+  "symbol": "AMAT",
+  "rating": "Hold",
+  "report": "reports/2026-11-10/AMAT.md",
+  "usd": 0.024231
+ },
+ {
+  "date": "2026-11-11",
+  "time": "09:38",
+  "symbol": "INTC",
+  "rating": "Buy",
+  "report": "reports/2026-11-11/INTC.md",
+  "usd": 0.024345
+ },
+ {
+  "date": "2026-11-11",
+  "time": "12:08",
+  "symbol": "AMAT",
+  "rating": "Underweight",
+  "report": "reports/2026-11-11/AMAT.md",
+  "usd": 0.033472
+ }
+]

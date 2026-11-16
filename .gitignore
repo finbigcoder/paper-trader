@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+mlruns/
+.venv/
+.ruff_cache/
+_site/
+site/

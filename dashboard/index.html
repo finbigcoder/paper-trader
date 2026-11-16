@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesa de control del bot</title>
+<style>
+  :root {
+    color-scheme: light;
+    --plane: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,.10); --wash: rgba(11,11,11,.04);
+    --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a;
+    --bull-2: #2a78d6; --bull-1: #86b6ef; --flat: #c3c2b7; --bear-1: #f0a09f; --bear-2: #d03b3b;
+    --good: #0ca30c; --good-text: #006300; --warning: #fab219; --critical: #d03b3b;
+    --rail: #0b0b0b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --plane: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,.10); --wash: rgba(255,255,255,.05);
+      --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+      --bull-2: #3987e5; --bull-1: #1c5cab; --flat: #52514e; --bear-1: #8f3a3a; --bear-2: #e66767;
+      --good-text: #0ca30c; --rail: #f0efec;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--plane); }
+  body { margin: 0; color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  button, select { font: inherit; color: inherit; }
+  h1, h2, h3, p { margin: 0; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 28px 64px; }
+
+  /* ── cabecera ── */
+  .top { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: flex-end; padding: 28px 0 20px; border-bottom: 2px solid var(--rail); }
+  .top h1 { font-size: 30px; line-height: 1.05; font-weight: 720; letter-spacing: -0.02em; }
+  .top .sub { color: var(--ink-2); margin-top: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .facts { display: flex; flex-wrap: wrap; gap: 6px 32px; margin-left: auto; }
+  .fact { min-width: 120px; }
+  .fact dt { color: var(--muted); font-size: 12.5px; }
+  .fact dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  dl { margin: 0; }
+  .actions { display: flex; gap: 10px; align-items: center; }
+  .btn { background: var(--ink); color: var(--plane); border: 0; border-radius: 6px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
+  .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--axis); }
+  .btn:disabled { opacity: .5; cursor: default; }
+  a { color: inherit; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
+
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 3px 10px 3px 8px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--axis); }
+  .pill svg { flex: none; }
+
+  .banner { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; margin-top: 14px; border-left: 3px solid var(--warning); background: var(--wash); }
+  .banner.critical { border-left-color: var(--critical); }
+  .banner.info { border-left-color: var(--axis); }
+  .banner p { max-width: 90ch; }
+
+  /* ── secciones ── */
+  .grid2 { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 48px; margin-top: 34px; }
+  section h2 { font-size: 19px; font-weight: 680; letter-spacing: -0.01em; }
+  section .lede { color: var(--ink-2); margin-top: 2px; max-width: 70ch; }
+  .stats { display: flex; flex-wrap: wrap; gap: 14px 36px; margin: 16px 0 6px; }
+  .stat .v { font-size: 26px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
+  .stat .v.small { font-size: 18px; }
+  .stat .k { color: var(--muted); font-size: 12.5px; }
+  .delta { font-weight: 600; }
+  .delta.up { color: var(--good-text); }
+  .delta.down { color: var(--critical); }
+
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); margin: 10px 0 2px; }
+  .legend i { display: inline-block; width: 14px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+  .legend b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .chart { position: relative; }
+  .chart svg { display: block; width: 100%; overflow: visible; }
+  .chart text { font: 11.5px system-ui, sans-serif; fill: var(--muted); font-variant-numeric: tabular-nums; }
+  .chart text.end { fill: var(--ink); font-weight: 600; font-size: 12px; }
+  .linkbtn { background: none; border: 0; padding: 0; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-size: 13px; }
+  .empty { color: var(--ink-2); padding: 22px 0; max-width: 60ch; }
+
+  .meter { height: 14px; border-radius: 4px; background: var(--grid); overflow: hidden; margin-top: 14px; }
+  .meter > div { height: 100%; background: var(--series-1); border-radius: 4px 0 0 4px; min-width: 2px; }
+  .meter-scale { display: flex; justify-content: space-between; color: var(--muted); font-size: 12.5px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+  /* ── la línea del día: el elemento principal ── */
+  #pipeline { margin-top: 46px; }
+  .pipe-head { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; }
+  .daypick { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+  .daypick select { background: var(--surface); border: 1px solid var(--axis); border-radius: 6px; padding: 6px 8px; }
+  .daypick button { width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--axis); background: var(--surface); cursor: pointer; }
+  .pipe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; row-gap: 30px; }
+  .pipe .stage.wide { grid-column: span 2; }
+  .tw td, .tw th { padding: 4px 8px 4px 0; font-size: 13.5px; }
+  .stage { padding: 0 18px 8px; border-right: 1px solid var(--grid); border-top: 2px solid var(--rail); min-width: 0; }
+  .stage:nth-child(4n+1) { padding-left: 0; }
+  .stage:nth-child(4n) { border-right: 0; padding-right: 0; }
+  .stage .n { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-top: -14px; border-radius: 50%; background: var(--rail); color: var(--plane); font-weight: 700; font-size: 13px; }
+  .stage h3 { font-size: 16px; font-weight: 680; margin-top: 8px; }
+  .stage .tool { color: var(--ink-2); font-size: 13px; }
+  .stage .cost { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .stage .body { margin-top: 12px; font-size: 14px; }
+  .kv { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; }
+  .kv span:first-child { color: var(--ink-2); }
+  .kv span:last-child { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+  .note { color: var(--ink-2); font-size: 13px; margin-top: 8px; }
+  .note.warn { color: var(--ink); border-left: 3px solid var(--warning); padding-left: 8px; }
+  ul.rows { list-style: none; margin: 0; padding: 0; }
+  ul.rows li { padding: 7px 0; border-top: 1px solid var(--grid); }
+  ul.rows li:first-child { border-top: 0; }
+  .row1 { display: flex; align-items: center; gap: 4px 8px; flex-wrap: wrap; }
+  .sym { font-weight: 700; letter-spacing: .01em; }
+  .dim { color: var(--ink-2); font-size: 13px; }
+  .right { margin-left: auto; text-align: right; font-variant-numeric: tabular-nums; }
+  .rank { display: grid; grid-template-columns: 22px 68px 1fr 52px; gap: 6px; align-items: center; padding: 3px 0; font-variant-numeric: tabular-nums; }
+  .rank .pos { color: var(--muted); font-size: 12.5px; text-align: right; }
+  .rank .bar { height: 10px; position: relative; }
+  .rank .bar::before { content: ""; position: absolute; left: 50%; top: -2px; bottom: -2px; border-left: 1px solid var(--axis); }
+  .rank .bar i { position: absolute; top: 0; bottom: 0; border-radius: 0 3px 3px 0; background: var(--bull-2); left: 50%; }
+  .rank .bar i.neg { background: var(--bear-2); border-radius: 3px 0 0 3px; left: auto; right: 50%; }
+  .rank .sc { text-align: right; font-size: 12.5px; color: var(--ink-2); }
+  .gapline { color: var(--muted); font-size: 12.5px; padding: 2px 0 2px 28px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 650; padding: 2px 9px 2px 7px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--border); white-space: nowrap; }
+  .chip::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--flat); }
+  .chip.Buy::before { background: var(--bull-2); } .chip.Overweight::before { background: var(--bull-1); }
+  .chip.Underweight::before { background: var(--bear-1); } .chip.Sell::before { background: var(--bear-2); }
+  .chip.long::before { background: var(--bull-2); } .chip.short::before { background: var(--bear-2); }
+  .tag { display: inline-block; font-size: 12px; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--border); border-radius: 3px; padding: 0 5px; margin-right: 4px; white-space: nowrap; }
+  .mark { color: var(--good-text); font-weight: 700; }
+  .hbar { display: grid; grid-template-columns: minmax(0, 150px) 1fr 62px; gap: 8px; align-items: center; padding: 3px 0; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  .hbar .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hbar .tr { height: 10px; } .hbar .tr i { display: block; height: 100%; background: var(--series-1); border-radius: 0 4px 4px 0; min-width: 2px; }
+  .hbar .vl { text-align: right; color: var(--ink-2); }
+  #aporta { margin-top: 46px; }
+  #aporta td, #aporta th { white-space: normal; vertical-align: top; }
+  #aporta td:nth-child(2), #aporta th:nth-child(2) { text-align: left; }
+  #aporta td:last-child, #aporta th:last-child { text-align: left; color: var(--ink-2); padding-left: 14px; }
+  .chip.none::before { display: none; } .chip.none { padding-left: 9px; color: var(--ink-2); font-weight: 500; }
+  button.rowbtn { all: unset; display: block; width: 100%; cursor: pointer; border-radius: 4px; }
+  button.rowbtn:hover { background: var(--wash); }
+  button.rowbtn:focus-visible { outline: 2px solid var(--series-1); }
+
+  /* ── el día del agente ── */
+  .dayfacts { display: flex; flex-wrap: wrap; gap: 10px 36px; margin: 18px 0 4px; padding-top: 14px; border-top: 2px solid var(--rail); }
+  .daygrid { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 40px; margin-top: 18px; }
+  .morning { font-size: 14px; }
+  .morning h3 { font-size: 15px; font-weight: 680; margin: 0 0 6px; }
+  .morning h3 + .dim { margin-bottom: 8px; }
+  .morning section + section { margin-top: 22px; }
+  .onlyact { display: inline-flex; gap: 8px; align-items: center; font-size: 13.5px; color: var(--ink-2); cursor: pointer; }
+  ol.ticks { list-style: none; margin: 10px 0 0; padding: 0; }
+  .tk { display: grid; grid-template-columns: 62px minmax(0, 1fr) auto; gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--grid); }
+  .tk .hr { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 15px; }
+  .tk .ses { display: block; font-size: 12px; color: var(--muted); font-weight: 500; }
+  .tk .say { max-width: 75ch; white-space: pre-wrap; }
+  .tk.quiet .say { color: var(--ink-2); }
+  .tk .usd { color: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; text-align: right; }
+  .tk .acts { grid-column: 2 / 4; display: grid; gap: 6px; margin-top: 4px; }
+  .act { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 14px; }
+  .act .why { color: var(--ink-2); font-size: 13px; flex-basis: 100%; padding-left: 2px; }
+  .side { font-weight: 700; } .side.buy { color: var(--good-text); } .side.sell { color: var(--critical); }
+  .tools { display: flex; flex-wrap: wrap; gap: 4px; }
+  .lessons { white-space: pre-wrap; max-width: 80ch; margin-top: 14px; padding: 14px 16px; background: var(--wash); border-left: 3px solid var(--rail); }
+  #lecciones { margin-top: 46px; }
+
+  /* ── tablas ── */
+  .tables { display: grid; grid-template-columns: minmax(0, 1fr); gap: 46px; margin-top: 46px; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 12px; font-variant-numeric: tabular-nums; }
+  th { text-align: right; font-weight: 500; color: var(--muted); font-size: 12.5px; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--axis); white-space: nowrap; }
+  td { text-align: right; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th.l, td.l { text-align: left; }
+
+  .tip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--plane); border-radius: 6px; padding: 8px 10px; font-size: 13px; max-width: 280px; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+  .tip .t { opacity: .7; font-size: 12px; margin-bottom: 3px; }
+  .tip .r { display: flex; gap: 8px; align-items: center; }
+  .tip .r i { width: 12px; border-top: 2px solid; flex: none; }
+  .tip .r b { font-variant-numeric: tabular-nums; }
+  .tip .r span { opacity: .75; }
+
+  dialog { border: 0; border-radius: 10px; padding: 0; width: min(860px, 94vw); max-height: 88vh; background: var(--surface); color: var(--ink); box-shadow: 0 24px 80px rgba(0,0,0,.35); }
+  dialog::backdrop { background: rgba(0,0,0,.45); }
+  .dlg-head { position: sticky; top: 0; display: flex; align-items: center; gap: 12px; padding: 16px 22px; background: var(--surface); border-bottom: 1px solid var(--grid); }
+  .dlg-head h2 { font-size: 18px; }
+  .dlg-body { padding: 8px 22px 28px; max-width: 78ch; }
+  .md h1 { font-size: 22px; margin: 18px 0 8px; } .md h2 { font-size: 18px; margin: 22px 0 6px; } .md h3, .md h4 { font-size: 15.5px; margin: 16px 0 4px; }
+  .md p { margin: 8px 0; } .md ul, .md ol { margin: 8px 0; padding-left: 22px; } .md li { margin: 3px 0; }
+  .md blockquote { margin: 10px 0; padding: 6px 12px; border-left: 3px solid var(--axis); color: var(--ink-2); }
+  .md pre { white-space: pre-wrap; background: var(--wash); padding: 10px 12px; border-radius: 6px; font-size: 13px; overflow-x: auto; }
+  .md table { font-size: 13px; } .md td, .md th { white-space: normal; text-align: left; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--plane); padding: 10px 16px; border-radius: 8px; font-size: 14px; z-index: 30; max-width: 80vw; }
+
+  @media (max-width: 1040px) {
+    .daygrid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+    .grid2, .tables { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .pipe { grid-template-columns: minmax(0, 1fr); row-gap: 0; border-left: 2px solid var(--rail); margin-left: 12px; }
+    .stage, .stage:nth-child(4n+1), .stage:nth-child(4n) { padding: 0 0 26px 22px; border-right: 0; border-top: 0; }
+    .pipe .stage.wide { grid-column: auto; }
+    .stage .n { margin: 0 0 0 -36px; position: absolute; }
+    .stage { position: relative; }
+    .stage h3 { margin-top: 0; }
+    .facts { margin-left: 0; }
+  }
+  @media (max-width: 560px) { .tk { grid-template-columns: 52px minmax(0, 1fr); } .tk .usd { grid-column: 2; text-align: left; } .tk .acts { grid-column: 1 / 3; } .wrap { padding: 0 16px 48px; } .top h1 { font-size: 25px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Mesa de control</h1>
+      <p class="sub"><span id="statusPill"></span><span id="statusText"></span></p>
+    </div>
+    <dl class="facts" id="facts"></dl>
+    <div class="actions">
+      <button class="btn" id="sync" title="Trae del repo lo último que subió el bot (git pull)">Sincronizar</button>
+      <a class="btn ghost" id="gh" hidden target="_blank" rel="noopener">Ver despertares en GitHub</a>
+    </div>
+  </header>
+  <div id="banners"></div>
+
+  <div class="grid2">
+    <section id="cuenta" aria-labelledby="h-cuenta">
+      <h2 id="h-cuenta">Cuenta paper contra el mercado</h2>
+      <p class="lede" id="cuentaLede"></p>
+      <div class="stats" id="cuentaStats"></div>
+      <div class="legend" id="eqLegend"></div>
+      <div class="chart" id="eqChart"></div>
+      <button class="linkbtn" id="eqToggle" hidden>Ver como tabla</button>
+      <div class="scroll" id="eqTable" hidden></div>
+    </section>
+
+    <section id="gasto" aria-labelledby="h-gasto">
+      <h2 id="h-gasto">Gasto real en el LLM</h2>
+      <p class="lede">El único dinero de verdad que gasta el bot. Cada despertar recibe una parte del día y se frena antes de pasar el tope.</p>
+      <div class="stats" id="gastoStats"></div>
+      <div class="meter" id="meter" role="img"><div></div></div>
+      <div class="meter-scale"><span>$0</span><span id="meterCap"></span></div>
+      <h3 style="font-size:14px;font-weight:600;margin-top:22px">Gasto por día</h3>
+      <div class="chart" id="spendChart"></div>
+      <button class="linkbtn" id="spendToggle" hidden>Ver como tabla</button>
+      <div class="scroll" id="spendTable" hidden></div>
+      <h3 style="font-size:14px;font-weight:600;margin-top:22px">Quién se lleva el presupuesto</h3>
+      <div id="agentBars"></div>
+    </section>
+  </div>
+
+  <section id="pipeline" aria-labelledby="h-pipe">
+    <div class="pipe-head">
+      <div>
+        <h2 id="h-pipe">El día del agente</h2>
+        <p class="lede">Cada despertar: qué vio, qué hizo y por qué, en sus propias palabras. El agente decide solo; el código solo valida las órdenes y el presupuesto.</p>
+      </div>
+      <div class="daypick">
+        <button id="prevDay" aria-label="Día anterior">‹</button>
+        <select id="daySel" aria-label="Día"></select>
+        <button id="nextDay" aria-label="Día siguiente">›</button>
+      </div>
+    </div>
+    <div class="dayfacts" id="dayFacts"></div>
+    <div class="daygrid">
+      <aside class="morning" id="morning" aria-label="Preparación del día"></aside>
+      <div>
+        <label class="onlyact"><input type="checkbox" id="onlyAct"> Solo despertares con órdenes o investigación</label>
+        <ol class="ticks" id="ticks"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="lecciones" aria-labelledby="h-lec">
+    <h2 id="h-lec">Lo que el agente aprendió</h2>
+    <p class="lede">Lo reescribe él mismo en el último despertar de cada día y lo lee en cada despertar siguiente. Es texto generado por el modelo.</p>
+    <div class="lessons" id="lessons"></div>
+  </section>
+
+  <section id="aporta" aria-labelledby="h-aporta">
+    <h2 id="h-aporta">¿De dónde sale el resultado?</h2>
+    <p class="lede">En paralelo se lleva una regla sin IA (las 10 acciones con más momentum de Qlib, a pesos iguales) y se anota qué hizo cada acción después de que el agente la investigó. Así se separa lo que viene del mercado, de la regla y del agente.</p>
+    <div class="scroll" id="aportaTable"></div>
+  </section>
+
+  <div class="tables">
+    <section aria-labelledby="h-open">
+      <h2 id="h-open">Posiciones abiertas</h2>
+      <div class="scroll" id="openTable"></div>
+    </section>
+    <section aria-labelledby="h-pos">
+      <h2 id="h-pos">Operaciones cerradas</h2>
+      <div class="scroll" id="posTable"></div>
+    </section>
+    <section aria-labelledby="h-ord">
+      <h2 id="h-ord">Órdenes recientes</h2>
+      <div class="scroll" id="ordTable"></div>
+    </section>
+  </div>
+</div>
+
+<dialog id="report" aria-labelledby="repTitle">
+  <div class="dlg-head"><h2 id="repTitle"></h2><span id="repChip"></span><button class="btn ghost right" id="repClose">Cerrar</button></div>
+  <div class="dlg-body md" id="repBody"></div>
+</dialog>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v);
+  }
+  for (const k of kids.flat()) if (k != null) n.append(k);
+  return n;
+}
+function sv(tag, attrs) { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs || {})) n.setAttribute(k, v); return n; }
+const cssv = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+const num = (v, d = 0) => v == null ? "—" : new Intl.NumberFormat("es-MX", { minimumFractionDigits: d, maximumFractionDigits: d }).format(v);
+const usd = (v, d = 2) => v == null ? "—" : (v < 0 ? "−$" : "$") + num(Math.abs(v), d);
+const pct = (v, d = 1) => v == null ? "—" : (v > 0 ? "+" : "") + num(v * 100, d) + "%";
+const MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const day = iso => { if (!iso) return "—"; const [y, m, d] = iso.slice(0, 10).split("-").map(Number); return `${d} ${MES[m - 1]}`; };
+const dayLong = iso => { if (!iso) return "—"; const [y, m, d] = iso.slice(0, 10).split("-").map(Number); return `${d} ${MES[m - 1]} ${y}`; };
+const when = iso => { if (!iso) return "—"; const t = new Date(iso); return isNaN(t) ? "—" : t.toLocaleString("es-MX", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); };
+const whenNY = iso => { if (!iso) return "—"; const t = new Date(iso); return isNaN(t) ? "—" : t.toLocaleString("es-MX", { timeZone: "America/New_York", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hour12: false }) + " NY"; };
+const ST = { filled: "ejecutada", accepted: "aceptada", held: "en espera", new: "en cola", pending_new: "en cola", dry_run: "no enviada (dry run)", rejected: "rechazada", partially_filled: "parcial", canceled: "cancelada", expired: "expirada" };
+const RATING_ES = { Buy: "Buy", Overweight: "Overweight", Hold: "Hold", Underweight: "Underweight", Sell: "Sell", REVIEW: "Sin calificación" };
+
+let S = null, currentDay = null;
+const STATIC = !!window.STATIC_SITE;          // versión web publicada en GitHub Pages
+const REPORT_PATH = /^reports\/\d{4}-\d{2}-\d{2}\/[A-Z][A-Z0-9.]{0,7}\.md$/;
+function ago(iso) {
+  const t = new Date(iso); if (!iso || isNaN(t)) return "—";
+  const min = Math.round((Date.now() - t) / 60000);
+  if (min < 1) return "hace menos de un minuto";
+  if (min < 60) return `hace ${min} min`;
+  const h = Math.floor(min / 60); if (h < 48) return `hace ${h} h ${min % 60 ? (min % 60) + " min" : ""}`.trim();
+  return `hace ${Math.floor(h / 24)} días`;
+}
+function nyNow() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour12: false, weekday: "short", hour: "2-digit", minute: "2-digit" }).formatToParts(new Date()).map(x => [x.type, x.value]));
+  return { weekend: ["Sat", "Sun"].includes(p.weekday), h: +p.hour % 24, m: +p.minute };
+}
+
+/* ── tooltip compartido ── */
+const tip = $("tip");
+function showTip(x, y, title, rows) {
+  tip.replaceChildren();
+  if (title) tip.append(el("div", { class: "t", text: title }));
+  for (const r of rows) {
+    const line = el("div", { class: "r" });
+    if (r.color) { const k = el("i"); k.style.borderTopColor = r.color; line.append(k); }
+    line.append(el("b", { text: r.value }), el("span", { text: r.label }));
+    tip.append(line);
+  }
+  tip.hidden = false;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, x + 14)) + "px";
+  tip.style.top = Math.max(8, y - h - 12) + "px";
+}
+const hideTip = () => { tip.hidden = true; };
+
+function niceTicks(lo, hi, n) {
+  const span = hi - lo || 1, raw = span / n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw) || raw;
+  const out = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + step * 1e-9; v += step) out.push(+v.toFixed(10));
+  return out;
+}
+
+/* ── gráfica de líneas: dos series en un mismo eje (base 100) ── */
+function lineChart(host, dates, series) {
+  host.replaceChildren();
+  const W = Math.max(host.clientWidth, 320), H = 260, m = { t: 14, r: 104, b: 26, l: 38 };
+  const all = series.flatMap(s => s.values);
+  let lo = Math.min(...all, 100), hi = Math.max(...all, 100);
+  const pad = (hi - lo) * 0.12 || 1; lo -= pad; hi += pad;
+  const ticks = niceTicks(lo, hi, 4);
+  const X = i => m.l + (dates.length > 1 ? i * (W - m.l - m.r) / (dates.length - 1) : 0);
+  const Y = v => m.t + (hi - v) * (H - m.t - m.b) / (hi - lo);
+  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img", tabindex: 0,
+    "aria-label": "Valor de la cuenta del agente, de la regla de momentum y de SPY, base 100. Usa las flechas para recorrer las fechas." });
+  for (const t of ticks) {
+    svg.append(sv("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: cssv(t === 100 ? "--axis" : "--grid"), "stroke-width": 1 }));
+    const lab = sv("text", { x: m.l - 8, y: Y(t) + 4, "text-anchor": "end" }); lab.textContent = num(t, ticks.some(v => v % 1) ? 1 : 0); svg.append(lab);
+  }
+  const marks = [...new Set([0, Math.floor((dates.length - 1) / 2), dates.length - 1])];
+  for (const i of marks) {
+    const lab = sv("text", { x: X(i), y: H - 6, "text-anchor": i === 0 ? "start" : i === dates.length - 1 ? "end" : "middle" });
+    lab.textContent = day(dates[i]); svg.append(lab);
+  }
+  const ends = series.map((s, k) => ({ k, y: Y(s.values[s.values.length - 1]) })).sort((a, b) => a.y - b.y);
+  for (let i = 1; i < ends.length; i++) ends[i].y = Math.max(ends[i].y, ends[i - 1].y + 15);
+  const labelY = Object.fromEntries(ends.map(e => [e.k, e.y]));
+  series.forEach((s, k) => {
+    const d = s.values.map((v, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join("");
+    svg.append(sv("path", { d, fill: "none", stroke: cssv(s.color), "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    const last = s.values.length - 1;
+    svg.append(sv("circle", { cx: X(last), cy: Y(s.values[last]), r: 4, fill: cssv(s.color), stroke: cssv("--plane"), "stroke-width": 2 }));
+    const t = sv("text", { class: "end", x: X(last) + 9, y: labelY[k] + 4 }); t.textContent = `${s.short || s.name} ${num(s.values[last], 1)}`; svg.append(t);
+  });
+  const cross = sv("line", { y1: m.t, y2: H - m.b, stroke: cssv("--axis"), "stroke-width": 1, visibility: "hidden" });
+  const dots = series.map(s => sv("circle", { r: 4, fill: cssv(s.color), stroke: cssv("--plane"), "stroke-width": 2, visibility: "hidden" }));
+  svg.append(cross, ...dots);
+  let idx = dates.length - 1;
+  const focusAt = (i, px, py) => {
+    idx = Math.max(0, Math.min(dates.length - 1, i));
+    cross.setAttribute("x1", X(idx)); cross.setAttribute("x2", X(idx)); cross.setAttribute("visibility", "visible");
+    dots.forEach((c, k) => { c.setAttribute("cx", X(idx)); c.setAttribute("cy", Y(series[k].values[idx])); c.setAttribute("visibility", "visible"); });
+    const box = svg.getBoundingClientRect();
+    showTip(px ?? box.left + X(idx) * box.width / W, py ?? box.top + m.t + 20, dayLong(dates[idx]),
+      series.map(s => ({ color: cssv(s.color), value: num(s.values[idx], 1), label: s.name })));
+  };
+  const blur = () => { cross.setAttribute("visibility", "hidden"); dots.forEach(c => c.setAttribute("visibility", "hidden")); hideTip(); };
+  svg.addEventListener("pointermove", e => {
+    const box = svg.getBoundingClientRect(), x = (e.clientX - box.left) * W / box.width;
+    focusAt(Math.round((x - m.l) / ((W - m.l - m.r) / Math.max(dates.length - 1, 1))), e.clientX, e.clientY);
+  });
+  svg.addEventListener("pointerleave", blur);
+  svg.addEventListener("focus", () => focusAt(idx));
+  svg.addEventListener("blur", blur);
+  svg.addEventListener("keydown", e => { if (e.key === "ArrowLeft") { focusAt(idx - 1); e.preventDefault(); } if (e.key === "ArrowRight") { focusAt(idx + 1); e.preventDefault(); } });
+  host.append(svg);
+}
+
+/* ── columnas: gasto por corrida, una sola serie ── */
+function columnChart(host, rows) {
+  host.replaceChildren();
+  const W = Math.max(host.clientWidth, 280), H = 170, m = { t: 12, r: 8, b: 24, l: 44 };
+  const hi0 = Math.max(...rows.map(r => r.usd), 0.01), ticks = niceTicks(0, hi0 * 1.1, 3), hi = Math.max(hi0 * 1.1, ticks[ticks.length - 1]);
+  const Y = v => m.t + (hi - v) * (H - m.t - m.b) / hi;
+  const band = (W - m.l - m.r) / rows.length, bw = Math.min(24, Math.max(4, band - 2));
+  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": "Gasto en dólares de cada día" });
+  for (const t of ticks) {
+    svg.append(sv("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: cssv(t === 0 ? "--axis" : "--grid"), "stroke-width": 1 }));
+    const lab = sv("text", { x: m.l - 8, y: Y(t) + 4, "text-anchor": "end" }); lab.textContent = usd(t, 2); svg.append(lab);
+  }
+  rows.forEach((r, i) => {
+    const cx = m.l + band * (i + 0.5), y = Y(r.usd), h = Math.max(H - m.b - y, r.usd > 0 ? 1.5 : 0), rad = Math.min(4, h, bw / 2);
+    const x0 = cx - bw / 2, x1 = cx + bw / 2, base = H - m.b;
+    const bar = sv("path", { d: `M${x0},${base}V${y + rad}Q${x0},${y} ${x0 + rad},${y}H${x1 - rad}Q${x1},${y} ${x1},${y + rad}V${base}Z`, fill: cssv("--series-1") });
+    const hit = sv("rect", { x: cx - band / 2, y: m.t, width: band, height: H - m.t - m.b, fill: "transparent", tabindex: 0,
+      "aria-label": `${dayLong(r.date)}: ${usd(r.usd, 3)}` });
+    const show = (px, py) => { bar.setAttribute("opacity", .75); const b = hit.getBoundingClientRect();
+      showTip(px ?? b.left + b.width / 2, py ?? b.top + 10, dayLong(r.date), [
+        { value: usd(r.usd, 3), label: "gastados" }, { value: String(r.ticks), label: "despertares" },
+        { value: String(r.research), label: "investigaciones" }]); };
+    const off = () => { bar.setAttribute("opacity", 1); hideTip(); };
+    hit.addEventListener("pointermove", e => show(e.clientX, e.clientY)); hit.addEventListener("pointerleave", off);
+    hit.addEventListener("focus", () => show()); hit.addEventListener("blur", off);
+    svg.append(bar, hit);
+  });
+  for (const i of [...new Set([0, rows.length - 1])]) {
+    const lab = sv("text", { x: m.l + band * (i + 0.5), y: H - 6, "text-anchor": i === 0 ? "start" : "end" });
+    if (i === 0) lab.setAttribute("x", m.l); else lab.setAttribute("x", W - m.r);
+    lab.textContent = day(rows[i].date); svg.append(lab);
+  }
+  host.append(svg);
+}
+
+function table(heads, rows, leftCols = [0]) {
+  const t = el("table"), hr = el("tr");
+  heads.forEach((h, i) => hr.append(el("th", { text: h, class: leftCols.includes(i) ? "l" : null })));
+  t.append(el("thead", {}, hr));
+  const tb = el("tbody");
+  for (const r of rows) { const tr = el("tr"); r.forEach((c, i) => { const td = el("td", { class: leftCols.includes(i) ? "l" : null }); td.append(c instanceof Node ? c : document.createTextNode(c)); tr.append(td); }); tb.append(tr); }
+  t.append(tb); return t;
+}
+function toggle(btn, box) { btn.hidden = false; btn.onclick = () => { box.hidden = !box.hidden; btn.textContent = box.hidden ? "Ver como tabla" : "Ocultar tabla"; }; }
+
+const ICON = {
+  ok: '<svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7" fill="#0ca30c"/><path d="M4 7.2l2 2 4-4.2" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  warn: '<svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1l6.5 12h-13z" fill="#fab219"/><path d="M7 5.2v4M7 10.8v.6" stroke="#0b0b0b" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  bad: '<svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7" fill="#d03b3b"/><path d="M4.5 4.5l5 5M9.5 4.5l-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>',
+};
+function pill(kind, text) { const p = el("span", { class: "pill" }); p.innerHTML = ICON[kind]; p.append(document.createTextNode(text)); return p; }
+function banner(kind, ...content) { const b = el("div", { class: "banner " + (kind === "bad" ? "critical" : kind === "info" ? "info" : "") }); const i = el("span"); i.innerHTML = ICON[kind === "info" ? "warn" : kind] ; if (kind !== "info") b.append(i); b.append(el("p", {}, ...content)); return b; }
+
+const SES = { pre: "Pre-market", regular: "Horario regular", post: "Post-market", closed: "Cerrado" };
+const lastTick = () => { const d = S.days[S.days.length - 1]; return d ? d.ticks[d.ticks.length - 1] : null; };
+function nextTickNY() {                    // siguiente :08 o :38 entre 4:00 y 19:59 de Nueva York, lunes a viernes
+  const step = +(S.tick_minutes || 30), now = new Date();
+  for (let k = 1; k < 7 * 24 * 60; k++) {
+    const t = new Date(now.getTime() + k * 60000);
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour12: false, weekday: "short", hour: "2-digit", minute: "2-digit" }).formatToParts(t).map(x => [x.type, x.value]));
+    const h = +p.hour % 24, m = +p.minute;
+    if (["Sat", "Sun"].includes(p.weekday) || h < 4 || h >= 20) continue;
+    if (step === 30 ? (m === 8 || m === 38) : m % step === 8 % step) return t.toLocaleString("es-MX", { weekday: "short", hour: "2-digit", minute: "2-digit" });
+  }
+  return "—";
+}
+const prevWeekday = () => { const d = new Date(); do d.setDate(d.getDate() - 1); while (d.getDay() === 0 || d.getDay() === 6); return d.toISOString().slice(0, 10); };
+
+/* ── cabecera y avisos ── */
+function renderHeader() {
+  const lastDay = S.days[S.days.length - 1], last = lastTick(), st = S.status || {};
+  const pillBox = $("statusPill"), txt = $("statusText"), ban = $("banners");
+  pillBox.replaceChildren(); ban.replaceChildren();
+  const bad = last && !["ok", "max_steps"].includes(last.status);
+  if (S.demo) { pillBox.append(pill("warn", "Datos de demostración")); txt.textContent = "Precios reales; cuenta simulada y un agente de reglas fijas en lugar del LLM. Nada de esto se operó."; }
+  else if (st.setup === "incomplete") { pillBox.append(pill("bad", "Falta configurar")); txt.textContent = "El bot corrió pero no encontró sus llaves."; }
+  else if (!last) { pillBox.append(pill("warn", "Sin despertares todavía")); txt.textContent = "Cuando el agente despierte por primera vez, aquí verás lo que hizo."; }
+  else if (bad) { pillBox.append(pill(last.status === "skipped_budget" ? "warn" : "bad", last.status === "skipped_budget" ? "Último despertar sin presupuesto" : "El último despertar tuvo errores")); txt.textContent = last.error || ""; }
+  else if (lastDay.date < prevWeekday()) { pillBox.append(pill("warn", `Sin despertar desde el ${day(lastDay.date)}`)); txt.textContent = "Revisa las corridas en GitHub o sincroniza."; }
+  else {
+    const ny = nyNow(), awake = !ny.weekend && ny.h >= 4 && ny.h < 20, mins = (Date.now() - new Date(last.at)) / 60000;
+    if (awake && mins > 50) { pillBox.append(pill("warn", "Despertar atrasado")); txt.textContent = `El último fue ${ago(last.at)}. GitHub a veces atrasa o se salta corridas; revisa Actions si sigue así.`; }
+    else { pillBox.append(pill("ok", awake ? "En vivo" : "Funcionando")); txt.textContent = `Último despertar ${ago(last.at)}.` + (awake ? "" : " El agente duerme fuera de 4:00 a 20:00 de Nueva York y en fines de semana."); }
+  }
+
+  const facts = [["Último despertar", last ? `${day(lastDay.date)}, ${last.time} NY` : "—"],
+    ["Próximo despertar", S.demo ? "—" : nextTickNY()],
+    ["Cerebro", S.model || "—"],
+    ["Foto de la cuenta", S.snapshot ? when(S.snapshot.updated_at) : "—"],
+    ["Esta página", STATIC ? `datos de ${ago(S.generated_at)}` : "se lee cada minuto"]];
+  $("facts").replaceChildren(...facts.map(([k, v]) => el("div", { class: "fact" }, el("dt", { text: k }), el("dd", { text: v }))));
+
+  if (S.repo && S.repo.actions_url) { $("gh").href = S.repo.actions_url; $("gh").hidden = false; }
+  if (!S.demo && st.setup === "incomplete") {
+    const link = S.repo && S.repo.secrets_url ? el("a", { href: S.repo.secrets_url, target: "_blank", rel: "noopener", text: "Agrégalos en los secrets del repo" }) : document.createTextNode("Agrégalos en Settings → Secrets and variables → Actions");
+    ban.append(banner("bad", `Faltan estos secrets en GitHub: ${(st.missing || []).join(", ")}. `, link, "."));
+  }
+  if (lastDay) for (const w of (lastDay.prep || {}).warnings || []) ban.append(banner("warn", `Datos del ${day(lastDay.date)}: ${w}`));
+}
+
+/* ── cuenta ── */
+function dailyReturns(series) {            // [{date, equity}] → Map(fecha → retorno)
+  const out = new Map();
+  for (let i = 1; i < series.length; i++) out.set(series[i].date, series[i].equity / series[i - 1].equity - 1);
+  return out;
+}
+function regress(y, x) {                   // y = a + b·x, con error estándar de a
+  const n = y.length; if (n < 3) return null;
+  const mx = x.reduce((s, v) => s + v, 0) / n, my = y.reduce((s, v) => s + v, 0) / n;
+  let sxx = 0, sxy = 0; for (let i = 0; i < n; i++) { sxx += (x[i] - mx) ** 2; sxy += (x[i] - mx) * (y[i] - my); }
+  const b = sxx ? sxy / sxx : 0, a = my - b * mx;
+  let sse = 0; for (let i = 0; i < n; i++) sse += (y[i] - a - b * x[i]) ** 2;
+  const se = Math.sqrt(sse / Math.max(n - 2, 1) * (1 / n + mx * mx / (sxx || 1)));
+  return { a, b, t: se ? a / se : 0, n };
+}
+function accountSeries() {
+  const snap = S.snapshot, days = S.days; if (!snap || !days.length) return null;
+  const start = days[0].date;
+  const hist = (snap.equity_history || []).filter(h => h.date >= start).sort((x, y) => x.date < y.date ? -1 : 1);
+  const virt = new Map((S.virtual || []).map(v => [v.date, v]));
+  const bench = (S.benchmark && S.benchmark.series) || [], bmap = new Map(bench.map(b => [b.date, b.close]));
+  const b0 = [...bench].reverse().find(b => b.date < start), base = (days[0].ticks[0].account || {}).last_equity || (days[0].ticks[0].account || {}).equity;
+  if (!b0 || !hist.length) return null;
+  const dates = [b0.date], port = [100], spy = [100], core = [100];
+  let lastB = b0.close, c = 100;
+  for (const h of hist) {
+    if (bmap.has(h.date)) lastB = bmap.get(h.date);
+    const v = virt.get(h.date); if (v) c *= 1 + v.core_ret;
+    dates.push(h.date); port.push(100 * h.equity / base); spy.push(100 * lastB / b0.close); core.push(c);
+  }
+  return { dates, port, spy, core, hasCore: virt.size > 0, base };
+}
+function renderAccount() {
+  const snap = S.snapshot, stats = $("cuentaStats");
+  $("eqLegend").replaceChildren(); $("eqChart").replaceChildren(); $("eqTable").replaceChildren(); $("eqToggle").hidden = true; $("eqTable").hidden = true;
+  if (!snap) { stats.replaceChildren(); $("cuentaLede").textContent = ""; $("eqChart").append(el("p", { class: "empty", text: "Aún no hay foto de la cuenta. Aparece después de la primera corrida." })); return; }
+  const a = snap.account, A = accountSeries(), sym = (S.benchmark && S.benchmark.symbol) || "SPY";
+  const gross = Object.values(snap.positions || {}).reduce((x, p) => x + Math.abs(p.market_value || 0), 0);
+  $("cuentaLede").textContent = `${snap.broker}. Dinero simulado. Exposición actual: ${num(gross / a.equity * 100, 0)}% del valor de la cuenta.`;
+  const delta = v => el("span", { class: "delta " + (v > 0 ? "up" : v < 0 ? "down" : ""), text: (v > 0 ? "▲ " : v < 0 ? "▼ " : "") + pct(v, 2) });
+  const last = arr => arr[arr.length - 1] / 100 - 1;
+  stats.replaceChildren(
+    el("div", { class: "stat" }, el("div", { class: "v", text: usd(a.equity, 0) }), el("div", { class: "k", text: "Valor de la cuenta" })),
+    el("div", { class: "stat" }, el("div", { class: "v small" }, A ? delta(last(A.port)) : "—"), el("div", { class: "k", text: A ? `Cuenta desde el ${day(S.days[0].date)}` : "Cuenta" })),
+    el("div", { class: "stat" }, el("div", { class: "v small" }, A && A.hasCore ? delta(last(A.core)) : "—"), el("div", { class: "k", text: "Regla de momentum, sin IA" })),
+    el("div", { class: "stat" }, el("div", { class: "v small" }, A ? delta(last(A.spy)) : "—"), el("div", { class: "k", text: sym })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: usd(a.buying_power, 0) }), el("div", { class: "k", text: "Buying power" })));
+  if (!A || A.dates.length < 3) { $("eqChart").append(el("p", { class: "empty", text: "La gráfica aparece cuando haya al menos dos días de historia." })); return; }
+  const series = [{ name: "Cuenta del agente", short: "Agente", color: "--series-1", values: A.port }];
+  if (A.hasCore) series.push({ name: "Regla de momentum sin IA", short: "Regla", color: "--series-3", values: A.core });
+  series.push({ name: sym, short: sym, color: "--series-2", values: A.spy });
+  $("eqLegend").replaceChildren(...series.map(s => { const k = el("i"); k.style.borderTopColor = cssv(s.color); return el("span", {}, k, s.name); }), el("span", { text: "Base 100 al iniciar" }));
+  lineChart($("eqChart"), A.dates, series);
+  $("eqTable").append(table(["Fecha", ...series.map(s => s.name)], A.dates.map((d, i) => [dayLong(d), ...series.map(s => num(s.values[i], 2))])));
+  toggle($("eqToggle"), $("eqTable"));
+}
+
+/* ── gasto ── */
+function renderSpend() {
+  const entries = (S.ledger && S.ledger.entries) || [], last = lastTick(), lastDay = S.days[S.days.length - 1];
+  const cap = S.cap;
+  const month = (lastDay ? lastDay.date : new Date().toISOString()).slice(0, 7);
+  const inMonth = entries.filter(e => e.date.startsWith(month));
+  const spent = inMonth.reduce((s, e) => s + e.usd, 0);
+  const ticksDone = entries.filter(e => e.kind === "tick" && !e.aborted).slice(-60), resDone = entries.filter(e => e.kind === "research" && !e.aborted).slice(-20);
+  const avg = xs => xs.length ? xs.reduce((s, e) => s + e.usd, 0) / xs.length : null;
+  const byDay = new Map();
+  for (const e of entries) { const r = byDay.get(e.date) || { date: e.date, usd: 0, ticks: 0, research: 0, tokens: 0 }; r.usd += e.usd; r[e.kind === "research" ? "research" : "ticks"] += 1; byDay.set(e.date, r); }
+  for (const d of S.days) { const r = byDay.get(d.date); if (r) r.tokens = d.ticks.reduce((s, t) => s + Object.values((t.cost || {}).by_agent || {}).reduce((x, a) => x + (a.tokens || 0), 0), 0); }
+  const rows = [...byDay.values()].sort((a, b) => a.date < b.date ? -1 : 1).slice(-30);
+  const daysRun = new Set(inMonth.map(e => e.date)).size;
+  const [y, m] = month.split("-").map(Number); let left = 0;
+  const from = lastDay ? new Date(lastDay.date + "T12:00:00Z") : new Date();
+  for (const d = new Date(from); d.getUTCMonth() === m - 1; d.setUTCDate(d.getUTCDate() + 1)) if (d > from && d.getUTCDay() % 6) left++;
+  const proj = daysRun ? spent + (spent / daysRun) * left : null;
+  $("gastoStats").replaceChildren(
+    el("div", { class: "stat" }, el("div", { class: "v", text: usd(spent) }), el("div", { class: "k", text: `Gastado en ${MES[m - 1]} de ${cap != null ? usd(cap, 0) : "—"}` })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: avg(ticksDone) == null ? "—" : usd(avg(ticksDone), 4) }), el("div", { class: "k", text: "Promedio por despertar" })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: avg(resDone) == null ? "—" : usd(avg(resDone), 3) }), el("div", { class: "k", text: "Promedio por investigación" })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: proj == null ? "—" : usd(proj) }), el("div", { class: "k", text: "Cierre del mes a este ritmo" })));
+  const frac = cap ? Math.min(spent / cap, 1) : 0;
+  $("meter").firstElementChild.style.width = (frac * 100).toFixed(1) + "%";
+  $("meter").setAttribute("aria-label", `Gastado ${usd(spent)} de un tope de ${usd(cap)}`);
+  $("meterCap").textContent = cap != null ? `Tope: ${usd(cap, 0)} al mes` : "";
+  const agents = new Map();
+  for (const d of S.days) if (d.date.startsWith(month)) for (const t of d.ticks) for (const [name, a] of Object.entries((t.cost || {}).by_agent || {})) agents.set(name, (agents.get(name) || 0) + a.usd);
+  const top = [...agents.entries()].sort((a, b) => b[1] - a[1]), totalA = top.reduce((s, x) => s + x[1], 0), maxA = top.length ? top[0][1] : 1;
+  $("agentBars").replaceChildren(...(top.length ? top.slice(0, 9).map(([name, v]) => { const bar = el("i"); bar.style.width = (v / maxA * 100).toFixed(1) + "%";
+    return el("div", { class: "hbar" }, el("span", { class: "nm", text: name === "Trader" ? "Trader (el agente)" : name, title: name }), el("span", { class: "tr" }, bar), el("span", { class: "vl", text: num(v / totalA * 100, 0) + "%" })); })
+    : [el("p", { class: "empty", text: "Aparece después del primer despertar." })]));
+  if (top.length > 9) $("agentBars").append(el("p", { class: "note", text: `y ${top.length - 9} agentes más con ${num(top.slice(9).reduce((s, x) => s + x[1], 0) / totalA * 100, 0)}%` }));
+  $("spendTable").replaceChildren(); $("spendTable").hidden = true; $("spendToggle").hidden = true;
+  if (!rows.length) { $("spendChart").replaceChildren(el("p", { class: "empty", text: "Todavía no hay gasto registrado." })); return; }
+  columnChart($("spendChart"), rows);
+  $("spendTable").append(table(["Fecha", "Gasto", "Despertares", "Investigaciones", "Tokens"], rows.map(r => [dayLong(r.date), usd(r.usd, 3), String(r.ticks), String(r.research), num(r.tokens)])));
+  toggle($("spendToggle"), $("spendTable"));
+}
+
+/* ── el día del agente ── */
+function chip(rating, status) {
+  if (status === "skipped_budget") return el("span", { class: "chip none", text: "Sin presupuesto" });
+  if (status === "aborted_budget") return el("span", { class: "chip none", text: "Cortado por tope" });
+  if (status === "error") return el("span", { class: "chip none", text: "Error" });
+  return el("span", { class: "chip " + (rating in RATING_ES && rating !== "REVIEW" ? rating : "none"), text: RATING_ES[rating] || rating || "—" });
+}
+const bps = v => v == null ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v) * 1e4, 0) + " pb";
+const pp = v => v == null ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v) * 100, 1) + " pp";
+const kv = (k, v) => el("div", { class: "kv" }, el("span", { text: k }), el("span", { text: v }));
+const TOOL_ES = { get_news: "noticias", get_chart: "gráfica", research: "investigación", place_order: "orden", set_stop: "stop", cancel_order: "cancelar", note: "nota", update_lessons: "lecciones" };
+const STATUS_ES = { ok: null, max_steps: "Se acabaron las vueltas", skipped_budget: "No pensó: sin presupuesto", aborted_budget: "Cortado por el tope de gasto", error: "Error" };
+
+function orderLine(o) {
+  const stop = String(o.side).startsWith("stop");
+  const side = stop ? el("span", { class: "side", text: "Stop" }) : el("span", { class: "side " + o.side, text: o.side === "buy" ? "Compra" : "Venta" });
+  const px = stop ? `en ${usd(o.stop_price)}` : o.limit_price ? `limitada a ${usd(o.limit_price)}${o.extended_hours ? " (fuera de horario)" : ""}` : "a mercado";
+  return el("div", { class: "act" }, side, el("span", { class: "sym", text: o.symbol }), el("span", { text: `${num(o.qty)} acciones ${px}` }),
+    el("span", { class: "tag", text: ST[o.status] || o.status || "—" }), o.error ? el("span", { class: "dim", text: o.error }) : null,
+    o.reason && !stop ? el("span", { class: "why", text: o.reason }) : null);
+}
+function researchLine(r, date) {
+  return el("div", { class: "act" }, el("span", { class: "side", text: "Investigó" }), el("span", { class: "sym", text: r.symbol }), chip(r.rating, r.status),
+    el("span", { class: "dim", text: usd(r.usd, 3) }),
+    r.report && r.status === "ok" ? el("button", { class: "linkbtn", text: "Leer el reporte", onclick: () => openReport(r, date) }) : null);
+}
+function tickItem(t, date) {
+  const acts = [...(t.orders || []).map(orderLine), ...(t.research || []).map(r => researchLine(r, date))];
+  const counts = {}; for (const x of t.tools || []) counts[x.name] = (counts[x.name] || 0) + 1;
+  const say = t.final || STATUS_ES[t.status] || "(sin resumen)";
+  const tools = el("div", { class: "tools" }, ...Object.entries(counts).filter(([n]) => !["place_order", "set_stop", "research"].includes(n)).map(([n, c]) => el("span", { class: "tag", text: `${TOOL_ES[n] || n}${c > 1 ? " ×" + c : ""}` })));
+  const errs = (t.tools || []).filter(x => /^(Error|Alpaca rechazó|No )/.test(x.result || "")).map(x => el("div", { class: "note warn", text: `${TOOL_ES[x.name] || x.name}: ${x.result}` }));
+  return el("li", { class: "tk" + (acts.length ? "" : " quiet") },
+    el("div", { class: "hr" }, t.time, el("span", { class: "ses", text: SES[t.session] || t.session })),
+    el("div", {}, el("p", { class: "say", text: say }), STATUS_ES[t.status] && t.final ? el("div", { class: "note warn", text: STATUS_ES[t.status] + (t.error ? ": " + t.error : "") }) : (t.status !== "ok" && t.error ? el("div", { class: "note warn", text: t.error }) : null)),
+    el("div", { class: "usd", text: usd((t.cost || {}).usd, 4) }),
+    acts.length || tools.childNodes.length || errs.length ? el("div", { class: "acts" }, ...acts, ...errs, tools.childNodes.length ? tools : null) : null);
+}
+function renderMorning(dayObj) {
+  const p = dayObj.prep || {}, d = p.data || {}, sg = p.signals || {}, cl = d.cleaning || {}, ern = p.earnings || [];
+  const rank = p.ranking || [], maxS = Math.max(...rank.slice(0, 10).map(r => Math.abs(r.score || 0)), 1e-9);
+  const rankRows = rank.slice(0, 10).map(r => { const bar = el("i"); bar.style.width = (Math.abs(r.score) / maxS * 50).toFixed(1) + "%"; if (r.score < 0) bar.className = "neg";
+    return el("div", { class: "rank" }, el("span", { class: "pos", text: String(r.rank) }), el("span", { class: "sym", text: r.symbol }), el("span", { class: "bar" }, bar), el("span", { class: "sc", text: num(r.score, 2) })); });
+  $("morning").replaceChildren(
+    el("section", {}, el("h3", { text: "Lo que el agente tenía en la mesa" }), el("p", { class: "dim", text: "Se prepara en el primer despertar del día, sin LLM." }),
+      kv("Precios diarios", d.provider || "—"), kv("Datos hasta", dayLong(d.last_date)), kv("Señal", sg.engine || "—"),
+      kv("Resultados próximos", ern.length ? ern.map(e => e.symbol).join(", ") : "ninguno"),
+      (cl.dropped_duplicate_dates || []).length ? el("p", { class: "note", text: `Se quitaron ${cl.dropped_duplicate_dates.length} días duplicados del proveedor.` }) : null,
+      ...(p.warnings || []).map(w => el("p", { class: "note warn", text: w }))),
+    el("section", {}, el("h3", { text: "Momentum de Qlib, top 10" }), el("p", { class: "dim", text: "Puntaje estandarizado. Es una sugerencia para el agente y también la regla de referencia." }), ...rankRows));
+}
+function renderPipeline() {
+  const days = S.days, list = $("ticks"), sel = $("daySel");
+  if (!days.length) { sel.replaceChildren(); $("dayFacts").replaceChildren(); $("morning").replaceChildren(); list.replaceChildren(el("li", { class: "empty", text: "Aún no hay despertares. El agente despierta de lunes a viernes de 4:00 a 20:00, hora de Nueva York." })); renderLessons(); return; }
+  if (!currentDay || !days.some(r => r.date === currentDay)) currentDay = days[days.length - 1].date;
+  sel.replaceChildren(...[...days].reverse().map(r => el("option", { value: r.date, text: dayLong(r.date), selected: r.date === currentDay ? "" : null })));
+  const i = days.findIndex(r => r.date === currentDay), D = days[i], T = D.ticks;
+  $("prevDay").disabled = i === 0; $("nextDay").disabled = i === days.length - 1;
+  const a0 = (T[0].account || {}), a1 = (T[T.length - 1].account || {}), base = a0.last_equity || a0.equity;
+  const pl = base && a1.equity ? a1.equity - base : null;
+  const nOrd = T.reduce((s, t) => s + (t.orders || []).filter(o => !String(o.side).startsWith("stop")).length, 0), nRes = T.reduce((s, t) => s + (t.research || []).length, 0);
+  const delta = v => el("span", { class: "delta " + (v > 0 ? "up" : v < 0 ? "down" : ""), text: (v > 0 ? "▲ " : v < 0 ? "▼ " : "") + usd(v, 0) });
+  $("dayFacts").replaceChildren(
+    el("div", { class: "stat" }, el("div", { class: "v small" }, pl == null ? "—" : delta(pl)), el("div", { class: "k", text: `Resultado del día${T[T.length - 1].session !== "post" ? " hasta el último despertar" : ""}` })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: String(T.length) }), el("div", { class: "k", text: "Despertares" })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: String(nOrd) }), el("div", { class: "k", text: "Órdenes" })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: String(nRes) }), el("div", { class: "k", text: "Investigaciones" })),
+    el("div", { class: "stat" }, el("div", { class: "v small", text: usd(D.spent_usd, 3) }), el("div", { class: "k", text: "Gasto en el LLM" })));
+  renderMorning(D);
+  const only = $("onlyAct").checked;
+  const shown = T.filter(t => !only || (t.orders || []).length || (t.research || []).length);
+  list.replaceChildren(...(shown.length ? shown.map(t => tickItem(t, D.date)) : [el("li", { class: "empty", text: "Ese día el agente no envió órdenes ni investigó." })]));
+  renderLessons();
+}
+function renderLessons() {
+  $("lessons").textContent = S.lessons && S.lessons.trim() ? S.lessons.trim() : "Todavía nada. El agente escribe sus lecciones al cierre de su primer día.";
+}
+
+/* ── ¿de dónde sale el resultado? ── */
+function meanStats(xs) {
+  const n = xs.length; if (!n) return null;
+  const m = xs.reduce((a, b) => a + b, 0) / n, sd = n > 1 ? Math.sqrt(xs.reduce((a, b) => a + (b - m) ** 2, 0) / (n - 1)) : 0;
+  return { n, m, sd, t: sd > 0 ? m / sd * Math.sqrt(n) : 0 };
+}
+function verdict(t, n, minN, unit) {
+  if (n == null || n === 0) return "Sin datos todavía.";
+  if (n < minN) return `Muestra chica (${n} ${unit}): todavía no dice nada.`;
+  if (Math.abs(t) < 2) return `No se distingue del azar (t = ${num(t, 1)}).`;
+  return t > 0 ? `A favor, y distinguible del azar (t = ${num(t, 1)}).` : `En contra, y distinguible del azar (t = ${num(t, 1)}).`;
+}
+function renderAttribution() {
+  const box = $("aportaTable"), V = S.virtual || [];
+  const start = S.days.length ? S.days[0].date : null;
+  const acct = dailyReturns(((S.snapshot || {}).equity_history || []).filter(h => !start || h.date >= start));
+  const vmap = new Map(V.map(v => [v.date, v]));
+  const coreEx = meanStats(V.map(v => v.core_ret - v.spy_ret));
+  const agentDiff = [], ys = [], xs = [];
+  for (const [d, r] of acct) { const v = vmap.get(d); if (v) { agentDiff.push(r - v.core_ret); ys.push(r); xs.push(v.spy_ret); } }
+  const sAg = meanStats(agentDiff), reg = regress(ys, xs);
+  const pos = [], neg = [];
+  for (const a of S.research || []) if (a.fwd_ret != null) {
+    const ex = a.fwd_ret - a.fwd_spy; if (a.rating === "Buy" || a.rating === "Overweight") pos.push(ex); else if (a.rating === "Underweight" || a.rating === "Sell") neg.push(ex);
+  }
+  const sp = meanStats(pos), sn = meanStats(neg);
+  let ratT = null; if (sp && sn && sp.n > 1 && sn.n > 1) ratT = (sp.m - sn.m) / Math.sqrt(sp.sd ** 2 / sp.n + sn.sd ** 2 / sn.n);
+  const horizon = ((S.research || []).find(a => a.fwd_days) || {}).fwd_days || 10;
+  const R = [
+    ["Mercado", "Beta de la cuenta contra SPY (1 = se mueve igual que el mercado)", reg ? num(reg.b, 2) : "—", reg ? `${reg.n} días` : "—", reg && reg.n >= 20 ? "Cuánto del resultado es solo exposición al mercado." : "Sin datos suficientes."],
+    ["Regla de momentum (Qlib)", "Top 10 de momentum a pesos iguales contra SPY, por día", coreEx ? bps(coreEx.m) : "—", coreEx ? `${coreEx.n} días` : "—", verdict(coreEx && coreEx.t, coreEx && coreEx.n, 40, "días")],
+    ["Agente", "Cuenta del agente contra la regla de momentum, por día", sAg ? bps(sAg.m) : "—", sAg ? `${sAg.n} días` : "—", verdict(sAg && sAg.t, sAg && sAg.n, 40, "días")],
+    ["Investigaciones", `Acción contra SPY ${horizon} días después: Buy/Overweight menos Underweight/Sell`, sp && sn ? pp(sp.m - sn.m) : "—", `${pos.length} y ${neg.length}`, verdict(ratT, Math.min(pos.length, neg.length), 15, "en el grupo más chico")],
+    ["Cuenta", "Alfa diario contra SPY, ya descontada la beta", reg ? bps(reg.a) : "—", reg ? `${reg.n} días` : "—", verdict(reg && reg.t, reg && reg.n, 40, "días")],
+  ];
+  box.replaceChildren(table(["Fuente", "Qué se mide", "Resultado", "Muestra", "Lectura"], R, [0, 1, 4]));
+  if (S.demo) box.append(el("p", { class: "note", text: "En la demo el agente sigue reglas fijas y las calificaciones son aleatorias, así que ninguna fila debería distinguirse del azar." }));
+}
+
+/* ── tablas ── */
+function openSince() {                     // primera compra de la posición abierta actual, por símbolo
+  const out = {}, qty = {};
+  for (const f of [...(S.fills || [])].sort((a, b) => a.at < b.at ? -1 : 1)) {
+    const q = (qty[f.symbol] || 0) + (f.side === "buy" ? f.qty : -f.qty);
+    if (!qty[f.symbol]) out[f.symbol] = f.at.slice(0, 10);
+    qty[f.symbol] = Math.abs(q) < 1e-9 ? 0 : q;
+  }
+  return out;
+}
+function renderTables() {
+  const snap = S.snapshot, open = $("openTable"), pos = $("posTable"), ord = $("ordTable");
+  const ratings = {}; for (const r of S.research || []) ratings[r.symbol] = r;
+  const stops = {}; for (const o of (snap && snap.orders) || []) if (o.type === "stop" && ["accepted", "new", "held", "pending_new"].includes(o.status) && !(o.symbol in stops)) stops[o.symbol] = o.stop_price;
+  const reasons = {}; for (const d of S.days) for (const t of d.ticks) for (const o of t.orders || []) if (o.id) reasons[o.id] = o.reason;
+  const since = openSince();
+  if (snap && Object.keys(snap.positions || {}).length) {
+    const eq = snap.account.equity, P = Object.entries(snap.positions).map(([s, p]) => ({ s, ...p })).sort((a, b) => Math.abs(b.market_value || 0) - Math.abs(a.market_value || 0));
+    open.replaceChildren(table(["Ticker", "Lado", "Acciones", "Costo prom.", "Precio", "Valor", "% cuenta", "P&L abierto", "Stop", "Desde", "Última investigación"],
+      P.map(p => [el("span", { class: "sym", text: p.s }), p.qty < 0 ? "Corto" : "Largo", num(Math.abs(p.qty)), usd(p.avg_price), usd(p.price), usd(p.market_value, 0),
+        num((p.market_value || 0) / eq * 100, 1) + "%", el("span", { class: "delta " + (p.unrealized_pl > 0 ? "up" : p.unrealized_pl < 0 ? "down" : ""), text: (p.unrealized_pl > 0 ? "▲ " : p.unrealized_pl < 0 ? "▼ " : "") + usd(p.unrealized_pl, 0) }),
+        stops[p.s] != null ? usd(stops[p.s]) : "ninguno", since[p.s] ? day(since[p.s]) : "—",
+        ratings[p.s] ? el("span", {}, chip(ratings[p.s].rating), el("span", { class: "dim", text: " " + day(ratings[p.s].date) })) : el("span", { class: "dim", text: "—" })]), [0, 1, 10]));
+  } else open.replaceChildren(el("p", { class: "empty", text: "Sin posiciones abiertas." }));
+  const J = [...(S.journal || [])].reverse().slice(0, 40);
+  pos.replaceChildren(J.length ? table(["Ticker", "Lado", "Acciones", "Entró", "Precio", "Salió", "Precio", "Días", "Retorno", "P&L"],
+    J.map(t => [el("span", { class: "sym", text: t.symbol }), t.side === "long" ? "Largo" : "Corto", num(t.qty), day(t.entry_date), usd(t.entry), day(t.exit_date), usd(t.exit), String(t.days), pct(t.ret, 1),
+      el("span", { class: "delta " + (t.pnl_usd > 0 ? "up" : t.pnl_usd < 0 ? "down" : ""), text: (t.pnl_usd > 0 ? "▲ " : t.pnl_usd < 0 ? "▼ " : "") + usd(t.pnl_usd, 0) })]), [0, 1])
+    : el("p", { class: "empty", text: "Aún no hay operaciones cerradas." }));
+  if (!snap) { ord.replaceChildren(el("p", { class: "empty", text: "Sin datos todavía." })); return; }
+  const O = (snap.orders || []).slice(0, 20);
+  const TYPE = { market: "a mercado", limit: "limitada", stop: "stop", stop_limit: "stop limitada", trailing_stop: "trailing stop" };
+  ord.replaceChildren(O.length ? table(["Enviada", "Ticker", "Lado", "Tipo", "Cantidad", "Precio", "Estado", "Por qué"],
+    O.map(o => [whenNY(o.submitted_at), el("span", { class: "sym", text: o.symbol }), o.side === "buy" ? "Compra" : "Venta",
+      (TYPE[o.type] || o.type || "—") + (o.extended_hours ? " (ext.)" : ""), num(o.qty),
+      o.filled_avg_price ? usd(o.filled_avg_price) : o.limit_price ? "lím. " + usd(o.limit_price) : o.stop_price ? "stop " + usd(o.stop_price) : "—",
+      ST[o.status] || o.status, el("span", { class: "dim", text: reasons[o.id] || (o.type === "stop" ? "protección" : "—") })]), [0, 1, 2, 3, 7])
+    : el("p", { class: "empty", text: "Aún no hay órdenes." }));
+}
+
+/* ── lector de reportes (markdown mínimo, sin innerHTML: el texto viene de un LLM) ── */
+function inline(parent, text) {
+  text.split(/(\*\*[^*]+\*\*)/g).forEach(part => { if (/^\*\*[^*]+\*\*$/.test(part)) parent.append(el("strong", { text: part.slice(2, -2) })); else if (part) parent.append(document.createTextNode(part)); });
+  return parent;
+}
+function renderMarkdown(host, md) {
+  host.replaceChildren();
+  const lines = md.replace(/\r/g, "").split("\n"); let i = 0;
+  while (i < lines.length) {
+    const ln = lines[i];
+    if (!ln.trim()) { i++; continue; }
+    let m;
+    if (ln.startsWith("```")) { const buf = []; i++; while (i < lines.length && !lines[i].startsWith("```")) buf.push(lines[i++]); i++; host.append(el("pre", { text: buf.join("\n") })); }
+    else if ((m = ln.match(/^(#{1,6})\s+(.*)$/))) { host.append(inline(el("h" + Math.min(m[1].length, 4)), m[2])); i++; }
+    else if (/^\s*\|.*\|\s*$/.test(ln)) { const rows = []; while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) { if (!/^\s*\|[\s:|-]+\|\s*$/.test(lines[i])) rows.push(lines[i].trim().slice(1, -1).split("|").map(c => c.trim())); i++; }
+      const t = el("table"); rows.forEach((r, k) => { const tr = el("tr"); r.forEach(c => tr.append(inline(el(k ? "td" : "th"), c))); t.append(tr); }); host.append(el("div", { class: "scroll" }, t)); }
+    else if (/^\s*([-*+]|\d+[.)])\s+/.test(ln)) { const ordered = /^\s*\d/.test(ln), list = el(ordered ? "ol" : "ul"); while (i < lines.length && /^\s*([-*+]|\d+[.)])\s+/.test(lines[i])) { list.append(inline(el("li"), lines[i].replace(/^\s*([-*+]|\d+[.)])\s+/, ""))); i++; } host.append(list); }
+    else if (ln.startsWith(">")) { const buf = []; while (i < lines.length && lines[i].startsWith(">")) buf.push(lines[i++].replace(/^>\s?/, "")); host.append(inline(el("blockquote"), buf.join(" "))); }
+    else if (/^(-{3,}|\*{3,})$/.test(ln.trim())) { host.append(el("hr")); i++; }
+    else { const buf = []; while (i < lines.length && lines[i].trim() && !/^(#{1,6}\s|```|>|\s*\||\s*([-*+]|\d+[.)])\s+)/.test(lines[i])) buf.push(lines[i++]); host.append(inline(el("p"), buf.join(" "))); }
+  }
+}
+async function openReport(a, date) {
+  if (!REPORT_PATH.test(a.report || "")) return;
+  $("repTitle").textContent = `${a.symbol}, ${dayLong(date)}${a.time ? ", " + a.time : ""}`;
+  $("repChip").replaceChildren(chip(a.rating, a.status));
+  $("repBody").replaceChildren(el("p", { class: "dim", text: "Cargando…" }));
+  $("report").showModal();
+  try { const r = await fetch(STATIC ? a.report : "/api/report?path=" + encodeURIComponent(a.report)); if (!r.ok) throw new Error("no se encontró el archivo del reporte"); renderMarkdown($("repBody"), await r.text()); }
+  catch (e) { $("repBody").replaceChildren(el("p", { text: "No se pudo abrir el reporte: " + e.message + ". Sincroniza e inténtalo de nuevo." })); }
+}
+$("repClose").onclick = () => $("report").close();
+$("report").addEventListener("click", e => { if (e.target === $("report")) $("report").close(); });
+
+function toast(msg) { const t = el("div", { class: "toast", role: "status", text: msg }); document.body.append(t); setTimeout(() => t.remove(), 5000); }
+function renderAll() { renderHeader(); renderAccount(); renderSpend(); renderPipeline(); renderAttribution(); renderTables(); }
+async function load() {
+  try {
+    const r = await fetch(STATIC ? "state.json?t=" + Date.now() : "/api/state", { cache: "no-store" });
+    if (!r.ok) throw new Error(r.status);
+    const next = await r.json();
+    const followLatest = !S || !S.days.length || currentDay === S.days[S.days.length - 1].date;
+    S = next; if (followLatest) currentDay = null;
+    renderAll();
+  }
+  catch (e) { $("banners").replaceChildren(banner("bad", STATIC ? "No se pudo leer el estado publicado. Vuelve a intentar en un minuto." : "No se pudo leer el estado del bot. ¿Sigue abierto dashboard/app.py en la terminal?")); }
+}
+if (STATIC) $("sync").hidden = true;
+setInterval(() => { if (!document.hidden && !$("report").open) load(); }, 60000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden && S) load(); });
+$("sync").onclick = async () => {
+  const b = $("sync"); b.disabled = true; b.textContent = "Sincronizando…";
+  try { const r = await fetch("/api/sync", { method: "POST", headers: { "X-Dashboard": "1" } }); const j = await r.json();
+    toast(j.ok ? "Sincronizado con el repo." : "No se pudo sincronizar: " + (j.output || j.error || "error desconocido")); await load(); }
+  catch (e) { toast("No se pudo sincronizar: el dashboard no responde."); }
+  b.disabled = false; b.textContent = "Sincronizar";
+};
+$("daySel").onchange = e => { currentDay = e.target.value; renderPipeline(); };
+$("prevDay").onclick = () => { const i = S.days.findIndex(r => r.date === currentDay); if (i > 0) { currentDay = S.days[i - 1].date; renderPipeline(); } };
+$("nextDay").onclick = () => { const i = S.days.findIndex(r => r.date === currentDay); if (i < S.days.length - 1) { currentDay = S.days[i + 1].date; renderPipeline(); } };
+$("onlyAct").onchange = () => renderPipeline();
+let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (S) { renderAccount(); renderSpend(); } }, 150); });
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => S && renderAll());
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+# ─────────────────────────────────────────────────────────────
+#  Configuración del agente trader. Todo lo que quieras cambiar está aquí.
+# ─────────────────────────────────────────────────────────────
+
+# paper   = el agente manda órdenes a tu cuenta PAPER de Alpaca
+# dry_run = el agente piensa y decide, pero sus órdenes no se envían
+mode: paper
+
+# ── Tope de gasto real (API del LLM) ─────────────────────────
+budget:
+  monthly_usd: 20.0          # ÚNICO límite duro de gasto. Cámbialo aquí.
+  reserve_pct: 0.05          # colchón: se reparte solo el 95% del tope
+  first_tick_usd: 0.01       # costo supuesto de un despertar hasta medir los reales
+  first_estimate_usd: 0.25   # costo supuesto de una investigación de TradingAgents hasta medir una
+  unknown_call_usd: 0.05     # se cobra esto si una llamada no reporta tokens
+
+# ── Modelos ──────────────────────────────────────────────────
+llm:
+  provider: anthropic
+  trader_model: claude-haiku-5-5  # el cerebro del agente: decide y opera
+  quick_model: claude-haiku-5-5   # TradingAgents: analistas, debate, trader
+  deep_model: claude-haiku-5-5    # TradingAgents: managers
+  analysts: [market, social, news, fundamentals]
+  max_debate_rounds: 1
+  max_risk_rounds: 1
+
+# USD por millón de tokens. Fuente: platform.claude.com/docs/en/about-claude/pricing
+# (verificado 2026-11-15). Si Anthropic cambia precios, actualiza esta tabla:
+# el contador de gasto depende de ella. Los cache_write de Haiku 5.5 y Opus 5.5 no
+# los pude verificar (puse 1.25x el input).
+prices:
+  claude-haiku-5-5:  {input: 0.10, output: 0.50, cache_read: 0.01, cache_write: 0.125,
+                      long_context_threshold: 100000, long_context_multiplier: 5}
+  claude-haiku-4-5:  {input: 1.00, output: 5.00, cache_read: 0.10, cache_write: 1.25}
+  claude-sonnet-5-5: {input: 2.00, output: 10.00, cache_read: 0.10, cache_write: 2.50}
+  claude-sonnet-5:   {input: 2.00, output: 10.00, cache_read: 0.20, cache_write: 2.50}
+  claude-opus-5-5:   {input: 4.00, output: 20.00, cache_read: 0.20, cache_write: 5.00}
+
+# ── El agente ────────────────────────────────────────────────
+agent:
+  tick_minutes: 30            # cada cuánto despierta. Debe coincidir con el cron de .github/workflows/bot.yml
+  session_start: "04:00"      # pre-market (hora de Nueva York)
+  session_end: "20:00"        # fin del post-market
+  max_steps_per_tick: 14      # vueltas de razonamiento por despertar (freno de costo, no de trading)
+  max_research_per_tick: 2    # investigaciones de TradingAgents por despertar (cada una tarda minutos)
+  research_horizon_days: 10   # días después de los que se mide si una investigación acertó
+  allow_short: true           # el agente puede vender en corto si quiere
+  watchlist_momentum: 15      # cuántas del ranking de Qlib ve en cada despertar
+  movers: 8                   # cuántas de las que más se mueven hoy ve en cada despertar
+  lessons_max_chars: 2500     # tamaño máximo de su archivo de lecciones
+
+# ── Universo que el agente vigila (además de lo que tenga en cartera) ──
+benchmark: SPY
+universe: [AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA, AVGO, JPM, V,
+           MA, UNH, XOM, JNJ, PG, HD, COST, WMT, KO, PEP,
+           MRK, ABBV, LLY, BAC, CVX, CRM, ORCL, ADBE, NFLX, AMD,
+           INTC, CSCO, DIS, NKE, MCD, BA, CAT, GS, QCOM, TXN,
+           LIN, ACN, TMO, ABT, DHR, WFC, MS, C, AXP, BLK,
+           SCHW, SPGI, PM, MO, T, VZ, CMCSA, TMUS, IBM, NOW,
+           INTU, AMAT, MU, LRCX, KLAC, ADI, PANW, SNPS, CDNS, UBER,
+           ABNB, BKNG, SBUX, LOW, TJX, TGT, GE, HON, RTX, LMT,
+           UPS, FDX, DE, UNP, MMM, COP, SLB, EOG, PFE, BMY,
+           AMGN, GILD, ISRG, MDT, CVS, CI, ELV, PYPL, SHOP, COIN,
+           PLTR, SNOW, CRWD, MRVL, SMCI, ARM, RIVN, F, GM, DAL,
+           UAL, CCL, MRNA, ROKU, DKNG, HOOD, SOFI, NET, DDOG, ZS]
+
+data:
+  history_start: "2023-01-01"
+  providers: [cboe, yfinance]     # OpenBB primero; yfinance directo de respaldo
+
+candidates:
+  earnings: 6                     # empresas que reportan hoy o reportaron ayer, en la lista del agente
+  earnings_min_market_cap: 10000000000
+
+# ── Referencia para medir al agente (no se opera) ────────────
+# Una regla simple sin IA: las 10 de mejor momentum, a pesos iguales, rearmadas cada
+# 21 días hábiles. El dashboard compara al agente contra esto y contra SPY.
+benchmark_rule:
+  top_n: 10
+  rebalance_days: 21

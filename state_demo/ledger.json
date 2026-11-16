@@ -1,0 +1,954 @@
+{
+ "entries": [
+  {
+   "date": "2026-10-19",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002051,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-19",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002182,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-19",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001911,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-19",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002575,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-19",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00234,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00314,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": "CRWD",
+   "kind": "research",
+   "usd": 0.03139,
+   "calls": 12,
+   "input_tokens": 226608,
+   "output_tokens": 17458,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001799,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003067,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": "MRNA",
+   "kind": "research",
+   "usd": 0.026217,
+   "calls": 12,
+   "input_tokens": 178660,
+   "output_tokens": 16701,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002633,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-20",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002687,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-21",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00266,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-21",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002659,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-21",
+   "ticker": "AMD",
+   "kind": "research",
+   "usd": 0.025523,
+   "calls": 12,
+   "input_tokens": 183297,
+   "output_tokens": 14386,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-21",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002766,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-21",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002977,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-21",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001855,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-22",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002314,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-22",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00209,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-22",
+   "ticker": "CRWD",
+   "kind": "research",
+   "usd": 0.025889,
+   "calls": 12,
+   "input_tokens": 175845,
+   "output_tokens": 16608,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-22",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001895,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-22",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002726,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-22",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003012,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-23",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002095,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-23",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002085,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-23",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002646,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-23",
+   "ticker": "CRWD",
+   "kind": "research",
+   "usd": 0.027696,
+   "calls": 12,
+   "input_tokens": 203757,
+   "output_tokens": 14640,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-23",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002673,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-23",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001767,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-26",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001933,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-26",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002678,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-26",
+   "ticker": "MU",
+   "kind": "research",
+   "usd": 0.025514,
+   "calls": 12,
+   "input_tokens": 194564,
+   "output_tokens": 12116,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-26",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002874,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-26",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002411,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-26",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002861,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-27",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002054,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-27",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00307,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-27",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002668,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-27",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001855,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-27",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002391,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-28",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.0027,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-28",
+   "ticker": "INTC",
+   "kind": "research",
+   "usd": 0.024265,
+   "calls": 12,
+   "input_tokens": 168344,
+   "output_tokens": 14861,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-28",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002864,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-28",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002452,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-28",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002587,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-28",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002908,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002253,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002423,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": "AMD",
+   "kind": "research",
+   "usd": 0.027131,
+   "calls": 12,
+   "input_tokens": 187146,
+   "output_tokens": 16832,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002634,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": "MRNA",
+   "kind": "research",
+   "usd": 0.027462,
+   "calls": 12,
+   "input_tokens": 192897,
+   "output_tokens": 16344,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002203,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-29",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002896,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002226,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": "MRNA",
+   "kind": "research",
+   "usd": 0.027483,
+   "calls": 12,
+   "input_tokens": 201725,
+   "output_tokens": 14621,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003259,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": "MRNA",
+   "kind": "research",
+   "usd": 0.027483,
+   "calls": 12,
+   "input_tokens": 201725,
+   "output_tokens": 14621,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002471,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": "MU",
+   "kind": "research",
+   "usd": 0.029729,
+   "calls": 12,
+   "input_tokens": 210645,
+   "output_tokens": 17329,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002448,
+   "aborted": false
+  },
+  {
+   "date": "2026-10-30",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002176,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-02",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002342,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-02",
+   "ticker": "AMD",
+   "kind": "research",
+   "usd": 0.027874,
+   "calls": 12,
+   "input_tokens": 202636,
+   "output_tokens": 15220,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-02",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002488,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-02",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002151,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-02",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003012,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-02",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002809,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002053,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": "MRVL",
+   "kind": "research",
+   "usd": 0.030321,
+   "calls": 12,
+   "input_tokens": 213527,
+   "output_tokens": 17936,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002337,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": "MU",
+   "kind": "research",
+   "usd": 0.03157,
+   "calls": 12,
+   "input_tokens": 224777,
+   "output_tokens": 18184,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002327,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": "MU",
+   "kind": "research",
+   "usd": 0.03157,
+   "calls": 12,
+   "input_tokens": 224777,
+   "output_tokens": 18184,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002193,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-03",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00254,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002678,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": "AMD",
+   "kind": "research",
+   "usd": 0.029221,
+   "calls": 12,
+   "input_tokens": 214870,
+   "output_tokens": 15469,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002469,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002478,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": "CRWD",
+   "kind": "research",
+   "usd": 0.027585,
+   "calls": 12,
+   "input_tokens": 185911,
+   "output_tokens": 17988,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002647,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-04",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002403,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002634,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": "INTC",
+   "kind": "research",
+   "usd": 0.022113,
+   "calls": 12,
+   "input_tokens": 141575,
+   "output_tokens": 15911,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001803,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002009,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": "INTC",
+   "kind": "research",
+   "usd": 0.022113,
+   "calls": 12,
+   "input_tokens": 141575,
+   "output_tokens": 15911,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002497,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-05",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001894,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-06",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002605,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-06",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002192,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-06",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001882,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-06",
+   "ticker": "MRVL",
+   "kind": "research",
+   "usd": 0.028808,
+   "calls": 12,
+   "input_tokens": 194245,
+   "output_tokens": 18766,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-06",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002157,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-06",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002492,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-09",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002675,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-09",
+   "ticker": "MRVL",
+   "kind": "research",
+   "usd": 0.02713,
+   "calls": 12,
+   "input_tokens": 197333,
+   "output_tokens": 14794,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-09",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00215,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-09",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002116,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-09",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002488,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-09",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002507,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-10",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002519,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-10",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002494,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-10",
+   "ticker": "AMAT",
+   "kind": "research",
+   "usd": 0.024231,
+   "calls": 12,
+   "input_tokens": 174335,
+   "output_tokens": 13595,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-10",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002153,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-10",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002018,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-10",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002641,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.00272,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": "INTC",
+   "kind": "research",
+   "usd": 0.024345,
+   "calls": 12,
+   "input_tokens": 174527,
+   "output_tokens": 13785,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002874,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": "AMAT",
+   "kind": "research",
+   "usd": 0.033472,
+   "calls": 12,
+   "input_tokens": 231868,
+   "output_tokens": 20570,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002154,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002514,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-11",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002167,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-12",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002554,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-12",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002205,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-12",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002832,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-12",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001965,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-12",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002485,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-13",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003013,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-13",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002984,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-13",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002245,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-13",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.002515,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-13",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.001969,
+   "aborted": false
+  }
+ ]
+}

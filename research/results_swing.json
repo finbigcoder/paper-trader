@@ -1,0 +1,412 @@
+{
+ "universe": 119,
+ "test_from": "2024-08-07",
+ "test_to": "2026-11-12",
+ "cost_bps_per_side": 2.0,
+ "margin_rate": 0.065,
+ "caveat": "universo elegido hoy: todo lo que compra 'el universo' tiene sesgo de supervivencia",
+ "cleaning": {
+  "dropped_duplicate_dates": [
+   "2025-05-26"
+  ],
+  "suspicious_moves": [
+   {
+    "date": "2026-06-29",
+    "symbol": "HON",
+    "ret": -0.5095
+   }
+  ]
+ },
+ "survivorship_check_removed": [
+  "MU",
+  "PLTR",
+  "HOOD",
+  "AMD",
+  "NET",
+  "CRWD",
+  "INTC",
+  "LRCX",
+  "MRVL",
+  "UAL",
+  "MRNA",
+  "AVGO",
+  "SNOW",
+  "SOFI",
+  "DAL"
+ ],
+ "strategies": {
+  "SPY": {
+   "days": 570,
+   "total": 0.45,
+   "cagr": 0.1785,
+   "vol": 0.1648,
+   "sharpe": 1.08,
+   "max_dd": -0.19
+  },
+  "Universo igualitario (con sesgo)": {
+   "days": 570,
+   "total": 0.7008,
+   "cagr": 0.2646,
+   "vol": 0.1762,
+   "sharpe": 1.42,
+   "max_dd": -0.2067
+  },
+  "Qlib 5d top-5, cada 5 días": {
+   "days": 570,
+   "total": 0.7752,
+   "cagr": 0.2888,
+   "vol": 0.4575,
+   "sharpe": 0.78,
+   "max_dd": -0.3937
+  },
+  "Qlib 5d top-10, cada 5 días": {
+   "days": 570,
+   "total": 0.3923,
+   "cagr": 0.1576,
+   "vol": 0.4056,
+   "sharpe": 0.56,
+   "max_dd": -0.4015
+  },
+  "Qlib 5d top-20, cada 5 días": {
+   "days": 570,
+   "total": 0.642,
+   "cagr": 0.2451,
+   "vol": 0.3322,
+   "sharpe": 0.83,
+   "max_dd": -0.2676
+  },
+  "Qlib 1d top-10, diario": {
+   "days": 570,
+   "total": 0.8001,
+   "cagr": 0.2968,
+   "vol": 0.3656,
+   "sharpe": 0.89,
+   "max_dd": -0.3008
+  },
+  "Momentum 20d top-10, cada 5 días": {
+   "days": 570,
+   "total": 0.9102,
+   "cagr": 0.3313,
+   "vol": 0.305,
+   "sharpe": 1.09,
+   "max_dd": -0.2561
+  },
+  "Momentum 12-1 top-10, cada 21 días": {
+   "days": 570,
+   "total": 2.3861,
+   "cagr": 0.7147,
+   "vol": 0.4495,
+   "sharpe": 1.43,
+   "max_dd": -0.3438
+  },
+  "Qlib 5d fondo-10 en CORTO, cada 5 días": {
+   "days": 570,
+   "total": -0.2944,
+   "cagr": -0.1429,
+   "vol": 0.1628,
+   "sharpe": -0.87,
+   "max_dd": -0.2955
+  },
+  "Núcleo 50% SPY + 50% Qlib top-10": {
+   "days": 570,
+   "total": 0.4562,
+   "cagr": 0.1808,
+   "vol": 0.2722,
+   "sharpe": 0.75,
+   "max_dd": -0.2556
+  },
+  "Momentum 12-1 top-5, cada 21 días": {
+   "days": 570,
+   "total": 3.381,
+   "cagr": 0.9215,
+   "vol": 0.555,
+   "sharpe": 1.45,
+   "max_dd": -0.4402
+  },
+  "Momentum 12-1 top-20, cada 21 días": {
+   "days": 570,
+   "total": 1.2534,
+   "cagr": 0.4322,
+   "vol": 0.3264,
+   "sharpe": 1.26,
+   "max_dd": -0.3188
+  },
+  "Momentum 12-1 top-10, cada 10 días": {
+   "days": 570,
+   "total": 2.2108,
+   "cagr": 0.6748,
+   "vol": 0.434,
+   "sharpe": 1.41,
+   "max_dd": -0.3518
+  },
+  "Núcleo 50% SPY + 50% momentum 12-1 top-10": {
+   "days": 570,
+   "total": 1.2901,
+   "cagr": 0.4424,
+   "vol": 0.2926,
+   "sharpe": 1.4,
+   "max_dd": -0.266
+  },
+  "Momentum 12-1 top-10 con stop 2 ATR": {
+   "days": 570,
+   "total": 1.1053,
+   "cagr": 0.3898,
+   "vol": 0.3236,
+   "sharpe": 1.18,
+   "max_dd": -0.2844
+  },
+  "Momentum 12-1 top-10 con stop 3 ATR": {
+   "days": 570,
+   "total": 1.8224,
+   "cagr": 0.5821,
+   "vol": 0.3767,
+   "sharpe": 1.41,
+   "max_dd": -0.3115
+  },
+  "Momentum 12-1 top-10 SIN las 15 más ganadoras": {
+   "days": 570,
+   "total": 0.4285,
+   "cagr": 0.1708,
+   "vol": 0.2823,
+   "sharpe": 0.7,
+   "max_dd": -0.286
+  },
+  "Universo igualitario SIN las 15 más ganadoras": {
+   "days": 570,
+   "total": 0.4452,
+   "cagr": 0.1768,
+   "vol": 0.1549,
+   "sharpe": 1.13,
+   "max_dd": -0.1822
+  },
+  "Momentum 12-1 top-10 × 1.5": {
+   "days": 570,
+   "total": 3.8728,
+   "cagr": 1.0141,
+   "vol": 0.6743,
+   "sharpe": 1.38,
+   "max_dd": -0.4824
+  },
+  "Qlib 5d top-10 con stop 2 ATR": {
+   "days": 570,
+   "total": 0.4584,
+   "cagr": 0.1816,
+   "vol": 0.3717,
+   "sharpe": 0.63,
+   "max_dd": -0.3761
+  },
+  "Qlib 5d top-10 con stop 3 ATR": {
+   "days": 570,
+   "total": 0.303,
+   "cagr": 0.1241,
+   "vol": 0.3944,
+   "sharpe": 0.49,
+   "max_dd": -0.4039
+  },
+  "SPY × 1.5": {
+   "days": 570,
+   "total": 0.5859,
+   "cagr": 0.2261,
+   "vol": 0.2471,
+   "sharpe": 0.95,
+   "max_dd": -0.2773
+  },
+  "Qlib 5d top-10 × 1.5": {
+   "days": 570,
+   "total": 0.3276,
+   "cagr": 0.1335,
+   "vol": 0.6084,
+   "sharpe": 0.51,
+   "max_dd": -0.5598
+  },
+  "Universo igualitario × 1.5 (con sesgo)": {
+   "days": 570,
+   "total": 1.0077,
+   "cagr": 0.3609,
+   "vol": 0.2643,
+   "sharpe": 1.3,
+   "max_dd": -0.3002
+  },
+  "SPY × 2": {
+   "days": 570,
+   "total": 0.7085,
+   "cagr": 0.2672,
+   "vol": 0.3295,
+   "sharpe": 0.88,
+   "max_dd": -0.357
+  },
+  "Qlib 5d top-10 × 2": {
+   "days": 570,
+   "total": 0.1518,
+   "cagr": 0.0645,
+   "vol": 0.8111,
+   "sharpe": 0.48,
+   "max_dd": -0.6843
+  },
+  "Universo igualitario × 2 (con sesgo)": {
+   "days": 570,
+   "total": 1.3291,
+   "cagr": 0.4532,
+   "vol": 0.3524,
+   "sharpe": 1.24,
+   "max_dd": -0.3849
+  }
+ },
+ "vs_universe_equal_weight": {
+  "Qlib 5d top-5, cada 5 días": {
+   "mean_bps_day": 4.28,
+   "t": 0.47,
+   "ann": 0.1079
+  },
+  "Qlib 5d top-10, cada 5 días": {
+   "mean_bps_day": -0.87,
+   "t": -0.12,
+   "ann": -0.022
+  },
+  "Qlib 5d top-20, cada 5 días": {
+   "mean_bps_day": 0.95,
+   "t": 0.18,
+   "ann": 0.0239
+  },
+  "Qlib 1d top-10, diario": {
+   "mean_bps_day": 3.0,
+   "t": 0.44,
+   "ann": 0.0756
+  },
+  "Momentum 20d top-10, cada 5 días": {
+   "mean_bps_day": 3.27,
+   "t": 0.51,
+   "ann": 0.0825
+  },
+  "Momentum 12-1 top-10, cada 21 días": {
+   "mean_bps_day": 15.49,
+   "t": 1.69,
+   "ann": 0.3903
+  },
+  "Qlib 5d fondo-10 en CORTO, cada 5 días": {
+   "mean_bps_day": -15.52,
+   "t": -1.87,
+   "ann": -0.3912
+  },
+  "Núcleo 50% SPY + 50% Qlib top-10": {
+   "mean_bps_day": -1.88,
+   "t": -0.49,
+   "ann": -0.0473
+  },
+  "Momentum 12-1 top-5, cada 21 días": {
+   "mean_bps_day": 22.11,
+   "t": 1.83,
+   "ann": 0.5572
+  },
+  "Momentum 12-1 top-20, cada 21 días": {
+   "mean_bps_day": 6.44,
+   "t": 1.16,
+   "ann": 0.1623
+  },
+  "Momentum 12-1 top-10, cada 10 días": {
+   "mean_bps_day": 14.29,
+   "t": 1.61,
+   "ann": 0.36
+  },
+  "Momentum 12-1 top-10 con stop 2 ATR": {
+   "mean_bps_day": 5.2,
+   "t": 0.75,
+   "ann": 0.1309
+  },
+  "Momentum 12-1 top-10 con stop 3 ATR": {
+   "mean_bps_day": 11.09,
+   "t": 1.42,
+   "ann": 0.2794
+  },
+  "Momentum 12-1 top-10 × 1.5": {
+   "mean_bps_day": 26.91,
+   "t": 1.81,
+   "ann": 0.6782
+  },
+  "Qlib 5d top-10 con stop 2 ATR": {
+   "mean_bps_day": -0.6,
+   "t": -0.09,
+   "ann": -0.015
+  },
+  "Qlib 5d top-10 con stop 3 ATR": {
+   "mean_bps_day": -2.22,
+   "t": -0.3,
+   "ann": -0.056
+  },
+  "Qlib 5d top-10 × 1.5": {
+   "mean_bps_day": 2.37,
+   "t": 0.19,
+   "ann": 0.0596
+  },
+  "Qlib 5d top-10 × 2": {
+   "mean_bps_day": 5.61,
+   "t": 0.31,
+   "ann": 0.1413
+  },
+  "Momentum 12-1 top-10 SIN las 15 más ganadoras": {
+   "mean_bps_day": 0.9,
+   "t": 0.17,
+   "ann": 0.0226
+  }
+ },
+ "spy_long_history": {
+  "from": "1993-02-02",
+  "to": "2026-11-13",
+  "x1": {
+   "days": 8505,
+   "total": 30.1406,
+   "cagr": 0.1073,
+   "vol": 0.1853,
+   "sharpe": 0.64,
+   "max_dd": -0.5519,
+   "worst_year": -0.368,
+   "worst_year_at": 2008,
+   "dd_2008": -0.5519,
+   "dd_2020": -0.3372,
+   "dd_2022": -0.245,
+   "cagr_if_borrow_3pct": 0.1073
+  },
+  "x1.25": {
+   "days": 8505,
+   "total": 34.454,
+   "cagr": 0.1115,
+   "vol": 0.2316,
+   "sharpe": 0.57,
+   "max_dd": -0.653,
+   "worst_year": -0.4601,
+   "worst_year_at": 2008,
+   "dd_2008": -0.653,
+   "dd_2020": -0.4086,
+   "dd_2022": -0.31,
+   "cagr_if_borrow_3pct": 0.1213
+  },
+  "x1.5": {
+   "days": 8505,
+   "total": 36.5238,
+   "cagr": 0.1134,
+   "vol": 0.2779,
+   "sharpe": 0.53,
+   "max_dd": -0.7655,
+   "worst_year": -0.5438,
+   "worst_year_at": 2008,
+   "dd_2008": -0.7348,
+   "dd_2020": -0.4744,
+   "dd_2022": -0.3712,
+   "cagr_if_borrow_3pct": 0.133
+  },
+  "x2": {
+   "days": 8505,
+   "total": 32.7279,
+   "cagr": 0.1099,
+   "vol": 0.3706,
+   "sharpe": 0.47,
+   "max_dd": -0.9044,
+   "worst_year": -0.6847,
+   "worst_year_at": 2008,
+   "dd_2008": -0.8511,
+   "dd_2020": -0.5902,
+   "dd_2022": -0.4825,
+   "cagr_if_borrow_3pct": 0.1494
+  }
+ }
+}
