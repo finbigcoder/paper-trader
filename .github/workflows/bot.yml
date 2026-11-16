@@ -1,4 +1,5 @@
 name: Agente trader
+# Horario re-registrado el 2026-11-16 (GitHub no había lanzado los despertares programados).
 
 # El agente despierta cada 30 minutos de 4:08 a 19:38, hora de Nueva York (el campo
 # timezone maneja el cambio de horario de verano), de lunes a viernes. GitHub puede atrasar
