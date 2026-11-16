@@ -88,7 +88,7 @@ def build(start: datetime, end: datetime, spent: float, result: dict | None, job
 
     if r.get("outcome") == "tick":
         what = STATUS.get(r.get("status"), r.get("status") or "—")
-        tag = f"{SES.get(r.get('session'), r.get('session'))} · {len(orders)} orden{'es' if len(orders) != 1 else ''}"
+        tag = f"{SES.get(r.get('session'), r.get('session'))} · {len(orders)} {'orden' if len(orders) == 1 else 'órdenes'}"
     elif r.get("outcome"):
         what = OUTCOME.get(r["outcome"], r["outcome"])
         tag = what
