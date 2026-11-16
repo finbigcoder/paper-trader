@@ -171,6 +171,9 @@ Abre `http://127.0.0.1:8765`. No instala nada (Python 3.9+ y git). Es de solo le
 - **El día del agente**: cada despertar con lo que dijo, sus órdenes con la razón que dio,
   sus investigaciones (con el reporte completo de TradingAgents) y los errores que corrigió.
 - **Lo que el agente aprendió**: sus lecciones, tal como las escribió.
+- **¿Pasaría la prueba con dinero real?**: descuenta costos estimados (deslizamiento por orden
+  e interés de margen, supuestos en `evaluation` de `config.yaml`) y compara contra un criterio
+  fijado de antemano: 63 días de mercado, ganarle a SPY después de costos y alfa con t ≥ 2.
 - **¿De dónde sale el resultado?**: beta contra SPY, la regla de momentum contra SPY, el agente
   contra la regla, Buy contra Sell de sus investigaciones y alfa, cada uno con su prueba
   estadística. Dice "muestra chica" mientras no haya datos suficientes.

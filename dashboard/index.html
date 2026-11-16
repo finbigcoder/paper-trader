@@ -159,7 +159,7 @@
   .side { font-weight: 700; } .side.buy { color: var(--good-text); } .side.sell { color: var(--critical); }
   .tools { display: flex; flex-wrap: wrap; gap: 4px; }
   .lessons { white-space: pre-wrap; max-width: 80ch; margin-top: 14px; padding: 14px 16px; background: var(--wash); border-left: 3px solid var(--rail); }
-  #lecciones { margin-top: 46px; }
+  #lecciones, #prueba { margin-top: 46px; }
 
   /* ── tablas ── */
   .tables { display: grid; grid-template-columns: minmax(0, 1fr); gap: 46px; margin-top: 46px; }
@@ -270,6 +270,14 @@
     <h2 id="h-lec">Lo que el agente aprendió</h2>
     <p class="lede">Lo reescribe él mismo en el último despertar de cada día y lo lee en cada despertar siguiente. Es texto generado por el modelo.</p>
     <div class="lessons" id="lessons"></div>
+  </section>
+
+  <section id="prueba" aria-labelledby="h-prueba">
+    <h2 id="h-prueba">¿Pasaría la prueba con dinero real?</h2>
+    <p class="lede">El simulador no cobra lo que cobra el mercado. Aquí se descuentan costos estimados por cada orden y el interés del margen, y se compara contra un criterio fijado antes de ver resultados.</p>
+    <div id="pruebaVerdict" style="margin:14px 0 6px"></div>
+    <div class="scroll" id="pruebaTable"></div>
+    <p class="note" id="pruebaNote"></p>
   </section>
 
   <section id="aporta" aria-labelledby="h-aporta">
@@ -740,6 +748,49 @@ function renderAttribution() {
   if (S.demo) box.append(el("p", { class: "note", text: "En la demo el agente sigue reglas fijas y las calificaciones son aleatorias, así que ninguna fila debería distinguirse del azar." }));
 }
 
+/* ── la prueba: resultado después de costos contra un criterio fijado de antemano ── */
+function nyParts(iso) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", hour12: false, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
+  return { date: `${p.year}-${p.month}-${p.day}`, mins: (+p.hour % 24) * 60 + +p.minute };
+}
+function estimatedCosts() {                // Map(fecha → USD) con deslizamiento por orden e interés de margen
+  const E = S.evaluation || {}, byDay = new Map(); let slip = 0, interest = 0, n = 0;
+  const add = (d, v) => byDay.set(d, (byDay.get(d) || 0) + v);
+  for (const f of S.fills || []) {
+    if (!f.at || !f.price) continue;
+    const t = nyParts(f.at), ext = t.mins < 570 || t.mins >= 960;
+    const c = Math.abs(f.qty * f.price) * (ext ? E.slippage_bps_extended : E.slippage_bps_regular) / 1e4;
+    add(t.date, c); slip += c; n++;
+  }
+  for (const d of S.days) {
+    const cash = ((d.ticks[d.ticks.length - 1] || {}).account || {}).cash;
+    if (cash < 0) { const c = -cash * E.margin_rate / 360; add(d.date, c); interest += c; }
+  }
+  return { byDay, slip, interest, n };
+}
+function renderTest() {
+  const E = S.evaluation || {}, A = accountSeries(), box = $("pruebaTable"), vd = $("pruebaVerdict");
+  vd.replaceChildren(); $("pruebaNote").textContent = "";
+  if (!A || !E.min_days) { box.replaceChildren(el("p", { class: "empty", text: "Aparece cuando haya al menos un día de operación." })); return; }
+  const C = estimatedCosts(), start = S.days[0].date;
+  const hist = ((S.snapshot || {}).equity_history || []).filter(h => h.date >= start).sort((x, y) => x.date < y.date ? -1 : 1);
+  const vmap = new Map((S.virtual || []).map(v => [v.date, v])), ys = [], xs = [];
+  for (let i = 1; i < hist.length; i++) { const v = vmap.get(hist[i].date); if (v) { ys.push(hist[i].equity / hist[i - 1].equity - 1 - (C.byDay.get(hist[i].date) || 0) / hist[i - 1].equity); xs.push(v.spy_ret); } }
+  const reg = regress(ys, xs), days = hist.length, total = C.slip + C.interest;
+  const paper = A.port[A.port.length - 1] / 100 - 1, net = paper - total / A.base, spy = A.spy[A.spy.length - 1] / 100 - 1;
+  const enough = days >= E.min_days, beat = net > spy, sig = reg && reg.t >= E.min_t;
+  vd.append(!enough ? pill("warn", `Todavía no se puede leer: día ${days} de ${num(E.min_days)}`) : beat && sig ? pill("ok", "Pasó la prueba en paper") : pill("bad", "No pasó la prueba"));
+  const yes = b => b ? "Sí" : "No", wait = "Se lee al completar los días";
+  box.replaceChildren(table(["Criterio", "Qué se mide", "Resultado", "¿Cumple?"], [
+    ["Tiempo suficiente", `Al menos ${num(E.min_days)} días de mercado operados`, `${days} días`, yes(enough)],
+    ["Le gana al mercado", "Resultado después de costos estimados contra SPY en el mismo periodo", `${pct(net)} contra ${pct(spy)}`, enough ? yes(beat) : wait],
+    ["No es suerte", `Alfa diario contra SPY después de costos, con t de al menos ${num(E.min_t, 1)}`, reg ? `${bps(reg.a)} al día, t = ${num(reg.t, 1)}` : "—", enough ? yes(sig) : wait],
+  ], [0, 1]));
+  $("pruebaNote").textContent = `En el simulador: ${pct(paper)}. Costos estimados: ${usd(total)} (${usd(C.slip)} de deslizamiento en ${C.n} ejecuciones, ${usd(C.interest)} de interés de margen). ` +
+    `Supuestos de config.yaml: ${num(E.slippage_bps_regular)} pb por orden en horario regular, ${num(E.slippage_bps_extended)} pb fuera de horario, margen al ${num(E.margin_rate * 100, 1)}% anual. ` +
+    "Pasar la prueba en paper no garantiza ganar con dinero real; no pasarla sí indica que comprar el índice habría sido igual o mejor.";
+}
+
 /* ── tablas ── */
 function openSince() {                     // primera compra de la posición abierta actual, por símbolo
   const out = {}, qty = {};
@@ -815,7 +866,7 @@ $("repClose").onclick = () => $("report").close();
 $("report").addEventListener("click", e => { if (e.target === $("report")) $("report").close(); });
 
 function toast(msg) { const t = el("div", { class: "toast", role: "status", text: msg }); document.body.append(t); setTimeout(() => t.remove(), 5000); }
-function renderAll() { renderHeader(); renderAccount(); renderSpend(); renderPipeline(); renderAttribution(); renderTables(); }
+function renderAll() { renderHeader(); renderAccount(); renderSpend(); renderPipeline(); renderTest(); renderAttribution(); renderTables(); }
 async function load() {
   try {
     const r = await fetch(STATIC ? "state.json?t=" + Date.now() : "/api/state", { cache: "no-store" });

@@ -49,6 +49,16 @@ agent:
   movers: 8                   # cuántas de las que más se mueven hoy ve en cada despertar
   lessons_max_chars: 2500     # tamaño máximo de su archivo de lecciones
 
+# ── La prueba antes de pensar en dinero real ────────────────
+# Se fija ANTES de ver resultados; no la muevas para que el agente "pase".
+# Los costos son supuestos (Alpaca paper no los cobra): ajústalos si tienes mejores datos.
+evaluation:
+  slippage_bps_regular: 5      # costo por orden en horario regular (spread + deslizamiento), en puntos base
+  slippage_bps_extended: 25    # lo mismo en pre y post-market, donde hay menos liquidez
+  margin_rate: 0.065           # interés anual sobre el efectivo prestado
+  min_days: 63                 # ~3 meses de mercado antes de leer el resultado
+  min_t: 2.0                   # alfa contra SPY, después de costos, distinguible del azar
+
 # ── Universo que el agente vigila (además de lo que tenga en cartera) ──
 benchmark: SPY
 universe: [AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA, AVGO, JPM, V,

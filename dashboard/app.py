@@ -103,6 +103,8 @@ def build_state() -> dict:
         "cap": config_cap(),
         "model": config_value("trader_model"),
         "tick_minutes": config_value("tick_minutes"),
+        "evaluation": {k: float(config_value(k) or d) for k, d in (("slippage_bps_regular", 5), ("slippage_bps_extended", 25),
+                                                                   ("margin_rate", 0.065), ("min_days", 63), ("min_t", 2.0))},
         "repo": repo_info(),
     }
 
