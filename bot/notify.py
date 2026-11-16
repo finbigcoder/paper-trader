@@ -173,6 +173,9 @@ def main(argv: list[str]) -> int:
     subject, body = build(start, datetime.now(timezone.utc), spent, result, os.environ.get("JOB_STATUS", ""), sd,
                           os.environ.get("RUN_URL", ""), os.environ.get("PAGES_URL", ""))
     print(subject)
+    if (result or {}).get("outcome") in ("closed", "market_holiday", "duplicate"):
+        print("sin novedad (mercado cerrado o despertar repetido): no se manda correo")
+        return 0
     try:
         print(send(subject, body))
     except (smtplib.SMTPException, OSError) as exc:

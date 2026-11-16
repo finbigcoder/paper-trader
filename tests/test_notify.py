@@ -101,3 +101,22 @@ def test_tick_reports_missing_keys_for_the_email(tmp_path, monkeypatch):
     monkeypatch.setenv("BOT_RESULT_PATH", str(tmp_path / "r.json"))
     assert tick.main([]) == 0
     assert json.loads((tmp_path / "r.json").read_text())["outcome"] == "setup_incomplete"
+
+
+def test_a_second_tick_within_ten_minutes_is_skipped_and_sends_no_email(tmp_path, monkeypatch, capsys):
+    from bot import tick
+    from bot.session import now_et
+
+    sd = tmp_path / "state"
+    for k in tick.REQUIRED_ENV:
+        monkeypatch.setenv(k, "x")
+    monkeypatch.setenv("BOT_STATE_DIR", str(sd))
+    monkeypatch.setenv("BOT_RESULT_PATH", str(tmp_path / "r.json"))
+    now = now_et()
+    save_json(sd / "days" / f"{now.date()}.json", {"date": str(now.date()), "ticks": [{"at": now.isoformat(timespec="seconds")}]})
+    assert tick.main([]) == 0                                   # sale antes de tocar Alpaca
+    assert json.loads((tmp_path / "r.json").read_text())["outcome"] == "duplicate"
+    monkeypatch.setenv("GMAIL_USER", "yo@example.com")
+    monkeypatch.setenv("GMAIL_APP_PASSWORD", "x")
+    monkeypatch.setattr(notify.smtplib, "SMTP_SSL", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no debía mandar")))
+    assert notify.main(["send"]) == 0 and "no se manda correo" in capsys.readouterr().out

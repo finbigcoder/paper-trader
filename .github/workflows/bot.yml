@@ -1,5 +1,4 @@
 name: Agente trader
-# Horario re-registrado el 2026-11-16 (GitHub no había lanzado los despertares programados).
 
 # El agente despierta cada 30 minutos de 4:08 a 19:38, hora de Nueva York (el campo
 # timezone maneja el cambio de horario de verano), de lunes a viernes. GitHub puede atrasar
@@ -7,16 +6,11 @@ name: Agente trader
 # despertar mira el estado real de la cuenta.
 on:
   schedule:
-    - cron: "8,38 4-19 * * 1-5"             # 32 despertares al día
-      timezone: "America/New_York"
-    # Si se acaban los minutos gratis (repo privado), cambia la línea de arriba por estas dos:
-    # pre y post-market cada hora, horario regular cada 30 minutos (23 despertares al día).
-    #   - cron: "8 4-19 * * 1-5"
-    #     timezone: "America/New_York"
-    #   - cron: "38 9-15 * * 1-5"
-    #     timezone: "America/New_York"
-    - cron: "17 20 * * 1-5"                 # foto de la cuenta y bitácora, ya cerrado el post-market
-      timezone: "America/New_York"
+    # En UTC, sin el campo "timezone": con él GitHub nunca lanzó los despertares de este repo.
+    # Cubre 4:00-20:00 de Nueva York en horario de invierno y de verano; el primer paso del
+    # job descarta los despertares que caen fuera de ese horario o en fin de semana.
+    - cron: "8,38 0,8-23 * * *"
+    - cron: "17 1 * * 2-6"                  # foto de la cuenta (20:17 NY en invierno, 21:17 en verano)
   workflow_dispatch:
     inputs:
       job:
@@ -43,7 +37,7 @@ concurrency:
 jobs:
   tick:
     if: >-
-      (github.event_name == 'schedule' && github.event.schedule != '17 20 * * 1-5') ||
+      (github.event_name == 'schedule' && github.event.schedule != '17 1 * * 2-6') ||
       (github.event_name == 'workflow_dispatch' && inputs.job == 'tick')
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -53,22 +47,30 @@ jobs:
         run: |
           python3 -m bot.notify start >> "$GITHUB_ENV"
           echo "BOT_RESULT_PATH=$RUNNER_TEMP/tick_result.json" >> "$GITHUB_ENV"
+          H=$((10#$(TZ=America/New_York date +%H))); D=$(TZ=America/New_York date +%u)
+          if [ "${{ inputs.force }}" != "true" ] && { [ "$D" -ge 6 ] || [ "$H" -lt 4 ] || [ "$H" -ge 20 ]; }; then
+            echo "Fuera del horario del agente en Nueva York: no se hace nada."
+            echo "BOT_SKIP=1" >> "$GITHUB_ENV"
+          fi
       - uses: actions/setup-python@v5
         id: py
+        if: env.BOT_SKIP != '1'
         with:
           python-version: "3.12"
       - name: Restaurar el entorno de Python ya instalado
+        if: env.BOT_SKIP != '1'
         id: venv
         uses: actions/cache@v4
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.py.outputs.python-version }}-${{ hashFiles('requirements.lock') }}
       - name: Instalar dependencias (solo si cambió requirements.lock)
-        if: steps.venv.outputs.cache-hit != 'true'
+        if: env.BOT_SKIP != '1' && steps.venv.outputs.cache-hit != 'true'
         run: |
           python -m venv .venv
           .venv/bin/pip install -r requirements.lock
       - name: Despertar al agente
+        if: env.BOT_SKIP != '1'
         timeout-minutes: 20
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -78,7 +80,7 @@ jobs:
           SEC_EDGAR_USER_AGENT: ${{ vars.SEC_EDGAR_USER_AGENT }}     # opcional
         run: .venv/bin/python -m bot.tick ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.force && '--force' || '' }}
       - name: Guardar estado en el repo
-        if: always()
+        if: always() && env.BOT_SKIP != '1'
         run: |
           git config user.name "paper-trader-bot"
           git config user.email "paper-trader-bot@users.noreply.github.com"
@@ -88,7 +90,7 @@ jobs:
           for i in 1 2 3; do git pull --rebase --autostash && git push && exit 0; sleep 5; done
           exit 1
       - name: Mandar correo con el resumen
-        if: always()
+        if: always() && env.BOT_SKIP != '1'
         continue-on-error: true
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -101,7 +103,7 @@ jobs:
 
   snapshot:
     if: >-
-      (github.event_name == 'schedule' && github.event.schedule == '17 20 * * 1-5') ||
+      (github.event_name == 'schedule' && github.event.schedule == '17 1 * * 2-6') ||
       (github.event_name == 'workflow_dispatch' && inputs.job == 'snapshot')
     runs-on: ubuntu-latest
     timeout-minutes: 5

@@ -134,6 +134,13 @@ def real_tick(args) -> int:
         log(f"configuración incompleta, faltan: {', '.join(missing)}. No se hizo nada.")
         report(outcome="setup_incomplete", detail=f"faltan los secrets {', '.join(missing)}")
         return 0
+    ticks = load_json(day_path(sd, now.date()), {}).get("ticks") or []
+    if ticks and not args.force:
+        mins = (now - datetime.fromisoformat(ticks[-1]["at"])).total_seconds() / 60
+        if 0 <= mins < 10:
+            log(f"ya hubo un despertar hace {mins:.0f} min: no se repite.")
+            report(outcome="duplicate", detail="ya hubo un despertar hace menos de 10 minutos")
+            return 0
     broker = AlpacaPaperBroker()
     session = session_of(now)
     if not args.force:
