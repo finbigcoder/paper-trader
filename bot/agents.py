@@ -58,6 +58,10 @@ class Analyst:
             "benchmark_ticker": cfg["benchmark"],
         })
         (state / "memory").mkdir(parents=True, exist_ok=True)
+        if "social" in llm["analysts"]:
+            from .sentiment import install
+
+            install()          # Reddit bloquea a GitHub: el analista recibe ApeWisdom en su lugar
         self.cfg, self.tracker, self.state, self.ta_cfg = cfg, tracker, state, ta_cfg
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")  # el modelo puede no estar en el catálogo de TradingAgents

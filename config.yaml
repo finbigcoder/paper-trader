@@ -8,7 +8,7 @@ mode: paper
 
 # ── Tope de gasto real (API del LLM) ─────────────────────────
 budget:
-  monthly_usd: 4.5           # ÚNICO límite duro de gasto. Cámbialo aquí.
+  monthly_usd: 20.0          # ÚNICO límite duro de gasto. Cámbialo aquí.
   reserve_pct: 0.05          # colchón: se reparte solo el 95% del tope
   first_tick_usd: 0.01       # costo supuesto de un despertar hasta medir los reales
   first_estimate_usd: 0.25   # costo supuesto de una investigación de TradingAgents hasta medir una
@@ -20,7 +20,7 @@ llm:
   trader_model: claude-haiku-5-5  # el cerebro del agente: decide y opera
   quick_model: claude-haiku-5-5   # TradingAgents: analistas, debate, trader
   deep_model: claude-haiku-5-5    # TradingAgents: managers
-  analysts: [market, news, fundamentals]   # 'social' fuera: Reddit bloquea a GitHub (403)
+  analysts: [market, social, news, fundamentals]   # social = StockTwits + Reddit (vía ApeWisdom si Reddit bloquea)
   max_debate_rounds: 1
   max_risk_rounds: 1
 

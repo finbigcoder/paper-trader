@@ -63,7 +63,7 @@ corrida tarda más porque instala todo; las siguientes reusan el entorno guardad
 
 ## Cuánto cuesta
 
-**LLM (tope de $4.50 al mes, `budget.monthly_usd`; súbelo si recargas crédito en Anthropic).** Cómo se respeta:
+**LLM (tope de $20 al mes, `budget.monthly_usd`; el límite real es el menor entre este y tu crédito en Anthropic).** Cómo se respeta:
 - Cada día recibe lo que queda del mes (menos 5% de colchón) entre los días hábiles que faltan.
 - Cada despertar puede gastar lo del día **menos** lo que necesitan los despertares que
   faltan. Así el de las 4:08 no se come el día.
@@ -215,7 +215,8 @@ llamada real al LLM ni una orden real a Alpaca.** Qué vigilar la primera semana
 - Que el agente use bien las órdenes limitadas fuera de horario. Si repite errores, lo verás
   en el dashboard en amarillo.
 - Que TradingAgents acepte `claude-haiku-5-5` (no está en su menú; avisa pero continúa).
-- El analista `social` está desactivado: Reddit bloquea las consultas desde GitHub (403).
+- El analista `social` usa StockTwits y Reddit. Como Reddit bloquea a GitHub (403), recibe de
+  ApeWisdom el conteo de menciones en Reddit (atención, no opinión).
 
 ## Cambiar cosas
 

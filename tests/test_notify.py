@@ -23,7 +23,7 @@ def test_email_has_start_end_duration_cost_and_what_it_did(tmp_path):
                                  "https://github.com/x/y/actions/runs/1", "https://x.github.io/y/")
     assert subject == "Agente trader · 10:08 NY · horario regular · 1 orden · $0.0460"
     for needle in ("Empezó:   10:08:05 hora de Nueva York (15:08 UTC)", "Terminó:  10:10:36", "Duró:     2 min 31 s",
-                   "LLM en este despertar: $0.0460 (investigaciones: $0.0410)", "LLM en el mes:         $0.35 de $4.50",
+                   "LLM en este despertar: $0.0460 (investigaciones: $0.0410)", "LLM en el mes:         $0.35 de $20.00",
                    "GitHub Actions:        $0", "Compra 10 MU a mercado → filled", "Por qué: momentum #1", "Stop de MU en 640.0",
                    "Investigó MU: Buy", "P&L de hoy +$1,250", "Compré MU por momentum", "actions/runs/1", "x.github.io/y"):
         assert needle in body, needle
