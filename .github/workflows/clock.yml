@@ -1,0 +1,51 @@
+name: Reloj del agente
+
+# Despierta al agente sin depender del horario (cron) de GitHub, que en este repo no disparó.
+# Es una cadena: cada corrida dura ~5 h 20 min, lanza los despertares de bot.yml a las :08 y
+# :38 (4:00-20:00 de Nueva York, lunes a viernes) y la foto de las 20:17, y al terminar lanza
+# la siguiente corrida de sí misma. Si hay dos relojes a la vez, el más viejo se retira.
+# Para pausar al agente: cancela la corrida en curso de este workflow (Actions → Reloj del agente).
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  clock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Dar la hora
+        run: |
+          dispatch() {  # reintenta: una llamada fallida no debe romper la cadena
+            for i in 1 2 3 4 5; do gh workflow run "$@" && return 0; sleep 15; done; return 1
+          }
+          newer() {
+            gh run list --workflow clock.yml --limit 10 --json databaseId,status \
+              --jq "[.[] | select((.status==\"in_progress\" or .status==\"queued\") and .databaseId > $GITHUB_RUN_ID)] | length" 2>/dev/null || echo 0
+          }
+          end=$(( $(date +%s) + 19200 )); last=""; n=0
+          while [ "$(date +%s)" -lt "$end" ]; do
+            read -r D H M <<< "$(TZ=America/New_York date '+%u %-H %-M')"
+            day=$(TZ=America/New_York date +%F); slot=""; job=""
+            if [ "$D" -le 5 ]; then
+              if [ "$H" -ge 4 ] && [ "$H" -lt 20 ]; then
+                if [ "$M" -ge 8 ] && [ "$M" -lt 13 ]; then slot="$day-$H-08"; job=tick; fi
+                if [ "$M" -ge 38 ] && [ "$M" -lt 43 ]; then slot="$day-$H-38"; job=tick; fi
+              elif [ "$H" -eq 20 ] && [ "$M" -ge 17 ] && [ "$M" -lt 22 ]; then slot="$day-foto"; job=snapshot
+              fi
+            fi
+            if [ -n "$slot" ] && [ "$slot" != "$last" ]; then
+              echo "$(TZ=America/New_York date '+%F %H:%M') NY → $job"
+              dispatch bot.yml -f job="$job" && last="$slot"
+            fi
+            n=$((n + 1))
+            if [ $((n % 30)) -eq 0 ] && [ "$(newer)" != "0" ]; then echo "Hay un reloj más nuevo: me retiro."; exit 0; fi
+            sleep 20
+          done
+          echo "Relevo: lanzo el siguiente reloj."
+          dispatch clock.yml

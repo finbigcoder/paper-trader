@@ -29,6 +29,7 @@ on:
 
 permissions:
   contents: write     # el bot guarda su estado en el repo
+  actions: write      # para revivir el reloj (clock.yml) si se cayó
 
 concurrency:
   group: bot
@@ -89,6 +90,15 @@ jobs:
           git commit -m "estado: despertar $(TZ=America/New_York date '+%F %H:%M')"
           for i in 1 2 3; do git pull --rebase --autostash && git push && exit 0; sleep 5; done
           exit 1
+      - name: Revivir el reloj si no está corriendo
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          n=$(gh run list --workflow clock.yml --limit 10 --json status --jq '[.[] | select(.status=="in_progress" or .status=="queued")] | length')
+          [ "$n" = "0" ] && gh workflow run clock.yml || echo "reloj en marcha ($n)"
       - name: Mandar correo con el resumen
         if: always() && env.BOT_SKIP != '1'
         continue-on-error: true

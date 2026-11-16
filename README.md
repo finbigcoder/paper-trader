@@ -222,7 +222,10 @@ llamada real al LLM ni una orden real a Alpaca.** Qué vigilar la primera semana
 
 Todo está en `config.yaml`: tope, modelo, horario y frecuencia (`agent.tick_minutes` debe
 coincidir con el cron del workflow), vueltas por despertar, investigaciones por despertar,
-cortos, universo y tamaño de la lista de vigilancia. El cron del workflow está en UTC
+cortos, universo y tamaño de la lista de vigilancia. Quien despierta al agente es `clock.yml` ("Reloj del agente"): una cadena de corridas que
+lanza cada despertar y se releva sola cada ~5 h; no depende del cron de GitHub. Para pausar
+al agente, cancela la corrida en curso del reloj; para reanudar, *Run workflow* en el reloj.
+El cron de `bot.yml` queda solo de respaldo y está en UTC
 (GitHub no lanzó los despertares cuando se usó el campo `timezone`); el propio job descarta
 los que caen fuera de 4:00-20:00 de Nueva York. El prompt del agente está en
 `bot/trader.py` (`SYSTEM`). Para pausar: *Actions → Agente trader → ⋯ → Disable workflow*.
