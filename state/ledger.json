@@ -1,0 +1,21 @@
+{
+ "entries": [
+  {
+   "date": "2026-11-16",
+   "ticker": "TXN",
+   "kind": "research",
+   "usd": 0.03879,
+   "calls": 17,
+   "input_tokens": 166872,
+   "output_tokens": 44206,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-16",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003018,
+   "aborted": false
+  }
+ ]
+}

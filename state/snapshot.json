@@ -1,0 +1,22 @@
+{
+ "updated_at": "2026-11-16T11:30:02-05:00",
+ "broker": "Alpaca paper",
+ "account": {
+  "equity": 100000.0,
+  "cash": 100000.0,
+  "buying_power": 200000.0,
+  "last_equity": 100000.0
+ },
+ "positions": {},
+ "orders": [],
+ "equity_history": [
+  {
+   "date": "2026-11-13",
+   "equity": 100000.0
+  },
+  {
+   "date": "2026-11-14",
+   "equity": 100000.0
+  }
+ ]
+}

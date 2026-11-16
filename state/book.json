@@ -1,0 +1,15 @@
+{
+ "rule_core": [
+  "MRNA",
+  "MU",
+  "MRVL",
+  "INTC",
+  "AMD",
+  "AMAT",
+  "CRWD",
+  "LRCX",
+  "TXN",
+  "TGT"
+ ],
+ "rule_since": "2026-11-16"
+}
