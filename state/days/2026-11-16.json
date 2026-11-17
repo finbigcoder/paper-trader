@@ -295,7 +295,7 @@
     "symbol": "PDCC",
     "name": "Pearl Diver Credit Company Inc.",
     "when": "reporta hoy antes de abrir",
-    "market_cap": NaN
+    "market_cap": null
    }
   ],
   "stats": {
@@ -2259,7 +2259,60 @@
     "last_equity": 100000.0
    },
    "positions": 0
+  },
+  {
+   "at": "2026-11-16T19:38:36-05:00",
+   "time": "19:38",
+   "session": "post",
+   "last": true,
+   "budget": {
+    "allowance_today": 1.6676,
+    "limit": 1.6676,
+    "ticks_left": 1,
+    "est_tick": 0.0025,
+    "est_research": 0.0485
+   },
+   "status": "ok",
+   "final": "Hoy no hubo operaciones: sin posiciones ni órdenes, y ningún nombre de la lista llegó a mis niveles de entrada (TXN ~284 o cierre >317; MRNA sin plan fuera de horario).\nMi error fue repetir la misma nota en cada despertar de post-market sin información nueva, y no revisar la sesión regular en ningún momento.\nLas lecciones quedaron guardadas: notas más breves, órdenes condicionadas con stop, y un solo nombre prioritario por sesión.\nMañana vigilo en la primera hora regular: TXN (retroceso a ~284 con volumen, stop ~277), MRNA y la reacción de semis (MU, MRVL, INTC, AMD), y los resultados de BIDU/TSN/BEKE/HTHT/PDCC.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "update_lessons",
+     "args": {},
+     "result": "Error en los argumentos: Desk.t_update_lessons() missing 1 required positional argument: 'text'"
+    },
+    {
+     "name": "update_lessons",
+     "args": {
+      "text": "LECCIONES (actualizado 16-nov-2026, cierre del día)\n\nQué pasó hoy: cero operaciones y cero posiciones. Hice una investigación (TXN = Hold, ~$0.05) y dejé disparadores claros. Después, en casi todos los despertares de post-market, solo revisé precios y reescribí la misma nota. Ningún candidato llegó a su nivel, así que la decisión \"no hacer nada\" fue correcta. Pero gasté tiempo y presupuesto repitiendo el mismo análisis.\n\nQué funcionó:\n- Esperar a niveles concretos en vez de perseguir movimientos fuera de horario.\n- Usar research solo una vez para un nombre con plan definido (TXN).\n- Dejar niveles de entrada, stop y tamaño por escrito.\n\nQué no funcionó:\n- Notas repetitivas y cada vez más largas que copian el mismo texto. Cuestan dinero y no añaden información. Los precios de referencia en ellas también variaban entre despertares sin motivo claro.\n- No dejé órdenes condicionadas. Al depender de despertar a tiempo, un disparador en la sesión regular puede pasar antes de que yo lo vea.\n- Vigilé demasiados nombres (semis, MRNA, TXN, reportes de BIDU/TSN/BEKE/HTHT/PDCC) sin prioridad. Con 6 semis cayendo a la vez, no tenía una tesis clara sobre cuál comprar.\n- No aproveché la sesión regular de hoy: no revisé el gráfico después de la apertura en ningún despertar.\n\nQué haré distinto:\n1. En post-market, no reescribir la nota si nada cambió. Escribir una sola línea de cambio o \"sin cambios\".\n2. Al día siguiente, en la primera hora regular: revisar primero TXN (disparador: retroceso a ~284 con volumen, stop ~277; o cierre >317 con volumen y guía Q4) y MRNA (lider de momentum, 5d -12%, ATR 8.6%). Solo después, semis.\n3. Dejar órdenes limit condicionadas de entrada solo si el riesgo está definido (stop incluido, ~1% de la cartera por operación).\n4. Priorizar un solo nombre por sesión. Si todas las semis caen juntas, esperar a que haya estabilización antes de elegir.\n5. Tratar los resultados de BIDU/TSN/BEKE/HTHT/PDCC como oportunidades de volatilidad solo con gap confirmado en la sesión regular, no con precios de post-market.\n6. Desconfiar de datos anómalos (ej. HON -51% sin volumen el 29-jun, probable escisión o error del proveedor). Verificar antes de operar cualquier movimiento así.\n7. Gasto de API: research solo cuando haya un plan y un nivel. Evitar revisiones de lista de más de una por hora sin cambio de precio relevante."
+     },
+     "result": "Lecciones guardadas (2356 caracteres)."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.004017,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.004017,
+      "calls": 3,
+      "tokens": 28760
+     }
+    }
+   },
+   "account": {
+    "equity": 100000.0,
+    "cash": 100000.0,
+    "buying_power": 200000.0,
+    "last_equity": 100000.0
+   },
+   "positions": 0
   }
  ],
- "spent_usd": 0.054729
+ "spent_usd": 0.058746,
+ "lessons_updated": true
 }
