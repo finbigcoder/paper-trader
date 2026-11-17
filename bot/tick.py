@@ -25,6 +25,7 @@ from .budget import CostTracker, Ledger
 from .config import NY, ROOT, load_config, state_dir
 from .data import last_closes
 from .journal import backfill_research, record_fills, update_journal, update_virtual
+from . import screener
 from .market import Intraday, StaticIntraday, prepare_day
 from .session import is_last_tick, now_et, session_of, ticks_left
 from .state import load_json, now_iso, save_json, write_benchmark, write_snapshot
@@ -81,14 +82,23 @@ def run_tick(*, cfg: dict, sd: Path, broker, now: datetime, prep: dict, intraday
 
     symbols = list(dict.fromkeys(list(broker.positions()) + [r["symbol"] for r in prep["ranking"][: int(agent_cfg["watchlist_momentum"])]]
                                  + [e["symbol"] for e in prep.get("earnings", [])] + cfg["universe"] + [cfg["benchmark"], "QQQ"]))
+    watch = set(broker.positions()) | {r["symbol"] for r in prep["ranking"][: int(agent_cfg["watchlist_momentum"])]} \
+        | {e["symbol"] for e in prep.get("earnings", [])}
+    pre, swarn = screener.candidates(cfg, broker, today, watch | {cfg["benchmark"], "QQQ"})
+    if swarn:
+        tick.setdefault("warnings", []).extend(swarn)
+    for s, x in pre.items():
+        intraday.prev_close.setdefault(s, x["prev_close"])
     try:
-        intraday.load(symbols)
+        intraday.load(symbols + [s for s in pre if s not in symbols])
     except Exception as exc:
         tick.setdefault("warnings", []).append(f"no se pudieron leer precios de hoy: {type(exc).__name__}: {exc}"[:200])
+    screen = screener.rank(pre, {s: intraday.quote(s) for s in pre}, int((cfg.get("screener") or {}).get("size", 30)))
+    tick["screen"] = {"candidates": len(pre), "shown": [r["symbol"] for r in screen]}
 
     desk = Desk(cfg=cfg, sd=sd, broker=broker, intraday=intraday, prep=prep, now=now, session=session, tracker=tracker,
                 make_analyst=make_analyst, ledger=ledger, est_research=est_research, last_tick=last, ticks_left=left,
-                dry_run=dry_run, day=day)
+                dry_run=dry_run, day=day, screen=screen)
     if limit < est_tick * 0.5:
         tick.update(status="skipped_budget", final=None,
                     error=f"sin presupuesto para pensar: quedan ${limit:.3f} para este despertar y uno cuesta ~${est_tick:.3f}")

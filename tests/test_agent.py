@@ -103,6 +103,7 @@ def test_no_flips_and_shorts_only_when_allowed_and_borrowable(tmp_path):
 
 def test_broker_rejections_are_explained_to_the_agent(tmp_path):
     desk, _ = make_desk(tmp_path)
+    desk.agent_cfg["max_position_pct"] = 100.0        # que llegue a Alpaca para probar el rechazo
     out = desk.t_place_order("AAA", "buy", 10_000, "demasiado")
     assert out.startswith("Alpaca rechazó") and "buying power" in out and desk.orders[-1]["status"] == "rejected"
 

@@ -753,31 +753,36 @@ function nyParts(iso) {
   const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", hour12: false, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
   return { date: `${p.year}-${p.month}-${p.day}`, mins: (+p.hour % 24) * 60 + +p.minute };
 }
-function estimatedCosts() {                // Map(fecha → USD) con deslizamiento por orden e interés de margen
-  const E = S.evaluation || {}, byDay = new Map(); let slip = 0, interest = 0, n = 0;
+function estimatedCosts(start) {           // Map(fecha → USD) con deslizamiento por orden e interés de margen, desde `start`
+  const E = S.evaluation || {}, byDay = new Map(), uni = new Set(S.universe || []); let slip = 0, interest = 0, n = 0, out = 0;
   const add = (d, v) => byDay.set(d, (byDay.get(d) || 0) + v);
   for (const f of S.fills || []) {
     if (!f.at || !f.price) continue;
     const t = nyParts(f.at), ext = t.mins < 570 || t.mins >= 960;
-    const c = Math.abs(f.qty * f.price) * (ext ? E.slippage_bps_extended : E.slippage_bps_regular) / 1e4;
-    add(t.date, c); slip += c; n++;
+    if (start && t.date < start) continue;
+    const outside = uni.size && !uni.has(f.symbol);
+    const c = Math.abs(f.qty * f.price) * ((ext ? E.slippage_bps_extended : E.slippage_bps_regular) + (outside ? E.slippage_bps_outside_extra || 0 : 0)) / 1e4;
+    add(t.date, c); slip += c; n++; if (outside) out++;
   }
   for (const d of S.days) {
+    if (start && d.date < start) continue;
     const cash = ((d.ticks[d.ticks.length - 1] || {}).account || {}).cash;
     if (cash < 0) { const c = -cash * E.margin_rate / 360; add(d.date, c); interest += c; }
   }
-  return { byDay, slip, interest, n };
+  return { byDay, slip, interest, n, out };
 }
 function renderTest() {
   const E = S.evaluation || {}, A = accountSeries(), box = $("pruebaTable"), vd = $("pruebaVerdict");
   vd.replaceChildren(); $("pruebaNote").textContent = "";
   if (!A || !E.min_days) { box.replaceChildren(el("p", { class: "empty", text: "Aparece cuando haya al menos un día de operación." })); return; }
-  const C = estimatedCosts(), start = S.days[0].date;
-  const hist = ((S.snapshot || {}).equity_history || []).filter(h => h.date >= start).sort((x, y) => x.date < y.date ? -1 : 1);
-  const vmap = new Map((S.virtual || []).map(v => [v.date, v])), ys = [], xs = [];
-  for (let i = 1; i < hist.length; i++) { const v = vmap.get(hist[i].date); if (v) { ys.push(hist[i].equity / hist[i - 1].equity - 1 - (C.byDay.get(hist[i].date) || 0) / hist[i - 1].equity); xs.push(v.spy_ret); } }
-  const reg = regress(ys, xs), days = hist.length, total = C.slip + C.interest;
-  const paper = A.port[A.port.length - 1] / 100 - 1, net = paper - total / A.base, spy = A.spy[A.spy.length - 1] / 100 - 1;
+  const start = E.start_date || S.days[0].date, C = estimatedCosts(start);
+  // la base es el cierre del día hábil anterior al inicio; los días de la prueba son los que vienen después
+  const all = ((S.snapshot || {}).equity_history || []).slice().sort((x, y) => x.date < y.date ? -1 : 1);
+  const b0 = all.filter(h => h.date < start).pop(), hist = (b0 ? [b0] : []).concat(all.filter(h => h.date >= start));
+  const vmap = new Map((S.virtual || []).map(v => [v.date, v])), ys = [], xs = []; let spyG = 1;
+  for (let i = 1; i < hist.length; i++) { const v = vmap.get(hist[i].date); if (v) { ys.push(hist[i].equity / hist[i - 1].equity - 1 - (C.byDay.get(hist[i].date) || 0) / hist[i - 1].equity); xs.push(v.spy_ret); spyG *= 1 + v.spy_ret; } }
+  const reg = regress(ys, xs), days = Math.max(hist.length - 1, 0), total = C.slip + C.interest;
+  const paper = hist.length > 1 ? hist[hist.length - 1].equity / hist[0].equity - 1 : 0, net = paper - (hist.length ? total / hist[0].equity : 0), spy = spyG - 1;
   const enough = days >= E.min_days, beat = net > spy, sig = reg && reg.t >= E.min_t;
   vd.append(!enough ? pill("warn", `Todavía no se puede leer: día ${days} de ${num(E.min_days)}`) : beat && sig ? pill("ok", "Pasó la prueba en paper") : pill("bad", "No pasó la prueba"));
   const yes = b => b ? "Sí" : "No", wait = "Se lee al completar los días";
@@ -786,8 +791,9 @@ function renderTest() {
     ["Le gana al mercado", "Resultado después de costos estimados contra SPY en el mismo periodo", `${pct(net)} contra ${pct(spy)}`, enough ? yes(beat) : wait],
     ["No es suerte", `Alfa diario contra SPY después de costos, con t de al menos ${num(E.min_t, 1)}`, reg ? `${bps(reg.a)} al día, t = ${num(reg.t, 1)}` : "—", enough ? yes(sig) : wait],
   ], [0, 1]));
-  $("pruebaNote").textContent = `En el simulador: ${pct(paper)}. Costos estimados: ${usd(total)} (${usd(C.slip)} de deslizamiento en ${C.n} ejecuciones, ${usd(C.interest)} de interés de margen). ` +
-    `Supuestos de config.yaml: ${num(E.slippage_bps_regular)} pb por orden en horario regular, ${num(E.slippage_bps_extended)} pb fuera de horario, margen al ${num(E.margin_rate * 100, 1)}% anual. ` +
+  $("pruebaNote").textContent = `La prueba cuenta desde el ${day(start)} (cuando entró la pantalla de todo el mercado); lo anterior queda en el historial pero no cuenta. ` +
+    `En el simulador: ${pct(paper)}. Costos estimados: ${usd(total)} (${usd(C.slip)} de deslizamiento en ${C.n} ejecuciones, ${C.out} fuera del universo; ${usd(C.interest)} de interés de margen). ` +
+    `Supuestos de config.yaml: ${num(E.slippage_bps_regular)} pb por orden en horario regular, ${num(E.slippage_bps_extended)} pb fuera de horario, +${num(E.slippage_bps_outside_extra || 0)} pb en acciones fuera del universo, margen al ${num(E.margin_rate * 100, 1)}% anual. ` +
     "Pasar la prueba en paper no garantiza ganar con dinero real; no pasarla sí indica que comprar el índice habría sido igual o mejor.";
 }
 

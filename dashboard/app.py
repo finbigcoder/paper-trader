@@ -64,6 +64,14 @@ def config_value(key: str) -> str | None:
     return m.group(1).strip("\"'") if m else None
 
 
+def config_universe() -> list[str]:
+    try:
+        m = re.search(r"^universe:\s*\[([^\]]*)\]", (ROOT / "config.yaml").read_text(encoding="utf-8"), re.M)
+    except OSError:
+        return []
+    return [s.strip().upper() for s in m.group(1).split(",") if s.strip()] if m else []
+
+
 def config_cap() -> float | None:
     v = config_value("monthly_usd")
     try:
@@ -104,7 +112,10 @@ def build_state() -> dict:
         "model": config_value("trader_model"),
         "tick_minutes": config_value("tick_minutes"),
         "evaluation": {k: float(config_value(k) or d) for k, d in (("slippage_bps_regular", 5), ("slippage_bps_extended", 25),
-                                                                   ("margin_rate", 0.065), ("min_days", 63), ("min_t", 2.0))},
+                                                                   ("margin_rate", 0.065), ("min_days", 63), ("min_t", 2.0),
+                                                                   ("slippage_bps_outside_extra", 0))}
+                      | {"start_date": config_value("start_date")},
+        "universe": config_universe(),
         "repo": repo_info(),
     }
 

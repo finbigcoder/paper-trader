@@ -65,6 +65,28 @@ class AlpacaPaperBroker:
         a = self.client.get_asset(symbol)
         return {"tradable": bool(a.tradable), "shortable": bool(a.shortable), "easy_to_borrow": bool(a.easy_to_borrow)}
 
+    def screener_candidates(self, top: int = 50) -> list[dict]:
+        """Las que más suben, las que más bajan y las más activas de todo EE. UU. (screener de Alpaca)."""
+        from alpaca.data.enums import MarketType, MostActivesBy
+        from alpaca.data.historical.screener import ScreenerClient
+        from alpaca.data.requests import MarketMoversRequest, MostActivesRequest
+
+        sc = ScreenerClient(os.environ["ALPACA_API_KEY"], os.environ["ALPACA_SECRET_KEY"])
+        out = []
+        mv = sc.get_market_movers(MarketMoversRequest(top=min(top, 50), market_type=MarketType.STOCKS))
+        for src, rows in (("sube", mv.gainers), ("baja", mv.losers)):
+            out += [{"symbol": m.symbol, "source": src, "price": float(m.price), "pct": float(m.percent_change) / 100} for m in rows]
+        act = sc.get_most_actives(MostActivesRequest(top=min(top, 100), by=MostActivesBy.VOLUME))
+        out += [{"symbol": a.symbol, "source": "activa", "volume": float(a.volume)} for a in act.most_actives]
+        return out
+
+    def tradable_symbols(self) -> set[str]:
+        from alpaca.trading.enums import AssetClass, AssetStatus
+        from alpaca.trading.requests import GetAssetsRequest
+
+        assets = self.client.get_all_assets(GetAssetsRequest(status=AssetStatus.ACTIVE, asset_class=AssetClass.US_EQUITY))
+        return {a.symbol for a in assets if a.tradable}
+
     def open_orders(self) -> list[dict]:
         from alpaca.trading.enums import QueryOrderStatus
         from alpaca.trading.requests import GetOrdersRequest

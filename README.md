@@ -16,13 +16,24 @@ decidir, apuntar su plan, revisar al cierre qué funcionó y recordarlo al día 
 4:08 … 19:38, cada 30 min, el agente despierta y recibe:
        hora y sesión · cuenta y P&L del día · posiciones, stops y órdenes abiertas
        SPY/QQQ hoy · su lista de vigilancia (cartera + top 15 de Qlib + resultados)
-       las acciones que más se mueven · sus lecciones · lo que hizo hoy y días anteriores
+       las que más se mueven de su universo · la pantalla de todo el mercado (abajo)
+       sus lecciones · lo que hizo hoy y días anteriores
        … y usa sus herramientas hasta 14 veces:
          get_news · get_chart · research (TradingAgents completo) · place_order
          set_stop · cancel_order · note · update_lessons (solo al cierre)
 19:38  último despertar: escribe sus lecciones (máx. 2,500 caracteres)
 20:17  foto de la cuenta y bitácora. Sin LLM.
 ```
+
+**Pantalla de todo el mercado** (`bot/screener.py`, sección `screener` de `config.yaml`). En cada
+despertar el código pide al screener de Alpaca las 50 que más suben, las 50 que más bajan y las 50
+más activas por volumen de todo EE. UU. (mismas llaves). Quita warrants y símbolos raros, lo que no
+se puede operar en Alpaca, lo de menos de $5 y lo de menos de $20M de volumen diario promedio
+(20 días de Yahoo Finance). Ordena por |cambio de hoy| × volumen relativo (acotado entre 0.2x y 5x)
+y le pasa al agente las 30 primeras. El LLM no lee miles de acciones: eso sería caro y ordenaría
+mal. Los umbrales y el orden son una heurística, no un factor probado. Si el screener falla, el
+despertar sigue sin pantalla y queda el aviso. Ninguna posición puede pasar de
+`agent.max_position_pct` (15%) de la cuenta: lo bloquea el código.
 
 `research` corre TradingAgents completo (analistas de mercado, sentimiento, noticias y
 fundamentales, debate alcista/bajista, trader y comité de riesgo) y devuelve
@@ -135,7 +146,7 @@ evaluado caminando hacia adelante del 7-ago-2024 al 12-nov-2026; costo de 2 pb p
 |---|---|---|
 | ¿Day-trading o mantener? | En SPY, la noche rinde +4.3 pb/día (t=2.3) y la sesión +3.2 (t=1.2). Cerrar todo cada día deja fuera más de la mitad. | El agente puede mantener posiciones de noche; el prompt no lo obliga a cerrar. |
 | ¿El modelo Alpha158 + Ridge de Qlib elige bien? | Sus carteras top-5/10/20 contra el universo a pesos iguales: entre −2.2% y +10.8% al año, todas con t<0.5. | No se le da al agente. |
-| ¿Y el momentum 12-1? | Top-10: +39% al año sobre el universo (t=1.7). Pero quitando las 15 acciones que hoy sabemos que ganaron (MU, PLTR, HOOD, AMD…), la ventaja cae a +2.3% (t=0.2). | Se le da como sugerencia, y su prompt le dice que no ganó de forma confiable. También es la regla contra la que se le mide. |
+| ¿Y el momentum 12-1? | Top-10: +39% al año sobre el universo (t=1.7). Pero quitando las 15 acciones que hoy sabemos que ganaron (MU, PLTR, HOOD, AMD…), la ventaja cae a +2.3% (t=0.2). | Se le da como una señal más entre sus fuentes de ideas. También es la regla contra la que se le mide. |
 | ¿Shorts? | Los 10 peor rankeados en corto: −39% al año contra el universo (t=−1.9). | Permitidos (lo pediste); el agente decide. Se apagan con `agent.allow_short: false`. |
 | ¿Stops? | En el núcleo de momentum, un stop de 2 ATR bajó la ventaja de +39% a +13% al año; uno de 3 ATR, a +28%. | El agente decide si los pone. |
 | ¿Apalancamiento? | 33 años de SPY con 6.5% de interés de margen: 1x crece 10.7% al año, 1.5x 11.3%, 2x 11.0%. La peor caída pasa de −55% a −76% y −90%. | Alpaca le da 2× de buying power; el agente decide cuánto usa. |
@@ -174,6 +185,8 @@ Abre `http://127.0.0.1:8765`. No instala nada (Python 3.9+ y git). Es de solo le
 - **¿Pasaría la prueba con dinero real?**: descuenta costos estimados (deslizamiento por orden
   e interés de margen, supuestos en `evaluation` de `config.yaml`) y compara contra un criterio
   fijado de antemano: 63 días de mercado, ganarle a SPY después de costos y alfa con t ≥ 2.
+  Cuenta desde `evaluation.start_date` (2026-11-18, cuando entró la pantalla de todo el mercado)
+  y cobra `slippage_bps_outside_extra` adicional en acciones fuera del universo.
 - **¿De dónde sale el resultado?**: beta contra SPY, la regla de momentum contra SPY, el agente
   contra la regla, Buy contra Sell de sus investigaciones y alfa, cada uno con su prueba
   estadística. Dice "muestra chica" mientras no haya datos suficientes.
