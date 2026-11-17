@@ -30,7 +30,7 @@ REPORT_RE = re.compile(r"^reports/\d{4}-\d{2}-\d{2}/[A-Z][A-Z0-9.]{0,7}\.md$")
 
 def read_json(path: Path, default=None):
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8"), parse_constant=lambda c: None)   # NaN → null: el navegador no lee NaN
     except (OSError, json.JSONDecodeError):
         return default
 

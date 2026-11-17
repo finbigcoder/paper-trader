@@ -3,6 +3,7 @@ corrida). El dashboard solo lee de ahí."""
 from __future__ import annotations
 
 import json
+import math
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -16,10 +17,21 @@ def load_json(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def finite(obj):
+    """NaN e infinitos → None: Python los escribe en el JSON, pero el navegador no puede leerlos."""
+    if isinstance(obj, float):
+        return obj if math.isfinite(obj) else None
+    if isinstance(obj, dict):
+        return {k: finite(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [finite(v) for v in obj]
+    return obj
+
+
 def save_json(path: Path, obj) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
+    path.write_text(json.dumps(finite(obj), indent=1, ensure_ascii=False, default=str), encoding="utf-8")
 
 
 def now_iso() -> str:

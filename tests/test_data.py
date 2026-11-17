@@ -100,3 +100,12 @@ def test_research_outcome_is_filled_only_after_the_horizon(tmp_path):
     assert old["fwd_ret"] == pytest.approx(c["AAA"].iloc[29] / c["AAA"].iloc[19] - 1, abs=1e-5)
     assert "fwd_ret" not in new
     assert backfill_research(tmp_path, prices, "BMK", 10) == 0          # no se recalcula
+
+
+def test_saved_json_never_contains_nan(tmp_path):
+    import json
+
+    save_json(tmp_path / "x.json", {"a": float("nan"), "b": [1.5, float("inf")], "c": {"d": float("-inf")}})
+    text = (tmp_path / "x.json").read_text()
+    assert "NaN" not in text and "Infinity" not in text
+    assert json.loads(text) == {"a": None, "b": [1.5, None], "c": {"d": None}}

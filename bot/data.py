@@ -208,7 +208,7 @@ def fetch_earnings(today: date, min_market_cap: float) -> tuple[list[dict], dict
             sym, when = str(r.get("symbol") or "").upper(), str(r.get("reporting_time") or "").lower()
             day = pd.Timestamp(r.get("report_date")).date()
             cap = float(r.get("market_cap") or 0)
-            if not re.fullmatch(r"[A-Z]{1,5}", sym) or cap < min_market_cap:
+            if not re.fullmatch(r"[A-Z]{1,5}", sym) or not cap >= min_market_cap:     # 'not >=' también descarta NaN
                 continue
             if day == today and "pre" in when:
                 out.append({"symbol": sym, "name": r.get("name"), "when": "reporta hoy antes de abrir", "market_cap": cap})
