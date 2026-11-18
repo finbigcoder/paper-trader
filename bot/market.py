@@ -102,7 +102,7 @@ class Intraday:
         today = datetime.now(NY).date()
         for s in symbols:
             try:
-                df = (raw[s] if len(symbols) > 1 else raw).dropna(how="all")
+                df = (raw[s] if len(symbols) > 1 or raw.columns.nlevels > 1 else raw).dropna(how="all")
             except KeyError:
                 continue
             if df.empty:

@@ -163,3 +163,23 @@ def test_the_agent_is_reminded_once_to_review_the_screen(tmp_path):
     desk2, llm2 = _screen_desk(tmp_path / "b"), LazyLLM()
     llm2.calls = 5                                                # nunca evalúa: se le recuerda una vez y termina
     assert run_agent(desk2, llm2)["status"] == "ok" and llm2.calls == 7 and not desk2.reviews
+
+
+def test_single_symbol_downloads_with_ticker_columns_are_read(monkeypatch):
+    import numpy as np
+    import pandas as pd
+    from datetime import date, datetime
+    from bot import market
+    idx = pd.date_range("2026-11-18 09:30", periods=3, freq="5min", tz="America/New_York")
+    raw = pd.DataFrame(np.ones((3, 5)), index=idx, columns=pd.MultiIndex.from_product([["BRBR"], ["Open", "High", "Low", "Close", "Volume"]]))
+    monkeypatch.setattr("yfinance.download", lambda *a, **k: raw)
+
+    class Fixed(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return datetime(2026, 11, 18, 10, 0, tzinfo=tz)
+    monkeypatch.setattr(market, "datetime", Fixed)
+    it = market.Intraday({"BRBR": 1.0})
+    it.load(["BRBR"])
+    assert it.summary("BRBR") and it.quote("BRBR")["as_of"] == "09:40"
+    assert screener.daily_stats(["BRBR"], date(2026, 11, 19)) == {}          # <5 días: se descarta, sin error

@@ -312,6 +312,9 @@ class Desk:
                 return None
             df = df.droplevel(1, axis=1) if hasattr(df.columns, "levels") and df.columns.nlevels > 1 else df
             df = df.rename(columns=str.lower).reset_index().rename(columns={"Date": "date"})
+            df = df[[d.date() < self.now.date() for d in df["date"]]]     # sin la barra parcial de hoy: "cierre previo" es el de ayer
+            if df.empty:
+                return None
             df["symbol"] = s
             return symbol_stats(df[["date", "symbol", "open", "high", "low", "close", "volume"]], []).get(s)
         except Exception:

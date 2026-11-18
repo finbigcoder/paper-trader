@@ -52,7 +52,7 @@ def daily_stats(symbols: list[str], today: date) -> dict[str, dict]:
     out = {}
     for s in symbols:
         try:
-            df = (raw[s] if len(symbols) > 1 else raw).dropna(subset=["Close"])
+            df = (raw[s] if len(symbols) > 1 or raw.columns.nlevels > 1 else raw).dropna(subset=["Close"])
         except KeyError:
             continue
         past = df[[d.date() < today for d in df.index]].tail(20)
