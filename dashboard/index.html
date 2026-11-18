@@ -641,7 +641,7 @@ function chip(rating, status) {
 const bps = v => v == null ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v) * 1e4, 0) + " pb";
 const pp = v => v == null ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v) * 100, 1) + " pp";
 const kv = (k, v) => el("div", { class: "kv" }, el("span", { text: k }), el("span", { text: v }));
-const TOOL_ES = { get_news: "noticias", get_chart: "gráfica", research: "investigación", place_order: "orden", set_stop: "stop", cancel_order: "cancelar", note: "nota", update_lessons: "lecciones" };
+const TOOL_ES = { review_screen: "evaluó la pantalla",  get_news: "noticias", get_chart: "gráfica", research: "investigación", place_order: "orden", set_stop: "stop", cancel_order: "cancelar", note: "nota", update_lessons: "lecciones" };
 const STATUS_ES = { ok: null, max_steps: "Se acabaron las vueltas", skipped_budget: "No pensó: sin presupuesto", aborted_budget: "Cortado por el tope de gasto", error: "Error" };
 
 function orderLine(o) {
@@ -663,7 +663,10 @@ function tickItem(t, date) {
   const say = t.final || STATUS_ES[t.status] || "(sin resumen)";
   const tools = el("div", { class: "tools" }, ...Object.entries(counts).filter(([n]) => !["place_order", "set_stop", "research"].includes(n)).map(([n, c]) => el("span", { class: "tag", text: `${TOOL_ES[n] || n}${c > 1 ? " ×" + c : ""}` })));
   const errs = (t.tools || []).filter(x => /^(Error|Alpaca rechazó|No )/.test(x.result || "")).map(x => el("div", { class: "note warn", text: `${TOOL_ES[x.name] || x.name}: ${x.result}` }));
-  return el("li", { class: "tk" + (acts.length ? "" : " quiet") },
+  const VERD = { comprar: "comprar", corto: "corto", vigilar: "vigilar", descartar: "descartar" };
+  const revs = ((t.screen || {}).reviews || []).map(r => el("div", { class: "note", text: `Pantalla · ${r.symbol}: ${VERD[r.verdict] || r.verdict}. ${r.reason}` }));
+  if (revs.length) acts.push(...revs);
+  return el("li", { class: "tk" + (acts.length - revs.length ? "" : " quiet") },
     el("div", { class: "hr" }, t.time, el("span", { class: "ses", text: SES[t.session] || t.session })),
     el("div", {}, el("p", { class: "say", text: say }), STATUS_ES[t.status] && t.final ? el("div", { class: "note warn", text: STATUS_ES[t.status] + (t.error ? ": " + t.error : "") }) : (t.status !== "ok" && t.error ? el("div", { class: "note warn", text: t.error }) : null)),
     el("div", { class: "usd", text: usd((t.cost || {}).usd, 4) }),

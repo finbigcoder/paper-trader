@@ -46,7 +46,10 @@ Finance en barras de 5 minutos; pueden ir unos minutos atrasados.
 - Ves tres fuentes de ideas: tu lista de vigilancia (cartera, momentum de Qlib y resultados), las que más \
 se mueven de tu universo de 119 grandes y una PANTALLA DE TODO EL MERCADO que el código arma en cada \
 despertar (las que más suben, bajan y se operan en EE. UU., filtradas por precio y liquidez). Ninguna \
-es una recomendación: son el lugar donde buscar. Puedes operar cualquier acción de ellas.
+es una recomendación: son el lugar donde buscar. Puedes operar cualquier acción de ellas. \
+- En cada despertar con pantalla, evalúa con review_screen al menos las primeras {must_review} (comprar, corto, \
+vigilar o descartar, con una razón concreta). Usa get_chart o get_news en las que te interesen antes de decidir. \
+No te quedes vigilando siempre las mismas dos o tres acciones: busca la mejor oportunidad del día.
 - Las de la pantalla suelen ser más chicas y volátiles: spreads más anchos, más riesgo de salto y menos \
 datos fundamentales. Ajusta el tamaño y el stop a eso, y desconfía de perseguir algo que ya se movió mucho.
 
@@ -84,6 +87,14 @@ TOOLS = [
     {"name": "note", "description": "Apunta algo para tu yo de más tarde: plan, niveles, dudas.",
      "input_schema": {"type": "object", "properties": {"text": {"type": "string"}}, "required": ["text"]}},
 ]
+REVIEW_TOOL = {"name": "review_screen",
+               "description": "Obligatoria en cada despertar con pantalla: tu veredicto sobre las primeras acciones de la PANTALLA "
+                              "DE TODO EL MERCADO. Un renglón por acción. 'comprar' o 'corto' no envía órdenes: para eso usa place_order.",
+               "input_schema": {"type": "object", "properties": {"items": {"type": "array", "items": {
+                   "type": "object", "properties": {"symbol": {"type": "string"},
+                                                    "verdict": {"type": "string", "enum": ["comprar", "corto", "vigilar", "descartar"]},
+                                                    "reason": {"type": "string"}},
+                   "required": ["symbol", "verdict", "reason"]}}}, "required": ["items"]}}
 LESSONS_TOOL = {"name": "update_lessons", "description": "Reescribe por completo tu archivo de lecciones con lo que aprendiste. Solo en el último despertar del día.",
                 "input_schema": {"type": "object", "properties": {"text": {"type": "string"}}, "required": ["text"]}}
 
@@ -121,6 +132,7 @@ class Desk:
         self.log: list[dict] = []
         self.orders: list[dict] = []
         self.notes: list[str] = []
+        self.reviews: list[dict] = []
         self.research_done: list[dict] = []
         self._analyst = None
         self.account = broker.account()
@@ -214,7 +226,28 @@ class Desk:
 
     # ── herramientas ──
     def tools(self) -> list[dict]:
-        return TOOLS + ([LESSONS_TOOL] if self.last_tick else [])
+        return TOOLS + ([REVIEW_TOOL] if self.screen else []) + ([LESSONS_TOOL] if self.last_tick else [])
+
+    def must_review(self) -> list[str]:
+        """Las primeras N de la pantalla que el agente aún no ha evaluado."""
+        n = int((self.cfg.get("screener") or {}).get("must_review", 5))
+        done = {r["symbol"] for r in self.reviews}
+        return [r["symbol"] for r in self.screen[:n] if r["symbol"] not in done]
+
+    def t_review_screen(self, items: list) -> str:
+        shown, ok = {r["symbol"] for r in self.screen}, []
+        for it in items or []:
+            s = str(it.get("symbol", "")).upper().strip()
+            v = str(it.get("verdict", "")).strip().lower()
+            if s in shown and v in ("comprar", "corto", "vigilar", "descartar") and str(it.get("reason", "")).strip():
+                self.reviews = [r for r in self.reviews if r["symbol"] != s] + [
+                    {"symbol": s, "verdict": v, "reason": str(it["reason"]).strip()[:300]}]
+                ok.append(s)
+        left = self.must_review()
+        return (f"Registrado: {', '.join(ok) or 'nada válido'}."
+                + (f" Te falta evaluar: {', '.join(left)}." if left else " Pantalla evaluada.")
+                + (" Si tu veredicto es comprar o corto, la orden va con place_order y su stop con set_stop."
+                   if any(r["verdict"] in ("comprar", "corto") for r in self.reviews if r["symbol"] in ok) else ""))
 
     def run_tool(self, name: str, args: dict) -> str:
         fn = getattr(self, f"t_{name}", None)
@@ -433,7 +466,8 @@ def run_agent(desk: Desk, llm) -> dict:
     from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
 
     model = llm.bind_tools(desk.tools())
-    messages = [SystemMessage(SYSTEM.replace("{max_pos}", f"{float(desk.agent_cfg.get('max_position_pct', 1.0)) * 100:.0f}")), HumanMessage(desk.context())]
+    messages = [SystemMessage(SYSTEM.replace("{max_pos}", f"{float(desk.agent_cfg.get('max_position_pct', 1.0)) * 100:.0f}")
+                                  .replace("{must_review}", str((desk.cfg.get("screener") or {}).get("must_review", 5)))), HumanMessage(desk.context())]
     out = {"status": "ok", "final": None, "steps": 0, "error": None}
     try:
         for _ in range(int(desk.agent_cfg["max_steps_per_tick"])):
@@ -442,6 +476,12 @@ def run_agent(desk: Desk, llm) -> dict:
             messages.append(ai)
             calls = getattr(ai, "tool_calls", None) or []
             if not calls:
+                left = desk.must_review() if hasattr(desk, "must_review") else []
+                if left and not out.get("nudged"):
+                    out["nudged"] = True              # se le recuerda una sola vez; no se le fuerza a operar
+                    messages.append(HumanMessage(f"Antes de terminar: evalúa con review_screen estas acciones de la pantalla: "
+                                                 f"{', '.join(left)}. Una razón concreta por cada una."))
+                    continue
                 out["final"] = _text(ai).strip()[:800] or None
                 break
             for tc in calls:

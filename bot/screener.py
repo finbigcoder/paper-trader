@@ -5,8 +5,9 @@ tabla enorme), así que el código hace el barrido y le pasa solo las mejores:
 
 1. Candidatas: las que más suben, las que más bajan y las más activas por volumen,
    según el screener de Alpaca (mismas llaves que la cuenta paper).
-2. Filtro de liquidez, con 20 días de barras diarias de Yahoo Finance: precio mínimo,
-   volumen medio en dólares mínimo, símbolo operable en Alpaca.
+2. Filtro: solo acciones individuales (fuera ETFs, ETNs, fondos y productos apalancados o
+   inversos, por su nombre en Alpaca), operables, con precio y volumen medio en dólares mínimos
+   (20 días de barras diarias de Yahoo Finance).
 3. Orden: tamaño del movimiento de hoy × volumen relativo (acotado). Es una heurística
    mía, no un factor probado.
 
@@ -19,6 +20,23 @@ import warnings
 from datetime import date
 
 SYMBOL_RE = re.compile(r"^[A-Z]{1,5}$")       # deja fuera warrants, units y preferentes (ABC.WS, ABC-P…)
+
+# Fondos y productos apalancados/inversos: se reconocen por el nombre que da Alpaca.
+# Sin "Trust", "Invesco" ni "Ultra" a secas: Northern Trust, Invesco Ltd. y Ultra Clean son empresas.
+FUND_RE = re.compile(r"\b(ETF|ETN|ETP|ETFS|FUND|ISHARES|SPDR|PROSHARES|DIREXION|GRANITESHARES|T-REX|TRADR|DEFIANCE|"
+                     r"YIELDMAX|ROUNDHILL|VANECK|GRAYSCALE|VANGUARD|WISDOMTREE|GLOBAL X|LEVERAGED|INVERSE|"
+                     r"ULTRAPRO|ULTRASHORT|[1-9](\.\d+)?X|DAILY TARGET)\b", re.I)
+# Por si falla la lista de Alpaca: los más comunes, a mano.
+KNOWN_FUNDS = {"SPY", "QQQ", "IWM", "DIA", "TQQQ", "SQQQ", "SOXL", "SOXS", "SOXX", "SPXL", "SPXS", "SPXU", "UPRO", "TNA",
+               "TZA", "UVXY", "SVXY", "VXX", "TLT", "TMF", "TMV", "HYG", "LQD", "GLD", "SLV", "GDX", "GDXJ", "NUGT", "DUST",
+               "JNUG", "JDST", "GDXU", "GDXD", "XLE", "XLF", "XLK", "XLV", "XLY", "XLP", "XLI", "XLU", "XLB", "XLC",
+               "XLRE", "KRE", "XBI", "IBIT", "BITO", "ETHA", "FBTC", "GBTC", "NVDL", "NVD", "TSLL", "TSLQ", "MSTU",
+               "MSTZ", "PLTD", "KORU", "SPDN", "RWM", "SH", "PSQ", "BNDX", "BND", "AGG", "EEM", "EFA", "FXI", "KWEB",
+               "ARKK", "USO", "UNG", "BOIL", "KOLD", "LABU", "LABD", "FNGU", "FNGD", "YINN", "YANG", "UCO", "SCO"}
+
+
+def is_fund(symbol: str, name: str | None) -> bool:
+    return symbol in KNOWN_FUNDS or bool(name and FUND_RE.search(name))
 
 
 def daily_stats(symbols: list[str], today: date) -> dict[str, dict]:
@@ -46,13 +64,17 @@ def daily_stats(symbols: list[str], today: date) -> dict[str, dict]:
     return out
 
 
-def prefilter(cands: list[dict], daily: dict[str, dict], tradable: set[str] | None, cfg: dict,
+def prefilter(cands: list[dict], daily: dict[str, dict], tradable, cfg: dict,
               exclude: set[str]) -> dict[str, dict]:
-    """Junta las listas del screener y deja solo lo líquido y operable."""
+    """Junta las listas del screener y deja solo acciones individuales, líquidas y operables.
+    `tradable` es símbolo → nombre (o un set sin nombres, o None si no se pudo leer)."""
+    names = tradable if isinstance(tradable, dict) else {}
     merged: dict[str, dict] = {}
     for c in cands:
         s = str(c.get("symbol", "")).upper()
         if not SYMBOL_RE.match(s) or s in exclude or (tradable is not None and s not in tradable):
+            continue
+        if cfg.get("exclude_funds", True) and is_fund(s, names.get(s)):
             continue
         m = merged.setdefault(s, {"symbol": s, "sources": []})
         if c.get("source") not in m["sources"]:
@@ -96,7 +118,8 @@ def candidates(cfg: dict, broker, today: date, exclude: set[str]) -> tuple[dict[
         tradable = None
         warns.append(f"no se pudo leer la lista de activos operables: {type(exc).__name__}"[:200])
     syms = sorted({str(c.get("symbol", "")).upper() for c in cands} - exclude)
-    syms = [s for s in syms if SYMBOL_RE.match(s) and (tradable is None or s in tradable)]
+    syms = [s for s in syms if SYMBOL_RE.match(s) and (tradable is None or s in tradable)
+            and not (sc.get("exclude_funds", True) and is_fund(s, (tradable or {}).get(s) if isinstance(tradable, dict) else None))]
     try:
         daily = daily_stats(syms, today)
     except Exception as exc:

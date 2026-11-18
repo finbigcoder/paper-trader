@@ -80,12 +80,13 @@ class AlpacaPaperBroker:
         out += [{"symbol": a.symbol, "source": "activa", "volume": float(a.volume)} for a in act.most_actives]
         return out
 
-    def tradable_symbols(self) -> set[str]:
+    def tradable_symbols(self) -> dict[str, str]:
+        """símbolo → nombre de todo lo activo y operable en Alpaca."""
         from alpaca.trading.enums import AssetClass, AssetStatus
         from alpaca.trading.requests import GetAssetsRequest
 
         assets = self.client.get_all_assets(GetAssetsRequest(status=AssetStatus.ACTIVE, asset_class=AssetClass.US_EQUITY))
-        return {a.symbol for a in assets if a.tradable}
+        return {a.symbol: a.name or "" for a in assets if a.tradable}
 
     def open_orders(self) -> list[dict]:
         from alpaca.trading.enums import QueryOrderStatus

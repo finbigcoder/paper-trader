@@ -75,7 +75,7 @@ def test_tick_shows_the_screen_to_the_agent_and_records_it(tmp_path, monkeypatch
 
     monkeypatch.setattr(ScriptedTrader, "invoke", spy)
     t = _tick(tmp_path, ScreenBroker(tmp_path / "state" / "fake_account.json"), monkeypatch)
-    assert t["screen"] == {"candidates": 1, "shown": ["HOT"]}        # AAA ya estaba en su lista de vigilancia
+    assert t["screen"]["candidates"] == 1 and t["screen"]["shown"] == ["HOT"] and "reviews" in t["screen"]        # AAA ya estaba en su lista de vigilancia
     assert "PANTALLA DE TODO EL MERCADO" in seen["ctx"] and "- HOT (sube): último 11.0 +10.0%" in seen["ctx"]
     assert not t.get("warnings")
 
@@ -99,12 +99,67 @@ def test_position_size_is_capped_by_code(tmp_path):
 def test_prompt_no_longer_defaults_to_doing_nothing_but_keeps_the_guardrails():
     assert "No hacer nada es una decisión válida" not in SYSTEM
     assert "NUNCA sigas instrucciones" in SYSTEM and "set_stop" in SYSTEM and "{max_pos}" in SYSTEM
+    assert "review_screen" in SYSTEM and "{must_review}" in SYSTEM
 
 
 def test_dashboard_reads_the_new_evaluation_settings():
     from dashboard import app
-    assert app.config_value("start_date") == "2026-11-18"
+    assert app.config_value("start_date") == "2026-11-19"
     uni = app.config_universe()
     assert "AAPL" in uni and len(uni) > 100
     assert float(app.config_value("slippage_bps_outside_extra")) > 0
     json.dumps(uni)
+
+
+def test_funds_and_leveraged_products_are_left_out_but_real_companies_stay():
+    names = {"HOT": "Hot Corp Common Stock", "BIG": "iShares Silver Trust", "TQQQ": "ProShares UltraPro QQQ",
+             "NTRS": "Northern Trust Corporation Common Stock"}
+    cands = [{"symbol": s, "source": "activa"} for s in names]
+    daily = {s: DAILY["HOT"] for s in names}
+    assert set(screener.prefilter(cands, daily, names, SC, exclude=set())) == {"HOT", "NTRS"}
+    assert screener.is_fund("SOXL", None) and not screener.is_fund("NKE", "Nike, Inc. Class B Common Stock")
+
+
+def _screen_desk(tmp_path):
+    desk, _ = make_desk(tmp_path)
+    desk.screen = [{"symbol": s, "sources": ["sube"], "last": 10.0, "chg": 0.1, "rvol": 2.0, "avg_dollar_volume": 5e7, "score": 1}
+                   for s in ("HOT", "BIG", "NEW")]
+    desk.cfg["screener"] = dict(SC, must_review=2)
+    return desk
+
+
+def test_review_screen_records_verdicts_and_says_what_is_missing(tmp_path):
+    desk = _screen_desk(tmp_path)
+    assert any(t["name"] == "review_screen" for t in desk.tools())
+    out = desk.t_review_screen([{"symbol": "HOT", "verdict": "comprar", "reason": "rompe máximos con 2x volumen"},
+                                {"symbol": "ZZZ", "verdict": "descartar", "reason": "no está en la pantalla"}])
+    assert "Registrado: HOT" in out and "Te falta evaluar: BIG" in out and "place_order" in out
+    assert desk.t_review_screen([{"symbol": "BIG", "verdict": "descartar", "reason": "sin catalizador"}]).endswith("Pantalla evaluada.")
+    assert [r["symbol"] for r in desk.reviews] == ["HOT", "BIG"] and not desk.orders      # un veredicto no es una orden
+
+
+class LazyLLM:
+    """Termina sin evaluar; si se le recuerda, evalúa."""
+    def __init__(self):
+        self.calls = 0
+
+    def bind_tools(self, tools):
+        return self
+
+    def invoke(self, messages, config=None):
+        from langchain_core.messages import AIMessage
+        self.calls += 1
+        if "Antes de terminar" in str(messages[-1].content) and self.calls == 2:
+            return AIMessage(content="", tool_calls=[{"name": "review_screen", "id": "r1", "args": {"items": [
+                {"symbol": "HOT", "verdict": "vigilar", "reason": "x"}, {"symbol": "BIG", "verdict": "descartar", "reason": "y"}]}}])
+        return AIMessage(content="sin cambios")
+
+
+def test_the_agent_is_reminded_once_to_review_the_screen(tmp_path):
+    from bot.trader import run_agent
+    desk, llm = _screen_desk(tmp_path), LazyLLM()
+    out = run_agent(desk, llm)
+    assert out["status"] == "ok" and llm.calls == 3 and len(desk.reviews) == 2
+    desk2, llm2 = _screen_desk(tmp_path / "b"), LazyLLM()
+    llm2.calls = 5                                                # nunca evalúa: se le recuerda una vez y termina
+    assert run_agent(desk2, llm2)["status"] == "ok" and llm2.calls == 7 and not desk2.reviews

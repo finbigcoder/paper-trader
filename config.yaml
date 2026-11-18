@@ -59,6 +59,8 @@ screener:
   size: 30                    # cuántas ve el agente en cada despertar
   min_price: 5                # USD
   min_dollar_volume: 20000000 # volumen medio diario en dólares (20 días)
+  exclude_funds: true         # fuera ETFs, ETNs, fondos y apalancados/inversos: solo acciones individuales
+  must_review: 5              # el agente debe dar un veredicto sobre las primeras N en cada despertar
 
 # ── La prueba antes de pensar en dinero real ────────────────
 # Se fija ANTES de ver resultados; no la muevas para que el agente "pase".
@@ -67,7 +69,7 @@ evaluation:
   slippage_bps_regular: 5      # costo por orden en horario regular (spread + deslizamiento), en puntos base
   slippage_bps_extended: 25    # lo mismo en pre y post-market, donde hay menos liquidez
   slippage_bps_outside_extra: 10  # costo adicional en acciones fuera del universo (más chicas, spreads más anchos). Supuesto.
-  start_date: "2026-11-18"     # la prueba cuenta desde aquí: ese día entró la estrategia con pantalla de todo el mercado
+  start_date: "2026-11-19"     # la prueba cuenta desde aquí: primer día completo con pantalla sin ETFs y evaluación obligatoria
   margin_rate: 0.065           # interés anual sobre el efectivo prestado
   min_days: 63                 # ~3 meses de mercado antes de leer el resultado
   min_t: 2.0                   # alfa contra SPY, después de costos, distinguible del azar

@@ -110,6 +110,7 @@ def run_tick(*, cfg: dict, sd: Path, broker, now: datetime, prep: dict, intraday
     research_usd = sum(r["usd"] for r in desk.research_done)
     ledger.add({"date": today.isoformat(), "ticker": None, "kind": "tick", "usd": round(tracker.total_usd - research_usd, 6),
                 "aborted": tick["status"] not in ("ok", "max_steps")})
+    tick["screen"]["reviews"] = desk.reviews
     tick.update(tools=desk.log, orders=desk.orders, notes=desk.notes, research=desk.research_done,
                 cost={"usd": round(tracker.total_usd, 6), "research_usd": round(research_usd, 6)},
                 account={k: round(v, 2) for k, v in broker.account().items() if v is not None}, positions=len(broker.positions()))

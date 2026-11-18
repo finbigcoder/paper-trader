@@ -29,10 +29,13 @@ decidir, apuntar su plan, revisar al cierre qué funcionó y recordarlo al día 
 despertar el código pide al screener de Alpaca las 50 que más suben, las 50 que más bajan y las 50
 más activas por volumen de todo EE. UU. (mismas llaves). Quita warrants y símbolos raros, lo que no
 se puede operar en Alpaca, lo de menos de $5 y lo de menos de $20M de volumen diario promedio
-(20 días de Yahoo Finance). Ordena por |cambio de hoy| × volumen relativo (acotado entre 0.2x y 5x)
+(20 días de Yahoo Finance). También quita ETFs, ETNs, fondos y productos apalancados o inversos
+(por su nombre en Alpaca y una lista fija): solo acciones individuales. Ordena por |cambio de hoy| × volumen relativo (acotado entre 0.2x y 5x)
 y le pasa al agente las 30 primeras. El LLM no lee miles de acciones: eso sería caro y ordenaría
-mal. Los umbrales y el orden son una heurística, no un factor probado. Si el screener falla, el
-despertar sigue sin pantalla y queda el aviso. Ninguna posición puede pasar de
+mal. Los umbrales y el orden son una heurística, no un factor probado. En cada despertar el agente debe dar un veredicto (comprar, corto,
+vigilar o descartar, con razón) sobre las 5 primeras con `review_screen`; si termina sin hacerlo, el
+código se lo recuerda una vez. El veredicto no es una orden y se ve en el dashboard. Si el screener
+falla, el despertar sigue sin pantalla y queda el aviso. Ninguna posición puede pasar de
 `agent.max_position_pct` (15%) de la cuenta: lo bloquea el código.
 
 `research` corre TradingAgents completo (analistas de mercado, sentimiento, noticias y
@@ -185,7 +188,7 @@ Abre `http://127.0.0.1:8765`. No instala nada (Python 3.9+ y git). Es de solo le
 - **¿Pasaría la prueba con dinero real?**: descuenta costos estimados (deslizamiento por orden
   e interés de margen, supuestos en `evaluation` de `config.yaml`) y compara contra un criterio
   fijado de antemano: 63 días de mercado, ganarle a SPY después de costos y alfa con t ≥ 2.
-  Cuenta desde `evaluation.start_date` (2026-11-18, cuando entró la pantalla de todo el mercado)
+  Cuenta desde `evaluation.start_date` (2026-11-19, primer día completo con la pantalla actual)
   y cobra `slippage_bps_outside_extra` adicional en acciones fuera del universo.
 - **¿De dónde sale el resultado?**: beta contra SPY, la regla de momentum contra SPY, el agente
   contra la regla, Buy contra Sell de sus investigaciones y alfa, cada uno con su prueba
