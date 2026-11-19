@@ -2426,7 +2426,136 @@
     "last_equity": 100000.0
    },
    "positions": 0
+  },
+  {
+   "at": "2026-11-19T06:08:22-05:00",
+   "time": "06:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.3295,
+    "limit": 2.1953,
+    "ticks_left": 28,
+    "est_tick": 0.005,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "CIFR",
+     "IREN",
+     "CRWV",
+     "SOFI",
+     "NOK",
+     "AMZN",
+     "SPCX",
+     "PATH",
+     "NVDA",
+     "SNAP",
+     "CLRO",
+     "AAL",
+     "BAC",
+     "RIG",
+     "AES"
+    ],
+    "reviews": [
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+6.2% en pre-market sin volumen relevante (0.0x) y sin tesis; no persigo."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+5.7% en pre-market sin volumen (0.0x); movimiento de pre sin confirmación."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Liquidez alta ($3.7B/día) y +5.6% en pre; solo entro si en la primera hora regular hay ruptura confirmada con volumen."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "+2.5% en pre sin volumen relativo ni catalizador; sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+2.5% en pre sin volumen ni tesis; sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pre-market: TXN ~299, PANW +10% sin volumen y BABA/PDD/NTES reportan hoy. Descarté CIFR, IREN, SOFI y NOK por movimientos sin volumen ni tesis.\nNo envié órdenes nuevas. La compra límite de 52 TXN a 284 sigue viva, poco probable que llene en pre; si llena, pongo el stop en 277 al despertar.\nVigilo en la primera hora regular: ruptura con volumen en CRWV, gap con volumen en BABA/PDD/NTES y la reacción de semis (MU, MRVL, INTC, AMD) sin entrar sin setup.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+6.2% en pre-market sin volumen relevante (0.0x) y sin tesis; no persigo."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+5.7% en pre-market sin volumen (0.0x); movimiento de pre sin confirmación."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Liquidez alta ($3.7B/día) y +5.6% en pre; solo entro si en la primera hora regular hay ruptura confirmada con volumen."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "+2.5% en pre sin volumen relativo ni catalizador; sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+2.5% en pre sin volumen ni tesis; sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: CIFR, IREN, CRWV, SOFI, NOK. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "19-nov 06:08 pre: sin cambios en órdenes. Orden TXN 52 a 284 (ext) viva, precio ~299; si llena, poner stop 277 en el primer despertar regular. Al abrir: CRWV solo con ruptura y volumen; BABA/PDD/NTES solo con gap y volumen en la primera hora; MU/MRVL/INTC/AMD sin plan salvo ruptura confirmada. Descartados: CIFR, IREN, SOFI, NOK."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "19-nov 06:08 pre: sin cambios en órdenes. Orden TXN 52 a 284 (ext) viva, precio ~299; si llena, poner stop 277 en el primer despertar regular. Al abrir: CRWV solo con ruptura y volumen; BABA/PDD/NTES solo con gap y volumen en la primera hora; MU/MRVL/INTC/AMD sin plan salvo ruptura confirmada. Descartados: CIFR, IREN, SOFI, NOK."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.00247,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.00247,
+      "calls": 2,
+      "tokens": 19740
+     }
+    }
+   },
+   "account": {
+    "equity": 100000.0,
+    "cash": 100000.0,
+    "buying_power": 385231.99,
+    "last_equity": 100000.0
+   },
+   "positions": 0
   }
  ],
- "spent_usd": 0.012579
+ "spent_usd": 0.015049
 }
