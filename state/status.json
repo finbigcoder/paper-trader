@@ -1,11 +1,6 @@
 {
  "setup": "complete",
- "missing": [
-  "ALPACA_API_KEY",
-  "ALPACA_SECRET_KEY",
-  "ANTHROPIC_API_KEY"
- ],
- "updated_at": "2026-11-19T00:39:04+00:00",
- "last_tick": "2026-11-18T19:38:39-05:00",
+ "updated_at": "2026-11-19T09:10:43+00:00",
+ "last_tick": "2026-11-19T04:08:21-05:00",
  "snapshot_at": "2026-11-19T08:48:15+00:00"
 }
