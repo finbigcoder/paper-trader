@@ -2555,7 +2555,236 @@
     "last_equity": 100000.0
    },
    "positions": 0
+  },
+  {
+   "at": "2026-11-19T06:38:32-05:00",
+   "time": "06:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.3268,
+    "limit": 2.1995,
+    "ticks_left": 27,
+    "est_tick": 0.0049,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "CIFR",
+     "IREN",
+     "CRWV",
+     "CLRO",
+     "SPCX",
+     "NOK",
+     "SNAP",
+     "AMZN",
+     "SOFI",
+     "NVDA",
+     "PATH",
+     "RIG",
+     "AAL",
+     "BAC",
+     "AES"
+    ],
+    "reviews": [
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+6.4% en pre-market sin volumen relativo ni tesis; no persigo."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+6.3% en pre-market sin volumen relativo ni tesis; no persigo."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "+6.3% en pre sin volumen; solo me interesa una ruptura confirmada con volumen en la primera hora regular."
+     },
+     {
+      "symbol": "CLRO",
+      "verdict": "descartar",
+      "reason": "Liquidez baja ($62M/día) y movimiento de +2.9% sin tesis."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "vigilar",
+      "reason": "Liquidez alta, +2.7% en pre sin volumen relativo; sin plan hasta ver setup en regular."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+2.6% en pre sin volumen ni tesis."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "+2.6% en pre sin volumen ni tesis."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "+2.4% en pre; sin setup, solo si rompe con volumen en regular."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "+2.4% en pre sin volumen ni tesis."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "+2.4% en pre; sin setup, vigilar la reacción de semis en la apertura."
+     },
+     {
+      "symbol": "PATH",
+      "verdict": "descartar",
+      "reason": "+2.0% en pre sin volumen ni tesis."
+     },
+     {
+      "symbol": "RIG",
+      "verdict": "descartar",
+      "reason": "+1.6% en pre; movimiento pequeño sin tesis."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "+1.3% en pre; movimiento pequeño sin tesis."
+     },
+     {
+      "symbol": "BAC",
+      "verdict": "descartar",
+      "reason": "+0.8% en pre; sin tesis."
+     },
+     {
+      "symbol": "AES",
+      "verdict": "descartar",
+      "reason": "-0.1% y volumen anómalo en lecciones previas; sin tesis."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Pre-market 06:38: no hay setup con riesgo definido. Revisé la pantalla completa: CIFR, IREN, CLRO, NOK, SNAP, SOFI, PATH, RIG, AAL, BAC y AES quedan descartados por movimiento sin volumen o sin tesis; CRWV, SPCX, AMZN y NVDA quedan en vigilar.\nNo envié órdenes nuevas. La compra límite de 52 TXN a 284 sigue viva con precio ~299, así que es poco probable que llene en pre; si llena, pongo el stop en 277 en el primer despertar regular.\nAl abrir vigilo: ruptura con volumen en CRWV/SPCX, gap con volumen en BABA/PDD/NTES tras sus reportes, y la reacción de semis (MU, MRVL, INTC, AMD) sin entrar sin setup.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+6.4% en pre-market sin volumen relativo ni tesis; no persigo."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+6.3% en pre-market sin volumen relativo ni tesis; no persigo."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "+6.3% en pre sin volumen; solo me interesa una ruptura confirmada con volumen en la primera hora regular."
+       },
+       {
+        "symbol": "CLRO",
+        "verdict": "descartar",
+        "reason": "Liquidez baja ($62M/día) y movimiento de +2.9% sin tesis."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "vigilar",
+        "reason": "Liquidez alta, +2.7% en pre sin volumen relativo; sin plan hasta ver setup en regular."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+2.6% en pre sin volumen ni tesis."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "+2.6% en pre sin volumen ni tesis."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "+2.4% en pre; sin setup, solo si rompe con volumen en regular."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "+2.4% en pre sin volumen ni tesis."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "+2.4% en pre; sin setup, vigilar la reacción de semis en la apertura."
+       },
+       {
+        "symbol": "PATH",
+        "verdict": "descartar",
+        "reason": "+2.0% en pre sin volumen ni tesis."
+       },
+       {
+        "symbol": "RIG",
+        "verdict": "descartar",
+        "reason": "+1.6% en pre; movimiento pequeño sin tesis."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "+1.3% en pre; movimiento pequeño sin tesis."
+       },
+       {
+        "symbol": "BAC",
+        "verdict": "descartar",
+        "reason": "+0.8% en pre; sin tesis."
+       },
+       {
+        "symbol": "AES",
+        "verdict": "descartar",
+        "reason": "-0.1% y volumen anómalo en lecciones previas; sin tesis."
+       }
+      ]
+     },
+     "result": "Registrado: CIFR, IREN, CRWV, CLRO, SPCX, NOK, SNAP, AMZN, SOFI, NVDA, PATH, RIG, AAL, BAC, AES. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "19-nov 06:38 pre: sin cambios en órdenes. TXN orden 52 a 284 (ext) viva, precio ~299, poco probable que llene. Si llena: poner stop 277 en el primer despertar regular. Al abrir: CRWV/SPCX solo con ruptura y volumen en regular; BABA/PDD/NTES solo con gap y volumen en la primera hora; MU/MRVL/INTC/AMD sin plan salvo ruptura confirmada. Pantalla revisada: descartados CIFR, IREN, CLRO, NOK, SNAP, SOFI, PATH, RIG, AAL, BAC, AES; vigilar CRWV, SPCX, AMZN, NVDA."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "19-nov 06:38 pre: sin cambios en órdenes. TXN orden 52 a 284 (ext) viva, precio ~299, poco probable que llene. Si llena: poner stop 277 en el primer despertar regular. Al abrir: CRWV/SPCX solo con ruptura y volumen en regular; BABA/PDD/NTES solo con gap y volumen en la primera hora; MU/MRVL/INTC/AMD sin plan salvo ruptura confirmada. Pantalla revisada: descartados CIFR, IREN, CLRO, NOK, SNAP, SOFI, PATH, RIG, AAL, BAC, AES; vigilar CRWV, SPCX, AMZN, NVDA."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.002993,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002993,
+      "calls": 2,
+      "tokens": 22051
+     }
+    }
+   },
+   "account": {
+    "equity": 100000.0,
+    "cash": 100000.0,
+    "buying_power": 385231.99,
+    "last_equity": 100000.0
+   },
+   "positions": 0
   }
  ],
- "spent_usd": 0.015049
+ "spent_usd": 0.018042
 }
