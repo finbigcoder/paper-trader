@@ -120,6 +120,7 @@ def run_tick(*, cfg: dict, sd: Path, broker, now: datetime, prep: dict, intraday
     save_json(day_path(sd, today), day)
     write_snapshot(sd, broker, now.isoformat(timespec="seconds"))
     status = load_json(sd / "status.json", {})
+    status.pop("missing", None)          # restos de cuando faltaban llaves
     status.update(setup="complete", last_tick=tick["at"], updated_at=now_iso())
     save_json(sd / "status.json", status)
     log(f"listo: {len(desk.orders)} órdenes, {len(desk.research_done)} investigaciones, ${tracker.total_usd:.4f}")

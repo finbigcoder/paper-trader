@@ -250,3 +250,54 @@ def test_a_month_of_ticks_never_exceeds_the_cap(tmp_path):
     spent = sum(e["usd"] for e in entries if e["date"].startswith("2026-12"))
     assert 1.5 < spent <= 3.0
     assert sum(e["kind"] == "research" for e in entries) >= 10              # el presupuesto también alcanza para investigar
+
+
+# ── entradas con stop pegado (OTO) ──
+def test_a_resting_limit_entry_carries_its_stop_and_survives_the_night(tmp_path):
+    desk, broker = make_desk(tmp_path, when=at(10))
+    assert desk.t_place_order("AAA", "buy", 10, "x", limit_price=99, stop_price=99.5).startswith("Error: el stop de una compra")
+    out = desk.t_place_order("AAA", "buy", 10, "retroceso a soporte", limit_price=98, stop_price=95)
+    assert "pegado su stop en 95.00" in out and not broker.positions()
+    assert {o["status"] for o in broker.open_orders()} == {"accepted", "held"}       # entrada viva + stop esperando
+    broker.close_day(MONDAY)                                                       # GTC: no vence al cierre
+    broker.set_market({"AAA": 97.5}, "regular", at(10, d=MONDAY + timedelta(days=1)).isoformat())
+    assert broker.positions()["AAA"]["qty"] == 10
+    stops = [o for o in broker.open_orders() if o["type"] == "stop"]
+    assert len(stops) == 1 and stops[0]["stop_price"] == 95 and stops[0]["status"] == "accepted"
+    broker.set_market({"AAA": 94.0}, "regular", at(11, d=MONDAY + timedelta(days=1)).isoformat())
+    assert not broker.positions()                                                  # el stop cerró sin que el agente despertara
+
+
+def test_a_premarket_entry_gets_its_stop_on_the_next_wake(tmp_path):
+    desk, broker = make_desk(tmp_path, when=at(7))
+    out = desk.t_place_order("AAA", "buy", 10, "gap", limit_price=99, stop_price=96)
+    assert "siguiente despertar" in out
+    broker.set_market({"AAA": 98.5}, "pre", at(7, 20).isoformat())                 # se llena entre despertares
+    later, _ = make_desk(tmp_path, when=at(7, 38), broker=broker)
+    assert any("puse el stop que pediste en 96" in a for a in later.auto_actions)
+    assert [o["stop_price"] for o in broker.open_orders() if o["type"] == "stop"] == [96]
+    assert "LO QUE HIZO EL CÓDIGO" in later.context()
+    again, _ = make_desk(tmp_path, when=at(8, 8), broker=broker)
+    assert not again.auto_actions                                                  # una sola vez
+
+
+def test_a_position_without_stop_is_flagged(tmp_path):
+    desk, broker = make_desk(tmp_path, when=at(10))
+    desk.t_place_order("BBB", "buy", 10, "x")
+    fresh, _ = make_desk(tmp_path, when=at(10, 30), broker=broker)
+    assert "NINGUNO (ponlo con set_stop" in fresh.context()
+
+
+def test_idle_reminder_only_when_flat_in_regular_hours(tmp_path):
+    desk, _ = make_desk(tmp_path, when=at(10))
+    assert "no tienes posiciones ni órdenes de entrada" in desk.idle_reminder()
+    pre, _ = make_desk(tmp_path / "p", when=at(7))
+    assert pre.idle_reminder() is None
+    desk.t_place_order("AAA", "buy", 5, "x", limit_price=95, stop_price=90)
+    assert desk.idle_reminder() is None
+
+
+def test_a_cut_off_tool_call_gets_a_clear_message(tmp_path):
+    desk, _ = make_desk(tmp_path, when=at(19, 38), last=True)
+    assert "se cortó" in desk.run_tool("update_lessons", {})
+    assert "SYSTEM" and "stop_price" in SYSTEM

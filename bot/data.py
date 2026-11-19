@@ -111,8 +111,10 @@ def clean_prices(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
        cierre del día previo.
     2. Saltos sospechosos: un movimiento de más de 45% en un día con volumen menor a 2× su
        promedio suele ser una escisión o un error, no una noticia (HON −51% el 29-jun-2026
-       con 2.6× su volumen; las noticias reales traen mucho más: MRNA +177% con 37×). No se
-       borran; se reportan para que se vean en el dashboard.
+       con 2.6× su volumen; las noticias reales traen mucho más: MRNA +177% con 37×). Se
+       reescala la historia previa al salto para que ese día no cuente como retorno, igual
+       que hace research/evaluate.py (HON fue la escisión de Honeywell Aerospace con un
+       reverse split 1:2; sin el ajuste su momentum 12-1 y sus retornos salían falsos).
     """
     df = df.sort_values(["symbol", "date"]).reset_index(drop=True)
     g = df.groupby("symbol", sort=False)
@@ -125,6 +127,13 @@ def clean_prices(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     ret = df["close"] / g["close"].shift() - 1
     vol_ratio = df["volume"] / g["volume"].transform(lambda v: v.shift().rolling(20, min_periods=5).mean())
     sus = df[(ret.abs() > 0.45) & (vol_ratio < 4)]
+    if not sus.empty:
+        df = df.copy()
+        df[["open", "high", "low", "close"]] = df[["open", "high", "low", "close"]].astype(float)
+        for i, r in sus.iterrows():
+            k = 1 + float(ret[i])
+            before = (df["symbol"] == r.symbol) & (df["date"] < r.date)
+            df.loc[before, ["open", "high", "low", "close"]] *= k
     report = {"dropped_duplicate_dates": [d.strftime("%Y-%m-%d") for d in dup_dates],
               "suspicious_moves": [{"date": r.date.strftime("%Y-%m-%d"), "symbol": r.symbol,
                                     "ret": round(float(ret[i]), 4)} for i, r in sus.iterrows()]}

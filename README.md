@@ -38,6 +38,15 @@ código se lo recuerda una vez. El veredicto no es una orden y se ve en el dashb
 falla, el despertar sigue sin pantalla y queda el aviso. Ninguna posición puede pasar de
 `agent.max_position_pct` (15%) de la cuenta: lo bloquea el código.
 
+**Entradas con stop pegado.** `place_order` acepta `stop_price` al abrir una posición. En horario
+regular va como orden OTO de Alpaca, GTC: la entrada puede esperar su precio entre despertares
+y, en cuanto se llena, su stop ya está activo (las patas de una OTO heredan el GTC de la madre). En
+pre/post-market Alpaca no acepta OTO: el stop pedido se guarda en `state/agent/pending_stops.json`
+y el código lo pone al siguiente despertar si la entrada ya se llenó. Una posición sin stop aparece
+marcada en el contexto del agente. Si en horario regular termina un despertar sin posiciones ni
+órdenes de entrada, el código le pide una vez que deje sus niveles como órdenes o diga por qué
+ningún candidato merece una posición chica; no se le obliga a operar.
+
 `research` corre TradingAgents completo (analistas de mercado, sentimiento, noticias y
 fundamentales, debate alcista/bajista, trader y comité de riesgo) y devuelve
 Buy/Overweight/Hold/Underweight/Sell con el razonamiento. Es lo caro: máximo 2 por despertar.

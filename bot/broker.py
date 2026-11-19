@@ -99,20 +99,29 @@ class AlpacaPaperBroker:
                 for o in self.client.get_orders(GetOrdersRequest(status=QueryOrderStatus.OPEN, limit=200))]
 
     # ── órdenes ──
-    def place(self, symbol: str, qty: int, limit_price: float | None = None, extended: bool = False) -> dict:
+    def place(self, symbol: str, qty: int, limit_price: float | None = None, extended: bool = False,
+              stop_loss: float | None = None) -> dict:
         """``qty`` con signo (negativo = vender). Sin precio límite = a mercado (solo en
-        horario regular). En pre/post-market debe llevar límite y ``extended=True``."""
-        from alpaca.trading.enums import OrderSide, TimeInForce
-        from alpaca.trading.requests import LimitOrderRequest, MarketOrderRequest
+        horario regular). En pre/post-market debe llevar límite y ``extended=True``.
+
+        Con ``stop_loss`` (solo en horario regular) va como OTO: la entrada lleva pegado su
+        stop, que Alpaca activa en cuanto se llena. Las patas de una OTO heredan el
+        time-in-force de la madre, así que va GTC: el stop sigue vivo de noche y la entrada
+        limitada espera su precio hasta que se llene o el agente la cancele."""
+        from alpaca.trading.enums import OrderClass, OrderSide, TimeInForce
+        from alpaca.trading.requests import LimitOrderRequest, MarketOrderRequest, StopLossRequest
 
         side = OrderSide.BUY if qty > 0 else OrderSide.SELL
+        kw = {"symbol": symbol, "qty": abs(int(qty)), "side": side, "time_in_force": TimeInForce.DAY}
+        if stop_loss is not None and not extended:
+            kw.update(time_in_force=TimeInForce.GTC, order_class=OrderClass.OTO,
+                      stop_loss=StopLossRequest(stop_price=round(float(stop_loss), 2)))
         if limit_price is None:
-            req = MarketOrderRequest(symbol=symbol, qty=abs(int(qty)), side=side, time_in_force=TimeInForce.DAY)
+            req = MarketOrderRequest(**kw)
         else:
-            req = LimitOrderRequest(symbol=symbol, qty=abs(int(qty)), side=side, time_in_force=TimeInForce.DAY,
-                                    limit_price=round(float(limit_price), 2), extended_hours=bool(extended))
+            req = LimitOrderRequest(**kw, limit_price=round(float(limit_price), 2), extended_hours=bool(extended))
         o = self.client.submit_order(req)
-        return {"id": str(o.id), "status": _val(o.status)}
+        return {"id": str(o.id), "status": _val(o.status), "attached_stop": kw.get("order_class") == OrderClass.OTO}
 
     def place_stop(self, symbol: str, qty: int, stop_price: float) -> dict:
         """Stop GTC que cubre ``qty`` (con signo de la orden de salida). Solo se activa en
@@ -221,6 +230,9 @@ class FakeBroker:
             pos["qty"] = new
             self.state["positions"][sym] = pos
         o["status"], o["filled_avg_price"] = "filled", round(px, 4)
+        for child in self.state["orders"]:          # OTO: el stop pegado se activa al llenarse la entrada
+            if child.get("parent") == o["id"] and child["status"] == "held":
+                child["status"] = "accepted"
         self.state["fills"].append({"symbol": sym, "side": "buy" if q > 0 else "sell", "qty": abs(q), "price": round(px, 4),
                                     "at": self.state["clock"], "id": o["id"]})
 
@@ -242,9 +254,9 @@ class FakeBroker:
 
     def open_orders(self) -> list[dict]:
         return [{k: o.get(k) for k in ("id", "symbol", "side", "type", "qty", "limit_price", "stop_price", "status",
-                                         "extended_hours", "submitted_at")} for o in self.state["orders"] if o["status"] == "accepted"]
+                                         "extended_hours", "submitted_at")} for o in self.state["orders"] if o["status"] in ("accepted", "held")]
 
-    def _submit(self, symbol, qty, typ, limit_price=None, stop_price=None, extended=False) -> dict:
+    def _submit(self, symbol, qty, typ, limit_price=None, stop_price=None, extended=False, stop_loss=None) -> dict:
         session = self.state["session"]
         if typ == "market" and session != "regular":
             raise RuntimeError("market orders are not accepted outside regular trading hours")
@@ -265,21 +277,32 @@ class FakeBroker:
         self.state["next_id"] += 1
         o = {"id": oid, "symbol": symbol, "side": "buy" if qty > 0 else "sell", "type": typ, "qty": int(qty),
              "limit_price": limit_price, "stop_price": stop_price, "status": "accepted", "extended_hours": bool(extended),
-             "submitted_at": self.state["clock"]}
+             "submitted_at": self.state["clock"], "tif": "day"}
         self.state["orders"].append(o)
+        attached = stop_loss is not None and not extended and typ != "stop"
+        if attached:                                          # OTO: GTC, con su stop esperando a que se llene
+            o["tif"] = "gtc"
+            self.state["orders"].append({"id": f"{oid}-sl", "parent": oid, "symbol": symbol, "side": "sell" if qty > 0 else "buy",
+                                         "type": "stop", "qty": -int(qty), "limit_price": None, "stop_price": float(stop_loss),
+                                         "status": "held", "extended_hours": False, "submitted_at": self.state["clock"], "tif": "gtc"})
         self.set_market({}, session, self.state["clock"])   # ejecuta si ya es ejecutable
-        return {"id": oid, "status": o["status"]}
+        return {"id": oid, "status": o["status"], "attached_stop": attached}
 
-    def place(self, symbol: str, qty: int, limit_price: float | None = None, extended: bool = False) -> dict:
-        return self._submit(symbol, qty, "market" if limit_price is None else "limit", limit_price=limit_price, extended=extended)
+    def place(self, symbol: str, qty: int, limit_price: float | None = None, extended: bool = False,
+              stop_loss: float | None = None) -> dict:
+        return self._submit(symbol, qty, "market" if limit_price is None else "limit", limit_price=limit_price, extended=extended,
+                            stop_loss=stop_loss)
 
     def place_stop(self, symbol: str, qty: int, stop_price: float) -> dict:
         return self._submit(symbol, qty, "stop", stop_price=stop_price)
 
     def cancel(self, order_id: str) -> None:
         for o in self.state["orders"]:
-            if o["id"] == order_id and o["status"] == "accepted":
+            if o["id"] == order_id and o["status"] in ("accepted", "held"):
                 o["status"] = "canceled"
+                for child in self.state["orders"]:
+                    if child.get("parent") == order_id and child["status"] == "held":
+                        child["status"] = "canceled"
                 self.save()
                 return
         raise RuntimeError(f"order {order_id} not found or not open")
@@ -287,7 +310,7 @@ class FakeBroker:
     def close_day(self, d: date) -> None:
         """Al terminar la sesión simulada: expiran las órdenes del día y se anota el equity."""
         for o in self.state["orders"]:
-            if o["status"] == "accepted" and o["type"] != "stop":
+            if o["status"] == "accepted" and o["type"] != "stop" and o.get("tif", "day") == "day":
                 o["status"] = "expired"
         eq = round(self.account()["equity"], 2)
         self.state["equity_history"] = [x for x in self.state["equity_history"] if x["date"] != d.isoformat()] + [{"date": d.isoformat(), "equity": eq}]

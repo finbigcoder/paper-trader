@@ -73,6 +73,9 @@ def test_cleaning_drops_duplicate_holiday_and_flags_quiet_jumps():
     out, rep = clean_prices(pd.concat([df, dup]))
     assert len(rep["dropped_duplicate_dates"]) == 1 and out.date.nunique() == 30
     assert [m["symbol"] for m in rep["suspicious_moves"]] == ["EEE"]
+    e = out[out.symbol == "EEE"].sort_values("date").close
+    assert e.pct_change().abs().max() < 0.05          # la historia previa se reescaló: el salto ya no cuenta como retorno
+    assert e.iloc[-1] == pytest.approx(100 + 29 - 70)  # el precio actual no cambia
 
 
 def test_rule_benchmark_follows_each_days_core_and_spy(tmp_path):

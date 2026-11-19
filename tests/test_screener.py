@@ -159,10 +159,11 @@ def test_the_agent_is_reminded_once_to_review_the_screen(tmp_path):
     from bot.trader import run_agent
     desk, llm = _screen_desk(tmp_path), LazyLLM()
     out = run_agent(desk, llm)
-    assert out["status"] == "ok" and llm.calls == 3 and len(desk.reviews) == 2
+    # 3 vueltas de la pantalla + 1 del recordatorio de inacción (sin posiciones ni órdenes en horario regular)
+    assert out["status"] == "ok" and llm.calls == 4 and len(desk.reviews) == 2
     desk2, llm2 = _screen_desk(tmp_path / "b"), LazyLLM()
     llm2.calls = 5                                                # nunca evalúa: se le recuerda una vez y termina
-    assert run_agent(desk2, llm2)["status"] == "ok" and llm2.calls == 7 and not desk2.reviews
+    assert run_agent(desk2, llm2)["status"] == "ok" and llm2.calls == 8 and not desk2.reviews
 
 
 def test_single_symbol_downloads_with_ticker_columns_are_read(monkeypatch):

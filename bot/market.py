@@ -72,7 +72,9 @@ def prepare_day(cfg: dict, sd: Path, today: date, workdir: Path, held: list[str]
 
     warnings_out = []
     for m in ((data_meta or {}).get("cleaning") or {}).get("suspicious_moves", []):
-        warnings_out.append(f"{m['symbol']} movió {m['ret']:+.0%} el {m['date']} con volumen normal: probable escisión o error del proveedor")
+        if (today - date.fromisoformat(m["date"])).days <= 10:       # los viejos ya están ajustados: solo se avisa lo nuevo
+            warnings_out.append(f"{m['symbol']} movió {m['ret']:+.0%} el {m['date']} con volumen normal (probable escisión o error "
+                                "del proveedor): se reescaló su historia previa para que ese salto no cuente como retorno")
     if not ern_meta.get("ok", True):
         warnings_out.append(f"el calendario de resultados no respondió: {ern_meta.get('error')}")
     prep = {
@@ -113,9 +115,10 @@ class Intraday:
     def quote(self, sym: str) -> dict | None:
         df = self.bars.get(sym)
         pc = self.prev_close.get(sym)
-        if df is None or df.empty or not pc:
+        closes = df["Close"].dropna() if df is not None and not df.empty else None
+        if closes is None or closes.empty or not pc:
             return {"last": pc, "chg": 0.0, "as_of": None} if pc else None
-        last = float(df["Close"].dropna().iloc[-1])
+        last = float(closes.iloc[-1])
         return {"last": round(last, 2), "chg": round(last / pc - 1, 4), "high": round(float(df["High"].max()), 2),
                 "low": round(float(df["Low"].min()), 2), "volume": int(df["Volume"].sum()),
                 "as_of": df.index[-1].strftime("%H:%M")}
