@@ -1,14 +1,120 @@
 {
- "updated_at": "2026-11-19T09:38:29-05:00",
+ "updated_at": "2026-11-19T10:08:37-05:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 100000.0,
-  "cash": 100000.0,
-  "buying_power": 385231.99,
+  "equity": 99988.78,
+  "cash": 76571.38,
+  "buying_power": 357086.23,
   "last_equity": 100000.0
  },
- "positions": {},
+ "positions": {
+  "BABA": {
+   "qty": 100.0,
+   "avg_price": 87.747,
+   "price": 87.75,
+   "market_value": 8775.0,
+   "unrealized_pl": 0.3
+  },
+  "CRWV": {
+   "qty": 150.0,
+   "avg_price": 51.43,
+   "price": 51.36,
+   "market_value": 7704.0,
+   "unrealized_pl": -10.5
+  },
+  "PDD": {
+   "qty": 80.0,
+   "avg_price": 86.74275,
+   "price": 86.73,
+   "market_value": 6938.4,
+   "unrealized_pl": -1.02
+  }
+ },
  "orders": [
+  {
+   "id": "4ae5c872-333a-46da-b9fc-633bc70649df",
+   "submitted_at": "2026-11-19T15:09:11.199909+00:00",
+   "symbol": "CRWV",
+   "limit_price": 52.3,
+   "stop_price": null,
+   "extended_hours": false,
+   "side": "buy",
+   "type": "limit",
+   "qty": 150.0,
+   "filled_qty": 150.0,
+   "filled_avg_price": 51.43,
+   "status": "filled"
+  },
+  {
+   "id": "11517f71-7a61-452c-b991-71ebb6ce7e16",
+   "submitted_at": "2026-11-19T15:09:12.533218+00:00",
+   "symbol": "CRWV",
+   "limit_price": null,
+   "stop_price": 50.0,
+   "extended_hours": false,
+   "side": "sell",
+   "type": "stop",
+   "qty": 150.0,
+   "filled_qty": 0.0,
+   "filled_avg_price": null,
+   "status": "new"
+  },
+  {
+   "id": "697cd987-9435-4128-87ae-c341acdfffad",
+   "submitted_at": "2026-11-19T15:09:10.977955+00:00",
+   "symbol": "PDD",
+   "limit_price": 87.5,
+   "stop_price": null,
+   "extended_hours": false,
+   "side": "buy",
+   "type": "limit",
+   "qty": 80.0,
+   "filled_qty": 80.0,
+   "filled_avg_price": 86.74275,
+   "status": "filled"
+  },
+  {
+   "id": "490255a2-ade4-4729-add7-3bffabcba0ad",
+   "submitted_at": "2026-11-19T15:09:14.771317+00:00",
+   "symbol": "PDD",
+   "limit_price": null,
+   "stop_price": 82.0,
+   "extended_hours": false,
+   "side": "sell",
+   "type": "stop",
+   "qty": 80.0,
+   "filled_qty": 0.0,
+   "filled_avg_price": null,
+   "status": "new"
+  },
+  {
+   "id": "f3be1074-a672-4c19-a4a6-a6b897319501",
+   "submitted_at": "2026-11-19T15:09:10.730445+00:00",
+   "symbol": "BABA",
+   "limit_price": 88.0,
+   "stop_price": null,
+   "extended_hours": false,
+   "side": "buy",
+   "type": "limit",
+   "qty": 100.0,
+   "filled_qty": 100.0,
+   "filled_avg_price": 87.747,
+   "status": "filled"
+  },
+  {
+   "id": "77f836e0-ee76-47f8-b22f-4b1e80204b0b",
+   "submitted_at": "2026-11-19T15:09:13.410708+00:00",
+   "symbol": "BABA",
+   "limit_price": null,
+   "stop_price": 83.2,
+   "extended_hours": false,
+   "side": "sell",
+   "type": "stop",
+   "qty": 100.0,
+   "filled_qty": 0.0,
+   "filled_avg_price": null,
+   "status": "new"
+  },
   {
    "id": "8ccc005a-53cd-411f-9c52-24d82b46dec7",
    "submitted_at": "2026-11-19T09:10:41.735734+00:00",
