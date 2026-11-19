@@ -1,33 +1,33 @@
 {
- "updated_at": "2026-11-19T18:08:24-05:00",
+ "updated_at": "2026-11-19T18:38:26-05:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 99289.74,
+  "equity": 99182.78,
   "cash": 69307.66,
-  "buying_power": 350020.45,
+  "buying_power": 349720.97,
   "last_equity": 100000.0
  },
  "positions": {
   "BABA": {
    "qty": 100.0,
    "avg_price": 87.747,
-   "price": 83.67,
-   "market_value": 8367.0,
-   "unrealized_pl": -407.7
+   "price": 83.3,
+   "market_value": 8330.0,
+   "unrealized_pl": -444.7
   },
   "PDD": {
    "qty": 80.0,
    "avg_price": 86.74275,
-   "price": 85.01,
-   "market_value": 6800.8,
-   "unrealized_pl": -138.62
+   "price": 85.0,
+   "market_value": 6800.0,
+   "unrealized_pl": -139.42
   },
   "TXN": {
    "qty": 52.0,
    "avg_price": 283.86,
-   "price": 284.89,
-   "market_value": 14814.28,
-   "unrealized_pl": 53.56
+   "price": 283.56,
+   "market_value": 14745.12,
+   "unrealized_pl": -15.6
   }
  },
  "orders": [
