@@ -1,26 +1,33 @@
 {
- "updated_at": "2026-11-19T11:38:32-05:00",
+ "updated_at": "2026-11-19T12:08:36-05:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 99658.78,
-  "cash": 84068.38,
-  "buying_power": 365158.63,
+  "equity": 99631.88,
+  "cash": 69307.66,
+  "buying_power": 362138.46,
   "last_equity": 100000.0
  },
  "positions": {
   "BABA": {
    "qty": 100.0,
    "avg_price": 87.747,
-   "price": 86.32,
-   "market_value": 8632.0,
-   "unrealized_pl": -142.7
+   "price": 85.64,
+   "market_value": 8564.0,
+   "unrealized_pl": -210.7
   },
   "PDD": {
    "qty": 80.0,
    "avg_price": 86.74275,
-   "price": 86.98,
-   "market_value": 6958.4,
-   "unrealized_pl": 18.98
+   "price": 86.47,
+   "market_value": 6917.6,
+   "unrealized_pl": -21.82
+  },
+  "TXN": {
+   "qty": 52.0,
+   "avg_price": 283.86,
+   "price": 285.435,
+   "market_value": 14842.62,
+   "unrealized_pl": 81.9
   }
  },
  "orders": [
@@ -34,13 +41,13 @@
    "side": "buy",
    "type": "limit",
    "qty": 52.0,
-   "filled_qty": 0.0,
-   "filled_avg_price": null,
-   "status": "new"
+   "filled_qty": 52.0,
+   "filled_avg_price": 283.86,
+   "status": "filled"
   },
   {
    "id": "d6727b89-8b91-430a-a664-a27281511fae",
-   "submitted_at": "2026-11-19T16:08:55.090241+00:00",
+   "submitted_at": "2026-11-19T17:05:38.104896+00:00",
    "symbol": "TXN",
    "limit_price": null,
    "stop_price": 277.0,
@@ -50,7 +57,7 @@
    "qty": 52.0,
    "filled_qty": 0.0,
    "filled_avg_price": null,
-   "status": "held"
+   "status": "new"
   },
   {
    "id": "4ae5c872-333a-46da-b9fc-633bc70649df",
