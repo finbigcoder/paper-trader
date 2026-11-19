@@ -2784,7 +2784,153 @@
     "last_equity": 100000.0
    },
    "positions": 0
+  },
+  {
+   "at": "2026-11-19T07:08:46-05:00",
+   "time": "07:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.3234,
+    "limit": 2.2023,
+    "ticks_left": 26,
+    "est_tick": 0.0048,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "CIFR",
+     "IREN",
+     "CRWV",
+     "SOFI",
+     "SNAP",
+     "SPCX",
+     "AMZN",
+     "NOK",
+     "PATH",
+     "NVDA",
+     "RIG",
+     "AAL",
+     "BAC",
+     "CLRO",
+     "AES"
+    ],
+    "reviews": [
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+6.1% en pre-market sin volumen relativo ni tesis; no persigo."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+5.7% en pre sin volumen ni tesis propia; no persigo."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "+5.5% en pre; solo considero ruptura confirmada con volumen en la primera hora regular."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "+2.5% en pre sin volumen ni catalizador claro."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "+2.4% en pre sin volumen ni tesis; precio bajo y spreads amplios."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Líder de liquidez, +1.7% en pre; sin setup con riesgo definido todavía."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pre-market: TXN en ~300.7, a unos 5.6% de mi orden límite de compra de 52 acciones a 284 (riesgo ~$364 con stop en 277), y evalué las primeras seis de la pantalla. Descarté CIFR, IREN, SOFI y SNAP por movimientos sin volumen ni tesis, y dejé CRWV y NVDA en vigilar.\nNo envié órdenes nuevas; la orden de TXN sigue viva y, si llena, pongo el stop en 277 en el primer despertar regular.\nVigilo en la apertura: ruptura con volumen en CRWV, gap con volumen en BABA/PDD/NTES tras sus reportes de hoy, y la reacción de semis (MU, MRVL, INTC, AMD) sin entrar sin setup.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+6.1% en pre-market sin volumen relativo ni tesis; no persigo."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+5.7% en pre sin volumen ni tesis propia; no persigo."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "+5.5% en pre; solo considero ruptura confirmada con volumen en la primera hora regular."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "+2.5% en pre sin volumen ni catalizador claro."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "+2.4% en pre sin volumen ni tesis; precio bajo y spreads amplios."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Líder de liquidez, +1.7% en pre; sin setup con riesgo definido todavía."
+       }
+      ]
+     },
+     "result": "Registrado: CIFR, IREN, CRWV, SOFI, SNAP, NVDA. Pantalla evaluada."
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "TXN"
+     },
+     "result": "TXN: cierre previo 292.43 | hoy 300.71 (+2.8%) | 1d -1.2% | 5d -5.6% | 21d +5.3% | 63d +10.1% | vs SMA20 -2.2% | vs SMA50 +2.3% | ATR 5.3% | volumen ayer 0.55x | momentum 12-1 +79.2% (#6)\nBarras de 30 min de hoy:\n04:00 O300.21 H300.21 L295.65 C299.00 V0\n04:30 O297.47 H299.10 L297.47 C299.10 V0\n05:00 O298.88 H299.99 L298.88 C299.98 V0\n05:30 O299.84 H299.99 L299.19 C299.36 V0\n06:00 O299.99 H300.11 L299.93 C300.00 V0\n06:30 O301.00 H301.00 L301.00 C301.00 V0\n07:00 O300.61 H300.71 L300.61 C300.71 V0"
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "19-nov 07:08 pre: sin cambios. TXN ~300.7 (ATR 5.3%). Orden 52 a 284 viva (~1 ATR abajo); si llena, stop 277 en el primer despertar regular. Regular: CRWV solo con ruptura y volumen; BABA/PDD/NTES solo con gap y volumen en la primera hora. Pantalla evaluada: descartados CIFR, IREN, SOFI, SNAP; vigilar CRWV, NVDA."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "19-nov 07:08 pre: sin cambios. TXN ~300.7 (ATR 5.3%). Orden 52 a 284 viva (~1 ATR abajo); si llena, stop 277 en el primer despertar regular. Regular: CRWV solo con ruptura y volumen; BABA/PDD/NTES solo con gap y volumen en la primera hora. Pantalla evaluada: descartados CIFR, IREN, SOFI, SNAP; vigilar CRWV, NVDA."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003867,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003867,
+      "calls": 3,
+      "tokens": 33114
+     }
+    }
+   },
+   "account": {
+    "equity": 100000.0,
+    "cash": 100000.0,
+    "buying_power": 385231.99,
+    "last_equity": 100000.0
+   },
+   "positions": 0
   }
  ],
- "spent_usd": 0.018042
+ "spent_usd": 0.021909
 }
