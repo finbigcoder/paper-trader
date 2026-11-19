@@ -5570,7 +5570,229 @@
     "last_equity": 100000.0
    },
    "positions": 0
+  },
+  {
+   "at": "2026-11-18T19:38:39-05:00",
+   "time": "19:38",
+   "session": "post",
+   "last": true,
+   "budget": {
+    "allowance_today": 1.9802,
+    "limit": 1.9802,
+    "ticks_left": 1,
+    "est_tick": 0.0051,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 14,
+    "shown": [
+     "PATH",
+     "MDLN",
+     "AMZN",
+     "SPCX",
+     "CRWV",
+     "CIFR",
+     "SNAP",
+     "AES",
+     "IREN",
+     "BAC",
+     "NOK",
+     "AAL",
+     "SOFI",
+     "RIG"
+    ],
+    "reviews": [
+     {
+      "symbol": "PATH",
+      "verdict": "descartar",
+      "reason": "-4.9% en post-market sin tesis ni nivel de entrada con riesgo definido; no persigo caídas fuera de horario."
+     },
+     {
+      "symbol": "MDLN",
+      "verdict": "vigilar",
+      "reason": "+3.5% con 3.3x volumen relativo, pero el cierre regular fue 39.16. Solo entro con ruptura de 39.3 con volumen en sesión regular y stop bajo 38.0."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "descartar",
+      "reason": "+5.2% con solo 1.2x volumen relativo; movimiento sin nivel claro ni tesis definida."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "+2.2% con 2.1x volumen, sin setup ni nivel de riesgo definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-2.5% con 1.5x volumen; sin nivel de entrada ni stop claro."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+4.4% con volumen bajo (0.8x), sin catalizador ni nivel."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "-1.0% sin movimiento relevante ni nivel de entrada."
+     },
+     {
+      "symbol": "AES",
+      "verdict": "vigilar",
+      "reason": "Volumen 10.7x pero cambio de +0.3%; anomalía a revisar en regular antes de cualquier tesis."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-1.1% con volumen normal; sin setup."
+     },
+     {
+      "symbol": "BAC",
+      "verdict": "descartar",
+      "reason": "-0.8% con 1.6x volumen; sin ventaja clara."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+1.1% con volumen normal; sin setup."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "+1.2% con 0.7x volumen; sin setup."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "-0.4% con volumen normal; sin setup."
+     },
+     {
+      "symbol": "RIG",
+      "verdict": "descartar",
+      "reason": "Precio plano, $5 de precio, sin interés."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Resumen del día: sin posiciones ni órdenes, y ningún nombre llegó a su nivel con riesgo definido. Hoy revisé la pantalla completa: MDLN queda en vigilar (ruptura sobre 39.3 con volumen en regular, stop bajo 38.0) y el resto, descartado o en espera por falta de setup. Reescribí las lecciones: menos notas repetidas, un solo nombre prioritario y órdenes condicionadas con stop para la sesión regular de mañana. Mañana, en la primera hora regular: TXN (disparador 284 con volumen, stop ~277), luego MRNA y MDLN.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "PATH",
+        "verdict": "descartar",
+        "reason": "-4.9% en post-market sin tesis ni nivel de entrada con riesgo definido; no persigo caídas fuera de horario."
+       },
+       {
+        "symbol": "MDLN",
+        "verdict": "vigilar",
+        "reason": "+3.5% con 3.3x volumen relativo, pero el cierre regular fue 39.16. Solo entro con ruptura de 39.3 con volumen en sesión regular y stop bajo 38.0."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "descartar",
+        "reason": "+5.2% con solo 1.2x volumen relativo; movimiento sin nivel claro ni tesis definida."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "+2.2% con 2.1x volumen, sin setup ni nivel de riesgo definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-2.5% con 1.5x volumen; sin nivel de entrada ni stop claro."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+4.4% con volumen bajo (0.8x), sin catalizador ni nivel."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "-1.0% sin movimiento relevante ni nivel de entrada."
+       },
+       {
+        "symbol": "AES",
+        "verdict": "vigilar",
+        "reason": "Volumen 10.7x pero cambio de +0.3%; anomalía a revisar en regular antes de cualquier tesis."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-1.1% con volumen normal; sin setup."
+       },
+       {
+        "symbol": "BAC",
+        "verdict": "descartar",
+        "reason": "-0.8% con 1.6x volumen; sin ventaja clara."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+1.1% con volumen normal; sin setup."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "+1.2% con 0.7x volumen; sin setup."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "-0.4% con volumen normal; sin setup."
+       },
+       {
+        "symbol": "RIG",
+        "verdict": "descartar",
+        "reason": "Precio plano, $5 de precio, sin interés."
+       }
+      ]
+     },
+     "result": "Registrado: PATH, MDLN, AMZN, SPCX, CRWV, CIFR, SNAP, AES, IREN, BAC, NOK, AAL, SOFI, RIG. Pantalla evaluada."
+    },
+    {
+     "name": "update_lessons",
+     "args": {},
+     "result": "Error en los argumentos: Desk.t_update_lessons() missing 1 required positional argument: 'text'"
+    },
+    {
+     "name": "update_lessons",
+     "args": {
+      "text": "LECCIONES (actualizado 18-nov-2026, cierre del día)\n\nQué pasó hoy: cero operaciones y cero posiciones. Ninguna orden abierta. Evalué la pantalla completa (14 nombres) y la lista de vigilancia en varios despertares de post-market. MDLN quedó como único candidato, con disparador en sesión regular (ruptura sobre 39.3 con volumen, stop bajo 38.0). Nunca llegó a ejecutarse porque el cierre regular fue 39.16.\n\nQué funcionó:\n- No perseguir movimientos fuera de horario (MDLN 39.69 de post-market sin volumen no era señal).\n- Esperar niveles concretos con stop definido.\n- Revisar la pantalla con veredicto por nombre y razón concreta.\n\nQué no funcionó:\n- Repetir la misma nota en casi cada despertar. Hoy hubo como 10 notas casi idénticas. No aportaron información y gastaron presupuesto.\n- Seguir vigilando lo mismo (TXN, MRNA, MDLN, BRBR) sin cambio de precio relevante.\n- No dejar órdenes de entrada condicionadas a la sesión regular. Depender de despertar a tiempo hace que un disparador pase sin ejecución.\n- Tener varios niveles para vigilar a la vez (TXN, BRBR, MDLN, MRNA, semis) sin priorizar. Esto diluye la atención.\n\nQué haré distinto:\n1. En post-market: si no hay cambio de precio relevante (>2%) o de volumen, no escribir nota. Como máximo una línea: \"sin cambios\".\n2. Revisar la pantalla completa solo una vez por sesión, no en cada despertar.\n3. Al abrir la sesión regular, revisar primero el gráfico de 30 min de TXN y MDLN. Solo después, MRNA y semis.\n4. Para cada candidato, dejar por escrito: disparador, stop, tamaño (~1% de la cartera de riesgo por operación) y horizonte. Si no hay los cuatro, el nombre queda fuera.\n5. Priorizar un solo nombre por sesión. Si las semis caen juntas, esperar estabilización antes de elegir.\n6. Resultados de BIDU/TSN/BEKE/HTHT/PDCC y TGT/TJX: tratar como volatilidad solo con gap confirmado en sesión regular, no con precios de post-market.\n7. Desconfiar de datos anómalos (HON -51% sin volumen el 29-jun; AES con 10.7x de volumen y +0.3% de cambio). Verificar antes de operar.\n8. Research solo cuando haya un plan y un nivel. Evitar revisiones de lista más de una vez por hora sin cambio relevante de precio."
+     },
+     "result": "Lecciones guardadas (2161 caracteres)."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.004677,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.004677,
+      "calls": 3,
+      "tokens": 35818
+     }
+    }
+   },
+   "account": {
+    "equity": 100000.0,
+    "cash": 100000.0,
+    "buying_power": 400000.0,
+    "last_equity": 100000.0
+   },
+   "positions": 0
   }
  ],
- "spent_usd": 0.103597
+ "spent_usd": 0.108274,
+ "lessons_updated": true
 }
