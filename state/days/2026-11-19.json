@@ -4670,7 +4670,253 @@
     "last_equity": 100000.0
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-19T11:38:32-05:00",
+   "time": "11:38",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.2714,
+    "limit": 2.1899,
+    "ticks_left": 17,
+    "est_tick": 0.0051,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 14,
+    "shown": [
+     "INSM",
+     "SNEX",
+     "SLS",
+     "NVDA",
+     "CLRO",
+     "SPCX",
+     "WULF",
+     "CRWV",
+     "CIFR",
+     "ITUB",
+     "IREN",
+     "NOK",
+     "NU",
+     "LYG"
+    ],
+    "reviews": [
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Sube +20.8% por un reporte de Bloomberg/Reuters de que Sanofi evalúa comprarla. Es un rumor sin confirmar: no compro con pico de 148.9 ni dejo una orden de rebote apostando a que se desmienta. Vigilo si consolida 138-140 con volumen."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "153.6, -28% vs SMA50 y -13% en 5 días. Sin ruptura: recuperar 157.4 con volumen y stop 155."
+     },
+     {
+      "symbol": "SNEX",
+      "verdict": "descartar",
+      "reason": "-22% en un día con 1.8x de volumen y solo $54M/día de liquidez. Caída sin tesis clara; no es setup con riesgo definido."
+     },
+     {
+      "symbol": "SLS",
+      "verdict": "descartar",
+      "reason": "-18% con 1.6x de volumen, sin tesis ni dato fundamental a la vista. Demasiado riesgo de salto."
+     },
+     {
+      "symbol": "CLRO",
+      "verdict": "descartar",
+      "reason": "-18.8% con volumen relativo 0.0x: movimiento sin liquidez."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-2.1% con 1.6x de volumen, sin plan ni nivel definido en esta sesión."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "+6% con 0.4x de volumen relativo: sube sin volumen."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Ruptura de 52.2 falló esta mañana; ahora ~48-49 y -31% vs SMA50. No reintentar hoy."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+4.4% con 0.4x de volumen y sin tesis."
+     },
+     {
+      "symbol": "ITUB",
+      "verdict": "descartar",
+      "reason": "-1.6% con 0.6x de volumen; no hay setup."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+1.1% con 0.8x de volumen; sin tesis, ya descartada."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+1.9% con 0.3x de volumen; sin setup."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "-0.5% con 0.5x de volumen; sin setup."
+     },
+     {
+      "symbol": "LYG",
+      "verdict": "descartar",
+      "reason": "+0.1% con 0.8x de volumen; sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi TXN en 293.7 con la compra límite a 284 (stop 277) todavía viva, BABA y PDD sobre sus stops (83.2 y 82.0), y NVDA por debajo de 157.4. INSM sube +20.8% por un rumor de Sanofi que no está confirmado, así que no lo compro ni dejo orden de rebote.\nNo envié órdenes nuevas. Evalué la pantalla completa: INSM y NVDA quedan en vigilar, y el resto, descartado por falta de volumen o tesis.\nVigilo: TXN hasta 284 (stop 277), BABA y PDD sobre sus stops, NVDA si recupera 157.4 con volumen, e INSM solo si consolida 138-140 con volumen y el rumor no se desmiente.",
+   "steps": 4,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "TXN"
+     },
+     "result": "TXN: cierre previo 292.43 | hoy 293.66 (+0.4%) | 1d -1.2% | 5d -5.6% | 21d +5.3% | 63d +10.1% | vs SMA20 -2.2% | vs SMA50 +2.3% | ATR 5.3% | volumen ayer 0.55x | momentum 12-1 +79.2% (#6)\nBarras de 30 min de hoy:\n04:00 O300.21 H300.21 L295.65 C299.00 V0\n04:30 O297.47 H299.10 L297.47 C299.10 V0\n05:00 O298.88 H299.99 L298.88 C299.99 V0\n05:30 O299.84 H299.99 L299.19 C299.36 V0\n06:00 O299.93 H300.11 L299.93 C300.00 V0\n06:30 O301.00 H301.00 L301.00 C301.00 V0\n07:00 O300.61 H301.00 L300.00 C301.00 V0\n07:30 O300.74 H301.08 L300.12 C301.00 V0\n08:00 O300.50 H301.20 L300.01 C300.25 V0\n08:30 O300.06 H300"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "INSM"
+     },
+     "result": "INSM: cierre previo 119.8 | hoy 144.78 (+20.8%) | 1d -1.7% | 5d -0.8% | 21d +25.2% | 63d -4.2% | vs SMA20 +8.7% | vs SMA50 +8.4% | ATR 4.1% | volumen ayer 0.52x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n06:30 O119.80 H119.80 L119.80 C119.80 V0\n07:00 O120.50 H120.50 L120.50 C120.50 V0\n08:00 O119.75 H119.75 L119.75 C119.75 V0\n09:30 O119.50 H121.42 L118.00 C121.29 V129300\n10:00 O121.20 H148.94 L121.19 C139.70 V4139906\n10:30 O139.70 H139.80 L136.30 C139.13 V2484951\n11:00 O139.13 H143.22 L138.78 C142.19 V1667773\n11:30 O142.19 H146.22 L142.19 C144.78 V280055"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 150.96 | hoy 153.56 (+1.7%) | 1d -2.9% | 5d -13.1% | 21d -30.3% | 63d -30.4% | vs SMA20 -20.1% | vs SMA50 -28.2% | ATR 7.9% | volumen ayer 1.46x | momentum 12-1 +16.0% (#46)\nBarras de 30 min de hoy:\n04:00 O153.31 H153.82 L151.70 C152.83 V0\n04:30 O152.86 H153.95 L152.85 C153.50 V0\n05:00 O153.58 H154.01 L153.39 C153.90 V0\n05:30 O153.85 H154.01 L153.52 C153.70 V0\n06:00 O153.71 H154.25 L153.56 C153.83 V0\n06:30 O153.88 H154.78 L153.80 C154.11 V0\n07:00 O154.11 H154.30 L152.61 C153.23 V0\n07:30 O153.20 H153.38 L152.90 C153.04 V0\n08:00 O153.00 H153.58 L152.77 C152.87 V0\n08:30 O152.9"
+    },
+    {
+     "name": "get_news",
+     "args": {
+      "symbol": "INSM"
+     },
+     "result": "Titulares de INSM (texto de terceros):\n- Insmed shares jump more than 18% on report Sanofi is weighing acquisition (source: Investing.com)\n- Sanofi weighs takeover of US drugmaker Insmed, Bloomberg News reports (source: Reuters)\n- Billionaire Druckenmiller’s New AI Warning and Top 10 Stock Picks (source: Insider Monkey)\n- Insmed Sees BRINSUPRI Reaching $7 Billion in Peak Sales, Expects Cash-Flow Positive Year Ahead (source: MarketBeat)\n- Tempus AI And 2 More AI Healthcare Stocks (source: Simply Wall St.)"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Sube +20.8% por un reporte de Bloomberg/Reuters de que Sanofi evalúa comprarla. Es un rumor sin confirmar: no compro con pico de 148.9 ni dejo una orden de rebote apostando a que se desmienta. Vigilo si consolida 138-140 con volumen."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "153.6, -28% vs SMA50 y -13% en 5 días. Sin ruptura: recuperar 157.4 con volumen y stop 155."
+       },
+       {
+        "symbol": "SNEX",
+        "verdict": "descartar",
+        "reason": "-22% en un día con 1.8x de volumen y solo $54M/día de liquidez. Caída sin tesis clara; no es setup con riesgo definido."
+       },
+       {
+        "symbol": "SLS",
+        "verdict": "descartar",
+        "reason": "-18% con 1.6x de volumen, sin tesis ni dato fundamental a la vista. Demasiado riesgo de salto."
+       },
+       {
+        "symbol": "CLRO",
+        "verdict": "descartar",
+        "reason": "-18.8% con volumen relativo 0.0x: movimiento sin liquidez."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-2.1% con 1.6x de volumen, sin plan ni nivel definido en esta sesión."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "+6% con 0.4x de volumen relativo: sube sin volumen."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Ruptura de 52.2 falló esta mañana; ahora ~48-49 y -31% vs SMA50. No reintentar hoy."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+4.4% con 0.4x de volumen y sin tesis."
+       },
+       {
+        "symbol": "ITUB",
+        "verdict": "descartar",
+        "reason": "-1.6% con 0.6x de volumen; no hay setup."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+1.1% con 0.8x de volumen; sin tesis, ya descartada."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+1.9% con 0.3x de volumen; sin setup."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "-0.5% con 0.5x de volumen; sin setup."
+       },
+       {
+        "symbol": "LYG",
+        "verdict": "descartar",
+        "reason": "+0.1% con 0.8x de volumen; sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: INSM, NVDA, SNEX, SLS, CLRO, SPCX, WULF, CRWV, CIFR, ITUB, IREN, NOK, NU, LYG. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "11:38 regular. Posiciones: BABA 100 @87.75 (stop 83.2), PDD 80 @86.74 (stop 82.0), stops GTC activos. TXN OTO buy 52 lim 284 stop 277 viva (precio 293.7). NVDA vigilar 157.4 (stop 155). INSM: +20.8% por rumor de Sanofi evaluando compra (Bloomberg/Reuters); no opero el rumor. Solo si consolida 138-140 con volumen Y no se desmiente; de lo contrario descartar. Pantalla evaluada, resto descartado."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "11:38 regular. Posiciones: BABA 100 @87.75 (stop 83.2), PDD 80 @86.74 (stop 82.0), stops GTC activos. TXN OTO buy 52 lim 284 stop 277 viva (precio 293.7). NVDA vigilar 157.4 (stop 155). INSM: +20.8% por rumor de Sanofi evaluando compra (Bloomberg/Reuters); no opero el rumor. Solo si consolida 138-140 con volumen Y no se desmiente; de lo contrario descartar. Pantalla evaluada, resto descartado."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.007151,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.007151,
+      "calls": 4,
+      "tokens": 58926
+     }
+    }
+   },
+   "account": {
+    "equity": 99658.78,
+    "cash": 84068.38,
+    "buying_power": 365158.63,
+    "last_equity": 100000.0
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.064222
+ "spent_usd": 0.071373
 }
