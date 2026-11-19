@@ -2148,7 +2148,136 @@
     "last_equity": 100000.0
    },
    "positions": 0
+  },
+  {
+   "at": "2026-11-19T05:08:33-05:00",
+   "time": "05:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.3352,
+    "limit": 2.1851,
+    "ticks_left": 30,
+    "est_tick": 0.0052,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "CIFR",
+     "IREN",
+     "CRWV",
+     "NOK",
+     "SPCX",
+     "SOFI",
+     "AMZN",
+     "PATH",
+     "NVDA",
+     "SNAP",
+     "AAL",
+     "CLRO",
+     "BAC",
+     "RIG",
+     "AES"
+    ],
+    "reviews": [
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+5.6% en pre-market sin volumen relativo ni tesis propia; no persigo movimientos de pre."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+4.7% en pre sin volumen relativo; movimiento de pre-market sin confirmación en regular."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "+3.8% en pre, liquidez alta, sin volumen relativo aún. Vigilar solo si en la primera hora regular rompe máximos previos con volumen; stop bajo el mínimo de esa hora."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+2.5% en pre sin volumen ni catalizador claro."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "vigilar",
+      "reason": "+2.3% en pre con liquidez muy alta; sin tesis ni setup definido. Revisar en regular solo si hay ruptura con volumen."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pre-market sin volumen relevante. CIFR, IREN y NOK los descarto por moverse sin volumen ni tesis, y CRWV y SPCX quedan en vigilar para la apertura.\nNo envié órdenes nuevas. La compra límite de 52 TXN a 284 sigue viva, pero el precio está en ~298.8, así que es poco probable que llene en pre-market.\nAl abrir vigilo: que TXN llene (y en ese caso poner el stop en 277), una ruptura con volumen en CRWV o SPCX, y BABA/PDD/NTES solo con gap y volumen en la primera hora.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+5.6% en pre-market sin volumen relativo ni tesis propia; no persigo movimientos de pre."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+4.7% en pre sin volumen relativo; movimiento de pre-market sin confirmación en regular."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "+3.8% en pre, liquidez alta, sin volumen relativo aún. Vigilar solo si en la primera hora regular rompe máximos previos con volumen; stop bajo el mínimo de esa hora."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+2.5% en pre sin volumen ni catalizador claro."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "vigilar",
+        "reason": "+2.3% en pre con liquidez muy alta; sin tesis ni setup definido. Revisar en regular solo si hay ruptura con volumen."
+       }
+      ]
+     },
+     "result": "Registrado: CIFR, IREN, CRWV, NOK, SPCX. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "19-nov 05:08 pre: sin cambios. Orden TXN 52 a 284 (ext) sigue viva; el precio está ~5% arriba (298.8), no es probable que llene en pre. Si llena: poner stop 277 en el primer despertar. Al abrir: revisar CRWV/SPCX con ruptura y volumen; BABA/PDD/NTES solo con gap y volumen en la primera hora; MU/MRVL/INTC/AMD sin plan salvo ruptura confirmada. PANW: no persigo +9% sin volumen."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "19-nov 05:08 pre: sin cambios. Orden TXN 52 a 284 (ext) sigue viva; el precio está ~5% arriba (298.8), no es probable que llene en pre. Si llena: poner stop 277 en el primer despertar. Al abrir: revisar CRWV/SPCX con ruptura y volumen; BABA/PDD/NTES solo con gap y volumen en la primera hora; MU/MRVL/INTC/AMD sin plan salvo ruptura confirmada. PANW: no persigo +9% sin volumen."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.002465,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002465,
+      "calls": 2,
+      "tokens": 18600
+     }
+    }
+   },
+   "account": {
+    "equity": 100000.0,
+    "cash": 100000.0,
+    "buying_power": 385231.99,
+    "last_equity": 100000.0
+   },
+   "positions": 0
   }
  ],
- "spent_usd": 0.007503
+ "spent_usd": 0.009968
 }
