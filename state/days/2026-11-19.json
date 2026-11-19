@@ -7120,7 +7120,171 @@
     "last_equity": 100000.0
    },
    "positions": 3
+  },
+  {
+   "at": "2026-11-19T18:08:24-05:00",
+   "time": "18:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.1944,
+    "limit": 2.1744,
+    "ticks_left": 4,
+    "est_tick": 0.0067,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNEX",
+     "INSM",
+     "NVDA",
+     "SNAP",
+     "IREN",
+     "AMZN",
+     "SPCX",
+     "GOOGL",
+     "CRWV",
+     "WULF",
+     "SOFI",
+     "NU",
+     "AAL",
+     "NOK",
+     "CIFR",
+     "T"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNEX",
+      "verdict": "descartar",
+      "reason": "Cae -27% con 5.4x de volumen y solo $54M/día de liquidez; sin tesis ni setup claro, spread y riesgo de salto altos."
+     },
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Sube +22% por rumor de Sanofi sin confirmar; mantengo solo la compra límite en 139.5 con stop 136.5 (OTO). No persigo a 145."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "descartar",
+      "reason": "-3.7% con 9.7x de volumen, pero sigue debajo de 150 y de su SMA50; sin setup con riesgo definido hoy."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "-6.5% a $5.09 sin tesis; precio bajo y volatilidad alta para el tamaño que manejo."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-6% con 2.8x de volumen, pero sin catalizador ni nivel de entrada claro; cae con el mercado (SPY -2.1%)."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Resumen 18:08 (post-market):\n- **Vi:** TXN ~285.75 (stop 277), BABA 83.6 (stop 83.2, muy cerca) y PDD 85.0 (stop 82.0). SPY -2.1%. La compra de INSM en 139.5 no tenía stop hijo.\n- **Hice:** cancelé esa orden y dejé una nueva compra límite de 80 INSM a 139.5 con stop 136.5 (id 3bd10d4b). En post-market no se puede pegar el stop, así que lo pondrá el código en el siguiente despertar si se llena. Sin cambios en posiciones. Evalué las 5 primeras de la pantalla: INSM en vigilar; SNEX, NVDA, SNAP e IREN descartados.\n- **Vigilo:** en regular, que INSM tenga stop 136.5 activo si se llena (si no, set_stop de inmediato); BABA sobre 83.2 sin reentrar si toca; TXN con stop en 277.",
+   "steps": 4,
+   "error": null,
+   "tools": [
+    {
+     "name": "cancel_order",
+     "args": {
+      "order_id": "9fbabe60-095a-4ed6-941c-cb4848fe4a7f"
+     },
+     "result": "Orden 9fbabe60-095a-4ed6-941c-cb4848fe4a7f cancelada."
+    },
+    {
+     "name": "place_order",
+     "args": {
+      "symbol": "INSM",
+      "side": "buy",
+      "qty": 80,
+      "limit_price": 139.5,
+      "stop_price": 136.5,
+      "reason": "Reemplazo la compra límite sin stop por una OTO con stop 136.5 (riesgo ~0.25% de la cuenta); entrada en retroceso a 139.5 tras el salto por rumor de Sanofi sin confirmar."
+     },
+     "result": "Orden enviada: buy 80 INSM limitada a 139.5. id 3bd10d4b-5378-45f4-87df-5f4cdc8cb935, estado pending_new. En post-market Alpaca no deja pegar el stop: el código pondrá tu stop en 136.50 en tu siguiente despertar si la orden ya se llenó."
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNEX",
+        "verdict": "descartar",
+        "reason": "Cae -27% con 5.4x de volumen y solo $54M/día de liquidez; sin tesis ni setup claro, spread y riesgo de salto altos."
+       },
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Sube +22% por rumor de Sanofi sin confirmar; mantengo solo la compra límite en 139.5 con stop 136.5 (OTO). No persigo a 145."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "descartar",
+        "reason": "-3.7% con 9.7x de volumen, pero sigue debajo de 150 y de su SMA50; sin setup con riesgo definido hoy."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "-6.5% a $5.09 sin tesis; precio bajo y volatilidad alta para el tamaño que manejo."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-6% con 2.8x de volumen, pero sin catalizador ni nivel de entrada claro; cae con el mercado (SPY -2.1%)."
+       }
+      ]
+     },
+     "result": "Registrado: SNEX, INSM, NVDA, SNAP, IREN. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "18:08 post-market. Cancelé la compra INSM sin stop (9fbabe60) y dejé nueva compra lim 80 @139.5 con stop 136.5 (id 3bd10d4b, pending_new). En post no pega el stop: si se llena, el código lo pone en el siguiente despertar; en regular, verificar que el stop 136.5 esté activo y si no, set_stop de inmediato. Posiciones sin cambios: TXN 52 @283.86 (OTO stop 277, precio ~285.75), BABA 100 @87.75 (stop 83.2, precio 83.6, muy cerca), PDD 80 @86.74 (stop 82.0, precio 85.0). SPY -2.1%. No reentrar BABA/PDD si tocan stop hoy. Pantalla evaluada (5 primeras). Mañana primera hora: BABA sobre 83.2, TXN disparador/stop 277, INSM según llenado."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [
+    {
+     "time": "18:08",
+     "session": "post",
+     "symbol": "INSM",
+     "side": "buy",
+     "qty": 80,
+     "limit_price": 139.5,
+     "extended_hours": true,
+     "reason": "Reemplazo la compra límite sin stop por una OTO con stop 136.5 (riesgo ~0.25% de la cuenta); entrada en retroceso a 139.5 tras el salto por rumor de Sanofi sin confirmar.",
+     "est_price": 146.0,
+     "stop_price": 136.5,
+     "id": "3bd10d4b-5378-45f4-87df-5f4cdc8cb935",
+     "status": "pending_new"
+    }
+   ],
+   "notes": [
+    "18:08 post-market. Cancelé la compra INSM sin stop (9fbabe60) y dejé nueva compra lim 80 @139.5 con stop 136.5 (id 3bd10d4b, pending_new). En post no pega el stop: si se llena, el código lo pone en el siguiente despertar; en regular, verificar que el stop 136.5 esté activo y si no, set_stop de inmediato. Posiciones sin cambios: TXN 52 @283.86 (OTO stop 277, precio ~285.75), BABA 100 @87.75 (stop 83.2, precio 83.6, muy cerca), PDD 80 @86.74 (stop 82.0, precio 85.0). SPY -2.1%. No reentrar BABA/PDD si tocan stop hoy. Pantalla evaluada (5 primeras). Mañana primera hora: BABA sobre 83.2, TXN dispa"
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.00737,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.00737,
+      "calls": 4,
+      "tokens": 59655
+     }
+    }
+   },
+   "account": {
+    "equity": 99289.74,
+    "cash": 69307.66,
+    "buying_power": 350020.45,
+    "last_equity": 100000.0
+   },
+   "positions": 3
   }
  ],
- "spent_usd": 0.132688
+ "spent_usd": 0.140058
 }
