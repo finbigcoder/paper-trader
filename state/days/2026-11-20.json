@@ -2538,7 +2538,247 @@
     "last_equity": 99377.49
    },
    "positions": 3
+  },
+  {
+   "at": "2026-11-20T05:38:17-05:00",
+   "time": "05:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.6472,
+    "limit": 2.4799,
+    "ticks_left": 29,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 17,
+    "shown": [
+     "WULF",
+     "CIFR",
+     "CRWV",
+     "IREN",
+     "SPCX",
+     "SA",
+     "NOK",
+     "NVDA",
+     "SOFI",
+     "SNAP",
+     "AMZN",
+     "GOOGL",
+     "NU",
+     "T",
+     "AAL",
+     "INSM"
+    ],
+    "reviews": [
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Pantalla sin volumen relativo confirmado y sin tesis; volatilidad alta (-3.7%) sin catalizador ni nivel claro."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Caída de -3.1% sin catalizador ni setup; mismo perfil especulativo de minera de cripto."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Liquidez muy alta (~$3.6B/día) y caída de -3% sin setup. Vigilar solo si reclaima un nivel claro con volumen, con stop bajo el soporte."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Sin tesis ni setup; -3% en minera de alta volatilidad, igual que sesiones previas."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Sin datos de tesis ni catalizador claro en la pantalla; -2.9% sin disparador."
+     },
+     {
+      "symbol": "SA",
+      "verdict": "descartar",
+      "reason": "Liquidez baja (~$26M/día) y sin tesis; spread y riesgo de salto no compensan."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-2.3% sin catalizador ni setup; no hay nivel definido con riesgo acotado."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "descartar",
+      "reason": "Gran liquidez pero -1.8% sin setup ni tesis nueva; ya descartada ayer."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "-1.6% sin catalizador ni nivel técnico claro."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "-1.4% sin setup; ya descartada ayer."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "Gran liquidez y caída moderada de -1.3%; sin disparador. Vigilar solo si hay ruptura o soporte claro en regular."
+     },
+     {
+      "symbol": "GOOGL",
+      "verdict": "descartar",
+      "reason": "+1.1% sin catalizador ni setup con riesgo definido."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "-1.1% sin tesis ni setup."
+     },
+     {
+      "symbol": "T",
+      "verdict": "descartar",
+      "reason": "+0.8% en valor defensivo sin catalizador; no hay edge."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "+0.6% sin catalizador ni setup; aerolínea de alta sensibilidad a noticias sin tesis."
+     },
+     {
+      "symbol": "INSM",
+      "verdict": "descartar",
+      "reason": "Subida de la sesión por rumor sin confirmar (+21% en la última sesión); no perseguir. Orden de 139.5 ya cancelada."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla en pre-market (SPY en rojo, sin volumen relativo confirmado). Evalué las 16: descarté 14 por falta de setup, liquidez o catalizador, y dejé CRWV y AMZN en vigilar.\nNo envié órdenes nuevas. Los stops de TXN (277), BABA (83.2) y PDD (82.0) siguen activos, y la orden de INSM ya no existe.\nVigilo en la primera hora regular: confirmar los 3 stops y evaluar subir el de TXN a costo solo si recupera 285+ con volumen.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Pantalla sin volumen relativo confirmado y sin tesis; volatilidad alta (-3.7%) sin catalizador ni nivel claro."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Caída de -3.1% sin catalizador ni setup; mismo perfil especulativo de minera de cripto."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Liquidez muy alta (~$3.6B/día) y caída de -3% sin setup. Vigilar solo si reclaima un nivel claro con volumen, con stop bajo el soporte."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Sin tesis ni setup; -3% en minera de alta volatilidad, igual que sesiones previas."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Sin datos de tesis ni catalizador claro en la pantalla; -2.9% sin disparador."
+       },
+       {
+        "symbol": "SA",
+        "verdict": "descartar",
+        "reason": "Liquidez baja (~$26M/día) y sin tesis; spread y riesgo de salto no compensan."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-2.3% sin catalizador ni setup; no hay nivel definido con riesgo acotado."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "descartar",
+        "reason": "Gran liquidez pero -1.8% sin setup ni tesis nueva; ya descartada ayer."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "-1.6% sin catalizador ni nivel técnico claro."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "-1.4% sin setup; ya descartada ayer."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "Gran liquidez y caída moderada de -1.3%; sin disparador. Vigilar solo si hay ruptura o soporte claro en regular."
+       },
+       {
+        "symbol": "GOOGL",
+        "verdict": "descartar",
+        "reason": "+1.1% sin catalizador ni setup con riesgo definido."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "-1.1% sin tesis ni setup."
+       },
+       {
+        "symbol": "T",
+        "verdict": "descartar",
+        "reason": "+0.8% en valor defensivo sin catalizador; no hay edge."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "+0.6% sin catalizador ni setup; aerolínea de alta sensibilidad a noticias sin tesis."
+       },
+       {
+        "symbol": "INSM",
+        "verdict": "descartar",
+        "reason": "Subida de la sesión por rumor sin confirmar (+21% en la última sesión); no perseguir. Orden de 139.5 ya cancelada."
+       }
+      ]
+     },
+     "result": "Registrado: WULF, CIFR, CRWV, IREN, SPCX, SA, NOK, NVDA, SOFI, SNAP, AMZN, GOOGL, NU, T, AAL, INSM. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "05:38 premarket viernes 20-nov. Sin órdenes nuevas. Posiciones con stops GTC: TXN 52 (stop 277), BABA 100 (stop 83.2), PDD 80 (stop 82.0). Órdenes abiertas: solo esos 3 stops. Primera acción en regular: confirmar los 3 stops activos. TXN: si recupera 285+ con volumen, evaluar subir stop a costo (no bajarlo). BABA y PDD: sin reentrada si tocan stop. Pantalla revisada: CRWV y AMZN en vigilar; resto descartado. INSM descartado."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "05:38 premarket viernes 20-nov. Sin órdenes nuevas. Posiciones con stops GTC: TXN 52 (stop 277), BABA 100 (stop 83.2), PDD 80 (stop 82.0). Órdenes abiertas: solo esos 3 stops. Primera acción en regular: confirmar los 3 stops activos. TXN: si recupera 285+ con volumen, evaluar subir stop a costo (no bajarlo). BABA y PDD: sin reentrada si tocan stop. Pantalla revisada: CRWV y AMZN en vigilar; resto descartado. INSM descartado."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003063,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003063,
+      "calls": 2,
+      "tokens": 22490
+     }
+    }
+   },
+   "account": {
+    "equity": 99156.89,
+    "cash": 69307.49,
+    "buying_power": 360808.28,
+    "last_equity": 99377.49
+   },
+   "positions": 3
   }
  ],
- "spent_usd": 0.008472
+ "spent_usd": 0.011535
 }
