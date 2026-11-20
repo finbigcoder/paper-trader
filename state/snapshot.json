@@ -1,39 +1,39 @@
 {
- "updated_at": "2026-11-19T19:38:39-05:00",
+ "updated_at": "2026-11-20T01:17:55+00:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 99169.98,
+  "equity": 99167.66,
   "cash": 69307.66,
-  "buying_power": 349685.13,
+  "buying_power": 360838.64,
   "last_equity": 100000.0
  },
  "positions": {
   "BABA": {
    "qty": 100.0,
    "avg_price": 87.747,
-   "price": 83.3632,
-   "market_value": 8336.32,
-   "unrealized_pl": -438.38
+   "price": 83.4,
+   "market_value": 8340.0,
+   "unrealized_pl": -434.7
   },
   "PDD": {
    "qty": 80.0,
    "avg_price": 86.74275,
-   "price": 85.45,
-   "market_value": 6836.0,
-   "unrealized_pl": -103.42
+   "price": 85.05,
+   "market_value": 6804.0,
+   "unrealized_pl": -135.42
   },
   "TXN": {
    "qty": 52.0,
    "avg_price": 283.86,
-   "price": 282.5,
-   "market_value": 14690.0,
-   "unrealized_pl": -70.72
+   "price": 283.0,
+   "market_value": 14716.0,
+   "unrealized_pl": -44.72
   }
  },
  "orders": [
   {
    "id": "3bd10d4b-5378-45f4-87df-5f4cdc8cb935",
-   "submitted_at": "2026-11-19T23:08:51.117047+00:00",
+   "submitted_at": "2026-11-19T23:08:51.117048+00:00",
    "symbol": "INSM",
    "limit_price": 139.5,
    "stop_price": null,
@@ -43,7 +43,7 @@
    "qty": 80.0,
    "filled_qty": 0.0,
    "filled_avg_price": null,
-   "status": "new"
+   "status": "expired"
   },
   {
    "id": "9fbabe60-095a-4ed6-941c-cb4848fe4a7f",

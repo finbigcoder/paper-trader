@@ -1,1 +1,14 @@
-[]
+[
+ {
+  "symbol": "CRWV",
+  "side": "long",
+  "qty": 150.0,
+  "entry_date": "2026-11-19",
+  "entry": 51.43,
+  "exit_date": "2026-11-19",
+  "exit": 49.98,
+  "pnl_usd": -217.5,
+  "ret": -0.02819,
+  "days": 0
+ }
+]
