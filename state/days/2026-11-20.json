@@ -5350,7 +5350,202 @@
     "last_equity": 99377.49
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-20T12:08:45-05:00",
+   "time": "12:08",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.5861,
+    "limit": 2.5106,
+    "ticks_left": 16,
+    "est_tick": 0.005,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 10,
+    "shown": [
+     "NVDA",
+     "SNDK",
+     "CIFR",
+     "SPCX",
+     "IREN",
+     "WULF",
+     "CRWV",
+     "NOK",
+     "SOFI",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "-6.8% hoy, -30% vs SMA50, ATR 8.2%. Hoy perforó 135.5 (mín. 135.06) pero rebotó a 136.1 sin volumen de ruptura, así que no hay corto confirmado. Como la orden de corto es a mercado, no hay disparador limpio para dejar una orden. Solo corto si cierra la hora bajo 135 con volumen."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-15.8% en un día con ATR 13.7% y -44.7% vs SMA50. Es capitulación sin base; un stop de 1 ATR implica riesgo demasiado grande para la cuenta."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-14.8% con volumen relativo 1.0x y liquidez de solo $378M/día. Caída sin volumen ni tesis; spread y riesgo de salto altos."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6.9% con volumen relativo 1.9x, pero sin tesis documentada ni niveles claros. Pasar."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-12.9% con volumen relativo 0.8x, caída de cripto-minero sin confirmación de volumen. Sin setup."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-13.7% con volumen relativo 0.6x. Sin setup ni volumen."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "-10.8% con volumen relativo 0.5x, -35% vs SMA50. Sin estabilización: solo con soporte que sostenga y volumen."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-7.5% con volumen relativo 0.7x. Sin tesis ni setup."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "-5.1% con volumen relativo 0.5x. Sin setup."
+     },
+     {
+      "symbol": "CCC",
+      "verdict": "descartar",
+      "reason": "Sin cambio hoy (-0.1%), volumen 1.9x pero liquidez de $145M/día y sin tesis."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi que la única posición es PDD (80 @ 86.74, último 85.36) con stop GTC en 82 activo. SPY cae -1.8% y NVDA perforó 135.5 pero rebotó a 136.1 sin volumen de ruptura.\nEvalué las 10 de la pantalla: NVDA y CRWV quedan en vigilar; SNDK, CIFR, SPCX, IREN, WULF, NOK, SOFI y CCC se descartan por caídas sin tesis o liquidez insuficiente.\nNo envié órdenes ni cambié stops. Además, las lecciones del 19-nov mencionan TXN, BABA e INSM, pero no aparecen en la cuenta, así que no las tomo como posiciones.\nVigilo NVDA como corto solo si cierra la hora bajo 135 con volumen, CRWV solo con soporte con volumen, y PDD sin reentrar si toca 82.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 145.98 | hoy 136.1 (-6.8%) | 1d -3.3% | 5d -12.2% | 21d -34.2% | 63d -31.9% | vs SMA20 -21.4% | vs SMA50 -30.1% | ATR 8.2% | volumen ayer 1.28x | momentum 12-1 +22.7% (#48)\nBarras de 30 min de hoy:\n04:00 O143.94 H144.69 L142.85 C142.90 V0\n04:30 O142.90 H142.92 L141.80 C141.97 V0\n05:00 O141.92 H142.90 L141.90 C142.80 V0\n05:30 O142.80 H143.60 L142.74 C143.20 V0\n06:00 O143.20 H143.30 L142.27 C142.78 V0\n06:30 O142.70 H142.93 L142.26 C142.70 V0\n07:00 O142.68 H142.85 L141.75 C142.25 V0\n07:30 O142.26 H142.35 L141.20 C141.26 V0\n08:00 O141.26 H141.39 L140.60 C140.74 V0\n08:30 O140.76"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "SNDK"
+     },
+     "result": "SNDK: cierre previo 94.395 | hoy 79.47 (-15.8%) | 1d -2.7% | 5d -19.4% | 21d -45.2% | 63d -52.7% | vs SMA20 -25.4% | vs SMA50 -44.7% | ATR 13.7% | volumen ayer 1.16x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O90.22 H91.13 L88.56 C88.56 V0\n04:30 O88.56 H89.08 L87.73 C88.53 V0\n05:00 O88.57 H89.50 L88.50 C89.39 V0\n05:30 O89.41 H89.98 L88.82 C89.05 V0\n06:00 O89.07 H89.35 L88.10 C88.89 V0\n06:30 O88.82 H89.00 L87.80 C87.88 V0\n07:00 O87.91 H88.88 L86.92 C88.50 V0\n07:30 O88.54 H88.65 L87.40 C87.46 V0\n08:00 O87.40 H87.97 L86.78 C87.10 V0\n08:30 O87.06 H94.39 L86.41 C88.21 V0\n09:00 O88.20 "
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "PDD"
+     },
+     "result": "PDD: cierre previo 86.0 | hoy 85.36 (-0.7%) | 1d +11.0% | 5d +10.9% | 21d +9.2% | 63d -2.7% | vs SMA20 +7.8% | vs SMA50 +8.3% | ATR 3.6% | volumen ayer 4.06x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O84.51 H84.83 L84.16 C84.61 V0\n04:30 O84.80 H85.14 L84.70 C85.00 V0\n05:00 O84.91 H85.00 L84.75 C85.00 V0\n05:30 O85.00 H85.80 L85.00 C85.66 V0\n06:00 O85.88 H86.20 L85.79 C85.86 V0\n06:30 O85.87 H85.94 L85.56 C85.56 V0\n07:00 O85.60 H85.60 L85.27 C85.41 V0\n07:30 O85.39 H85.40 L84.78 C85.05 V0\n08:00 O85.30 H85.40 L85.01 C85.01 V0\n08:30 O84.90 H84.90 L83.90 C84.30 V0\n09:00 O84.29 H87.12 L"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "-6.8% hoy, -30% vs SMA50, ATR 8.2%. Hoy perforó 135.5 (mín. 135.06) pero rebotó a 136.1 sin volumen de ruptura, así que no hay corto confirmado. Como la orden de corto es a mercado, no hay disparador limpio para dejar una orden. Solo corto si cierra la hora bajo 135 con volumen."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-15.8% en un día con ATR 13.7% y -44.7% vs SMA50. Es capitulación sin base; un stop de 1 ATR implica riesgo demasiado grande para la cuenta."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-14.8% con volumen relativo 1.0x y liquidez de solo $378M/día. Caída sin volumen ni tesis; spread y riesgo de salto altos."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6.9% con volumen relativo 1.9x, pero sin tesis documentada ni niveles claros. Pasar."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-12.9% con volumen relativo 0.8x, caída de cripto-minero sin confirmación de volumen. Sin setup."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-13.7% con volumen relativo 0.6x. Sin setup ni volumen."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "-10.8% con volumen relativo 0.5x, -35% vs SMA50. Sin estabilización: solo con soporte que sostenga y volumen."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-7.5% con volumen relativo 0.7x. Sin tesis ni setup."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "-5.1% con volumen relativo 0.5x. Sin setup."
+       },
+       {
+        "symbol": "CCC",
+        "verdict": "descartar",
+        "reason": "Sin cambio hoy (-0.1%), volumen 1.9x pero liquidez de $145M/día y sin tesis."
+       }
+      ]
+     },
+     "result": "Registrado: NVDA, SNDK, CIFR, SPCX, IREN, WULF, CRWV, NOK, SOFI, CCC. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "12:08 regular viernes 20-nov. Estado verificado: solo PDD (80 @86.74, último 85.36, P&L ~-111), stop GTC 82.0 (id 490255a2) activo. Sin posiciones TXN/BABA ni órdenes INSM: las lecciones del 19-nov están desactualizadas. SPY -1.8%. Sin órdenes nuevas. NVDA vigilar: perforó 135.5 pero rebotó (mín 135.06, último 136.1); corto solo si cierra la hora bajo 135 con volumen (sin stop-sell disponible, sería a mercado). CRWV vigilar (soporte con volumen). PDD: mantener, stop 82; sin reentrada si toca 82. Descartados: SNDK, CIFR, SPCX, IREN, WULF, NOK, SOFI, CCC."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "12:08 regular viernes 20-nov. Estado verificado: solo PDD (80 @86.74, último 85.36, P&L ~-111), stop GTC 82.0 (id 490255a2) activo. Sin posiciones TXN/BABA ni órdenes INSM: las lecciones del 19-nov están desactualizadas. SPY -1.8%. Sin órdenes nuevas. NVDA vigilar: perforó 135.5 pero rebotó (mín 135.06, último 136.1); corto solo si cierra la hora bajo 135 con volumen (sin stop-sell disponible, sería a mercado). CRWV vigilar (soporte con volumen). PDD: mantener, stop 82; sin reentrada si toca 82. Descartados: SNDK, CIFR, SPCX, IREN, WULF, NOK, SOFI, CCC."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005742,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005742,
+      "calls": 3,
+      "tokens": 44716
+     }
+    }
+   },
+   "account": {
+    "equity": 98849.43,
+    "cash": 92020.63,
+    "buying_power": 387203.16,
+    "last_equity": 99377.49
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.061902
+ "spent_usd": 0.067644
 }
