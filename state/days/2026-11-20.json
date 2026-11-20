@@ -7202,7 +7202,205 @@
     "last_equity": 99377.49
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-20T17:38:37-05:00",
+   "time": "17:38",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.5233,
+    "limit": 2.4992,
+    "ticks_left": 5,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "SPCX",
+     "IREN",
+     "WULF",
+     "CRWV",
+     "AMZN",
+     "NOK",
+     "SOFI",
+     "AAPL",
+     "AAL",
+     "NFLX",
+     "NU",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -14% con volumen 2.8x sin setup ni nivel de riesgo definido; perseguir un cuchillo cayendo no tiene stop razonable."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6.5% con volumen 4.8x sin soporte ni disparador claro; no hay stop técnico cercano."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-15.1% en un día, nombre muy volátil, sin base ni setup; riesgo de salto alto."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-12.2% con volumen relativo de 1.2x, sin nivel definido ni tesis."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Cerca de 40.9, por debajo del disparador 41.5. Compra solo sobre 41.5 con volumen, stop 38.5. Ahora no hay señal."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "-3.2% con volumen 2.9x en mega-cap; sin nivel técnico claro. Solo ruptura de niveles previos con volumen."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-6.2% con volumen normal; sin setup."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "-5.4% con volumen normal; sin setup."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "-1.4% con volumen 4.2x pero movimiento pequeño; sin nivel ni tesis."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-5.0% con volumen normal; sin setup."
+     },
+     {
+      "symbol": "NFLX",
+      "verdict": "descartar",
+      "reason": "-2.5% sin setup."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "-3.5% con volumen bajo; sin setup."
+     },
+     {
+      "symbol": "CCC",
+      "verdict": "descartar",
+      "reason": "Movimiento plano (-0.4%), volumen medio de $145M; sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Post-market 17:38: sin cambios en posiciones ni órdenes. PDD largo 80 @86.74 (último 83.5) con stop de venta 82 activo; NVDA corto 40 @135.70 (último 129.74, unos +$238) con stop de cobertura 137.5 activo.\nRevisé la pantalla completa: descarté SNDK, SPCX, IREN, WULF, NOK, SOFI, AAPL, AAL, NFLX, NU y CCC por caídas sin setup ni nivel con riesgo definido. CRWV y AMZN quedan en vigilar.\nNo envié órdenes ni cambié stops. Mañana en la primera hora regular: verificar stops primero, llevar el stop de NVDA a costo (135.7) solo si rebota y cierra la hora sobre 135 sin romper 137.5, CRWV solo sobre 41.5 con volumen (stop 38.5) y PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -14% con volumen 2.8x sin setup ni nivel de riesgo definido; perseguir un cuchillo cayendo no tiene stop razonable."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6.5% con volumen 4.8x sin soporte ni disparador claro; no hay stop técnico cercano."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-15.1% en un día, nombre muy volátil, sin base ni setup; riesgo de salto alto."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-12.2% con volumen relativo de 1.2x, sin nivel definido ni tesis."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Cerca de 40.9, por debajo del disparador 41.5. Compra solo sobre 41.5 con volumen, stop 38.5. Ahora no hay señal."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "-3.2% con volumen 2.9x en mega-cap; sin nivel técnico claro. Solo ruptura de niveles previos con volumen."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-6.2% con volumen normal; sin setup."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "-5.4% con volumen normal; sin setup."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "-1.4% con volumen 4.2x pero movimiento pequeño; sin nivel ni tesis."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-5.0% con volumen normal; sin setup."
+       },
+       {
+        "symbol": "NFLX",
+        "verdict": "descartar",
+        "reason": "-2.5% sin setup."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "-3.5% con volumen bajo; sin setup."
+       },
+       {
+        "symbol": "CCC",
+        "verdict": "descartar",
+        "reason": "Movimiento plano (-0.4%), volumen medio de $145M; sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, SPCX, IREN, WULF, CRWV, AMZN, NOK, SOFI, AAPL, AAL, NFLX, NU, CCC. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.003561,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003561,
+      "calls": 2,
+      "tokens": 26940
+     }
+    }
+   },
+   "account": {
+    "equity": 98939.03,
+    "cash": 97448.63,
+    "buying_power": 381512.6,
+    "last_equity": 99377.49
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.116918
+ "spent_usd": 0.120479
 }
