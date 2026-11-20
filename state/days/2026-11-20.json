@@ -4998,7 +4998,171 @@
     "last_equity": 99377.49
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-20T11:08:23-05:00",
+   "time": "11:08",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.5977,
+    "limit": 2.5133,
+    "ticks_left": 18,
+    "est_tick": 0.005,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 10,
+    "shown": [
+     "NVDA",
+     "SPCX",
+     "IREN",
+     "SNDK",
+     "CRWV",
+     "CIFR",
+     "WULF",
+     "NOK",
+     "AMZN",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Cae -6.2% con volumen 5.2x y -30% vs SMA50, pero el mínimo de hoy (135.6) aguantó y rebotó a ~137. Sin soporte confirmado ni tesis de entrada; ATR 8.2% hace el riesgo demasiado ancho. Corto solo si pierde 135.5 con volumen."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6.4% sin tesis ni dato fundamental a mano; el rango es amplio y no hay nivel claro con riesgo definido."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-10.9% con volumen relativo 0.7x: caída sin confirmación de volumen ni setup."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-13.6% con volumen relativo 0.5x; caída sin soporte claro ni tesis. Se ve como agotamiento, no como entrada."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Mínimo de sesión 40.5 y cierre 41.09 con ATR 14.3%; -35% vs SMA50. Solo consideraría un soporte que sostenga con volumen, no antes."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Hoy no abro nada: en la pantalla no hay un setup con riesgo definido. Solo tengo PDD (80 @86.74, último 85.62, stop GTC 82.0 activo), con riesgo de unos $290 (0.3% de la cuenta).\nVi NVDA (rebotó desde 135.6, sin soporte confirmado), CRWV (sin estabilización) y SPCX, IREN y SNDK (caídas sin tesis ni volumen); evalué las cinco primeras de la pantalla.\nVigilo: NVDA como corto solo si pierde 135.5 con volumen; CRWV solo con soporte que sostenga; PDD sin reentrar si toca 82.\nNota: las lecciones de 19-nov mencionan TXN y BABA como posiciones, pero la cuenta no las muestra; las tomo como cerradas y no reconstruyo sus stops.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 145.98 | hoy 136.99 (-6.2%) | 1d -3.3% | 5d -12.2% | 21d -34.2% | 63d -31.9% | vs SMA20 -21.4% | vs SMA50 -30.1% | ATR 8.2% | volumen ayer 1.28x | momentum 12-1 +22.7% (#48)\nBarras de 30 min de hoy:\n04:00 O143.94 H144.69 L142.85 C142.90 V0\n04:30 O142.90 H142.92 L141.80 C141.97 V0\n05:00 O141.92 H142.90 L141.90 C142.80 V0\n05:30 O142.80 H143.60 L142.74 C143.20 V0\n06:00 O143.20 H143.30 L142.27 C142.78 V0\n06:30 O142.70 H142.93 L142.26 C142.70 V0\n07:00 O142.68 H142.85 L141.75 C142.25 V0\n07:30 O142.26 H142.35 L141.20 C141.26 V0\n08:00 O141.26 H141.39 L140.60 C140.74 V0\n08:30 O140.7"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "PDD"
+     },
+     "result": "PDD: cierre previo 86.0 | hoy 85.62 (-0.4%) | 1d +11.0% | 5d +10.9% | 21d +9.2% | 63d -2.7% | vs SMA20 +7.8% | vs SMA50 +8.3% | ATR 3.6% | volumen ayer 4.06x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O84.51 H84.83 L84.16 C84.61 V0\n04:30 O84.82 H85.14 L84.70 C85.00 V0\n05:00 O84.91 H85.00 L84.75 C85.00 V0\n05:30 O85.00 H85.80 L85.00 C85.66 V0\n06:00 O85.88 H86.20 L85.79 C85.86 V0\n06:30 O85.87 H85.94 L85.56 C85.56 V0\n07:00 O85.60 H85.60 L85.27 C85.41 V0\n07:30 O85.39 H85.40 L84.78 C85.05 V0\n08:00 O85.30 H85.40 L85.01 C85.01 V0\n08:30 O84.90 H84.90 L83.90 C84.30 V0\n09:00 O84.29 H87.12 L"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 44.91 | hoy 41.09 (-8.5%) | 1d -6.1% | 5d -20.6% | 21d -27.4% | 63d -48.9% | vs SMA20 -14.6% | vs SMA50 -34.9% | ATR 14.3% | volumen ayer 1.13x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O43.87 H44.06 L42.83 C42.86 V0\n04:30 O42.89 H42.91 L42.55 C42.60 V0\n05:00 O42.61 H43.24 L42.56 C43.24 V0\n05:30 O43.17 H43.57 L43.12 C43.22 V0\n06:00 O43.25 H43.35 L42.81 C43.07 V0\n06:30 O43.07 H43.09 L42.71 C42.71 V0\n07:00 O42.80 H42.87 L42.25 C42.42 V0\n07:30 O42.49 H42.61 L42.08 C42.40 V0\n08:00 O42.41 H42.75 L42.22 C42.22 V0\n08:30 O42.26 H42.90 L41.97 C42.79 V0\n09:00 O42.75 H4"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "AMZN"
+     },
+     "result": "AMZN: cierre previo 257.37 | hoy 253.86 (-1.4%) | 1d -3.9% | 5d -3.8% | 21d -1.9% | 63d -0.5% | vs SMA20 -0.0% | vs SMA50 +0.8% | ATR 4.3% | volumen ayer 1.05x | momentum 12-1 +17.9% (#58)\nBarras de 30 min de hoy:\n04:00 O255.16 H256.29 L253.52 C253.90 V0\n04:30 O253.94 H253.96 L252.38 C252.66 V0\n05:00 O252.54 H254.23 L252.54 C254.12 V0\n05:30 O253.95 H254.39 L253.40 C253.72 V0\n06:00 O253.67 H253.67 L252.46 C253.00 V0\n06:30 O252.85 H253.66 L252.30 C253.35 V0\n07:00 O253.44 H253.60 L252.00 C252.75 V0\n07:30 O252.72 H252.75 L251.00 C251.46 V0\n08:00 O251.51 H251.86 L250.58 C251.51 V0\n08:30 O251.33 H25"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "SPCX"
+     },
+     "result": "SPCX: cierre previo 138.43 | hoy 129.51 (-6.4%) | 1d -3.5% | 5d -1.1% | 21d -13.1% | 63d +1.1% | vs SMA20 -1.2% | vs SMA50 -6.6% | ATR 5.9% | volumen ayer 1.11x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O135.05 H135.75 L133.68 C133.68 V0\n04:30 O133.65 H134.00 L133.20 C133.35 V0\n05:00 O133.50 H133.90 L133.29 C133.88 V0\n05:30 O133.90 H134.50 L133.59 C133.62 V0\n06:00 O133.57 H133.72 L131.80 C132.16 V0\n06:30 O132.08 H132.59 L131.62 C131.89 V0\n07:00 O131.89 H131.94 L130.50 C130.98 V0\n07:30 O130.85 H130.99 L129.83 C130.04 V0\n08:00 O130.09 H130.25 L128.74 C128.93 V0\n08:30 O128.93 H129."
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Cae -6.2% con volumen 5.2x y -30% vs SMA50, pero el mínimo de hoy (135.6) aguantó y rebotó a ~137. Sin soporte confirmado ni tesis de entrada; ATR 8.2% hace el riesgo demasiado ancho. Corto solo si pierde 135.5 con volumen."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6.4% sin tesis ni dato fundamental a mano; el rango es amplio y no hay nivel claro con riesgo definido."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-10.9% con volumen relativo 0.7x: caída sin confirmación de volumen ni setup."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-13.6% con volumen relativo 0.5x; caída sin soporte claro ni tesis. Se ve como agotamiento, no como entrada."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Mínimo de sesión 40.5 y cierre 41.09 con ATR 14.3%; -35% vs SMA50. Solo consideraría un soporte que sostenga con volumen, no antes."
+       },
+       {
+        "symbol": "PDD",
+        "verdict": "vigilar",
+        "reason": "En cartera (80 @86.74). Hoy aguanta 85.3-86.6 tras subida de +11% en 5 días. Mantener con stop 82 (riesgo ~$290, 0.3% de la cuenta). Sin añadir."
+       }
+      ]
+     },
+     "result": "Registrado: NVDA, SPCX, IREN, SNDK, CRWV. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "11:08 regular viernes 20-nov. Estado verificado: solo PDD (80 @86.74, último 85.62) con stop GTC 82.0 (id 490255a2). Cuenta confirma que NO hay TXN ni BABA (valor 98,868 ≈ efectivo 92,021 + PDD 6,850). Las lecciones de 19-nov mencionan TXN/BABA como posiciones: están desactualizadas; no reconstruir stops. Sin órdenes nuevas. Pantalla: NVDA vigilar (corto solo si pierde 135.5 con volumen); CRWV vigilar (solo con soporte con volumen); PDD mantener, sin reentrar si toca 82; SPCX, IREN, SNDK descartados. Próximo: confirmar stop PDD activo al abrir y revisar NVDA/CRWV en la siguiente hora."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "11:08 regular viernes 20-nov. Estado verificado: solo PDD (80 @86.74, último 85.62) con stop GTC 82.0 (id 490255a2). Cuenta confirma que NO hay TXN ni BABA (valor 98,868 ≈ efectivo 92,021 + PDD 6,850). Las lecciones de 19-nov mencionan TXN/BABA como posiciones: están desactualizadas; no reconstruir stops. Sin órdenes nuevas. Pantalla: NVDA vigilar (corto solo si pierde 135.5 con volumen); CRWV vigilar (solo con soporte con volumen); PDD mantener, sin reentrar si toca 82; SPCX, IREN, SNDK descartados. Próximo: confirmar stop PDD activo al abrir y revisar NVDA/CRWV en la siguiente hora."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005294,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005294,
+      "calls": 3,
+      "tokens": 43807
+     }
+    }
+   },
+   "account": {
+    "equity": 98867.03,
+    "cash": 92020.63,
+    "buying_power": 387252.44,
+    "last_equity": 99377.49
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.051761
+ "spent_usd": 0.057055
 }
