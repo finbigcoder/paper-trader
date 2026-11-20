@@ -7544,7 +7544,136 @@
     "last_equity": 100000.0
    },
    "positions": 3
+  },
+  {
+   "at": "2026-11-19T19:38:39-05:00",
+   "time": "19:38",
+   "session": "post",
+   "last": true,
+   "budget": {
+    "allowance_today": 2.1779,
+    "limit": 2.1779,
+    "ticks_left": 1,
+    "est_tick": 0.0069,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNEX",
+     "INSM",
+     "IREN",
+     "NVDA",
+     "SNAP",
+     "AMZN",
+     "SPCX",
+     "GOOGL",
+     "CRWV",
+     "WULF",
+     "SOFI",
+     "NU",
+     "AAL",
+     "NOK",
+     "CIFR",
+     "T"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNEX",
+      "verdict": "descartar",
+      "reason": "Cae -26.8% con 5.4x de volumen, pero liquidez de $54M/día y sin tesis clara; no hay nivel con riesgo definido."
+     },
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Sube +21% por un rumor de Sanofi sin confirmar. Mi compra límite de 80 a 139.5 (id 3bd10d4b) sigue viva sin stop hijo; si se llena, stop 136.5 de inmediato. No la persigo."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Cae -7.3% en un día de mercado débil sin catalizador propio ni setup de entrada definido."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "descartar",
+      "reason": "Volumen 9.7x pero cae -3.8% sin nivel técnico claro ni tesis nueva para hoy."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "Cae -6.6% en $258M/día con volumen relativo 2.7x; sin tesis ni setup con stop definido."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla y la posición en post-market: TXN ~282.5 (stop 277), BABA ~83.4 (stop 83.2) y PDD ~85.1 (stop 82.0). SPY cerró -2.1%, y la cuenta perdió $830 hoy.\nHice: no envié órdenes nuevas ni cambié stops. Evalué las 5 primeras de la pantalla: INSM queda en vigilar y SNEX, IREN, NVDA y SNAP quedan descartados. Reescribí las lecciones.\nVigilo: al primer despertar regular, verificar los stops de TXN, BABA y PDD. Si la compra límite de INSM a 139.5 se llena, poner stop 136.5 de inmediato. Sin reentrar BABA ni PDD si tocan stop.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNEX",
+        "verdict": "descartar",
+        "reason": "Cae -26.8% con 5.4x de volumen, pero liquidez de $54M/día y sin tesis clara; no hay nivel con riesgo definido."
+       },
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Sube +21% por un rumor de Sanofi sin confirmar. Mi compra límite de 80 a 139.5 (id 3bd10d4b) sigue viva sin stop hijo; si se llena, stop 136.5 de inmediato. No la persigo."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Cae -7.3% en un día de mercado débil sin catalizador propio ni setup de entrada definido."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "descartar",
+        "reason": "Volumen 9.7x pero cae -3.8% sin nivel técnico claro ni tesis nueva para hoy."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "Cae -6.6% en $258M/día con volumen relativo 2.7x; sin tesis ni setup con stop definido."
+       }
+      ]
+     },
+     "result": "Registrado: SNEX, INSM, IREN, NVDA, SNAP. Pantalla evaluada."
+    },
+    {
+     "name": "update_lessons",
+     "args": {
+      "text": "LECCIONES (revisadas 19-nov-2026, último despertar del día; SPY -2.1%, cuenta -$830 hoy)\n\nQué pasó hoy:\n- Tengo 3 posiciones en pérdida: TXN (52 @283.86, stop OTO 277, precio ~282.5), BABA (100 @87.75, stop 83.2, precio ~83.4, resultados ya salieron) y PDD (80 @86.74, stop 82.0, precio ~85.1). Los stops están activos; no reentré.\n- Mi error operativo: la compra límite de INSM a 139.5 se dejó sin stop hijo en regular y la tuve que cancelar y repetir en post-market, donde el stop no se puede pegar. Resultado: una orden sin protección que dependía de que yo la corrigiera después.\n- Repetí notas de post-market casi idénticas cada 30 min (16:08 a 19:08) sin información nueva. Eso es ruido. La pantalla completa se revisa una vez por sesión, no en cada despertar.\n- No abrí ninguna posición nueva por mi cuenta hoy: las entradas de la sesión regular no se dejaron con stop pegado.\n\nQué funcionó:\n- No perseguir INSM con rumor sin confirmar (ya sube +21%).\n- Stops activos en las posiciones abiertas; no promediar pérdidas.\n- Descartar nombres con volumen alto pero sin setup ni tesis (SNEX, NVDA, SNAP, IREN).\n\nQué haré distinto:\n1. Toda entrada nueva se pone en regular con stop_price en place_order (OTO). Si la sesión es post-market, dejo la orden límite con la nota explícita de que el stop se pondrá después y lo verifico en el primer despertar regular.\n2. Al despertar en regular, primero verifico stops de todas las posiciones y órdenes abiertas, antes de cualquier análisis.\n3. Post-market: una línea \"sin cambios\" si no hay nada nuevo. No repetir resúmenes.\n4. Niveles a menos de ~1 ATR del precio. Riesgo por operación 0.5-1% de la cuenta.\n5. Resultados: BABA ya reportó; decidir si el stop 83.2 sigue siendo válido en la primera hora regular. Si rompe, salir sin reentrar hoy.\n6. Mantener un máximo de 3-5 posiciones con tesis escrita (disparador, stop, tamaño, horizonte). Si falta uno, completarlo antes de operar.\n\nVigilancia para mañana, primera hora regular:\n- Stops: TXN 277, BABA 83.2, PDD 82.0 activos.\n- INSM: si la compra 139.5 (id 3bd10d4b) se llena, stop 136.5 de inmediato. Si el rumor de Sanofi se desmiente, la orden no llena y no hay nada que hacer.\n- TXN: si recupera 285+ con volumen, evaluar subir stop a costo; no lo bajo.\n- Lista de momentum (MU, MRVL, AMD, INTC) solo si muestran setup claro; no operar por el rebote o la caída del SPY sin disparador."
+     },
+     "result": "Lecciones guardadas (2387 caracteres)."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.00397,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.00397,
+      "calls": 2,
+      "tokens": 29332
+     }
+    }
+   },
+   "account": {
+    "equity": 99169.98,
+    "cash": 69307.66,
+    "buying_power": 349685.13,
+    "last_equity": 100000.0
+   },
+   "positions": 3
   }
  ],
- "spent_usd": 0.14739
+ "spent_usd": 0.15136,
+ "lessons_updated": true
 }
