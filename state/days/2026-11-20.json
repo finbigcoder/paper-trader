@@ -4598,7 +4598,209 @@
     "last_equity": 99377.49
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-20T10:08:26-05:00",
+   "time": "10:08",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.6102,
+    "limit": 2.5209,
+    "ticks_left": 20,
+    "est_tick": 0.0047,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 10,
+    "shown": [
+     "GAP",
+     "IREN",
+     "NVDA",
+     "SNDK",
+     "SPCX",
+     "CRWV",
+     "NOK",
+     "CCC",
+     "AAPL",
+     "AMZN"
+    ],
+    "reviews": [
+     {
+      "symbol": "GAP",
+      "verdict": "descartar",
+      "reason": "+16.8% por resultados sobre volumen relativo 0.9x en la apertura; tendencia bajista (-14.5% vs SMA50). Perseguir el gap sin base ni nivel definido."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-6.5% sin tesis ni nivel claro; ya descartada en sesiones previas."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Rebote de -3.1% tras caída de -34% en 21d; ATR 8.2%, sin soporte confirmado con volumen. Sin disparador."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-7.6% con volumen relativo 0.2x; sin setup."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-4.4% con volumen relativo 0.3x; sin tesis ni nivel."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "-34.9% vs SMA50, ATR 14%. Rebotó desde 41.27 pero cierra debajo de la apertura; solo interesa con estabilización y volumen."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-3.7% con volumen relativo 0.2x; sin setup."
+     },
+     {
+      "symbol": "CCC",
+      "verdict": "descartar",
+      "reason": "Plano (-0.1%), sin tesis ni nivel definido."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "+0.2% con volumen relativo 0.2x; sin movimiento ni setup."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "Plano (-0.1%) con volumen relativo 0.5x; solo interesa si recupera niveles previos con volumen."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi TXN y PDD con sus stops activos (TXN 277, PDD 82). TXN tocó 277.04 en la apertura y no llegó al stop; cierra en 281.08. No abrí nada: en la pantalla no hay ningún nombre con setup y riesgo definido. GAP, IREN, SNDK, SPCX, NOK, CCC y AAPL quedan descartados; NVDA, CRWV y AMZN en vigilar. Vigilo TXN (subir stop a costo solo con 285+ y volumen, sin bajarlo; está cerca del límite de 15%) y PDD (sin reentrada si toca 82).",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "TXN"
+     },
+     "result": "TXN: cierre previo 285.75 | hoy 281.08 (-1.6%) | 1d -2.3% | 5d -8.6% | 21d +0.9% | 63d +8.6% | vs SMA20 -4.4% | vs SMA50 +0.1% | ATR 5.5% | volumen ayer 0.68x | momentum 12-1 +84.0% (#7)\nBarras de 30 min de hoy:\n04:00 O282.07 H283.41 L278.01 C278.01 V0\n04:30 O279.52 H279.52 L279.52 C279.52 V0\n05:00 O280.17 H281.00 L280.17 C281.00 V0\n05:30 O281.00 H281.00 L280.80 C281.00 V0\n06:00 O280.48 H281.00 L280.28 C281.00 V0\n06:30 O280.57 H281.00 L280.57 C280.95 V0\n07:00 O281.00 H282.99 L279.79 C282.69 V0\n07:30 O282.07 H282.26 L280.20 C280.48 V0\n08:00 O280.69 H281.46 L280.50 C280.91 V0\n08:30 O280.77 H281."
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 145.98 | hoy 141.44 (-3.1%) | 1d -3.3% | 5d -12.2% | 21d -34.2% | 63d -31.9% | vs SMA20 -21.4% | vs SMA50 -30.1% | ATR 8.2% | volumen ayer 1.28x | momentum 12-1 +22.7% (#48)\nBarras de 30 min de hoy:\n04:00 O143.94 H144.69 L142.85 C142.90 V0\n04:30 O142.90 H142.92 L141.80 C141.97 V0\n05:00 O141.92 H142.90 L141.90 C142.80 V0\n05:30 O142.80 H143.60 L142.74 C143.20 V0\n06:00 O143.20 H143.30 L142.27 C142.78 V0\n06:30 O142.70 H142.93 L142.26 C142.70 V0\n07:00 O142.68 H142.85 L141.75 C142.25 V0\n07:30 O142.26 H142.35 L141.20 C141.26 V0\n08:00 O141.26 H141.39 L140.60 C140.74 V0\n08:30 O140.7"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 44.91 | hoy 42.5 (-5.4%) | 1d -6.1% | 5d -20.6% | 21d -27.4% | 63d -48.9% | vs SMA20 -14.6% | vs SMA50 -34.9% | ATR 14.3% | volumen ayer 1.13x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O43.87 H44.06 L42.83 C42.86 V0\n04:30 O42.89 H42.91 L42.55 C42.60 V0\n05:00 O42.61 H43.24 L42.56 C43.24 V0\n05:30 O43.17 H43.57 L43.12 C43.22 V0\n06:00 O43.25 H43.35 L42.81 C42.99 V0\n06:30 O43.07 H43.09 L42.71 C42.71 V0\n07:00 O42.80 H42.87 L42.25 C42.42 V0\n07:30 O42.49 H42.61 L42.08 C42.40 V0\n08:00 O42.41 H42.75 L42.22 C42.22 V0\n08:30 O42.26 H42.90 L41.97 C42.79 V0\n09:00 O42.75 H43"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "GAP"
+     },
+     "result": "GAP: cierre previo 18.79 | hoy 21.95 (+16.8%) | 1d -5.3% | 5d -11.6% | 21d -17.2% | 63d -4.4% | vs SMA20 -12.8% | vs SMA50 -14.5% | ATR 5.2% | volumen ayer 3.67x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O19.60 H19.60 L19.05 C19.60 V0\n04:30 O19.18 H19.18 L19.18 C19.18 V0\n05:30 O19.50 H19.50 L19.40 C19.40 V0\n06:00 O19.44 H19.55 L19.44 C19.46 V0\n06:30 O19.41 H19.41 L19.33 C19.33 V0\n07:00 O19.34 H19.44 L19.21 C19.29 V0\n07:30 O19.25 H19.53 L19.21 C19.45 V0\n08:00 O19.46 H19.48 L19.38 C19.41 V0\n08:30 O19.46 H19.46 L19.35 C19.40 V0\n09:00 O19.45 H19.65 L19.45 C19.56 V0\n09:30 O20.25 H21."
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "GAP",
+        "verdict": "descartar",
+        "reason": "+16.8% por resultados sobre volumen relativo 0.9x en la apertura; tendencia bajista (-14.5% vs SMA50). Perseguir el gap sin base ni nivel definido."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-6.5% sin tesis ni nivel claro; ya descartada en sesiones previas."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Rebote de -3.1% tras caída de -34% en 21d; ATR 8.2%, sin soporte confirmado con volumen. Sin disparador."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-7.6% con volumen relativo 0.2x; sin setup."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-4.4% con volumen relativo 0.3x; sin tesis ni nivel."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "-34.9% vs SMA50, ATR 14%. Rebotó desde 41.27 pero cierra debajo de la apertura; solo interesa con estabilización y volumen."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-3.7% con volumen relativo 0.2x; sin setup."
+       },
+       {
+        "symbol": "CCC",
+        "verdict": "descartar",
+        "reason": "Plano (-0.1%), sin tesis ni nivel definido."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "+0.2% con volumen relativo 0.2x; sin movimiento ni setup."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "Plano (-0.1%) con volumen relativo 0.5x; solo interesa si recupera niveles previos con volumen."
+       }
+      ]
+     },
+     "result": "Registrado: GAP, IREN, NVDA, SNDK, SPCX, CRWV, NOK, CCC, AAPL, AMZN. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "10:08 regular viernes 20-nov. Stops verificados en órdenes abiertas: TXN 52 (stop 277, precio 281.08; mínimo de apertura 277.04, sin tocar) y PDD 80 (stop 82.0). Sin órdenes nuevas. TXN ~14.7% de la cuenta, cerca del límite del 15%: no añadir. TXN: subir stop a costo solo si recupera 285+ con volumen (nunca bajarlo). PDD: sin reentrada si toca 82. Pantalla: GAP, IREN, SNDK, SPCX, NOK, CCC, AAPL descartados; NVDA, CRWV, AMZN en vigilar sin disparador."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "10:08 regular viernes 20-nov. Stops verificados en órdenes abiertas: TXN 52 (stop 277, precio 281.08; mínimo de apertura 277.04, sin tocar) y PDD 80 (stop 82.0). Sin órdenes nuevas. TXN ~14.7% de la cuenta, cerca del límite del 15%: no añadir. TXN: subir stop a costo solo si recupera 285+ con volumen (nunca bajarlo). PDD: sin reentrada si toca 82. Pantalla: GAP, IREN, SNDK, SPCX, NOK, CCC, AAPL descartados; NVDA, CRWV, AMZN en vigilar sin disparador."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.004998,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.004998,
+      "calls": 3,
+      "tokens": 41756
+     }
+    }
+   },
+   "account": {
+    "equity": 99152.49,
+    "cash": 77622.49,
+    "buying_power": 370773.96,
+    "last_equity": 99377.49
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.04083
+ "spent_usd": 0.045828
 }
