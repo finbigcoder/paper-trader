@@ -3649,7 +3649,266 @@
     "last_equity": 99377.49
    },
    "positions": 3
+  },
+  {
+   "at": "2026-11-20T08:08:24-05:00",
+   "time": "08:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.6295,
+    "limit": 2.5143,
+    "ticks_left": 24,
+    "est_tick": 0.005,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 17,
+    "shown": [
+     "SPCX",
+     "CIFR",
+     "CRWV",
+     "WULF",
+     "IREN",
+     "NOK",
+     "NVDA",
+     "SOFI",
+     "SNAP",
+     "SA",
+     "AMZN",
+     "NU",
+     "INSM",
+     "T",
+     "GOOGL",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Minera volátil (-5.3%) sin catalizador ni tesis propia."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Liquidez alta y caída de -5.3%; solo me interesa si estabiliza y recupera con volumen en regular."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Minera de bitcoin en caída sin tesis; el riesgo de salto no compensa."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Mismo perfil que WULF/CIFR: caída sin catalizador."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Caída -3.6% sin catalizador ni nivel técnico claro."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Líquido y -3.3%; vigilo si aparece un soporte claro con volumen en la primera hora."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "Caída -3.2% sin tesis propia."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "Precio bajo y sin setup ni catalizador."
+     },
+     {
+      "symbol": "SA",
+      "verdict": "descartar",
+      "reason": "Liquidez baja (~$26M/día) y sin tesis."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "Líquido, -2.2%; vigilo solo si recupera niveles previos con volumen."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "Caída leve sin setup."
+     },
+     {
+      "symbol": "INSM",
+      "verdict": "descartar",
+      "reason": "Ya subió mucho por rumor; no persigo. La orden de 139.5 no aparece abierta."
+     },
+     {
+      "symbol": "T",
+      "verdict": "descartar",
+      "reason": "Movimiento leve (+0.9%) sin setup."
+     },
+     {
+      "symbol": "GOOGL",
+      "verdict": "descartar",
+      "reason": "Movimiento leve (-0.6%) sin setup ni catalizador."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "Movimiento leve sin tesis."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "duplicado"
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Revisé la pantalla de pre-market: 16 nombres, sin setup con riesgo definido. Descarté 14 (SPCX, CIFR, WULF, IREN, NOK, SOFI, SNAP, SA, NU, INSM, T, GOOGL, AAL) y dejé en vigilar CRWV, NVDA y AMZN; CRWV y NVDA siguen en tendencia bajista fuerte (-35% y -30% vs SMA50).\nNo envié órdenes ni cambié stops. TXN (277), BABA (83.2) y PDD (82.0) conservan sus stops GTC, que se activan en la sesión regular.\nVigilo en la primera hora regular: confirmar los 3 stops; subir el de TXN a costo solo si recupera 285+ con volumen; y un soporte con volumen en CRWV, NVDA o AMZN.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Cae -6% sin tesis ni nivel definido; no hay setup con riesgo claro."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Minera volátil (-5.3%) sin catalizador ni tesis propia."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Liquidez alta y caída de -5.3%; solo me interesa si estabiliza y recupera con volumen en regular."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Minera de bitcoin en caída sin tesis; el riesgo de salto no compensa."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Mismo perfil que WULF/CIFR: caída sin catalizador."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Caída -3.6% sin catalizador ni nivel técnico claro."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Líquido y -3.3%; vigilo si aparece un soporte claro con volumen en la primera hora."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "Caída -3.2% sin tesis propia."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "Precio bajo y sin setup ni catalizador."
+       },
+       {
+        "symbol": "SA",
+        "verdict": "descartar",
+        "reason": "Liquidez baja (~$26M/día) y sin tesis."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "Líquido, -2.2%; vigilo solo si recupera niveles previos con volumen."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "Caída leve sin setup."
+       },
+       {
+        "symbol": "INSM",
+        "verdict": "descartar",
+        "reason": "Ya subió mucho por rumor; no persigo. La orden de 139.5 no aparece abierta."
+       },
+       {
+        "symbol": "T",
+        "verdict": "descartar",
+        "reason": "Movimiento leve (+0.9%) sin setup."
+       },
+       {
+        "symbol": "GOOGL",
+        "verdict": "descartar",
+        "reason": "Movimiento leve (-0.6%) sin setup ni catalizador."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "Movimiento leve sin tesis."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "duplicado"
+       }
+      ]
+     },
+     "result": "Registrado: SPCX, CIFR, CRWV, WULF, IREN, NOK, NVDA, SOFI, SNAP, SA, AMZN, NU, INSM, T, GOOGL, AAL, SPCX. Pantalla evaluada."
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 44.91 | hoy 42.53 (-5.3%) | 1d -6.1% | 5d -20.6% | 21d -27.4% | 63d -48.9% | vs SMA20 -14.6% | vs SMA50 -34.9% | ATR 14.3% | volumen ayer 1.13x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O43.87 H44.06 L42.83 C42.86 V0\n04:30 O42.89 H42.91 L42.55 C42.60 V0\n05:00 O42.61 H43.24 L42.56 C43.24 V0\n05:30 O43.17 H43.57 L43.12 C43.22 V0\n06:00 O43.25 H43.35 L42.81 C43.07 V0\n06:30 O43.07 H43.09 L42.71 C42.71 V0\n07:00 O42.80 H42.87 L42.25 C42.42 V0\n07:30 O42.49 H42.61 L42.08 C42.40 V0\n08:00 O42.41 H42.61 L42.33 C42.53 V0"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 145.98 | hoy 141.14 (-3.3%) | 1d -3.3% | 5d -12.2% | 21d -34.2% | 63d -31.9% | vs SMA20 -21.4% | vs SMA50 -30.1% | ATR 8.2% | volumen ayer 1.28x | momentum 12-1 +22.7% (#48)\nBarras de 30 min de hoy:\n04:00 O143.94 H144.69 L142.85 C142.90 V0\n04:30 O142.90 H142.92 L141.80 C141.97 V0\n05:00 O141.92 H142.90 L141.90 C142.80 V0\n05:30 O142.80 H143.60 L142.74 C143.20 V0\n06:00 O143.20 H143.30 L142.27 C142.78 V0\n06:30 O142.70 H142.93 L142.26 C142.70 V0\n07:00 O142.68 H142.85 L141.75 C142.25 V0\n07:30 O142.26 H142.35 L141.20 C141.26 V0\n08:00 O141.26 H141.36 L141.00 C141.14 V0"
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "08:08 pre-market viernes 20-nov. Sin órdenes nuevas. Posiciones con stops GTC: TXN 52 (stop 277), BABA 100 (stop 83.2), PDD 80 (stop 82.0). Órdenes abiertas: solo esos 3 stops; INSM no aparece (descartada). Primera acción en regular: confirmar los 3 stops activos antes de cualquier análisis. TXN: si recupera 285+ con volumen, evaluar subir stop a costo (no bajarlo). BABA y PDD: sin reentrada si tocan stop. Vigilar: CRWV (tendencia bajista, -35% vs SMA50; solo con estabilización y volumen), NVDA (-30% vs SMA50; soporte claro con volumen), AMZN (recuperar niveles previos con volumen). Resto de la pantalla descartado."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "08:08 pre-market viernes 20-nov. Sin órdenes nuevas. Posiciones con stops GTC: TXN 52 (stop 277), BABA 100 (stop 83.2), PDD 80 (stop 82.0). Órdenes abiertas: solo esos 3 stops; INSM no aparece (descartada). Primera acción en regular: confirmar los 3 stops activos antes de cualquier análisis. TXN: si recupera 285+ con volumen, evaluar subir stop a costo (no bajarlo). BABA y PDD: sin reentrada si tocan stop. Vigilar: CRWV (tendencia bajista, -35% vs SMA50; solo con estabilización y volumen), NVDA (-30% vs SMA50; soporte claro con volumen), AMZN (recuperar niveles previos con volumen). Resto de l"
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005021,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005021,
+      "calls": 3,
+      "tokens": 41384
+     }
+    }
+   },
+   "account": {
+    "equity": 99111.29,
+    "cash": 69307.49,
+    "buying_power": 360680.6,
+    "last_equity": 99377.49
+   },
+   "positions": 3
   }
  ],
- "spent_usd": 0.023909
+ "spent_usd": 0.02893
 }
