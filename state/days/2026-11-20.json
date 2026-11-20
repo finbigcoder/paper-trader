@@ -6287,7 +6287,152 @@
     "last_equity": 99377.49
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-20T14:38:19-05:00",
+   "time": "14:38",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.554,
+    "limit": 2.4996,
+    "ticks_left": 11,
+    "est_tick": 0.0054,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 10,
+    "shown": [
+     "SPCX",
+     "SNDK",
+     "IREN",
+     "WULF",
+     "CRWV",
+     "NOK",
+     "SOFI",
+     "AAL",
+     "NU",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Cae -6.6% con volumen 3.6x, pero sin gráfica revisada ni tesis; con el SPY -2.9% es una venta de riesgo, no un setup con stop claro."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-15.8% a 79.52, -44.7% vs SMA50 y ATR 13.7%: cuchillo cayendo sin soporte confirmado; el riesgo de un stop ajustado es demasiado grande."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-15.8% a 12.14 con volumen relativo 1.1x; sin tesis ni nivel de entrada con riesgo definido."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-14.0% a 9.95 con volumen relativo 0.9x; caída sin catalizador visible, sin setup."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "-11.4% a 39.79, ATR 14.3%, -35% vs SMA50; mínimo de hora 39.3 sostenido. Solo compraría con rebote de volumen sobre ~41.5 y stop bajo 38.5."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la cuenta y la pantalla con SPY -2.9%. NVDA cayó desde 135 a 129.82 con volumen en la barra de las 14:00, así que el corto (40 @135.70) va ganando unos $235; su stop de cobertura en 137.5 está activo. PDD (80 @86.74, último 84.52) tiene su stop en 82 activo.\nEvalué SPCX, SNDK, IREN, WULF y CRWV: descarté las cuatro primeras por caídas sin setup ni stop razonable, y dejé CRWV en vigilar (compra solo con volumen sobre ~41.5, stop 38.5).\nNo envié órdenes ni cambié stops; no añado a NVDA. Vigilo que NVDA no recupere 135.7 (ahí evaluaría llevar el stop a costo), CRWV sobre 41.5 y PDD sin reentrar si toca 82.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 145.98 | hoy 129.82 (-11.1%) | 1d -3.3% | 5d -12.2% | 21d -34.2% | 63d -31.9% | vs SMA20 -21.4% | vs SMA50 -30.1% | ATR 8.2% | volumen ayer 1.28x | momentum 12-1 +22.7% (#48)\nBarras de 30 min de hoy:\n05:00 O141.92 H142.90 L141.90 C142.80 V0\n05:30 O142.80 H143.60 L142.74 C143.20 V0\n06:00 O143.20 H143.30 L142.27 C142.78 V0\n06:30 O142.70 H142.93 L142.26 C142.70 V0\n07:00 O142.68 H142.85 L141.75 C142.25 V0\n07:30 O142.26 H142.35 L141.20 C141.26 V0\n08:00 O141.26 H141.39 L140.60 C140.74 V0\n08:30 O140.76 H142.36 L140.25 C142.36 V0\n09:00 O142.32 H144.27 L142.30 C143.64 V0\n09:30 O142."
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 44.91 | hoy 39.79 (-11.4%) | 1d -6.1% | 5d -20.6% | 21d -27.4% | 63d -48.9% | vs SMA20 -14.6% | vs SMA50 -34.9% | ATR 14.3% | volumen ayer 1.14x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n05:00 O42.61 H43.24 L42.56 C43.24 V0\n05:30 O43.17 H43.57 L43.12 C43.22 V0\n06:00 O43.25 H43.35 L42.81 C42.99 V0\n06:30 O43.07 H43.09 L42.71 C42.71 V0\n07:00 O42.80 H42.87 L42.25 C42.42 V0\n07:30 O42.49 H42.61 L42.08 C42.40 V0\n08:00 O42.41 H42.75 L42.22 C42.22 V0\n08:30 O42.26 H42.90 L41.97 C42.79 V0\n09:00 O42.75 H43.70 L42.74 C43.24 V0\n09:30 O43.21 H43.21 L41.27 C42.87 V13469719\n10:00 O"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "SNDK"
+     },
+     "result": "SNDK: cierre previo 94.395 | hoy 79.52 (-15.8%) | 1d -2.7% | 5d -19.4% | 21d -45.2% | 63d -52.7% | vs SMA20 -25.4% | vs SMA50 -44.7% | ATR 13.7% | volumen ayer 1.16x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n05:00 O88.57 H89.50 L88.50 C89.39 V0\n05:30 O89.41 H89.98 L88.82 C89.05 V0\n06:00 O89.07 H89.35 L88.10 C88.89 V0\n06:30 O88.82 H89.00 L87.80 C87.88 V0\n07:00 O87.91 H88.88 L86.92 C88.50 V0\n07:30 O88.54 H88.65 L87.40 C87.46 V0\n08:00 O87.40 H87.97 L86.78 C87.10 V0\n08:30 O87.06 H94.39 L86.41 C88.21 V0\n09:00 O88.20 H90.19 L87.65 C90.05 V0\n09:30 O89.91 H90.67 L85.71 C88.46 V20794800\n10:00 "
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Cae -6.6% con volumen 3.6x, pero sin gráfica revisada ni tesis; con el SPY -2.9% es una venta de riesgo, no un setup con stop claro."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-15.8% a 79.52, -44.7% vs SMA50 y ATR 13.7%: cuchillo cayendo sin soporte confirmado; el riesgo de un stop ajustado es demasiado grande."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-15.8% a 12.14 con volumen relativo 1.1x; sin tesis ni nivel de entrada con riesgo definido."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-14.0% a 9.95 con volumen relativo 0.9x; caída sin catalizador visible, sin setup."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "-11.4% a 39.79, ATR 14.3%, -35% vs SMA50; mínimo de hora 39.3 sostenido. Solo compraría con rebote de volumen sobre ~41.5 y stop bajo 38.5."
+       }
+      ]
+     },
+     "result": "Registrado: SPCX, SNDK, IREN, WULF, CRWV. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "14:38 regular viernes 20-nov. Estado verificado: PDD long 80 @86.74 (último 84.52, -$178), stop GTC 82.0 (490255a2). NVDA short 40 @135.70 (último 129.82, +$235), stop buy GTC 137.5 (ba60c338) activo. Ruptura de 135 a las 14:00 con volumen (mín 128.76). Sin órdenes nuevas. NVDA: no añadir; si rebota y cierra hora sobre 135.7 sin ruptura, evaluar stop a costo (135.7). CRWV vigilar: compra solo con volumen sobre ~41.5, stop 38.5. PDD: sin reentrada si toca 82. SPY -2.9%: sin operar contra la venta sin setup. Lecciones antiguas (TXN, BABA, INSM) no están en la cuenta: ignorar."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "14:38 regular viernes 20-nov. Estado verificado: PDD long 80 @86.74 (último 84.52, -$178), stop GTC 82.0 (490255a2). NVDA short 40 @135.70 (último 129.82, +$235), stop buy GTC 137.5 (ba60c338) activo. Ruptura de 135 a las 14:00 con volumen (mín 128.76). Sin órdenes nuevas. NVDA: no añadir; si rebota y cierra hora sobre 135.7 sin ruptura, evaluar stop a costo (135.7). CRWV vigilar: compra solo con volumen sobre ~41.5, stop 38.5. PDD: sin reentrada si toca 82. SPY -2.9%: sin operar contra la venta sin setup. Lecciones antiguas (TXN, BABA, INSM) no están en la cuenta: ignorar."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.006023,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.006023,
+      "calls": 3,
+      "tokens": 47381
+     }
+    }
+   },
+   "account": {
+    "equity": 99015.43,
+    "cash": 97448.63,
+    "buying_power": 381687.16,
+    "last_equity": 99377.49
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.090013
+ "spent_usd": 0.096036
 }
