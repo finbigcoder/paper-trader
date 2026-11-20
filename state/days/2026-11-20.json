@@ -3418,7 +3418,238 @@
     "last_equity": 99377.49
    },
    "positions": 3
+  },
+  {
+   "at": "2026-11-20T07:38:21-05:00",
+   "time": "07:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.6332,
+    "limit": 2.5064,
+    "ticks_left": 25,
+    "est_tick": 0.0053,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 17,
+    "shown": [
+     "SPCX",
+     "CRWV",
+     "WULF",
+     "CIFR",
+     "IREN",
+     "NOK",
+     "SOFI",
+     "SA",
+     "NVDA",
+     "SNAP",
+     "AMZN",
+     "NU",
+     "INSM",
+     "T",
+     "GOOGL",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6% sin tesis ni nivel definido; sin contexto fundamental para entrar en pre-market."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "-5.9%, volumen alto pero ATR elevado; esperar nivel con volumen en regular antes de cualquier entrada."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Minera de bitcoin con caída -5.6% sin catalizador; volatilidad sin tesis."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Minera -5.4% sin tesis ni nivel; riesgo de salto alto."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Minera -4.7% sin setup; ya descartada en lecciones y sin cambio."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-3.7% sin catalizador ni nivel definido."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "-3.2% sin tesis ni disparador claro."
+     },
+     {
+      "symbol": "SA",
+      "verdict": "descartar",
+      "reason": "Liquidez baja ($26M/día) y sin tesis."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Liquidez enorme, -2.7%; sin nivel claro. Disparador: recuperación de nivel previo con volumen en regular."
+     },
+     {
+      "symbol": "SNAP",
+      "verdict": "descartar",
+      "reason": "-2.5% sin tesis; ya descartada hoy."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "-2.3% con liquidez alta; sin setup definido todavía."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "-1.7% sin catalizador ni nivel."
+     },
+     {
+      "symbol": "INSM",
+      "verdict": "descartar",
+      "reason": "Rumor sin confirmar y ya subió mucho; la orden previa no existe."
+     },
+     {
+      "symbol": "T",
+      "verdict": "descartar",
+      "reason": "+0.9% sin setup; no hay tesis de momentum."
+     },
+     {
+      "symbol": "GOOGL",
+      "verdict": "descartar",
+      "reason": "-0.4%, sin disparador ni tesis en pre-market."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-0.1%, sin catalizador."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Pre-market 07:38: revisé la pantalla completa (16 nombres) y no hay setup con riesgo definido. Descarté 13 y dejé CRWV, NVDA y AMZN en vigilar.\nNo envié órdenes nuevas. Los stops GTC de TXN (277), BABA (83.2) y PDD (82.0) siguen activos, y no veo órdenes de INSM abiertas.\nEn la primera hora regular confirmo los tres stops antes de cualquier análisis. Luego, TXN: subir el stop a costo solo si recupera 285+ con volumen. BABA y PDD: sin reentrada si tocan stop.\nVigilo un disparador con volumen en NVDA o CRWV, y AMZN si rompe niveles previos.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6% sin tesis ni nivel definido; sin contexto fundamental para entrar en pre-market."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "-5.9%, volumen alto pero ATR elevado; esperar nivel con volumen en regular antes de cualquier entrada."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Minera de bitcoin con caída -5.6% sin catalizador; volatilidad sin tesis."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Minera -5.4% sin tesis ni nivel; riesgo de salto alto."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Minera -4.7% sin setup; ya descartada en lecciones y sin cambio."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-3.7% sin catalizador ni nivel definido."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "-3.2% sin tesis ni disparador claro."
+       },
+       {
+        "symbol": "SA",
+        "verdict": "descartar",
+        "reason": "Liquidez baja ($26M/día) y sin tesis."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Liquidez enorme, -2.7%; sin nivel claro. Disparador: recuperación de nivel previo con volumen en regular."
+       },
+       {
+        "symbol": "SNAP",
+        "verdict": "descartar",
+        "reason": "-2.5% sin tesis; ya descartada hoy."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "-2.3% con liquidez alta; sin setup definido todavía."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "-1.7% sin catalizador ni nivel."
+       },
+       {
+        "symbol": "INSM",
+        "verdict": "descartar",
+        "reason": "Rumor sin confirmar y ya subió mucho; la orden previa no existe."
+       },
+       {
+        "symbol": "T",
+        "verdict": "descartar",
+        "reason": "+0.9% sin setup; no hay tesis de momentum."
+       },
+       {
+        "symbol": "GOOGL",
+        "verdict": "descartar",
+        "reason": "-0.4%, sin disparador ni tesis en pre-market."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-0.1%, sin catalizador."
+       }
+      ]
+     },
+     "result": "Registrado: SPCX, CRWV, WULF, CIFR, IREN, NOK, SOFI, SA, NVDA, SNAP, AMZN, NU, INSM, T, GOOGL, AAL. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.003221,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003221,
+      "calls": 2,
+      "tokens": 25266
+     }
+    }
+   },
+   "account": {
+    "equity": 99151.29,
+    "cash": 69307.49,
+    "buying_power": 360792.6,
+    "last_equity": 99377.49
+   },
+   "positions": 3
   }
  ],
- "spent_usd": 0.020688
+ "spent_usd": 0.023909
 }
