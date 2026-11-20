@@ -7075,7 +7075,134 @@
     "last_equity": 99377.49
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-20T17:08:29-05:00",
+   "time": "17:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.527,
+    "limit": 2.497,
+    "ticks_left": 6,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "IREN",
+     "WULF",
+     "CRWV",
+     "SPCX",
+     "SOFI",
+     "NOK",
+     "AMZN",
+     "AAL",
+     "AAPL",
+     "NFLX",
+     "NU",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -14.8% sin setup ni nivel definido; perseguir una caída fuerte con stop lejos no tiene riesgo razonable."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-16.4% con volumen 1.6x, sin tesis ni nivel de entrada claro; el stop quedaría muy lejos para el ATR."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-12.6% en un nombre de precio bajo y volatilidad alta, sin soporte o resistencia técnica definida."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Único con nivel útil: compra solo si recupera ~41.5 con volumen, stop 38.5. Hoy sigue -10.7%, sin setup activo."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6.9% con volumen 3x sin nivel de entrada con riesgo definido; no hay tesis."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Post-market 17:08: sin cambios en posiciones. PDD largo 80 @86.74 (último 83.63) con stop 82 activo; NVDA corto 40 @135.70 (último 128.65, ~+$282) con stop de cobertura 137.5 activo.\nVi la pantalla: descarté SNDK, IREN, WULF y SPCX por caídas sin setup ni nivel con riesgo definido; CRWV queda en vigilar.\nNo envié órdenes ni cambié stops, y no añado a NVDA.\nVigilo en la primera hora regular: stops primero, llevar el stop de NVDA a costo (135.7) solo si rebota y cierra sobre ~135 sin romper 137.5, CRWV sobre ~41.5 con volumen (stop 38.5) y PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -14.8% sin setup ni nivel definido; perseguir una caída fuerte con stop lejos no tiene riesgo razonable."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-16.4% con volumen 1.6x, sin tesis ni nivel de entrada claro; el stop quedaría muy lejos para el ATR."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-12.6% en un nombre de precio bajo y volatilidad alta, sin soporte o resistencia técnica definida."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Único con nivel útil: compra solo si recupera ~41.5 con volumen, stop 38.5. Hoy sigue -10.7%, sin setup activo."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6.9% con volumen 3x sin nivel de entrada con riesgo definido; no hay tesis."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, IREN, WULF, CRWV, SPCX. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "17:08 post-market viernes 20-nov. Estado: PDD long 80 @86.74 (último 83.63), stop sell GTC 82.0 (490255a2) activo. NVDA short 40 @135.70 (último 128.65, ~+$282), stop buy GTC 137.5 (ba60c338) activo. Sin órdenes nuevas. Pantalla: SNDK, IREN, WULF, SPCX descartados; CRWV vigilar (compra solo sobre ~41.5 con volumen, stop 38.5). Próxima sesión regular: verificar stops primero; llevar stop NVDA a costo (135.7) solo si rebota y cierra hora sobre ~135 sin romper 137.5. PDD: sin reentrar si toca 82. Lecciones de 19-nov (TXN, BABA, INSM) no aplican: ignorar."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "17:08 post-market viernes 20-nov. Estado: PDD long 80 @86.74 (último 83.63), stop sell GTC 82.0 (490255a2) activo. NVDA short 40 @135.70 (último 128.65, ~+$282), stop buy GTC 137.5 (ba60c338) activo. Sin órdenes nuevas. Pantalla: SNDK, IREN, WULF, SPCX descartados; CRWV vigilar (compra solo sobre ~41.5 con volumen, stop 38.5). Próxima sesión regular: verificar stops primero; llevar stop NVDA a costo (135.7) solo si rebota y cierra hora sobre ~135 sin romper 137.5. PDD: sin reentrar si toca 82. Lecciones de 19-nov (TXN, BABA, INSM) no aplican: ignorar."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003318,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003318,
+      "calls": 2,
+      "tokens": 26277
+     }
+    }
+   },
+   "account": {
+    "equity": 98989.89,
+    "cash": 97448.63,
+    "buying_power": 381752.11,
+    "last_equity": 99377.49
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.1136
+ "spent_usd": 0.116918
 }
