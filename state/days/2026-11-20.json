@@ -2169,7 +2169,136 @@
     "last_equity": 99377.49
    },
    "positions": 3
+  },
+  {
+   "at": "2026-11-20T04:38:24-05:00",
+   "time": "04:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.6535,
+    "limit": 2.4598,
+    "ticks_left": 31,
+    "est_tick": 0.0065,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 17,
+    "shown": [
+     "SA",
+     "CRWV",
+     "WULF",
+     "IREN",
+     "CIFR",
+     "SPCX",
+     "NOK",
+     "SOFI",
+     "NVDA",
+     "SNAP",
+     "NU",
+     "AMZN",
+     "AAL",
+     "T",
+     "GOOGL"
+    ],
+    "reviews": [
+     {
+      "symbol": "SA",
+      "verdict": "descartar",
+      "reason": "Cae -9% con volumen de solo $26M/día y sin tesis ni catalizador claro; spread y riesgo de salto demasiado altos para el tamaño."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Liquidez enorme y caída de -4.8% en pre-market, pero sin setup definido. Vigilar si estabiliza en regular cerca de soporte previo, con stop bajo ese nivel."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Minera de cripto con -4.4% y sin tesis propia; el movimiento depende del sector, no de un disparador."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Mismo caso que WULF: volatilidad sectorial sin setup ni catalizador. Ya lo descarté ayer."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Minera con -4.2% y precio bajo ($6.21); sin tesis, solo ruido de sector."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla en pre-market: SPY -0.6% y TXN, BABA y PDD siguen en pérdida, pero ningún nombre tiene un setup con riesgo definido.\nNo envié órdenes nuevas. Los stops GTC de TXN (277), BABA (83.2) y PDD (82.0) siguen activos para la sesión regular.\nDescarté SA, WULF, IREN y CIFR por liquidez o falta de tesis, y dejé CRWV en vigilar.\nAl abrir confirmo los stops, reviso si INSM sigue viva (ya no aparece en órdenes abiertas) y miro si TXN recupera 285+ con volumen para evaluar subir el stop a costo.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SA",
+        "verdict": "descartar",
+        "reason": "Cae -9% con volumen de solo $26M/día y sin tesis ni catalizador claro; spread y riesgo de salto demasiado altos para el tamaño."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Liquidez enorme y caída de -4.8% en pre-market, pero sin setup definido. Vigilar si estabiliza en regular cerca de soporte previo, con stop bajo ese nivel."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Minera de cripto con -4.4% y sin tesis propia; el movimiento depende del sector, no de un disparador."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Mismo caso que WULF: volatilidad sectorial sin setup ni catalizador. Ya lo descarté ayer."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Minera con -4.2% y precio bajo ($6.21); sin tesis, solo ruido de sector."
+       }
+      ]
+     },
+     "result": "Registrado: SA, CRWV, WULF, IREN, CIFR. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "04:38 premarket viernes 20-nov. Sin órdenes nuevas. Posiciones con stops GTC: TXN 52 (stop 277), BABA 100 (stop 83.2), PDD 80 (stop 82.0). INSM no aparece en órdenes abiertas: verificar en regular si se canceló. Primera acción en regular: confirmar que los 3 stops siguen activos, luego revisar TXN (recuperar 285+ con volumen → evaluar stop a costo, sin bajarlo). Pantalla: CRWV en vigilar; SA, WULF, IREN, CIFR descartados."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "04:38 premarket viernes 20-nov. Sin órdenes nuevas. Posiciones con stops GTC: TXN 52 (stop 277), BABA 100 (stop 83.2), PDD 80 (stop 82.0). INSM no aparece en órdenes abiertas: verificar en regular si se canceló. Primera acción en regular: confirmar que los 3 stops siguen activos, luego revisar TXN (recuperar 285+ con volumen → evaluar stop a costo, sin bajarlo). Pantalla: CRWV en vigilar; SA, WULF, IREN, CIFR descartados."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.002429,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002429,
+      "calls": 2,
+      "tokens": 18973
+     }
+    }
+   },
+   "account": {
+    "equity": 98910.01,
+    "cash": 69307.49,
+    "buying_power": 360117.02,
+    "last_equity": 99377.49
+   },
+   "positions": 3
   }
  ],
- "spent_usd": 0.002946
+ "spent_usd": 0.005375
 }
