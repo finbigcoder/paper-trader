@@ -5545,7 +5545,195 @@
     "last_equity": 99377.49
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-20T12:38:33-05:00",
+   "time": "12:38",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.5796,
+    "limit": 2.5105,
+    "ticks_left": 15,
+    "est_tick": 0.0049,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 10,
+    "shown": [
+     "NVDA",
+     "WULF",
+     "CRWV",
+     "SPCX",
+     "IREN",
+     "SNDK",
+     "CIFR",
+     "SOFI",
+     "NOK",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Caída de -34% en 21 días, 21% bajo SMA20 y 30% bajo SMA50; rebotó desde 134.8 sin volumen de recuperación. Corto solo si cierra la hora bajo 135 con volumen; ATR 8.2% obliga a stop amplio."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Caída de -14.9% sin tesis, volumen relativo 1.2x y precio ~$10 con spread y riesgo de salto altos."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "-27% en 21 días y -35% vs SMA50, sin estabilización (mín 39.4 cerca de 40). Solo compra con soporte con volumen; ATR 14% es muy alto."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Caída de -7.2% sin setup ni tesis clara en la información disponible."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Caída de -14.1% con volumen relativo 0.8x; sin soporte ni disparador."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -14.9% con volumen relativo 0.7x; cae sin confirmación de volumen ni tesis."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Caída de -14.9% con volumen relativo 0.6x y precio de $5.5; liquidez y riesgo de salto inadecuados."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "-5.4% con volumen relativo 1.1x; sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-8.1% con volumen relativo 0.7x; sin setup."
+     },
+     {
+      "symbol": "CCC",
+      "verdict": "descartar",
+      "reason": "Plano (-0.1%) con volumen relativo 2.0x; sin tesis ni nivel claro."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla completa y el gráfico de NVDA y CRWV. No hay ningún setup con riesgo definido, así que no envié órdenes.\nÚnica posición: PDD (80 @ 86.74, último 84.94), con stop GTC en 82.0 activo. Riesgo de unos $290 (0.3% de la cuenta).\nVigilo NVDA como corto solo si cierra la hora bajo 135 con volumen, con stop por encima de 138. CRWV solo con soporte y volumen. PDD sin reentrar si toca 82.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 145.98 | hoy 135.35 (-7.3%) | 1d -3.3% | 5d -12.2% | 21d -34.2% | 63d -31.9% | vs SMA20 -21.4% | vs SMA50 -30.1% | ATR 8.2% | volumen ayer 1.28x | momentum 12-1 +22.7% (#48)\nBarras de 30 min de hoy:\n04:00 O143.94 H144.69 L142.85 C142.90 V0\n04:30 O142.90 H142.92 L141.80 C141.97 V0\n05:00 O141.92 H142.90 L141.90 C142.80 V0\n05:30 O142.80 H143.60 L142.74 C143.20 V0\n06:00 O143.20 H143.30 L142.27 C142.78 V0\n06:30 O142.70 H142.93 L142.26 C142.70 V0\n07:00 O142.68 H142.85 L141.75 C142.25 V0\n07:30 O142.26 H142.35 L141.20 C141.26 V0\n08:00 O141.26 H141.39 L140.60 C140.74 V0\n08:30 O140.7"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 44.91 | hoy 39.99 (-11.0%) | 1d -6.1% | 5d -20.6% | 21d -27.4% | 63d -48.9% | vs SMA20 -14.6% | vs SMA50 -34.9% | ATR 14.3% | volumen ayer 1.13x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O43.87 H44.06 L42.83 C42.86 V0\n04:30 O42.89 H42.91 L42.55 C42.60 V0\n05:00 O42.61 H43.24 L42.56 C43.24 V0\n05:30 O43.17 H43.57 L43.12 C43.22 V0\n06:00 O43.25 H43.35 L42.81 C43.07 V0\n06:30 O43.07 H43.09 L42.71 C42.71 V0\n07:00 O42.80 H42.87 L42.25 C42.42 V0\n07:30 O42.49 H42.61 L42.08 C42.40 V0\n08:00 O42.41 H42.75 L42.22 C42.22 V0\n08:30 O42.26 H42.90 L41.97 C42.79 V0\n09:00 O42.75 H"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Caída de -34% en 21 días, 21% bajo SMA20 y 30% bajo SMA50; rebotó desde 134.8 sin volumen de recuperación. Corto solo si cierra la hora bajo 135 con volumen; ATR 8.2% obliga a stop amplio."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Caída de -14.9% sin tesis, volumen relativo 1.2x y precio ~$10 con spread y riesgo de salto altos."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "-27% en 21 días y -35% vs SMA50, sin estabilización (mín 39.4 cerca de 40). Solo compra con soporte con volumen; ATR 14% es muy alto."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Caída de -7.2% sin setup ni tesis clara en la información disponible."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Caída de -14.1% con volumen relativo 0.8x; sin soporte ni disparador."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -14.9% con volumen relativo 0.7x; cae sin confirmación de volumen ni tesis."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Caída de -14.9% con volumen relativo 0.6x y precio de $5.5; liquidez y riesgo de salto inadecuados."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "-5.4% con volumen relativo 1.1x; sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-8.1% con volumen relativo 0.7x; sin setup."
+       },
+       {
+        "symbol": "CCC",
+        "verdict": "descartar",
+        "reason": "Plano (-0.1%) con volumen relativo 2.0x; sin tesis ni nivel claro."
+       }
+      ]
+     },
+     "result": "Registrado: NVDA, WULF, CRWV, SPCX, IREN, SNDK, CIFR, SOFI, NOK, CCC. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "12:38 regular viernes 20-nov. Estado: solo PDD (80 @86.74, stop GTC 82.0, id 490255a2). Sin órdenes nuevas. NVDA vigilar: corto solo si cierra la hora bajo 135 con volumen y no recupera; stop por encima de ~138; tamaño máx 15% cuenta. CRWV vigilar: compra solo con soporte y volumen. PDD: mantener; sin reentrada si toca 82. Lecciones de 19-nov (TXN, BABA, INSM) desactualizadas: no están en la cuenta."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "12:38 regular viernes 20-nov. Estado: solo PDD (80 @86.74, stop GTC 82.0, id 490255a2). Sin órdenes nuevas. NVDA vigilar: corto solo si cierra la hora bajo 135 con volumen y no recupera; stop por encima de ~138; tamaño máx 15% cuenta. CRWV vigilar: compra solo con soporte y volumen. PDD: mantener; sin reentrada si toca 82. Lecciones de 19-nov (TXN, BABA, INSM) desactualizadas: no están en la cuenta."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005047,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005047,
+      "calls": 3,
+      "tokens": 41730
+     }
+    }
+   },
+   "account": {
+    "equity": 98812.63,
+    "cash": 92020.63,
+    "buying_power": 387100.12,
+    "last_equity": 99377.49
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.067644
+ "spent_usd": 0.072691
 }
