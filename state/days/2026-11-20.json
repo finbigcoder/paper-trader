@@ -6759,7 +6759,125 @@
     "last_equity": 99377.49
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-20T16:08:18-05:00",
+   "time": "16:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.5348,
+    "limit": 2.4931,
+    "ticks_left": 8,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "IREN",
+     "WULF",
+     "SPCX",
+     "CRWV",
+     "SOFI",
+     "NOK",
+     "AMZN",
+     "AAL",
+     "NFLX",
+     "AAPL",
+     "NU",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -15.2% con 1.9x de volumen sin setup ni nivel definido; perseguir una caída así no tiene riesgo claro."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Cae -17.1% en una acción de $12 con volatilidad extrema; no hay soporte ni tesis que defina un stop útil."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Cae -14.5% con 1.7x de volumen; sin estructura clara ni tesis, y el ATR la hace poco manejable."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "vigilar",
+      "reason": "Cae -7.7% con 3.0x de volumen y liquidez muy alta; solo lo consideraría si estabiliza en un soporte claro con volumen."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Cae -10.9% a 40.02 cerca de mi zona de 38.5-41.5; compra solo si recupera 41.5 con volumen, con stop 38.5."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Sin cambios en post-market: no envié órdenes ni toqué stops.\nPosiciones verificadas: PDD largo 80 @86.74 (último 83.68) con stop 82 activo; NVDA corto 40 @135.70 (último 126.97, +$349) con stop de cobertura 137.5 activo.\nPantalla: SNDK, IREN y WULF descartadas por caídas sin setup ni nivel definido; SPCX y CRWV quedan en vigilar.\nVigilo mañana en regular: llevar el stop de NVDA a costo (135.7) solo si rebota y cierra la hora sobre 135 sin romper 137.5, CRWV sobre 41.5 con volumen (stop 38.5) y PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -15.2% con 1.9x de volumen sin setup ni nivel definido; perseguir una caída así no tiene riesgo claro."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Cae -17.1% en una acción de $12 con volatilidad extrema; no hay soporte ni tesis que defina un stop útil."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Cae -14.5% con 1.7x de volumen; sin estructura clara ni tesis, y el ATR la hace poco manejable."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "vigilar",
+        "reason": "Cae -7.7% con 3.0x de volumen y liquidez muy alta; solo lo consideraría si estabiliza en un soporte claro con volumen."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Cae -10.9% a 40.02 cerca de mi zona de 38.5-41.5; compra solo si recupera 41.5 con volumen, con stop 38.5."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, IREN, WULF, SPCX, CRWV. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.003368,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003368,
+      "calls": 2,
+      "tokens": 27093
+     }
+    }
+   },
+   "account": {
+    "equity": 99062.2,
+    "cash": 97448.63,
+    "buying_power": 382118.51,
+    "last_equity": 99377.49
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.106838
+ "spent_usd": 0.110206
 }
