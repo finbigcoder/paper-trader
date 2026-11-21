@@ -10,5 +10,29 @@
   "pnl_usd": -217.5,
   "ret": -0.02819,
   "days": 0
+ },
+ {
+  "symbol": "BABA",
+  "side": "long",
+  "qty": 100.0,
+  "entry_date": "2026-11-19",
+  "entry": 87.747,
+  "exit_date": "2026-11-20",
+  "exit": 83.15,
+  "pnl_usd": -459.7,
+  "ret": -0.05239,
+  "days": 1
+ },
+ {
+  "symbol": "TXN",
+  "side": "long",
+  "qty": 52.0,
+  "entry_date": "2026-11-19",
+  "entry": 283.86,
+  "exit_date": "2026-11-20",
+  "exit": 276.8873,
+  "pnl_usd": -362.58,
+  "ret": -0.02456,
+  "days": 1
  }
 ]
