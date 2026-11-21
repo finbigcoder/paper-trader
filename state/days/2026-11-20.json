@@ -7923,7 +7923,133 @@
     "last_equity": 99377.49
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-20T19:38:23-05:00",
+   "time": "19:38",
+   "session": "post",
+   "last": true,
+   "budget": {
+    "allowance_today": 2.506,
+    "limit": 2.506,
+    "ticks_left": 1,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "SPCX",
+     "IREN",
+     "WULF",
+     "CRWV",
+     "NOK",
+     "AMZN",
+     "SOFI",
+     "AAL",
+     "AAPL",
+     "NFLX",
+     "NU",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -13.9% con volumen 2.8x sin setup ni nivel de entrada con riesgo definido; perseguir una caída fuerte no es operable."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6.4% con volumen 4.8x, sin base clara ni stop razonable cerca del precio."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-14.4% en un nombre de $12, sin setup; el rango de caída es demasiado amplio para un stop chico."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-12.4% con volumen relativo 1.2x, sin disparador ni nivel definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Último 40.75 (-9.3%); solo compraría con ruptura sobre 41.5 con volumen en regular, stop 38.5."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Hoy vi la pantalla y las dos posiciones, y no envié órdenes nuevas: SNDK, SPCX, IREN y WULF quedaron descartados por caídas sin setup, y CRWV en vigilar.\nPosiciones con stops activos: PDD largo 80 @86.74 (último ~83.5, stop 82.0) y NVDA corto 40 @135.70 (último ~130.2, stop de cobertura 137.5).\nReescribí las lecciones: quité TXN, BABA e INSM, que ya no están en la cuenta, y dejé como regla dejar siempre una orden o condición precisa para la sesión regular.\nMañana vigilo: verificar stops primero, CRWV solo con ruptura sobre 41.5 con volumen (stop 38.5), NVDA a costo solo tras confirmar cierre bajo 135, y sin reentrar PDD si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -13.9% con volumen 2.8x sin setup ni nivel de entrada con riesgo definido; perseguir una caída fuerte no es operable."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6.4% con volumen 4.8x, sin base clara ni stop razonable cerca del precio."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-14.4% en un nombre de $12, sin setup; el rango de caída es demasiado amplio para un stop chico."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-12.4% con volumen relativo 1.2x, sin disparador ni nivel definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Último 40.75 (-9.3%); solo compraría con ruptura sobre 41.5 con volumen en regular, stop 38.5."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, SPCX, IREN, WULF, CRWV. Pantalla evaluada."
+    },
+    {
+     "name": "update_lessons",
+     "args": {
+      "text": "Lecciones (actualizadas 20-nov-2026, cierre del día; SPY -2.6%, cuenta -$456 hoy)\n\nEstado de cierre: PDD largo 80 @86.74 (último ~83.5, ~-$259) con venta stop 82.0 activa (490255a2). NVDA corto 40 @135.70 (último ~130.2, ~+$220) con compra stop 137.5 activa (ba60c338). TXN, BABA e INSM ya no están en la cuenta: las lecciones de 19-nov son historia y no aplican.\n\nQué funcionó:\n- Stops GTC activos en ambas posiciones; no promedié PDD ni NVDA.\n- El stop de cobertura de NVDA en 137.5 acota el riesgo sin tener que vigilar cada tick.\n- Descarté caídas fuertes sin setup (SNDK, SPCX, IREN, WULF) en vez de perseguirlas.\n\nQué no funcionó:\n- Repetí notas de post-market casi idénticas cada 30 min (16:08 a 19:38). Gasté presupuesto sin aportar información. Un \"sin cambios\" de una línea basta.\n- No dejé ninguna orden condicionada para la sesión regular de mañana, aunque tenía niveles claros (CRWV 41.5). Un plan sin orden no se ejecuta.\n- El plan de subir el stop de NVDA a costo (135.7) quedó con una condición blanda (\"rebota y cierra sobre 135\"). Las condiciones tienen que ser precisas y medibles.\n\nQué haré distinto:\n1. Primer paso en regular: verificar stops y órdenes abiertas antes de cualquier análisis.\n2. Toda entrada nueva en regular con stop_price (OTO). En post-market solo límite, con el stop anotado para ponerlo y verificarlo al despertar regular.\n3. Niveles de entrada a menos de ~1 ATR del precio; si no, no hay setup que vigilar.\n4. Riesgo por operación 0.5-1% de la cuenta; tamaño = riesgo / distancia al stop.\n5. Antes de una posición nueva, tesis escrita: disparador, stop, tamaño, horizonte.\n6. Mantener 3-5 posiciones con tesis clara. No es regla para operar menos: es para no repetir el mismo análisis sin decidir.\n7. Un día de SPY débil no es disparador por sí mismo; cada nombre necesita su propio setup.\n\nVigilancia para mañana en regular:\n- Stops: PDD 82.0 (sin reentrar si toca); NVDA 137.5 (mantener).\n- NVDA: subir stop a costo (135.7) solo si la hora cierra bajo 135 con el precio confirmando; decidirlo con datos del primer despertar, no antes.\n- CRWV: ruptura sobre 41.5 con volumen → compra con stop 38.5 pegado (OTO).\n- AMZN: solo ruptura de niveles previos con volumen.\n- MU, MRVL, AMD, INTC, MRNA: solo con setup claro; ninguno tiene hoy una entrada definida."
+     },
+     "result": "Lecciones guardadas (2298 caracteres)."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.004341,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.004341,
+      "calls": 2,
+      "tokens": 29110
+     }
+    }
+   },
+   "account": {
+    "equity": 98923.43,
+    "cash": 97448.63,
+    "buying_power": 381431.48,
+    "last_equity": 99377.49
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.131982
+ "spent_usd": 0.136323,
+ "lessons_updated": true
 }
