@@ -3339,7 +3339,148 @@
     "last_equity": 99121.24
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-23T09:08:33-05:00",
+   "time": "09:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.0374,
+    "limit": 2.9401,
+    "ticks_left": 22,
+    "est_tick": 0.0046,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "CRWV",
+     "IREN",
+     "WULF",
+     "NOK",
+     "SOFI",
+     "SPCX",
+     "NU",
+     "AAL",
+     "AMZN",
+     "SNDK",
+     "NFLX",
+     "AAPL",
+     "CCC"
+    ],
+    "reviews": [
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Gap de +27% a 50.09 con ATR 16%: el disparador de 41.5 ya no existe y perseguir sería comprar 20% arriba del nivel con stop 38.5. Solo reconsiderar si cae y recupera un nivel claro con volumen."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Sube +20.6% a 14.26 sin nivel de entrada definido ni volumen relativo confirmado; perseguir un salto así sin base es el error que ya cometí."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "+16.7% a 11.49 sin setup con stop definido; entrar ahora deja el stop demasiado lejos para el riesgo permitido."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+9% a 7.5 sin nivel técnico claro en pre-market; movimiento chico y sin catalizador verificado."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "+8.8% a 13.58 sin nivel de entrada con riesgo definido; no hay setup que vigilar hoy."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "- **Vi:** NVDA saltó de ~136 a ~158-160 entre 08:30 y 09:00, así que el corto de 40 acciones lleva unos -$907. CRWV subió +27% a 50.09, muy por encima de mi disparador de 41.5.\n- **Hice:** no envié órdenes nuevas. Mantengo el stop de cobertura de NVDA en 137.5, que se ejecutará a mercado al abrir (pérdida cercana a -$900). Descarté CRWV porque ya no hay nivel limpio para entrar, y también IREN, WULF, NOK y SOFI por caídas o subidas sin setup con riesgo definido.\n- **Vigilo en regular:** confirmar que la cobertura de NVDA se llenó y que no queda corto abierto. Stop de PDD en venta 82.0 (último 85.87). Solo reconsideraría CRWV si cae y recupera un nivel claro con volumen.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 125.53 | hoy 158.38 (+26.2%) | 1d -14.0% | 5d -22.9% | 21d -40.8% | 63d -39.7% | vs SMA20 -30.8% | vs SMA50 -39.4% | ATR 10.2% | volumen ayer 2.41x | momentum 12-1 +14.1% (#63)\nBarras de 30 min de hoy:\n04:00 O135.11 H138.00 L133.57 C137.29 V0\n04:30 O137.29 H137.63 L135.75 C136.54 V0\n05:00 O136.55 H136.86 L135.90 C135.90 V0\n05:30 O135.80 H136.30 L135.49 C136.20 V0\n06:00 O136.13 H136.80 L135.54 C135.95 V0\n06:30 O135.93 H136.90 L135.90 C136.39 V0\n07:00 O136.39 H136.50 L134.43 C134.90 V0\n07:30 O134.90 H135.30 L133.75 C135.26 V0\n08:00 O135.22 H136.87 L135.16 C135.94 V0\n08:30 O13"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 39.51 | hoy 50.09 (+26.8%) | 1d -12.0% | 5d -25.6% | 21d -28.9% | 63d -54.2% | vs SMA20 -23.8% | vs SMA50 -41.9% | ATR 16.2% | volumen ayer 1.12x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O42.28 H43.56 L41.93 C43.32 V0\n04:30 O43.32 H43.41 L42.98 C43.10 V0\n05:00 O43.13 H43.42 L43.00 C43.22 V0\n05:30 O43.22 H43.49 L43.00 C43.25 V0\n06:00 O43.18 H43.20 L42.53 C42.69 V0\n06:30 O42.67 H42.70 L42.55 C42.63 V0\n07:00 O42.60 H42.63 L41.85 C42.00 V0\n07:30 O42.00 H42.00 L41.34 C41.91 V0\n08:00 O41.88 H42.43 L41.88 C42.02 V0\n08:30 O42.07 H50.00 L41.82 C49.50 V0\n09:00 O49.50 "
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Gap de +27% a 50.09 con ATR 16%: el disparador de 41.5 ya no existe y perseguir sería comprar 20% arriba del nivel con stop 38.5. Solo reconsiderar si cae y recupera un nivel claro con volumen."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Sube +20.6% a 14.26 sin nivel de entrada definido ni volumen relativo confirmado; perseguir un salto así sin base es el error que ya cometí."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "+16.7% a 11.49 sin setup con stop definido; entrar ahora deja el stop demasiado lejos para el riesgo permitido."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+9% a 7.5 sin nivel técnico claro en pre-market; movimiento chico y sin catalizador verificado."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "+8.8% a 13.58 sin nivel de entrada con riesgo definido; no hay setup que vigilar hoy."
+       }
+      ]
+     },
+     "result": "Registrado: CRWV, IREN, WULF, NOK, SOFI. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "09:08 pre-market 23-nov: NVDA saltó de 136 a 158-160 entre 08:30 y 09:00 (+26% vs cierre 125.53). Corto 40 @135.70 con P&L ~-907. Stop de cobertura 137.5 (ba60c338) quedó dormido en pre-market y se disparará al abrir a mercado (llenado probable cerca de la apertura, ~-900 realizados). Decisión: mantener el stop, no cubrir a límite en pre-market con liquidez fina. Subir stop a 135.7 ya no aplica. Tras la apertura, verificar que la orden se llenó y que no quedó posición corta sin cobertura. CRWV: el disparador de 41.5 quedó invalidado por el gap a 50; descartado, sin perseguir. PDD: stop venta 82.0 (490255a2) vigente, último 85.87."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "09:08 pre-market 23-nov: NVDA saltó de 136 a 158-160 entre 08:30 y 09:00 (+26% vs cierre 125.53). Corto 40 @135.70 con P&L ~-907. Stop de cobertura 137.5 (ba60c338) quedó dormido en pre-market y se disparará al abrir a mercado (llenado probable cerca de la apertura, ~-900 realizados). Decisión: mantener el stop, no cubrir a límite en pre-market con liquidez fina. Subir stop a 135.7 ya no aplica. Tras la apertura, verificar que la orden se llenó y que no quedó posición corta sin cobertura. CRWV: el disparador de 41.5 quedó invalidado por el gap a 50; descartado, sin perseguir. PDD: stop venta 8"
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005395,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005395,
+      "calls": 3,
+      "tokens": 41546
+     }
+    }
+   },
+   "account": {
+    "equity": 97967.88,
+    "cash": 97448.04,
+    "buying_power": 376008.29,
+    "last_equity": 99121.24
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.033887
+ "spent_usd": 0.039282
 }
