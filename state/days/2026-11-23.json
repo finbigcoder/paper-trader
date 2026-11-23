@@ -3143,7 +3143,203 @@
     "last_equity": 99121.24
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-23T08:38:24-05:00",
+   "time": "08:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.0411,
+    "limit": 2.9352,
+    "ticks_left": 23,
+    "est_tick": 0.0048,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "IREN",
+     "WULF",
+     "CRWV",
+     "SOFI",
+     "NOK",
+     "AAL",
+     "AMZN",
+     "SPCX",
+     "NU",
+     "NFLX",
+     "AAPL"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -11.2% sin nivel técnico definido ni volumen relativo confirmado; no hay setup con riesgo claro."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Rebote +8.1% sobre una acción volátil sin nivel de entrada; perseguirla no tiene stop lógico."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Rebote +6.9% sin nivel definido; mismo criterio que IREN."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Precio ~42 sobre soporte 41.5; compra solo en regular si la primera hora sostiene >41.5 con volumen, OTO stop 38.5, tamaño chico por ATR 16%."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "Rebote +5.5% sin nivel técnico claro ni volumen relativo que lo respalde."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Subida +4.4% sin setup; no hay nivel de entrada con stop lógico."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "Subida +4.0% sin nivel definido; aerolínea sensible a macro, sin ventaja clara."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "+3.2% pre-market; solo compra si rompe niveles previos con volumen en regular."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Subida +2.9% sin nivel definido; no hay setup."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "+2.6% sin nivel técnico ni tesis que justifique entrar fuera de horario."
+     },
+     {
+      "symbol": "NFLX",
+      "verdict": "descartar",
+      "reason": "+1.9% sin setup; no hay nivel con riesgo definido."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "+1.4% sin setup ni nivel de entrada definido."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla pre-market de las 08:38, con SPY +2.6% y NVDA +8.8% hoy. No hay setup nuevo con riesgo definido, así que no envié órdenes.\nDescarté SNDK, IREN, WULF, SOFI, NOK, AAL, SPCX, NU, NFLX y AAPL por caídas o rebotes sin nivel. CRWV y AMZN quedan en vigilar.\nVigilo en regular: primero verificar los stops de PDD (venta 82.0) y NVDA (compra 137.5). Luego CRWV solo si la primera hora sostiene >41.5 con volumen (OTO stop 38.5), y NVDA a 135.7 solo si cierra la hora bajo 135.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -11.2% sin nivel técnico definido ni volumen relativo confirmado; no hay setup con riesgo claro."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Rebote +8.1% sobre una acción volátil sin nivel de entrada; perseguirla no tiene stop lógico."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Rebote +6.9% sin nivel definido; mismo criterio que IREN."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Precio ~42 sobre soporte 41.5; compra solo en regular si la primera hora sostiene >41.5 con volumen, OTO stop 38.5, tamaño chico por ATR 16%."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "Rebote +5.5% sin nivel técnico claro ni volumen relativo que lo respalde."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Subida +4.4% sin setup; no hay nivel de entrada con stop lógico."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "Subida +4.0% sin nivel definido; aerolínea sensible a macro, sin ventaja clara."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "+3.2% pre-market; solo compra si rompe niveles previos con volumen en regular."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Subida +2.9% sin nivel definido; no hay setup."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "+2.6% sin nivel técnico ni tesis que justifique entrar fuera de horario."
+       },
+       {
+        "symbol": "NFLX",
+        "verdict": "descartar",
+        "reason": "+1.9% sin setup; no hay nivel con riesgo definido."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "+1.4% sin setup ni nivel de entrada definido."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, IREN, WULF, CRWV, SOFI, NOK, AAL, AMZN, SPCX, NU, NFLX, AAPL. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "08:38 pre-market 23-nov: sin órdenes nuevas. Stops vigentes: PDD sell 82.0 (490255a2); NVDA buy 137.5 (ba60c338). Primer paso en regular: verificar ambos stops y órdenes abiertas. CRWV: compra solo si la primera hora sostiene >41.5 con volumen; OTO stop 38.5; tamaño por riesgo 0.5-1%. AMZN: solo ruptura de niveles previos con volumen. NVDA: subir stop a 135.7 solo si la hora cierra bajo 135 con confirmación."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "08:38 pre-market 23-nov: sin órdenes nuevas. Stops vigentes: PDD sell 82.0 (490255a2); NVDA buy 137.5 (ba60c338). Primer paso en regular: verificar ambos stops y órdenes abiertas. CRWV: compra solo si la primera hora sostiene >41.5 con volumen; OTO stop 38.5; tamaño por riesgo 0.5-1%. AMZN: solo ruptura de niveles previos con volumen. NVDA: subir stop a 135.7 solo si la hora cierra bajo 135 con confirmación."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003151,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003151,
+      "calls": 2,
+      "tokens": 24769
+     }
+    }
+   },
+   "account": {
+    "equity": 98840.44,
+    "cash": 97448.04,
+    "buying_power": 380578.24,
+    "last_equity": 99121.24
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.030736
+ "spent_usd": 0.033887
 }
