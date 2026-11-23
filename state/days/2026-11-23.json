@@ -3822,7 +3822,227 @@
     "last_equity": 99121.24
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-23T10:38:29-05:00",
+   "time": "10:38",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.0201,
+    "limit": 2.9358,
+    "ticks_left": 19,
+    "est_tick": 0.0047,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 11,
+    "shown": [
+     "CAPR",
+     "NVDA",
+     "CRWV",
+     "NBIS",
+     "IREN",
+     "APLD",
+     "SMCI",
+     "WULF",
+     "NOK",
+     "SPCX",
+     "SNDK"
+    ],
+    "reviews": [
+     {
+      "symbol": "CAPR",
+      "verdict": "descartar",
+      "reason": "Cae -76% con precio de $1.82; caída de esa magnitud sin base ni nivel limpio, y el riesgo de salto es enorme."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Gap de +35% a 169 con volumen masivo; ATR 10%. Perseguir el gap no tiene stop lógico cercano. Solo reconsiderar tras consolidación con cierre sobre el rango de la apertura y un nivel a menos de 1 ATR."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Rebote de +26% tras -54% en 63 días, ATR 16%. Cae -12% desde el máximo del gap (54.9) y no hay nivel de entrada con stop a menos de 1 ATR. El disparador de 41.5 quedó invalidado."
+     },
+     {
+      "symbol": "NBIS",
+      "verdict": "descartar",
+      "reason": "Gap +27% que ya se devolvió desde 110 a 103; ATR 21.6% y -49% en 21 días. Sin setup con riesgo definido."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Subida +32% en un día con volumen relativo bajo (0.8x); sin confirmación ni nivel limpio."
+     },
+     {
+      "symbol": "APLD",
+      "verdict": "descartar",
+      "reason": "Subida +27% con volumen relativo 0.8x; impulso sin base para entrar con stop cercano."
+     },
+     {
+      "symbol": "SMCI",
+      "verdict": "vigilar",
+      "reason": "Subió +20% a 26.03 tras -36% en 21 días; solo vigilar si consolida con volumen por encima de 25 y da un nivel con stop a menos de 1 ATR (11.5%)."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Subida +17% con volumen relativo 0.4x; sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Subida +12% con volumen relativo 0.4x; sin nivel claro."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Subida +8% con volumen relativo 0.5x; sin nivel claro con riesgo definido."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Plano (+0.5%) con volumen relativo 0.5x; sin movimiento ni setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "**Vi:** la cuenta tiene una sola posición, PDD largo 80 @86.74 (último 86.63), con su venta stop en 82.0 activa. No hay corto de NVDA, así que la cobertura de madrugada se ejecutó. NVDA (+35%), CRWV (+26%) y NBIS (+27%) abrieron con gaps grandes y volatilidad de 10-22% por ATR, sin nivel cercano con riesgo definido.\n**Hice:** no envié órdenes nuevas. Evalué las 11 de la pantalla: NVDA y SMCI quedan en vigilar; CAPR, CRWV, NBIS, IREN, APLD, WULF, NOK, SPCX y SNDK, descartados. El disparador de CRWV (41.5) quedó invalidado por el gap.\n**Vigilo:** mantener PDD con stop 82.0, sin reentrar si lo toca. NVDA solo tras consolidar con un nivel a menos de 1 ATR. SMCI solo si consolida sobre 25 con volumen. MU, MRVL, AMD, INTC y MRNA sin nivel claro; los reviso una vez por hora.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "PDD"
+     },
+     "result": "PDD: cierre previo 83.68 | hoy 86.63 (+3.5%) | 1d -2.7% | 5d +6.0% | 21d +5.7% | 63d -3.9% | vs SMA20 +4.5% | vs SMA50 +5.2% | ATR 3.7% | volumen ayer 2.4x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O84.53 H85.36 L84.03 C85.13 V0\n04:30 O85.42 H85.42 L85.02 C85.02 V0\n05:00 O85.03 H85.25 L85.03 C85.25 V0\n05:30 O85.23 H85.40 L85.20 C85.26 V0\n06:00 O85.26 H85.85 L85.25 C85.85 V0\n06:30 O85.77 H85.80 L85.72 C85.74 V0\n07:00 O85.75 H85.80 L85.50 C85.58 V0\n07:30 O85.60 H85.75 L85.50 C85.51 V0\n08:00 O85.65 H85.99 L85.65 C85.83 V0\n08:30 O85.84 H86.30 L85.50 C86.11 V0\n09:00 O86.38 H86.50 L85"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 39.51 | hoy 49.75 (+25.9%) | 1d -12.0% | 5d -25.6% | 21d -28.9% | 63d -54.2% | vs SMA20 -23.8% | vs SMA50 -41.9% | ATR 16.2% | volumen ayer 1.12x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O42.28 H43.56 L41.93 C43.32 V0\n04:30 O43.32 H43.41 L42.98 C43.10 V0\n05:00 O43.13 H43.42 L43.00 C43.22 V0\n05:30 O43.22 H43.49 L43.00 C43.25 V0\n06:00 O43.18 H43.20 L42.53 C42.69 V0\n06:30 O42.67 H42.70 L42.55 C42.63 V0\n07:00 O42.60 H42.63 L41.85 C42.00 V0\n07:30 O42.00 H42.00 L41.34 C41.91 V0\n08:00 O41.88 H42.43 L41.88 C42.02 V0\n08:30 O42.07 H50.00 L41.82 C49.50 V0\n09:00 O49.50 "
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NBIS"
+     },
+     "result": "NBIS: cierre previo 81.31 | hoy 103.29 (+27.0%) | 1d -16.1% | 5d -29.8% | 21d -48.9% | 63d -61.5% | vs SMA20 -39.5% | vs SMA50 -55.1% | ATR 21.6% | volumen ayer 1.69x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O88.45 H90.49 L86.30 C90.11 V0\n04:30 O90.01 H90.35 L89.51 C89.82 V0\n05:00 O89.81 H90.50 L89.78 C90.02 V0\n05:30 O90.02 H90.52 L89.70 C89.95 V0\n06:00 O89.93 H90.00 L89.03 C89.29 V0\n06:30 O89.40 H89.63 L89.16 C89.33 V0\n07:00 O89.35 H89.60 L87.11 C87.55 V0\n07:30 O87.60 H87.80 L86.55 C87.76 V0\n08:00 O87.71 H88.61 L87.70 C88.00 V0\n08:30 O87.91 H103.29 L87.53 C101.69 V0\n09:00 O101"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "SMCI"
+     },
+     "result": "SMCI: cierre previo 21.65 | hoy 26.03 (+20.2%) | 1d -9.2% | 5d -19.4% | 21d -35.8% | 63d -38.4% | vs SMA20 -25.1% | vs SMA50 -38.1% | ATR 11.5% | volumen ayer 1.06x | momentum 12-1 -0.0% (#87)\nBarras de 30 min de hoy:\n04:00 O23.04 H23.40 L22.74 C23.32 V0\n04:30 O23.32 H23.39 L23.21 C23.23 V0\n05:00 O23.27 H23.41 L23.23 C23.37 V0\n05:30 O23.37 H23.42 L23.32 C23.34 V0\n06:00 O23.37 H23.46 L23.25 C23.33 V0\n06:30 O23.35 H23.45 L23.34 C23.38 V0\n07:00 O23.38 H23.40 L23.03 C23.09 V0\n07:30 O23.09 H23.19 L22.91 C23.00 V0\n08:00 O23.00 H23.15 L22.95 C22.99 V0\n08:30 O22.98 H24.70 L22.92 C24.56 V0\n09:00 O24.53"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 125.53 | hoy 169.4 (+34.9%) | 1d -14.0% | 5d -22.9% | 21d -40.8% | 63d -39.7% | vs SMA20 -30.8% | vs SMA50 -39.4% | ATR 10.2% | volumen ayer 2.41x | momentum 12-1 +14.1% (#63)\nBarras de 30 min de hoy:\n04:00 O135.11 H138.00 L133.57 C137.29 V0\n04:30 O137.29 H137.63 L135.75 C136.54 V0\n05:00 O136.55 H136.86 L135.90 C135.90 V0\n05:30 O135.80 H136.30 L135.49 C136.20 V0\n06:00 O136.13 H136.80 L135.54 C135.95 V0\n06:30 O135.93 H136.90 L135.90 C136.39 V0\n07:00 O136.38 H136.50 L134.43 C134.90 V0\n07:30 O134.90 H135.30 L133.75 C135.26 V0\n08:00 O135.22 H136.87 L135.16 C135.94 V0\n08:30 O136"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CAPR",
+        "verdict": "descartar",
+        "reason": "Cae -76% con precio de $1.82; caída de esa magnitud sin base ni nivel limpio, y el riesgo de salto es enorme."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Gap de +35% a 169 con volumen masivo; ATR 10%. Perseguir el gap no tiene stop lógico cercano. Solo reconsiderar tras consolidación con cierre sobre el rango de la apertura y un nivel a menos de 1 ATR."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Rebote de +26% tras -54% en 63 días, ATR 16%. Cae -12% desde el máximo del gap (54.9) y no hay nivel de entrada con stop a menos de 1 ATR. El disparador de 41.5 quedó invalidado."
+       },
+       {
+        "symbol": "NBIS",
+        "verdict": "descartar",
+        "reason": "Gap +27% que ya se devolvió desde 110 a 103; ATR 21.6% y -49% en 21 días. Sin setup con riesgo definido."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Subida +32% en un día con volumen relativo bajo (0.8x); sin confirmación ni nivel limpio."
+       },
+       {
+        "symbol": "APLD",
+        "verdict": "descartar",
+        "reason": "Subida +27% con volumen relativo 0.8x; impulso sin base para entrar con stop cercano."
+       },
+       {
+        "symbol": "SMCI",
+        "verdict": "vigilar",
+        "reason": "Subió +20% a 26.03 tras -36% en 21 días; solo vigilar si consolida con volumen por encima de 25 y da un nivel con stop a menos de 1 ATR (11.5%)."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Subida +17% con volumen relativo 0.4x; sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Subida +12% con volumen relativo 0.4x; sin nivel claro."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Subida +8% con volumen relativo 0.5x; sin nivel claro con riesgo definido."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Plano (+0.5%) con volumen relativo 0.5x; sin movimiento ni setup."
+       }
+      ]
+     },
+     "result": "Registrado: CAPR, NVDA, CRWV, NBIS, IREN, APLD, SMCI, WULF, NOK, SPCX, SNDK. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "23-nov 10:38: Verificado: única posición PDD largo 80 @86.74 (último 86.63, +3.5% hoy). Única orden abierta: sell 80 PDD stop 82.0 (490255a2). No hay corto NVDA. Sin órdenes nuevas. Pantalla evaluada (11): CAPR, CRWV, NBIS, IREN, APLD, WULF, NOK, SPCX, SNDK descartados; NVDA y SMCI en vigilar. Plan: mantener PDD con stop 82.0, sin reentrar si toca. NVDA: solo con consolidación tras gap y nivel con stop a <1 ATR. SMCI: solo si consolida sobre 25 con volumen. MU/MRVL/AMD/INTC/MRNA: sin nivel claro; revisar una vez por hora sin repetir análisis."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "23-nov 10:38: Verificado: única posición PDD largo 80 @86.74 (último 86.63, +3.5% hoy). Única orden abierta: sell 80 PDD stop 82.0 (490255a2). No hay corto NVDA. Sin órdenes nuevas. Pantalla evaluada (11): CAPR, CRWV, NBIS, IREN, APLD, WULF, NOK, SPCX, SNDK descartados; NVDA y SMCI en vigilar. Plan: mantener PDD con stop 82.0, sin reentrar si toca. NVDA: solo con consolidación tras gap y nivel con stop a <1 ATR. SMCI: solo si consolida sobre 25 con volumen. MU/MRVL/AMD/INTC/MRNA: sin nivel claro; revisar una vez por hora sin repetir análisis."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005724,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005724,
+      "calls": 3,
+      "tokens": 44716
+     }
+    }
+   },
+   "account": {
+    "equity": 97957.54,
+    "cash": 91025.54,
+    "buying_power": 383511.76,
+    "last_equity": 99121.24
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.048762
+ "spent_usd": 0.054486
 }
