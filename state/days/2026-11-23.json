@@ -6379,7 +6379,166 @@
     "last_equity": 99121.24
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-23T17:08:19-05:00",
+   "time": "17:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.9413,
+    "limit": 2.9111,
+    "ticks_left": 6,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 15,
+    "shown": [
+     "CAPR",
+     "NVDA",
+     "IREN",
+     "CRWV",
+     "SMCI",
+     "WULF",
+     "CIFR",
+     "NOK",
+     "F",
+     "AAL",
+     "SNDK",
+     "SPCX",
+     "AMZN",
+     "AAPL",
+     "NU"
+    ],
+    "reviews": [
+     {
+      "symbol": "CAPR",
+      "verdict": "descartar",
+      "reason": "Caída de -75% con vol. relativo 6x; es un colapso sin base ni nivel con riesgo definido. No se compra un cuchillo que cae."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "comprar",
+      "reason": "Gap de +31% con 27x volumen. Ya tengo compra límite 85 @163.5 (499bd927) sin llenar; stop OTO 158 pendiente de verificar al llenarse. No persigo por encima de 167."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+26.7% en gap sin nivel de entrada claro; vol. relativo solo 1.6x. Perseguir aquí es comprar el extremo."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Precio 48.7, muy por encima de mi disparador 41.5, que caducó. Sin nuevo nivel con riesgo definido."
+     },
+     {
+      "symbol": "SMCI",
+      "verdict": "vigilar",
+      "reason": "24.85 bajo el disparador 25. Entrada solo si una hora cierra >25 con volumen, OTO stop 23."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "+12% en día de subidas de minería impulsadas por IA; sin nivel técnico claro ni setup."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+14% con vol. relativo 0.9x; movimiento sin confirmación de volumen."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "+3.7% con vol. relativo 1.4x. Solo ruptura de niveles previos con volumen en regular; hoy no hay nivel definido."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "**Vi:** PDD en ~87.0 con stop de venta en 82.0 activo. NVDA en ~165, por encima de mi compra límite de 163.5 (aún sin llenarse). SMCI en 24.85, bajo el disparador de 25.\n**Hice:** no envié órdenes. Evalué 8 de la pantalla: NVDA en comprar con la orden viva; SMCI y AMZN en vigilar; CAPR, IREN, CRWV, WULF y CIFR descartados por caídas, gaps o falta de nivel.\n**Vigilo:** en la primera hora regular, verificar stops y órdenes antes de analizar. Si NVDA se llena, confirmar el stop 158 de inmediato y no perseguir por encima de 167. SMCI solo con una hora cerrando sobre 25 con volumen (stop 23). PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CAPR",
+        "verdict": "descartar",
+        "reason": "Caída de -75% con vol. relativo 6x; es un colapso sin base ni nivel con riesgo definido. No se compra un cuchillo que cae."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "comprar",
+        "reason": "Gap de +31% con 27x volumen. Ya tengo compra límite 85 @163.5 (499bd927) sin llenar; stop OTO 158 pendiente de verificar al llenarse. No persigo por encima de 167."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+26.7% en gap sin nivel de entrada claro; vol. relativo solo 1.6x. Perseguir aquí es comprar el extremo."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Precio 48.7, muy por encima de mi disparador 41.5, que caducó. Sin nuevo nivel con riesgo definido."
+       },
+       {
+        "symbol": "SMCI",
+        "verdict": "vigilar",
+        "reason": "24.85 bajo el disparador 25. Entrada solo si una hora cierra >25 con volumen, OTO stop 23."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "+12% en día de subidas de minería impulsadas por IA; sin nivel técnico claro ni setup."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+14% con vol. relativo 0.9x; movimiento sin confirmación de volumen."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "+3.7% con vol. relativo 1.4x. Solo ruptura de niveles previos con volumen en regular; hoy no hay nivel definido."
+       }
+      ]
+     },
+     "result": "Registrado: CAPR, NVDA, IREN, CRWV, SMCI, WULF, CIFR, AMZN. Pantalla evaluada. Si tu veredicto es comprar o corto, la orden va con place_order y su stop con set_stop."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "17:08 23-nov post-market: Posición única PDD largo 80 @86.74 (último ~87.0); stop venta 82.0 (490255a2) activo, sin reentrar si toca. Orden abierta NVDA buy 85 @163.5 (499bd927) sin llenar; precio ~165. PRIMER PASO EN REGULAR MAÑANA: verificar stops y órdenes antes de analizar. Si NVDA se llena: confirmar de inmediato que el stop 158 esté adjunto; si no, set_stop 158 en el acto. No perseguir por encima de 167. SMCI 24.85: entrada solo si una hora cierra >25 con volumen, OTO stop 23. AMZN: solo ruptura de nivel previo con volumen. Pantalla evaluada (8): NVDA comprar (orden viva), SMCI y AMZN vigilar; CAPR, IREN, CRWV, WULF, CIFR descartados."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "17:08 23-nov post-market: Posición única PDD largo 80 @86.74 (último ~87.0); stop venta 82.0 (490255a2) activo, sin reentrar si toca. Orden abierta NVDA buy 85 @163.5 (499bd927) sin llenar; precio ~165. PRIMER PASO EN REGULAR MAÑANA: verificar stops y órdenes antes de analizar. Si NVDA se llena: confirmar de inmediato que el stop 158 esté adjunto; si no, set_stop 158 en el acto. No perseguir por encima de 167. SMCI 24.85: entrada solo si una hora cierra >25 con volumen, OTO stop 23. AMZN: solo ruptura de nivel previo con volumen. Pantalla evaluada (8): NVDA comprar (orden viva), SMCI y AMZN vi"
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003595,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003595,
+      "calls": 2,
+      "tokens": 27097
+     }
+    }
+   },
+   "account": {
+    "equity": 97985.54,
+    "cash": 91025.54,
+    "buying_power": 369692.65,
+    "last_equity": 99121.24
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.11629
+ "spent_usd": 0.119885
 }
