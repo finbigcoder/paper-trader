@@ -2180,7 +2180,133 @@
     "last_equity": 99121.24
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-23T05:08:42-05:00",
+   "time": "05:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.0694,
+    "limit": 2.9044,
+    "ticks_left": 30,
+    "est_tick": 0.0057,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "IREN",
+     "WULF",
+     "NOK",
+     "SOFI",
+     "NU",
+     "SPCX",
+     "AMZN",
+     "AAL",
+     "NFLX",
+     "AAPL"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -9.7% sin volumen relativo claro ni nivel definido; perseguir una caída en pre-market no tiene setup."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Rompió 41.5 en pre-market (43.37). Entrada solo en regular: primera hora sostenida sobre 41.5 con volumen, OTO con stop 38.5."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Subida de +8.6% en pre-market sin nivel previo claro; perseguir el rebote no tiene riesgo definido."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Rebote +8% pre-market sin estructura ni nivel de entrada con stop cercano."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Movimiento de +5.5% pre-market sin setup ni catalizador verificado."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla pre-market y las dos posiciones (PDD largo, NVDA corto con cobertura en 137.5). No envié órdenes nuevas porque no hay setup con riesgo definido fuera de horario.\nDescarté SNDK, IREN, WULF y NOK por caídas o rebotes sin nivel claro; CRWV queda en vigilar.\nEn regular, primero verifico que los stops de PDD (82.0) y NVDA (137.5) sigan activos. Luego CRWV solo si sostiene sobre 41.5 con volumen en la primera hora, con OTO stop 38.5.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -9.7% sin volumen relativo claro ni nivel definido; perseguir una caída en pre-market no tiene setup."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Rompió 41.5 en pre-market (43.37). Entrada solo en regular: primera hora sostenida sobre 41.5 con volumen, OTO con stop 38.5."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Subida de +8.6% en pre-market sin nivel previo claro; perseguir el rebote no tiene riesgo definido."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Rebote +8% pre-market sin estructura ni nivel de entrada con stop cercano."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Movimiento de +5.5% pre-market sin setup ni catalizador verificado."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, IREN, WULF, NOK. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "23-nov 05:08 pre-market: sin órdenes nuevas. Stops vigentes: PDD sell stop 82.0 (490255a2); NVDA buy stop 137.5 (ba60c338), NVDA pre-market ~136-137.75. Primer paso en regular: verificar ambos stops y órdenes abiertas. CRWV: compra solo en regular si sostiene >41.5 con volumen en primera hora, OTO stop 38.5; si vuelve bajo 41.5 antes de comprar, no entrar. NVDA: subir stop a 135.7 solo si hora cierra bajo 135 (decidir con datos del primer despertar). AMZN, MU, MRVL, AMD, INTC, MRNA: solo con setup claro."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "23-nov 05:08 pre-market: sin órdenes nuevas. Stops vigentes: PDD sell stop 82.0 (490255a2); NVDA buy stop 137.5 (ba60c338), NVDA pre-market ~136-137.75. Primer paso en regular: verificar ambos stops y órdenes abiertas. CRWV: compra solo en regular si sostiene >41.5 con volumen en primera hora, OTO stop 38.5; si vuelve bajo 41.5 antes de comprar, no entrar. NVDA: subir stop a 135.7 solo si hora cierra bajo 135 (decidir con datos del primer despertar). AMZN, MU, MRVL, AMD, INTC, MRNA: solo con setup claro."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.002472,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002472,
+      "calls": 2,
+      "tokens": 19168
+     }
+    }
+   },
+   "account": {
+    "equity": 98822.04,
+    "cash": 97448.04,
+    "buying_power": 380584.32,
+    "last_equity": 99121.24
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.006475
+ "spent_usd": 0.008947
 }
