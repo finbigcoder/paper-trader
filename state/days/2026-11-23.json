@@ -6010,7 +6010,236 @@
     "last_equity": 99121.24
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-23T16:08:31-05:00",
+   "time": "16:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.9499,
+    "limit": 2.9078,
+    "ticks_left": 8,
+    "est_tick": 0.006,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 15,
+    "shown": [
+     "CAPR",
+     "NVDA",
+     "IREN",
+     "CRWV",
+     "SMCI",
+     "WULF",
+     "CIFR",
+     "NOK",
+     "SNDK",
+     "AAL",
+     "SPCX",
+     "AMZN",
+     "F",
+     "AAPL",
+     "NU"
+    ],
+    "reviews": [
+     {
+      "symbol": "CAPR",
+      "verdict": "descartar",
+      "reason": "Cayó -75% con volumen 6x; caída de este tamaño no tiene nivel con riesgo definido."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "comprar",
+      "reason": "Ya tengo compra límite 85 @163.5 (499bd927) como entrada pendiente; precio 165.6 tras gap de +32%. No la persigo por encima de 167. Stop 158 debe quedar adjunto al llenarse."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+26% con volumen solo 1.6x; persecución de gap sin nivel de entrada claro."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Precio 48.9 ya superó con creces mi disparador de 41.5; el setup caducó."
+     },
+     {
+      "symbol": "SMCI",
+      "verdict": "vigilar",
+      "reason": "24.62, bajo el disparador de 25. Entrada solo si una hora cierra sobre 25 con volumen; OTO stop 23."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "+12.5% en día de volumen medio (1.1x); sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+14% con volumen 0.9x y precio de 6.2; ruido sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+10% con volumen 1.1x; sin nivel claro."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-6.3% con volumen 1.1x; caída sin setup, ya descartada antes."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "+7% con volumen 1.0x; sin setup."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "+4.4% con volumen 1.3x; sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "+3.9% con volumen 1.4x; solo ruptura de niveles previos con volumen, sin nivel definido hoy."
+     },
+     {
+      "symbol": "F",
+      "verdict": "descartar",
+      "reason": "+4.2% con volumen 1.0x; sin setup."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "+2.1% con volumen 1.8x; movimiento sin setup claro."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "+5.1% con volumen 0.5x; sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi PDD en 87.14 con stop de venta en 82.0 activo, y NVDA en 165.6 sin tocar mi compra límite de 163.5. SMCI sigue en 24.62, bajo el disparador de 25.\nHice: no envié órdenes nuevas. Evalué las 15 de la pantalla: NVDA \"comprar\" con la orden viva, SMCI y AMZN en vigilar, y el resto descartado por caídas o subidas sin nivel con riesgo definido.\nVigilo: al llenarse la orden NVDA (163.5), verificar de inmediato que el stop 158 esté adjunto; no perseguir por encima de 167. SMCI solo con una hora cerrando sobre 25 con volumen (OTO stop 23). PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CAPR",
+        "verdict": "descartar",
+        "reason": "Cayó -75% con volumen 6x; caída de este tamaño no tiene nivel con riesgo definido."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "comprar",
+        "reason": "Ya tengo compra límite 85 @163.5 (499bd927) como entrada pendiente; precio 165.6 tras gap de +32%. No la persigo por encima de 167. Stop 158 debe quedar adjunto al llenarse."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+26% con volumen solo 1.6x; persecución de gap sin nivel de entrada claro."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Precio 48.9 ya superó con creces mi disparador de 41.5; el setup caducó."
+       },
+       {
+        "symbol": "SMCI",
+        "verdict": "vigilar",
+        "reason": "24.62, bajo el disparador de 25. Entrada solo si una hora cierra sobre 25 con volumen; OTO stop 23."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "+12.5% en día de volumen medio (1.1x); sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+14% con volumen 0.9x y precio de 6.2; ruido sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+10% con volumen 1.1x; sin nivel claro."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-6.3% con volumen 1.1x; caída sin setup, ya descartada antes."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "+7% con volumen 1.0x; sin setup."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "+4.4% con volumen 1.3x; sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "+3.9% con volumen 1.4x; solo ruptura de niveles previos con volumen, sin nivel definido hoy."
+       },
+       {
+        "symbol": "F",
+        "verdict": "descartar",
+        "reason": "+4.2% con volumen 1.0x; sin setup."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "+2.1% con volumen 1.8x; movimiento sin setup claro."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "+5.1% con volumen 0.5x; sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: CAPR, NVDA, IREN, CRWV, SMCI, WULF, CIFR, NOK, SNDK, AAL, SPCX, AMZN, F, AAPL, NU. Pantalla evaluada. Si tu veredicto es comprar o corto, la orden va con place_order y su stop con set_stop."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "23-nov 16:08 post-market: Posición única PDD largo 80 @86.74 (último 87.14); stop venta 82.0 (490255a2) activo, sin reentrar si toca. Orden abierta NVDA buy 85 @163.5 (499bd927) sin llenar; precio 165.6. Al llenarse en regular: verificar de inmediato que el stop 158 esté adjunto (OTO). No perseguir por encima de 167. SMCI 24.62: entrada solo si una hora cierra >25 con volumen, OTO stop 23. Pantalla evaluada (15): NVDA comprar (orden viva), SMCI y AMZN vigilar, resto descartado. Primer paso mañana en regular: verificar stops y órdenes antes de analizar."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "23-nov 16:08 post-market: Posición única PDD largo 80 @86.74 (último 87.14); stop venta 82.0 (490255a2) activo, sin reentrar si toca. Orden abierta NVDA buy 85 @163.5 (499bd927) sin llenar; precio 165.6. Al llenarse en regular: verificar de inmediato que el stop 158 esté adjunto (OTO). No perseguir por encima de 167. SMCI 24.62: entrada solo si una hora cierra >25 con volumen, OTO stop 23. Pantalla evaluada (15): NVDA comprar (orden viva), SMCI y AMZN vigilar, resto descartado. Primer paso mañana en regular: verificar stops y órdenes antes de analizar."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003862,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003862,
+      "calls": 2,
+      "tokens": 28243
+     }
+    }
+   },
+   "account": {
+    "equity": 97979.14,
+    "cash": 91025.54,
+    "buying_power": 369674.73,
+    "last_equity": 99121.24
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.108951
+ "spent_usd": 0.112813
 }
