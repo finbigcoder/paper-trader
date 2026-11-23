@@ -2591,7 +2591,183 @@
     "last_equity": 99121.24
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-23T06:38:33-05:00",
+   "time": "06:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.0576,
+    "limit": 2.9191,
+    "ticks_left": 27,
+    "est_tick": 0.0053,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 12,
+    "shown": [
+     "SNDK",
+     "WULF",
+     "IREN",
+     "CRWV",
+     "SOFI",
+     "NOK",
+     "NU",
+     "AMZN",
+     "AAL",
+     "SPCX",
+     "NFLX"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -10.8% sin nivel definido ni volumen relativo confirmado; no hay setup con riesgo claro."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Rebote de +8.5% en pre-market sobre una acción muy volátil, sin nivel de entrada ni stop lógico."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Rebote de +8.1% sin estructura clara; perseguirlo fuera de horario no tiene riesgo definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Ruptura de 41.5 ya ocurrió pre-market (~43), pero la regla es comprar solo si la primera hora regular sostiene >41.5 con volumen; OTO stop 38.5 y tamaño chico por ATR 16%."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "Alza de +5.1% sin nivel técnico definido ni volumen relativo confirmado."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Alza de +4.8% sin setup; no hay nivel de entrada con stop lógico."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "Alza de +4.6% sin nivel definido; sin setup claro."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "vigilar",
+      "reason": "Solo entraría con ruptura de niveles previos con volumen en regular; hoy +3.9% pre-market sin nivel confirmado."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "Alza de +3.6% sin estructura ni nivel de riesgo definido."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Alza de +3.1% sin setup; ya descartado en sesiones anteriores."
+     },
+     {
+      "symbol": "NFLX",
+      "verdict": "descartar",
+      "reason": "Alza de +2.3% pre-market sin nivel técnico claro."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Pre-market 06:38: sin órdenes nuevas. Los stops siguen vivos: PDD venta en 82.0 y NVDA cobertura en 137.5 (NVDA en 136, a 1.5 del stop).\nPantalla evaluada: SNDK, WULF, IREN, SOFI, NOK, NU, AAL, SPCX y NFLX descartados por rebotes o caídas sin nivel; AMZN y CRWV en vigilar.\nVigilo en regular: primero verificar stops y órdenes abiertas. CRWV solo si la primera hora sostiene >41.5 con volumen (OTO stop 38.5, tamaño chico). AMZN solo con ruptura de niveles previos con volumen.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -10.8% sin nivel definido ni volumen relativo confirmado; no hay setup con riesgo claro."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Rebote de +8.5% en pre-market sobre una acción muy volátil, sin nivel de entrada ni stop lógico."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Rebote de +8.1% sin estructura clara; perseguirlo fuera de horario no tiene riesgo definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Ruptura de 41.5 ya ocurrió pre-market (~43), pero la regla es comprar solo si la primera hora regular sostiene >41.5 con volumen; OTO stop 38.5 y tamaño chico por ATR 16%."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "Alza de +5.1% sin nivel técnico definido ni volumen relativo confirmado."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Alza de +4.8% sin setup; no hay nivel de entrada con stop lógico."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "Alza de +4.6% sin nivel definido; sin setup claro."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "vigilar",
+        "reason": "Solo entraría con ruptura de niveles previos con volumen en regular; hoy +3.9% pre-market sin nivel confirmado."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "Alza de +3.6% sin estructura ni nivel de riesgo definido."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Alza de +3.1% sin setup; ya descartado en sesiones anteriores."
+       },
+       {
+        "symbol": "NFLX",
+        "verdict": "descartar",
+        "reason": "Alza de +2.3% pre-market sin nivel técnico claro."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, WULF, IREN, CRWV, SOFI, NOK, NU, AMZN, AAL, SPCX, NFLX. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.003205,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003205,
+      "calls": 2,
+      "tokens": 23522
+     }
+    }
+   },
+   "account": {
+    "equity": 98874.44,
+    "cash": 97448.04,
+    "buying_power": 380735.84,
+    "last_equity": 99121.24
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.016575
+ "spent_usd": 0.01978
 }
