@@ -2458,7 +2458,140 @@
     "last_equity": 99121.24
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-23T06:08:25-05:00",
+   "time": "06:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.0621,
+    "limit": 2.915,
+    "ticks_left": 28,
+    "est_tick": 0.0054,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "IREN",
+     "CRWV",
+     "WULF",
+     "SOFI",
+     "NOK",
+     "NU",
+     "AMZN",
+     "AAL",
+     "SPCX",
+     "NFLX",
+     "AAPL"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -10% sin nivel definido ni volumen relativo confirmado; no hay setup con riesgo claro."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Rebote +9% en pre-market sobre volumen sin confirmar; perseguir un rebote no tiene stop lógico."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Plan vigente: compra en regular solo si la primera hora sostiene >41.5 con volumen; OTO stop 38.5, tamaño chico por ATR alto."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Rebote +8.5% en pre-market sin nivel técnico claro ni volumen regular."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "Subida +5.9% sin setup ni nivel definido; no persigo pre-market."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Pre-market de las 06:08: vi la pantalla y las dos posiciones. No envié órdenes nuevas: no hay setup con riesgo definido fuera de horario.\nDescarté SNDK, IREN, WULF y SOFI por rebotes o caídas sin nivel claro. CRWV (~43.0, ATR 16%) queda en vigilar.\nEn regular verifico primero los stops de PDD (sell 82.0) y NVDA (buy 137.5). Luego CRWV solo si la primera hora sostiene sobre 41.5 con volumen, con OTO stop 38.5 y tamaño chico.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 39.51 | hoy 43.0 (+8.8%) | 1d -12.0% | 5d -25.6% | 21d -28.9% | 63d -54.2% | vs SMA20 -23.8% | vs SMA50 -41.9% | ATR 16.2% | volumen ayer 1.12x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O42.28 H43.56 L41.93 C43.32 V0\n04:30 O43.32 H43.41 L42.98 C43.10 V0\n05:00 O43.13 H43.42 L43.00 C43.22 V0\n05:30 O43.22 H43.49 L43.00 C43.25 V0\n06:00 O43.18 H43.20 L43.00 C43.00 V0"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -10% sin nivel definido ni volumen relativo confirmado; no hay setup con riesgo claro."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Rebote +9% en pre-market sobre volumen sin confirmar; perseguir un rebote no tiene stop lógico."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Plan vigente: compra en regular solo si la primera hora sostiene >41.5 con volumen; OTO stop 38.5, tamaño chico por ATR alto."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Rebote +8.5% en pre-market sin nivel técnico claro ni volumen regular."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "Subida +5.9% sin setup ni nivel definido; no persigo pre-market."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, IREN, CRWV, WULF, SOFI. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "23-nov 06:08 pre-market: sin órdenes nuevas. CRWV ~43.0 (ATR 16%), sin cambios en el plan: en regular, primera hora, compra solo si sostiene >41.5 con volumen; OTO stop 38.5; tamaño por riesgo 0.5-1% de cuenta; si vuelve bajo 41.5 antes de comprar, no entrar. Stops a verificar primero en regular: PDD sell stop 82.0 (490255a2) y NVDA buy stop 137.5 (ba60c338). NVDA: subir stop a 135.7 solo si la hora cierra bajo 135 con confirmación. AMZN: solo ruptura de niveles previos con volumen. Pantalla evaluada: SNDK, IREN, WULF, SOFI descartados; CRWV en vigilar."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "23-nov 06:08 pre-market: sin órdenes nuevas. CRWV ~43.0 (ATR 16%), sin cambios en el plan: en regular, primera hora, compra solo si sostiene >41.5 con volumen; OTO stop 38.5; tamaño por riesgo 0.5-1% de cuenta; si vuelve bajo 41.5 antes de comprar, no entrar. Stops a verificar primero en regular: PDD sell stop 82.0 (490255a2) y NVDA buy stop 137.5 (ba60c338). NVDA: subir stop a 135.7 solo si la hora cierra bajo 135 con confirmación. AMZN: solo ruptura de niveles previos con volumen. Pantalla evaluada: SNDK, IREN, WULF, SOFI descartados; CRWV en vigilar."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003828,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003828,
+      "calls": 3,
+      "tokens": 32057
+     }
+    }
+   },
+   "account": {
+    "equity": 98809.68,
+    "cash": 97448.04,
+    "buying_power": 380491.15,
+    "last_equity": 99121.24
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.012747
+ "spent_usd": 0.016575
 }
