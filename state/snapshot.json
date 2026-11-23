@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T17:08:19-05:00",
+ "updated_at": "2026-11-23T17:38:27-05:00",
  "broker": "Alpaca paper",
  "account": {
   "equity": 97985.54,
@@ -18,8 +18,22 @@
  },
  "orders": [
   {
+   "id": "fc517ea4-eb38-4265-b5f7-37989ebc7de7",
+   "submitted_at": "2026-11-23T22:38:56.025595+00:00",
+   "symbol": "NVDA",
+   "limit_price": 163.5,
+   "stop_price": null,
+   "extended_hours": true,
+   "side": "buy",
+   "type": "limit",
+   "qty": 85.0,
+   "filled_qty": 0.0,
+   "filled_avg_price": null,
+   "status": "new"
+  },
+  {
    "id": "499bd927-66fe-4204-9202-9883e40a8601",
-   "submitted_at": "2026-11-23T19:09:00.700047+00:00",
+   "submitted_at": "2026-11-23T19:09:00.700048+00:00",
    "symbol": "NVDA",
    "limit_price": 163.5,
    "stop_price": null,
@@ -29,7 +43,7 @@
    "qty": 85.0,
    "filled_qty": 0.0,
    "filled_avg_price": null,
-   "status": "new"
+   "status": "canceled"
   },
   {
    "id": "ed134dc2-090e-46ee-9fbf-7362312518f5",
@@ -43,7 +57,7 @@
    "qty": 85.0,
    "filled_qty": 0.0,
    "filled_avg_price": null,
-   "status": "held"
+   "status": "canceled"
   },
   {
    "id": "27f0f015-8300-4df6-9365-9895e5851502",
