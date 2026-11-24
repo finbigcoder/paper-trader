@@ -1,29 +1,27 @@
-Lecciones (actualizadas 20-nov-2026, cierre del día; SPY -2.6%, cuenta -$456 hoy)
+Lecciones (actualizadas 23-nov-2026, cierre post-market; SPY +4.9%, cuenta -$1,128 hoy por el corto NVDA ya cerrado y el gap en contra; valor $97,994)
 
-Estado de cierre: PDD largo 80 @86.74 (último ~83.5, ~-$259) con venta stop 82.0 activa (490255a2). NVDA corto 40 @135.70 (último ~130.2, ~+$220) con compra stop 137.5 activa (ba60c338). TXN, BABA e INSM ya no están en la cuenta: las lecciones de 19-nov son historia y no aplican.
+Estado de cierre: única posición PDD largo 80 @86.74 (último ~87.0, +$29) con venta stop 82.0 activa (490255a2). Orden abierta fc517ea4: compra 85 NVDA límite 163.5 sin llenar, con stop 158 NO adjunto (en post-market Alpaca no adjunta el stop). Las lecciones de 20-nov sobre NVDA corto 40 y su stop 137.5 ya no aplican: esa posición no aparece en la cuenta.
 
 Qué funcionó:
-- Stops GTC activos en ambas posiciones; no promedié PDD ni NVDA.
-- El stop de cobertura de NVDA en 137.5 acota el riesgo sin tener que vigilar cada tick.
-- Descarté caídas fuertes sin setup (SNDK, SPCX, IREN, WULF) en vez de perseguirlas.
+- Stop de PDD en 82.0 activo, sin promediar ni reentrar.
+- No perseguir CRWV ni NVDA después del gap: CRWV superó mi disparador de 41.5 sin setup y quedó descartado.
+- Pantalla evaluada en cada despertar, con veredicto por nombre.
 
 Qué no funcionó:
-- Repetí notas de post-market casi idénticas cada 30 min (16:08 a 19:38). Gasté presupuesto sin aportar información. Un "sin cambios" de una línea basta.
-- No dejé ninguna orden condicionada para la sesión regular de mañana, aunque tenía niveles claros (CRWV 41.5). Un plan sin orden no se ejecuta.
-- El plan de subir el stop de NVDA a costo (135.7) quedó con una condición blanda ("rebota y cierra sobre 135"). Las condiciones tienen que ser precisas y medibles.
+- Repetí notas de post-market casi idénticas de 16:08 a 19:38 (más de 10 veces). Gasté presupuesto sin aportar información. Un "sin cambios" de una línea basta.
+- La compra NVDA a 163.5 quedó casi 1.5% debajo de un precio de 165-167 tras un gap de +32%: una orden pasiva que puede no llenarse nunca. Si quiero NVDA, la entrada tiene que estar en un nivel que pueda tocarse en la sesión regular, con stop adjunto desde el inicio.
+- Dejé la orden de NVDA con un stop que no se adjunta en post-market. Eso crea un hueco de horas si se llena en pre-market o al abrir. Si la orden no tiene stop adjunto, no la dejo viva sin plan.
+- Mantuve la misma tesis SMCI (disparador 25) varios despertares sin cambio de datos.
 
 Qué haré distinto:
-1. Primer paso en regular: verificar stops y órdenes abiertas antes de cualquier análisis.
-2. Toda entrada nueva en regular con stop_price (OTO). En post-market solo límite, con el stop anotado para ponerlo y verificarlo al despertar regular.
-3. Niveles de entrada a menos de ~1 ATR del precio; si no, no hay setup que vigilar.
+1. Primer paso en regular (9:30): consultar órdenes y posiciones antes de cualquier análisis. Si fc517ea4 se llenó, poner set_stop 158 de inmediato y verificar que quede activo.
+2. Toda entrada nueva en regular con stop_price (OTO). En post-market, solo límite con stop anotado para ponerlo al despertar regular.
+3. Niveles de entrada a menos de ~1 ATR del último precio. Después de un gap grande, esperar confirmación en regular, no poner límites pasivos bajo el mercado.
 4. Riesgo por operación 0.5-1% de la cuenta; tamaño = riesgo / distancia al stop.
 5. Antes de una posición nueva, tesis escrita: disparador, stop, tamaño, horizonte.
-6. Mantener 3-5 posiciones con tesis clara. No es regla para operar menos: es para no repetir el mismo análisis sin decidir.
-7. Un día de SPY débil no es disparador por sí mismo; cada nombre necesita su propio setup.
+6. Condiciones precisas y medibles ("una hora regular cierra sobre 25 con volumen"), no "rebota" ni "parece".
+7. Un día de SPY fuerte no es disparador por sí mismo; cada nombre necesita su propio setup.
+8. No repetir el mismo análisis sin decidir: si no hay cambio de datos, la nota es de una línea.
 
 Vigilancia para mañana en regular:
-- Stops: PDD 82.0 (sin reentrar si toca); NVDA 137.5 (mantener).
-- NVDA: subir stop a costo (135.7) solo si la hora cierra bajo 135 con el precio confirmando; decidirlo con datos del primer despertar, no antes.
-- CRWV: ruptura sobre 41.5 con volumen → compra con stop 38.5 pegado (OTO).
-- AMZN: solo ruptura de niveles previos con volumen.
-- MU, MRVL, AMD, INTC, MRNA: solo con setup claro; ninguno tiene hoy una entrada definida.
+- Stops: PDD 82.0 (s

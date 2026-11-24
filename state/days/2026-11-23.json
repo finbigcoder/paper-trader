@@ -7366,7 +7366,143 @@
     "last_equity": 99121.24
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-23T19:38:44-05:00",
+   "time": "19:38",
+   "session": "post",
+   "last": true,
+   "budget": {
+    "allowance_today": 2.9129,
+    "limit": 2.9129,
+    "ticks_left": 1,
+    "est_tick": 0.0063,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 14,
+    "shown": [
+     "CAPR",
+     "NVDA",
+     "CRWV",
+     "IREN",
+     "NOK",
+     "SMCI",
+     "WULF",
+     "CIFR",
+     "F",
+     "SPCX",
+     "SNDK",
+     "AAL",
+     "AAPL",
+     "NU"
+    ],
+    "reviews": [
+     {
+      "symbol": "CAPR",
+      "verdict": "descartar",
+      "reason": "Cayó -75% hoy a 1.88 con volumen 6.2x; es una caída de evento sin base ni nivel con riesgo definido, y el stop quedaría muy lejos del precio."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "comprar",
+      "reason": "Ya tiene orden viva fc517ea4: 85 acciones límite 163.5 con stop 158 pendiente de adjuntar. Si se llena en regular, poner el stop 158 de inmediato; no perseguir por encima de 167."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Subió +22.9% a 48.57, muy por encima de mi disparador de 41.5 (ruptura con volumen). Perseguirla ahora deja el stop lejos y sin nivel limpio; solo reconsideraría un retroceso con un nuevo soporte claro."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Gap de +26% a 14.89 con volumen relativo solo 1.5x: impulso sin confirmación y sin nivel previo definido para entrar con riesgo acotado."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Sube +10% a 7.57 con volumen 2.0x y no tengo tesis ni nivel de entrada; la acción no tiene setup en mi lista de vigilancia."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Evalué las cinco de la pantalla. NVDA queda en \"comprar\" porque ya tiene la orden viva (85 @163.5, stop 158 pendiente); el resto queda descartado.\n- CAPR: cayó -75% con volumen 6.2x; es una caída de evento sin nivel con riesgo definido.\n- CRWV: superó mi disparador de 41.5 y está en 48.57; perseguirla deja el stop lejos.\n- IREN y NOK: subidas de +26% y +10% con volumen 1.5x y 2.0x, sin nivel previo ni tesis.\nVigilo solo NVDA: si la orden se llena en regular, poner el stop 158 de inmediato y no perseguir por encima de 167.",
+   "steps": 4,
+   "error": null,
+   "tools": [
+    {
+     "name": "update_lessons",
+     "args": {
+      "text": "Lecciones (actualizadas 23-nov-2026, cierre post-market; SPY +4.9%, cuenta -$1,128 hoy por el corto NVDA ya cerrado y el gap en contra; valor $97,994)\n\nEstado de cierre: única posición PDD largo 80 @86.74 (último ~87.0, +$29) con venta stop 82.0 activa (490255a2). Orden abierta fc517ea4: compra 85 NVDA límite 163.5 sin llenar, con stop 158 NO adjunto (en post-market Alpaca no adjunta el stop). Las lecciones de 20-nov sobre NVDA corto 40 y su stop 137.5 ya no aplican: esa posición no aparece en la cuenta.\n\nQué funcionó:\n- Stop de PDD en 82.0 activo, sin promediar ni reentrar.\n- No perseguir CRWV ni NVDA después del gap: CRWV superó mi disparador de 41.5 sin setup y quedó descartado.\n- Pantalla evaluada en cada despertar, con veredicto por nombre.\n\nQué no funcionó:\n- Repetí notas de post-market casi idénticas de 16:08 a 19:38 (más de 10 veces). Gasté presupuesto sin aportar información. Un \"sin cambios\" de una línea basta.\n- La compra NVDA a 163.5 quedó casi 1.5% debajo de un precio de 165-167 tras un gap de +32%: una orden pasiva que puede no llenarse nunca. Si quiero NVDA, la entrada tiene que estar en un nivel que pueda tocarse en la sesión regular, con stop adjunto desde el inicio.\n- Dejé la orden de NVDA con un stop que no se adjunta en post-market. Eso crea un hueco de horas si se llena en pre-market o al abrir. Si la orden no tiene stop adjunto, no la dejo viva sin plan.\n- Mantuve la misma tesis SMCI (disparador 25) varios despertares sin cambio de datos.\n\nQué haré distinto:\n1. Primer paso en regular (9:30): consultar órdenes y posiciones antes de cualquier análisis. Si fc517ea4 se llenó, poner set_stop 158 de inmediato y verificar que quede activo.\n2. Toda entrada nueva en regular con stop_price (OTO). En post-market, solo límite con stop anotado para ponerlo al despertar regular.\n3. Niveles de entrada a menos de ~1 ATR del último precio. Después de un gap grande, esperar confirmación en regular, no poner límites pasivos bajo el mercado.\n4. Riesgo por operación 0.5-1% de la cuenta; tamaño = riesgo / distancia al stop.\n5. Antes de una posición nueva, tesis escrita: disparador, stop, tamaño, horizonte.\n6. Condiciones precisas y medibles (\"una hora regular cierra sobre 25 con volumen\"), no \"rebota\" ni \"parece\".\n7. Un día de SPY fuerte no es disparador por sí mismo; cada nombre necesita su propio setup.\n8. No repetir el mismo análisis sin decidir: si no hay cambio de datos, la nota es de una línea.\n\nVigilancia para mañana en regular:\n- Stops: PDD 82.0 (sin reentrar si toca).\n- NVDA fc517ea4 (163.5, stop 158): confirmar llenado y stop; no perseguir por encima de 167.\n- SMCI: entrada solo si una hora regular cierra >25 con volumen (OTO stop 23).\n- AMZN: solo ruptura de nivel previo con volumen.\n- MU, MRVL, AMD, INTC, MRNA: solo con setup claro; ninguno tiene entrada definida hoy."
+     },
+     "result": "Lecciones guardadas (2500 caracteres)."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "23-nov 19:38 cierre: PDD largo 80 @86.74 (último ~87), stop venta 82.0 (490255a2) activo. Orden fc517ea4 NVDA buy 85 límite 163.5 sin llenar, stop 158 NO adjunto. PRIMER PASO EN REGULAR: revisar si se llenó; si sí, set_stop 158 de inmediato. No perseguir arriba de 167. SMCI: entrada solo con hora regular cerrando >25 con volumen (OTO stop 23)."
+     },
+     "result": "Anotado."
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CAPR",
+        "verdict": "descartar",
+        "reason": "Cayó -75% hoy a 1.88 con volumen 6.2x; es una caída de evento sin base ni nivel con riesgo definido, y el stop quedaría muy lejos del precio."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "comprar",
+        "reason": "Ya tiene orden viva fc517ea4: 85 acciones límite 163.5 con stop 158 pendiente de adjuntar. Si se llena en regular, poner el stop 158 de inmediato; no perseguir por encima de 167."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Subió +22.9% a 48.57, muy por encima de mi disparador de 41.5 (ruptura con volumen). Perseguirla ahora deja el stop lejos y sin nivel limpio; solo reconsideraría un retroceso con un nuevo soporte claro."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Gap de +26% a 14.89 con volumen relativo solo 1.5x: impulso sin confirmación y sin nivel previo definido para entrar con riesgo acotado."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Sube +10% a 7.57 con volumen 2.0x y no tengo tesis ni nivel de entrada; la acción no tiene setup en mi lista de vigilancia."
+       }
+      ]
+     },
+     "result": "Registrado: CAPR, NVDA, CRWV, IREN, NOK. Pantalla evaluada. Si tu veredicto es comprar o corto, la orden va con place_order y su stop con set_stop."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "23-nov 19:38 cierre: PDD largo 80 @86.74 (último ~87), stop venta 82.0 (490255a2) activo. Orden fc517ea4 NVDA buy 85 límite 163.5 sin llenar, stop 158 NO adjunto. PRIMER PASO EN REGULAR: revisar si se llenó; si sí, set_stop 158 de inmediato. No perseguir arriba de 167. SMCI: entrada solo con hora regular cerrando >25 con volumen (OTO stop 23)."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.007472,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.007472,
+      "calls": 4,
+      "tokens": 59456
+     }
+    }
+   },
+   "account": {
+    "equity": 97993.54,
+    "cash": 91025.54,
+    "buying_power": 369715.05,
+    "last_equity": 99121.24
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.140616
+ "spent_usd": 0.148088,
+ "lessons_updated": true
 }
