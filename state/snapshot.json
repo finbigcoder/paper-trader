@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-11-24T16:08:24-05:00",
+ "updated_at": "2026-11-24T16:38:23-05:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 97995.93,
+  "equity": 97971.79,
   "cash": 91025.53,
-  "buying_power": 383619.24,
+  "buying_power": 383551.64,
   "last_equity": 97996.73
  },
  "positions": {
   "PDD": {
    "qty": 80.0,
    "avg_price": 86.74275,
-   "price": 87.13,
-   "market_value": 6970.4,
-   "unrealized_pl": 30.98
+   "price": 86.8282,
+   "market_value": 6946.256,
+   "unrealized_pl": 6.836
   }
  },
  "orders": [
