@@ -3074,7 +3074,214 @@
     "last_equity": 97996.73
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-24T07:38:17-05:00",
+   "time": "07:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.6397,
+    "limit": 3.5087,
+    "ticks_left": 25,
+    "est_tick": 0.0055,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "SNDK",
+     "NVDA",
+     "CIFR",
+     "IREN",
+     "CRWV",
+     "SMCI",
+     "WULF",
+     "NOK",
+     "SPCX",
+     "AAL",
+     "AAPL",
+     "NU",
+     "F"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "vigilar",
+      "reason": "Cae -12.8% con volumen relativo sin dato fiable en pre-market; sin nivel técnico ni tesis. Solo considerar en regular si hay base y volumen confirmado."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Sin posición ni orden abierta. Entrada solo en regular con stop adjunto y sin perseguir por encima de 167; hoy cae -5.2% a 156.41, sin confirmación."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-4.7% en una acción de bajo precio y liquidez limitada ($379M/día), sin setup ni tesis."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-4.6% sin setup; ya descartada en despertares previos y sin cambio de datos."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-4.6% sin setup; su disparador previo (41.5) ya quedó superado y descartado."
+     },
+     {
+      "symbol": "SMCI",
+      "verdict": "vigilar",
+      "reason": "Ya no aparece en el top de pantalla, pero mantengo el disparador: solo si una hora regular cierra sobre 25 con volumen."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-4.2% sin setup ni tesis en la pantalla."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-2.6% sin setup; movimiento menor sin nivel definido."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-1.7% sin setup; sin tesis ni nivel."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-0.7%, movimiento menor sin setup."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "-0.1%, sin movimiento ni setup."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "-0.1%, sin movimiento ni setup."
+     },
+     {
+      "symbol": "F",
+      "verdict": "descartar",
+      "reason": "Plana, sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla en pre-market: SNDK (-12.8%) y NVDA (-5.2%, 156.41) quedan en vigilar, SMCI también en vigilar con disparador de hora regular sobre 25, y el resto queda descartado por falta de setup.\nNo envié órdenes ni cambié stops. PDD 80 @86.74 (último 85.4) sigue con venta stop en 82.0 activa (490255a2).\nAl abrir: verificar órdenes y posiciones; NVDA solo con entrada en regular y stop adjunto, sin perseguir arriba de 167; SMCI solo si una hora regular cierra sobre 25 con volumen.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "vigilar",
+        "reason": "Cae -12.8% con volumen relativo sin dato fiable en pre-market; sin nivel técnico ni tesis. Solo considerar en regular si hay base y volumen confirmado."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Sin posición ni orden abierta. Entrada solo en regular con stop adjunto y sin perseguir por encima de 167; hoy cae -5.2% a 156.41, sin confirmación."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-4.7% en una acción de bajo precio y liquidez limitada ($379M/día), sin setup ni tesis."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-4.6% sin setup; ya descartada en despertares previos y sin cambio de datos."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-4.6% sin setup; su disparador previo (41.5) ya quedó superado y descartado."
+       },
+       {
+        "symbol": "SMCI",
+        "verdict": "vigilar",
+        "reason": "Ya no aparece en el top de pantalla, pero mantengo el disparador: solo si una hora regular cierra sobre 25 con volumen."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-4.2% sin setup ni tesis en la pantalla."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-2.6% sin setup; movimiento menor sin nivel definido."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-1.7% sin setup; sin tesis ni nivel."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-0.7%, movimiento menor sin setup."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "-0.1%, sin movimiento ni setup."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "-0.1%, sin movimiento ni setup."
+       },
+       {
+        "symbol": "F",
+        "verdict": "descartar",
+        "reason": "Plana, sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, NVDA, CIFR, IREN, CRWV, SMCI, WULF, NOK, SPCX, AAL, AAPL, NU, F. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "07:38 pre-market 24-nov: sin cambios. PDD 80 @86.74 (último 85.4), stop venta 82.0 activo (490255a2). Sin órdenes de entrada abiertas. Al abrir: 1) verificar órdenes y posiciones; 2) NVDA solo entrada en regular con stop adjunto, no perseguir arriba de 167; 3) SMCI solo si una hora regular cierra sobre 25 con volumen (SMCI ya no está en pantalla, verificar precio aparte)."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "07:38 pre-market 24-nov: sin cambios. PDD 80 @86.74 (último 85.4), stop venta 82.0 activo (490255a2). Sin órdenes de entrada abiertas. Al abrir: 1) verificar órdenes y posiciones; 2) NVDA solo entrada en regular con stop adjunto, no perseguir arriba de 167; 3) SMCI solo si una hora regular cierra sobre 25 con volumen (SMCI ya no está en pantalla, verificar precio aparte)."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003248,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003248,
+      "calls": 2,
+      "tokens": 24192
+     }
+    }
+   },
+   "account": {
+    "equity": 97857.53,
+    "cash": 91025.53,
+    "buying_power": 383231.72,
+    "last_equity": 97996.73
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.019168
+ "spent_usd": 0.022416
 }
