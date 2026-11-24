@@ -4957,7 +4957,242 @@
     "last_equity": 97996.73
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-24T12:08:22-05:00",
+   "time": "12:08",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.5878,
+    "limit": 3.5082,
+    "ticks_left": 16,
+    "est_tick": 0.0053,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 13,
+    "shown": [
+     "INSM",
+     "ANF",
+     "NVDA",
+     "SNDK",
+     "IREN",
+     "CRWV",
+     "CIFR",
+     "BMNR",
+     "WULF",
+     "VALE",
+     "SPCX",
+     "NOK",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Lateral en 170.3 tras +14% y +60% en 21 días, con volumen decreciente y 26% sobre SMA20. Solo lo miro en retroceso con soporte confirmado; sin nivel de entrada hoy."
+     },
+     {
+      "symbol": "ANF",
+      "verdict": "vigilar",
+      "reason": "Gap +25% a 175.6. Mi disparador (hora regular cierra sobre 176.4 con volumen) no se cumple: la barra de 10:00 cerró 175.93 y la de 10:30 cerró 174.14. Sigue vigilada; no persigo."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "descartar",
+      "reason": "Cae a 152.27 (-7.7%) con ATR 9.5% y sin soporte claro; el rebote de +31% en 1 día ya se devolvió. No hay setup con riesgo chico."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-18.3% a 77.09 con ATR muy alto y sin nivel; caída de evento sin base para entrar."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-13.1% con volumen relativo 1.1x y ATR alto; no hay nivel técnico definido ni tesis."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-11.7% con volumen 0.5x; sin setup y ya descartada en la sesión previa."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-12.4% con volumen 0.5x; caída sin nivel ni tesis."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-10.8% con volumen 0.5x; sin setup."
+     },
+     {
+      "symbol": "VALE",
+      "verdict": "descartar",
+      "reason": "-4.0% sin catalizador ni nivel."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-5.2% con volumen 0.9x; sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-3.5% con volumen 0.9x; sin setup."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-1.2% con volumen 0.4x; sin interés."
+     },
+     {
+      "symbol": "BMNR",
+      "verdict": "descartar",
+      "reason": "-7.1% con volumen 0.7x; sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi PDD 80 @86.74 (último 85.93), con la venta stop en 82.0 activa (490255a2) y sin órdenes de entrada abiertas.\nANF cerró la barra de 10:00 en 175.93 y la de 10:30 en 174.14, así que no cumplió mi disparador de cierre horario sobre 176.4. Sigue en vigilar sin entrar.\nEvalué las 13 de la pantalla: INSM y ANF quedan en vigilar; NVDA, SNDK, IREN, CRWV, CIFR, WULF, VALE, SPCX, NOK, AAL y BMNR quedan descartados por falta de setup o volatilidad alta. No envié órdenes ni cambié stops.\nVigilo: ANF si una hora regular cierra sobre 176.4 con volumen; INSM solo en retroceso con soporte; PDD con stop en 82 sin reentrar; SMCI con disparador de hora regular sobre 25.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "ANF"
+     },
+     "result": "ANF: cierre previo 140.45 | hoy 175.6 (+25.0%) | 1d +1.8% | 5d -3.6% | 21d -9.9% | 63d +29.0% | vs SMA20 -8.4% | vs SMA50 -5.0% | ATR 6.0% | volumen ayer 2.17x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O140.44 H140.45 L140.44 C140.45 V0\n04:30 O139.00 H139.00 L139.00 C139.00 V0\n05:00 O139.00 H139.00 L139.00 C139.00 V0\n06:30 O138.00 H138.50 L138.00 C138.50 V0\n07:00 O139.00 H142.00 L139.00 C141.00 V0\n07:30 O145.00 H157.99 L136.26 C154.80 V0\n08:00 O155.99 H156.00 L153.00 C154.75 V0\n08:30 O155.41 H156.50 L154.99 C156.00 V0\n09:00 O156.00 H156.00 L151.11 C153.20 V0\n09:30 O161.41 H173.7"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "INSM"
+     },
+     "result": "INSM: cierre previo 149.09 | hoy 170.31 (+14.2%) | 1d +5.5% | 5d +21.3% | 21d +59.6% | 63d +20.3% | vs SMA20 +26.5% | vs SMA50 +33.6% | ATR 4.9% | volumen ayer 1.05x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O166.50 H170.81 L166.50 C170.39 V0\n04:30 O170.40 H170.44 L170.25 C170.32 V0\n05:00 O170.40 H170.52 L170.40 C170.52 V0\n05:30 O170.60 H171.00 L170.60 C171.00 V0\n06:00 O170.61 H171.20 L170.61 C171.20 V0\n06:30 O171.48 H171.48 L170.80 C170.81 V0\n07:00 O170.80 H170.98 L170.53 C170.85 V0\n07:30 O170.85 H170.98 L170.80 C170.88 V0\n08:00 O170.89 H170.91 L170.77 C170.78 V0\n08:30 O170.76 "
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 165.05 | hoy 152.27 (-7.7%) | 1d +31.5% | 5d +5.7% | 21d -21.8% | 63d -22.4% | vs SMA20 -7.8% | vs SMA50 -19.9% | ATR 9.5% | volumen ayer 2.71x | momentum 12-1 +17.1% (#53)\nBarras de 30 min de hoy:\n04:00 O162.35 H164.40 L158.10 C158.63 V0\n04:30 O158.73 H159.45 L157.27 C157.80 V0\n05:00 O157.80 H158.43 L156.51 C157.05 V0\n05:30 O157.06 H157.08 L154.85 C156.42 V0\n06:00 O156.41 H157.17 L155.19 C156.82 V0\n06:30 O156.80 H157.98 L156.08 C157.82 V0\n07:00 O157.76 H157.95 L155.49 C155.61 V0\n07:30 O155.59 H157.95 L155.59 C157.52 V0\n08:00 O157.50 H157.75 L155.01 C156.02 V0\n08:30 O156.00"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "PDD"
+     },
+     "result": "PDD: cierre previo 87.14 | hoy 85.93 (-1.4%) | 1d +4.1% | 5d +11.6% | 21d +10.2% | 63d -0.7% | vs SMA20 +8.2% | vs SMA50 +9.4% | ATR 3.6% | volumen ayer 1.75x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O86.40 H86.99 L86.25 C86.50 V0\n04:30 O86.67 H86.67 L86.50 C86.50 V0\n05:00 O86.50 H86.50 L86.18 C86.18 V0\n05:30 O86.20 H86.23 L86.06 C86.06 V0\n06:00 O86.04 H86.20 L86.01 C86.03 V0\n06:30 O86.05 H86.05 L85.49 C85.53 V0\n07:00 O85.54 H85.60 L85.34 C85.51 V0\n07:30 O85.58 H85.58 L85.00 C85.00 V0\n08:00 O85.15 H85.30 L84.40 C85.00 V0\n08:30 O85.17 H85.17 L85.17 C85.17 V0\n09:00 O85.17 H85.42 "
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Lateral en 170.3 tras +14% y +60% en 21 días, con volumen decreciente y 26% sobre SMA20. Solo lo miro en retroceso con soporte confirmado; sin nivel de entrada hoy."
+       },
+       {
+        "symbol": "ANF",
+        "verdict": "vigilar",
+        "reason": "Gap +25% a 175.6. Mi disparador (hora regular cierra sobre 176.4 con volumen) no se cumple: la barra de 10:00 cerró 175.93 y la de 10:30 cerró 174.14. Sigue vigilada; no persigo."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "descartar",
+        "reason": "Cae a 152.27 (-7.7%) con ATR 9.5% y sin soporte claro; el rebote de +31% en 1 día ya se devolvió. No hay setup con riesgo chico."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-18.3% a 77.09 con ATR muy alto y sin nivel; caída de evento sin base para entrar."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-13.1% con volumen relativo 1.1x y ATR alto; no hay nivel técnico definido ni tesis."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-11.7% con volumen 0.5x; sin setup y ya descartada en la sesión previa."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-12.4% con volumen 0.5x; caída sin nivel ni tesis."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-10.8% con volumen 0.5x; sin setup."
+       },
+       {
+        "symbol": "VALE",
+        "verdict": "descartar",
+        "reason": "-4.0% sin catalizador ni nivel."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-5.2% con volumen 0.9x; sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-3.5% con volumen 0.9x; sin setup."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-1.2% con volumen 0.4x; sin interés."
+       },
+       {
+        "symbol": "BMNR",
+        "verdict": "descartar",
+        "reason": "-7.1% con volumen 0.7x; sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: INSM, ANF, NVDA, SNDK, IREN, CRWV, CIFR, WULF, VALE, SPCX, NOK, AAL, BMNR. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "12:08 24-nov: PDD 80 @86.74, último 85.93, stop venta 82.0 activo (490255a2); no reentrar si toca 82. Sin órdenes de entrada. ANF 175.6: disparador (hora regular cierra >176.4 con volumen) NO cumplido; barras 10:00 cerró 175.93, 10:30 174.14, 11:30 174.56. Vigilar. INSM 170.3 lateral, solo retroceso con soporte. NVDA 152.27 descartada por hoy. SMCI disparador hora regular >25 (~23, no en pantalla)."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "12:08 24-nov: PDD 80 @86.74, último 85.93, stop venta 82.0 activo (490255a2); no reentrar si toca 82. Sin órdenes de entrada. ANF 175.6: disparador (hora regular cierra >176.4 con volumen) NO cumplido; barras 10:00 cerró 175.93, 10:30 174.14, 11:30 174.56. Vigilar. INSM 170.3 lateral, solo retroceso con soporte. NVDA 152.27 descartada por hoy. SMCI disparador hora regular >25 (~23, no en pantalla)."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005526,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005526,
+      "calls": 3,
+      "tokens": 45016
+     }
+    }
+   },
+   "account": {
+    "equity": 97899.93,
+    "cash": 91025.53,
+    "buying_power": 383350.44,
+    "last_equity": 97996.73
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.062437
+ "spent_usd": 0.067963
 }
