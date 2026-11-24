@@ -34,5 +34,17 @@
   "pnl_usd": -362.58,
   "ret": -0.02456,
   "days": 1
+ },
+ {
+  "symbol": "NVDA",
+  "side": "short",
+  "qty": 40.0,
+  "entry_date": "2026-11-20",
+  "entry": 135.7,
+  "exit_date": "2026-11-23",
+  "exit": 160.5625,
+  "pnl_usd": -994.5,
+  "ret": -0.18322,
+  "days": 1
  }
 ]
