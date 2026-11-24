@@ -1227,6 +1227,13 @@
    "kind": "tick",
    "usd": 0.002998,
    "aborted": false
+  },
+  {
+   "date": "2026-11-24",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.003023,
+   "aborted": false
   }
  ]
 }
