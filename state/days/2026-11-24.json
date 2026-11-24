@@ -3943,7 +3943,220 @@
     "last_equity": 97996.73
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-24T09:38:21-05:00",
+   "time": "09:38",
+   "session": "regular",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.6194,
+    "limit": 3.5183,
+    "ticks_left": 21,
+    "est_tick": 0.0051,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 11,
+    "shown": [
+     "INSM",
+     "ANF",
+     "COGT",
+     "KYMR",
+     "AMTM",
+     "SNDK",
+     "IREN",
+     "CRWV",
+     "NVDA",
+     "SPCX",
+     "VALE"
+    ],
+    "reviews": [
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Gap +14% con 5.4x volumen, pero +60% en 21 días y +26% sobre SMA20: extendida. Sin entrada perseguida; solo consideraría un retroceso que se sostenga en regular."
+     },
+     {
+      "symbol": "ANF",
+      "verdict": "descartar",
+      "reason": "+23% con volumen relativo 0.8x: movimiento de noticia sin confirmación de volumen, sin nivel ni tesis."
+     },
+     {
+      "symbol": "COGT",
+      "verdict": "descartar",
+      "reason": "+18% con volumen 0.5x y liquidez baja ($64M/día); sin setup."
+     },
+     {
+      "symbol": "KYMR",
+      "verdict": "vigilar",
+      "reason": "Gap +13% con 7.7x volumen de ayer; hoy tocó 180 y cerró 170 (mecha superior fuerte). Esperar que una hora regular se sostenga sobre 170 o un retroceso con soporte antes de cualquier entrada."
+     },
+     {
+      "symbol": "AMTM",
+      "verdict": "descartar",
+      "reason": "+16% con 0.3x volumen y $41M/día; liquidez y volumen insuficientes para un setup limpio."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "vigilar",
+      "reason": "-16% tras caída de ~44% en un mes, sin volumen relativo (0.1x). Cuchillo cayendo; sin nivel de entrada."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-8% con 0.1x volumen; ya descartada en días previos, sin setup."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-7.7% con 0.1x volumen; ya superó mi disparador de 41.5 sin setup y queda descartada."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "154.18 tras abrir en 159.8 y caer; sin setup claro. Sin entrada en niveles intradía; solo con confirmación en regular y stop adjunto."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-2.2% con 0.1x volumen; sin setup."
+     },
+     {
+      "symbol": "VALE",
+      "verdict": "descartar",
+      "reason": "-1.2% con 0.2x volumen; sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi PDD 80 @86.74 (último 85.43) con la venta stop en 82.0 activa; no hay órdenes de entrada abiertas. La pantalla no da setup limpio: INSM está extendida tras +60% en 21 días, KYMR cerró muy por debajo de su máximo de 180, y NVDA y SNDK no tienen nivel.\nNo envié órdenes ni cambié stops. Evalué las 11 de la pantalla: INSM, KYMR, SNDK y NVDA quedan en vigilar; el resto, descartado.\nVigilo: KYMR si una hora regular se sostiene sobre 170, INSM si retrocede con soporte, SMCI solo con hora regular cerrando sobre 25 (ahora 22.96), y PDD con su stop en 82.",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "INSM"
+     },
+     "result": "INSM: cierre previo 149.09 | hoy 170.31 (+14.2%) | 1d +5.5% | 5d +21.3% | 21d +59.6% | 63d +20.3% | vs SMA20 +26.5% | vs SMA50 +33.6% | ATR 4.9% | volumen ayer 1.05x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O166.50 H170.81 L166.50 C170.39 V0\n04:30 O170.40 H170.44 L170.25 C170.32 V0\n05:00 O170.40 H170.52 L170.40 C170.52 V0\n05:30 O170.60 H171.00 L170.60 C171.00 V0\n06:00 O170.61 H171.20 L170.61 C171.20 V0\n06:30 O171.48 H171.48 L170.80 C170.81 V0\n07:00 O170.80 H170.98 L170.53 C170.85 V0\n07:30 O170.85 H170.98 L170.80 C170.88 V0\n08:00 O170.89 H170.91 L170.77 C170.78 V0\n08:30 O170.76 "
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 165.05 | hoy 154.18 (-6.6%) | 1d +31.5% | 5d +5.7% | 21d -21.8% | 63d -22.4% | vs SMA20 -7.8% | vs SMA50 -19.9% | ATR 9.5% | volumen ayer 2.71x | momentum 12-1 +17.1% (#53)\nBarras de 30 min de hoy:\n04:00 O162.35 H164.40 L158.10 C158.63 V0\n04:30 O158.73 H159.45 L157.27 C157.80 V0\n05:00 O157.80 H158.43 L156.51 C157.05 V0\n05:30 O157.06 H157.08 L154.85 C156.42 V0\n06:00 O156.41 H157.17 L155.19 C156.82 V0\n06:30 O156.80 H157.98 L156.08 C157.82 V0\n07:00 O157.77 H157.95 L155.49 C155.61 V0\n07:30 O155.59 H157.95 L155.59 C157.52 V0\n08:00 O157.50 H157.75 L155.01 C156.00 V0\n08:30 O156.00"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "SMCI"
+     },
+     "result": "SMCI: cierre previo 24.53 | hoy 22.96 (-6.4%) | 1d +13.3% | 5d -2.0% | 21d -25.5% | 63d -36.2% | vs SMA20 -13.9% | vs SMA50 -29.4% | ATR 11.0% | volumen ayer 1.34x | momentum 12-1 +4.4% (#83)\nBarras de 30 min de hoy:\n04:00 O24.00 H24.56 L23.52 C23.65 V0\n04:30 O23.69 H23.80 L23.54 C23.55 V0\n05:00 O23.62 H23.64 L23.39 C23.39 V0\n05:30 O23.34 H23.45 L23.16 C23.38 V0\n06:00 O23.30 H23.40 L23.18 C23.37 V0\n06:30 O23.40 H23.56 L23.32 C23.52 V0\n07:00 O23.54 H23.60 L23.30 C23.35 V0\n07:30 O23.32 H23.62 L23.32 C23.58 V0\n08:00 O23.52 H23.58 L23.30 C23.40 V0\n08:30 O23.40 H23.47 L23.15 C23.18 V0\n09:00 O23.19 "
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "KYMR"
+     },
+     "result": "KYMR: cierre previo 150.37 | hoy 170.42 (+13.3%) | 1d +30.4% | 5d +19.5% | 21d +35.8% | 63d +18.7% | vs SMA20 +17.5% | vs SMA50 +27.1% | ATR 6.6% | volumen ayer 7.69x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n06:00 O153.50 H154.50 L153.50 C154.50 V0\n07:00 O157.73 H157.73 L157.00 C157.30 V0\n07:30 O158.75 H159.94 L157.00 C157.00 V0\n08:00 O157.47 H158.00 L157.47 C157.50 V0\n08:30 O158.00 H158.00 L157.00 C157.00 V0\n09:00 O157.39 H160.63 L156.91 C160.50 V0\n09:30 O161.00 H180.00 L160.96 C170.42 V692119"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Gap +14% con 5.4x volumen, pero +60% en 21 días y +26% sobre SMA20: extendida. Sin entrada perseguida; solo consideraría un retroceso que se sostenga en regular."
+       },
+       {
+        "symbol": "ANF",
+        "verdict": "descartar",
+        "reason": "+23% con volumen relativo 0.8x: movimiento de noticia sin confirmación de volumen, sin nivel ni tesis."
+       },
+       {
+        "symbol": "COGT",
+        "verdict": "descartar",
+        "reason": "+18% con volumen 0.5x y liquidez baja ($64M/día); sin setup."
+       },
+       {
+        "symbol": "KYMR",
+        "verdict": "vigilar",
+        "reason": "Gap +13% con 7.7x volumen de ayer; hoy tocó 180 y cerró 170 (mecha superior fuerte). Esperar que una hora regular se sostenga sobre 170 o un retroceso con soporte antes de cualquier entrada."
+       },
+       {
+        "symbol": "AMTM",
+        "verdict": "descartar",
+        "reason": "+16% con 0.3x volumen y $41M/día; liquidez y volumen insuficientes para un setup limpio."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "vigilar",
+        "reason": "-16% tras caída de ~44% en un mes, sin volumen relativo (0.1x). Cuchillo cayendo; sin nivel de entrada."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-8% con 0.1x volumen; ya descartada en días previos, sin setup."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-7.7% con 0.1x volumen; ya superó mi disparador de 41.5 sin setup y queda descartada."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "154.18 tras abrir en 159.8 y caer; sin setup claro. Sin entrada en niveles intradía; solo con confirmación en regular y stop adjunto."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-2.2% con 0.1x volumen; sin setup."
+       },
+       {
+        "symbol": "VALE",
+        "verdict": "descartar",
+        "reason": "-1.2% con 0.2x volumen; sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: INSM, ANF, COGT, KYMR, AMTM, SNDK, IREN, CRWV, NVDA, SPCX, VALE. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "09:38 24-nov regular: posiciones: PDD 80 @86.74 (stop venta 82.0 activo, 490255a2). Sin órdenes de entrada. NVDA 154.18 (sin setup, vigilar sin nivel, no perseguir). SMCI 22.96: lejos del disparador 25 (hora regular cierra sobre 25 con volumen). INSM extendida, vigilar retroceso. KYMR vigilar: sostener 170 en regular. SNDK vigilar sin nivel. No envié órdenes."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "09:38 24-nov regular: posiciones: PDD 80 @86.74 (stop venta 82.0 activo, 490255a2). Sin órdenes de entrada. NVDA 154.18 (sin setup, vigilar sin nivel, no perseguir). SMCI 22.96: lejos del disparador 25 (hora regular cierra sobre 25 con volumen). INSM extendida, vigilar retroceso. KYMR vigilar: sostener 170 en regular. SNDK vigilar sin nivel. No envié órdenes."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005156,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005156,
+      "calls": 3,
+      "tokens": 41158
+     }
+    }
+   },
+   "account": {
+    "equity": 97859.13,
+    "cash": 91025.53,
+    "buying_power": 383236.2,
+    "last_equity": 97996.73
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.036134
+ "spent_usd": 0.04129
 }
