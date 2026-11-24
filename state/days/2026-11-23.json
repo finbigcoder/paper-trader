@@ -7157,7 +7157,216 @@
     "last_equity": 99121.24
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-23T19:08:31-05:00",
+   "time": "19:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 2.9172,
+    "limit": 2.9108,
+    "ticks_left": 2,
+    "est_tick": 0.0064,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 14,
+    "shown": [
+     "CAPR",
+     "NVDA",
+     "IREN",
+     "CRWV",
+     "SMCI",
+     "WULF",
+     "CIFR",
+     "NOK",
+     "F",
+     "SNDK",
+     "AAL",
+     "SPCX",
+     "AAPL",
+     "NU"
+    ],
+    "reviews": [
+     {
+      "symbol": "CAPR",
+      "verdict": "descartar",
+      "reason": "Cayó -75% con volumen 6.3x; caída sin base ni nivel con riesgo definido. No se persigue."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "comprar",
+      "reason": "Orden viva: compra límite 85 a 163.5 con stop 158 (fc517ea4). Stop no adjunto en post-market; si se llena en regular, poner set_stop 158 antes de cualquier análisis. No perseguir arriba de 167."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+25.7% en el día, precio extendido y sin nivel de entrada con riesgo definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "Disparador de 41.5 superado con creces (precio 48.5, +22.7%); el setup caducó."
+     },
+     {
+      "symbol": "SMCI",
+      "verdict": "vigilar",
+      "reason": "Precio 24.6-24.9, bajo el disparador de 25. Entrada solo si una hora regular cierra sobre 25 con volumen, OTO stop 23."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Subida +11% con volumen relativo 1.1x, sin nivel claro ni stop definido."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "+14% con volumen relativo 0.9x; subida sin confirmación, sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "+9.9% con volumen 1.1x; sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "F",
+      "verdict": "descartar",
+      "reason": "+4.2% con volumen 2.1x; movimiento pequeño sin setup."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-6.8% sin setup; ya descartada en días previos por caída sin nivel."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "+7.1% con volumen 1.0x; sin nivel ni tesis."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "+4.9% con volumen 1.3x; sin setup."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "+1.9% con volumen 1.8x; no hay nivel con riesgo definido."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "+5.1% con volumen 0.6x; sin confirmación ni nivel."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "**Vi:** PDD en ~87 con stop de venta en 82 activo. NVDA cerca de 165, por encima de mi compra límite de 85 a 163.5 (fc517ea4), todavía sin llenar. SMCI en ~24.6-24.9, bajo el disparador de 25.\n**Hice:** no envié órdenes nuevas. Evalué las 14 de la pantalla: NVDA en comprar con la orden viva; SMCI en vigilar; el resto descartado por falta de nivel con riesgo definido o por subidas sin volumen (CRWV ya superó su disparador de 41.5).\n**Vigilo:** si NVDA se llena, poner el stop 158 en el primer despertar regular antes de analizar, y no perseguir arriba de 167. SMCI solo si una hora regular cierra sobre 25 con volumen (OTO stop 23). PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "CAPR",
+        "verdict": "descartar",
+        "reason": "Cayó -75% con volumen 6.3x; caída sin base ni nivel con riesgo definido. No se persigue."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "comprar",
+        "reason": "Orden viva: compra límite 85 a 163.5 con stop 158 (fc517ea4). Stop no adjunto en post-market; si se llena en regular, poner set_stop 158 antes de cualquier análisis. No perseguir arriba de 167."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+25.7% en el día, precio extendido y sin nivel de entrada con riesgo definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "Disparador de 41.5 superado con creces (precio 48.5, +22.7%); el setup caducó."
+       },
+       {
+        "symbol": "SMCI",
+        "verdict": "vigilar",
+        "reason": "Precio 24.6-24.9, bajo el disparador de 25. Entrada solo si una hora regular cierra sobre 25 con volumen, OTO stop 23."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Subida +11% con volumen relativo 1.1x, sin nivel claro ni stop definido."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "+14% con volumen relativo 0.9x; subida sin confirmación, sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "+9.9% con volumen 1.1x; sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "F",
+        "verdict": "descartar",
+        "reason": "+4.2% con volumen 2.1x; movimiento pequeño sin setup."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-6.8% sin setup; ya descartada en días previos por caída sin nivel."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "+7.1% con volumen 1.0x; sin nivel ni tesis."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "+4.9% con volumen 1.3x; sin setup."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "+1.9% con volumen 1.8x; no hay nivel con riesgo definido."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "+5.1% con volumen 0.6x; sin confirmación ni nivel."
+       }
+      ]
+     },
+     "result": "Registrado: CAPR, NVDA, IREN, CRWV, SMCI, WULF, CIFR, NOK, F, SNDK, AAL, SPCX, AAPL, NU. Pantalla evaluada. Si tu veredicto es comprar o corto, la orden va con place_order y su stop con set_stop."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.00367,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.00367,
+      "calls": 2,
+      "tokens": 27579
+     }
+    }
+   },
+   "account": {
+    "equity": 97985.54,
+    "cash": 91025.54,
+    "buying_power": 369692.65,
+    "last_equity": 99121.24
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.136946
+ "spent_usd": 0.140616
 }
