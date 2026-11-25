@@ -2097,7 +2097,172 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T04:38:33-05:00",
+   "time": "04:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5411,
+    "limit": 4.3762,
+    "ticks_left": 31,
+    "est_tick": 0.0055,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "NVDA",
+     "HPE",
+     "CIFR",
+     "IREN",
+     "WULF",
+     "NOK",
+     "MARA",
+     "SPCX",
+     "BMNR",
+     "AAL",
+     "HL",
+     "VALE",
+     "INSM",
+     "F"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -22.4% en pre-market sin nivel técnico ni historial de precios (sin SMA ni ATR válido); caída de evento sin riesgo definido."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Pre-market 147.68 (-5%), ATR 10.4%, -24% bajo SMA50. Sin setup. Reconsiderar solo si en regular cierra sobre 155.38 con volumen; stop definido antes de entrar."
+     },
+     {
+      "symbol": "HPE",
+      "verdict": "descartar",
+      "reason": "-16% en 1 día y -32% en 21 días, ATR 10.9%, bajo SMA20 y SMA50. Cuchillo cayendo sin soporte."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "ATR 16.7%, -36% vs SMA50, -52% en 63 días. Riesgo de stop demasiado amplio para la cuenta."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Precio 5.27 (-4.5%), volatilidad de minería cripto alta y sin nivel con riesgo definido."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Resumen 04:38 (pre-market, 25-nov):\n- Vi PDD (85.71, -1.7%), NVDA (147.68, -5%, ATR 10.4%) y la pantalla: SNDK, HPE, CRWV y CIFR con caídas fuertes y ATR alto, sin nivel con riesgo definido.\n- No envié órdenes ni cambié stops. La posición PDD 80 @86.74 sigue con stop de venta en 82.0 activo; NVDA queda en vigilar (solo si cierra en regular sobre 155.38 con volumen, con stop antes de entrar).\n- Mañana en regular: confirmar órdenes y posiciones primero, luego INSM, ADI y SMCI (disparador >25).",
+   "steps": 3,
+   "error": null,
+   "tools": [
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "PDD"
+     },
+     "result": "PDD: cierre previo 87.22 | hoy 85.71 (-1.7%) | 1d +0.1% | 5d +12.7% | 21d +11.6% | 63d +0.5% | vs SMA20 +7.8% | vs SMA50 +9.2% | ATR 3.6% | volumen ayer 1.39x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O86.13 H86.61 L85.46 C85.81 V0\n04:30 O85.71 H85.71 L85.71 C85.71 V0"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 155.38 | hoy 147.68 (-5.0%) | 1d -5.9% | 5d -0.1% | 21d -28.1% | 63d -25.8% | vs SMA20 -11.6% | vs SMA50 -24.2% | ATR 10.4% | volumen ayer 1.19x | momentum 12-1 +21.0% (#51)\nBarras de 30 min de hoy:\n04:00 O149.85 H152.50 L147.10 C147.15 V0\n04:30 O147.19 H147.80 L147.00 C147.68 V0"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "SNDK"
+     },
+     "result": "SNDK: cierre previo nan | hoy 73.2 (-22.4%) | 1d +nan% | 5d +nan% | 21d +nan% | 63d +nan% | vs SMA20 +nan% | vs SMA50 +nan% | ATR 0.0% | volumen ayer 0.92x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O75.00 H75.67 L72.84 C73.20 V0\n04:30 O73.17 H73.45 L72.95 C73.20 V0"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "HPE"
+     },
+     "result": "HPE: cierre previo 40.19 | hoy 38.23 (-4.9%) | 1d -16.3% | 5d -12.8% | 21d -31.6% | 63d -27.1% | vs SMA20 -17.5% | vs SMA50 -29.7% | ATR 10.9% | volumen ayer 2.84x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O39.35 H39.42 L38.29 C38.40 V0\n04:30 O38.40 H38.40 L38.11 C38.23 V0"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "CRWV"
+     },
+     "result": "CRWV: cierre previo 42.605 | hoy 40.25 (-5.5%) | 1d -11.8% | 5d -14.6% | 21d -22.8% | 63d -51.6% | vs SMA20 -15.9% | vs SMA50 -36.0% | ATR 16.7% | volumen ayer 0.86x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O40.51 H41.33 L40.05 C40.08 V0\n04:30 O40.05 H40.29 L40.00 C40.25 V0"
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -22.4% en pre-market sin nivel técnico ni historial de precios (sin SMA ni ATR válido); caída de evento sin riesgo definido."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Pre-market 147.68 (-5%), ATR 10.4%, -24% bajo SMA50. Sin setup. Reconsiderar solo si en regular cierra sobre 155.38 con volumen; stop definido antes de entrar."
+       },
+       {
+        "symbol": "HPE",
+        "verdict": "descartar",
+        "reason": "-16% en 1 día y -32% en 21 días, ATR 10.9%, bajo SMA20 y SMA50. Cuchillo cayendo sin soporte."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "ATR 16.7%, -36% vs SMA50, -52% en 63 días. Riesgo de stop demasiado amplio para la cuenta."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Precio 5.27 (-4.5%), volatilidad de minería cripto alta y sin nivel con riesgo definido."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, NVDA, HPE, CRWV, CIFR. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "25-nov pre-mkt 04:38: sin cambios. Única posición PDD 80 @86.74, último 85.71 (pre), stop venta 82.0 activo (490255a2); no reentrar si toca. NVDA vigilar: solo reconsidero si regular cierra >155.38 con volumen; stop obligatorio. Pantalla (SNDK, HPE, CRWV, CIFR) descartada por caídas sin nivel/ATR alto. Regular: confirmar órdenes/posiciones primero; vigilar INSM, ADI, SMCI (>25)."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "25-nov pre-mkt 04:38: sin cambios. Única posición PDD 80 @86.74, último 85.71 (pre), stop venta 82.0 activo (490255a2); no reentrar si toca. NVDA vigilar: solo reconsidero si regular cierra >155.38 con volumen; stop obligatorio. Pantalla (SNDK, HPE, CRWV, CIFR) descartada por caídas sin nivel/ATR alto. Regular: confirmar órdenes/posiciones primero; vigilar INSM, ADI, SMCI (>25)."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003642,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003642,
+      "calls": 3,
+      "tokens": 30097
+     }
+    }
+   },
+   "account": {
+    "equity": 97882.33,
+    "cash": 91025.53,
+    "buying_power": 383301.16,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.003667
+ "spent_usd": 0.007309
 }
