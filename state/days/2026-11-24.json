@@ -7482,7 +7482,236 @@
     "last_equity": 97996.73
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-24T19:08:38-05:00",
+   "time": "19:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 3.5151,
+    "limit": 3.5095,
+    "ticks_left": 2,
+    "est_tick": 0.0056,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 15,
+    "shown": [
+     "INSM",
+     "NVDA",
+     "IREN",
+     "SNDK",
+     "BMNR",
+     "VALE",
+     "CRWV",
+     "SPCX",
+     "CIFR",
+     "WULF",
+     "HL",
+     "F",
+     "NOK",
+     "MARA",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Gap +14% con volumen 17x, clavada en 170.1-170.4 toda la sesión sin nivel de retroceso claro. Sin setup."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "descartar",
+      "reason": "Rango 150-154 desde el gap, sin soporte claro. Sin orden viva; la lección de no perseguir aplica."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Caída -13% con ATR ~18% y tendencia bajista. Volatilidad excesiva."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída -18.5% con volumen relativo 1.2x. Caída sin nivel técnico ni volumen de confirmación."
+     },
+     {
+      "symbol": "BMNR",
+      "verdict": "descartar",
+      "reason": "Caída -8.5% con volumen 2.5x, sin nivel definido y volatilidad alta."
+     },
+     {
+      "symbol": "VALE",
+      "verdict": "descartar",
+      "reason": "-4% con volumen 3.9x, sin nivel. Sin tesis."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-12.9% con volumen 0.8x. Ya descartada en 23-nov tras superar disparador; sin setup."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-5.5% con volumen 1.9x, sin nivel técnico ni tesis."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-11.6% con volumen 0.9x. Caída sin confirmación."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-9.2% con volumen 1.1x. Caída sin setup."
+     },
+     {
+      "symbol": "HL",
+      "verdict": "descartar",
+      "reason": "-2.7% con volumen 2.7x. Sin nivel ni tesis."
+     },
+     {
+      "symbol": "F",
+      "verdict": "descartar",
+      "reason": "+2.4% con volumen 2.4x. Movimiento chico, sin nivel ni tesis."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-3.3% con volumen 1.4x. Sin setup."
+     },
+     {
+      "symbol": "MARA",
+      "verdict": "descartar",
+      "reason": "-3.4% con volumen 1.1x. Sin setup."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-1.1% con volumen 1.0x. Sin setup ni volumen."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla completa (15 nombres) y la posición PDD 80 @86.74 (último ~87.3), con la venta stop en 82.0 activa (490255a2). No hay órdenes de entrada abiertas.\nEvalué las 15: INSM queda en vigilar (gap +14% clavado en 170 con volumen decreciente); el resto queda descartado por caídas sin setup, volumen bajo o volatilidad excesiva. No envié órdenes ni cambié stops.\nVigilo a las 9:30: confirmar órdenes y posiciones antes de analizar, no reentrar PDD si toca 82, y SMCI con disparador de hora regular sobre 25 (no está en pantalla).",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Gap +14% con volumen 17x, clavada en 170.1-170.4 toda la sesión sin nivel de retroceso claro. Sin setup."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "descartar",
+        "reason": "Rango 150-154 desde el gap, sin soporte claro. Sin orden viva; la lección de no perseguir aplica."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Caída -13% con ATR ~18% y tendencia bajista. Volatilidad excesiva."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída -18.5% con volumen relativo 1.2x. Caída sin nivel técnico ni volumen de confirmación."
+       },
+       {
+        "symbol": "BMNR",
+        "verdict": "descartar",
+        "reason": "Caída -8.5% con volumen 2.5x, sin nivel definido y volatilidad alta."
+       },
+       {
+        "symbol": "VALE",
+        "verdict": "descartar",
+        "reason": "-4% con volumen 3.9x, sin nivel. Sin tesis."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-12.9% con volumen 0.8x. Ya descartada en 23-nov tras superar disparador; sin setup."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-5.5% con volumen 1.9x, sin nivel técnico ni tesis."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-11.6% con volumen 0.9x. Caída sin confirmación."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-9.2% con volumen 1.1x. Caída sin setup."
+       },
+       {
+        "symbol": "HL",
+        "verdict": "descartar",
+        "reason": "-2.7% con volumen 2.7x. Sin nivel ni tesis."
+       },
+       {
+        "symbol": "F",
+        "verdict": "descartar",
+        "reason": "+2.4% con volumen 2.4x. Movimiento chico, sin nivel ni tesis."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-3.3% con volumen 1.4x. Sin setup."
+       },
+       {
+        "symbol": "MARA",
+        "verdict": "descartar",
+        "reason": "-3.4% con volumen 1.1x. Sin setup."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-1.1% con volumen 1.0x. Sin setup ni volumen."
+       }
+      ]
+     },
+     "result": "Registrado: INSM, NVDA, IREN, SNDK, BMNR, VALE, CRWV, SPCX, CIFR, WULF, HL, F, NOK, MARA, AAL. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "19:08 24-nov: Sin cambios. PDD 80 @86.74 (último ~87.3), stop venta 82.0 activo (490255a2). Sin órdenes de entrada. Pantalla 15 evaluadas: INSM vigilar; resto descartadas. SMCI disparador hora regular >25. Próximo despertar: solo cambios de datos; a las 9:30 confirmar órdenes y posiciones antes de analizar."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "19:08 24-nov: Sin cambios. PDD 80 @86.74 (último ~87.3), stop venta 82.0 activo (490255a2). Sin órdenes de entrada. Pantalla 15 evaluadas: INSM vigilar; resto descartadas. SMCI disparador hora regular >25. Próximo despertar: solo cambios de datos; a las 9:30 confirmar órdenes y posiciones antes de analizar."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003331,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003331,
+      "calls": 2,
+      "tokens": 25877
+     }
+    }
+   },
+   "account": {
+    "equity": 98007.13,
+    "cash": 91025.53,
+    "buying_power": 383650.6,
+    "last_equity": 97996.73
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.123008
+ "spent_usd": 0.126339
 }
