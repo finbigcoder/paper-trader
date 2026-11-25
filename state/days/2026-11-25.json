@@ -2390,7 +2390,158 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T05:38:24-05:00",
+   "time": "05:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5336,
+    "limit": 4.3878,
+    "ticks_left": 29,
+    "est_tick": 0.0052,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "CIFR",
+     "IREN",
+     "NVDA",
+     "HPE",
+     "WULF",
+     "SPCX",
+     "MARA",
+     "NOK",
+     "BMNR",
+     "HL",
+     "AAL",
+     "VALE",
+     "INSM",
+     "F"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -22.6% sin soporte claro; sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "En 40.09 (-5.9%), bajo mi zona previa de 41.5; sin setup hasta que recupere con volumen en regular."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Caída -5.1% en pre-market con precio bajo y ATR alto; stop lejos."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-5.0% sin nivel previo ni tesis; volatilidad alta."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "147.82 (-4.9%), bajo SMA50; solo reconsidero si regular cierra sobre 155.38 con volumen, con stop antes de entrar."
+     },
+     {
+      "symbol": "HPE",
+      "verdict": "descartar",
+      "reason": "-4.8% en pre-market sin soporte definido ni tesis."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-4.3% sin setup; minera volátil."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-2.8% sin nivel con riesgo definido."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "- **Vi:** pre-market con SPY -1.5%. La única posición es PDD 80 @86.74 (último 85.99) con stop de venta en 82.0 activo (490255a2).\n- **Hice:** evalué las 8 primeras de la pantalla. Descarté SNDK, CIFR, IREN, HPE, WULF y SPCX por caídas sin nivel ni riesgo definido. CRWV y NVDA quedan en vigilar. No envié órdenes ni cambié stops.\n- **Vigilo en regular:** primero confirmar órdenes y posiciones. NVDA solo si cierra sobre 155.38 con volumen, con stop antes de entrar. CRWV solo si recupera con volumen la zona de 41.5. PDD sin reentrar si toca 82. Luego INSM, ADI y SMCI (>25).",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -22.6% sin soporte claro; sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "En 40.09 (-5.9%), bajo mi zona previa de 41.5; sin setup hasta que recupere con volumen en regular."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Caída -5.1% en pre-market con precio bajo y ATR alto; stop lejos."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-5.0% sin nivel previo ni tesis; volatilidad alta."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "147.82 (-4.9%), bajo SMA50; solo reconsidero si regular cierra sobre 155.38 con volumen, con stop antes de entrar."
+       },
+       {
+        "symbol": "HPE",
+        "verdict": "descartar",
+        "reason": "-4.8% en pre-market sin soporte definido ni tesis."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-4.3% sin setup; minera volátil."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-2.8% sin nivel con riesgo definido."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, CIFR, IREN, NVDA, HPE, WULF, SPCX. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.002507,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002507,
+      "calls": 2,
+      "tokens": 19948
+     }
+    }
+   },
+   "account": {
+    "equity": 97904.73,
+    "cash": 91025.53,
+    "buying_power": 383363.88,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.009698
+ "spent_usd": 0.012205
 }
