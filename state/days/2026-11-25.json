@@ -2701,7 +2701,158 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T06:38:35-05:00",
+   "time": "06:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5269,
+    "limit": 4.4004,
+    "ticks_left": 27,
+    "est_tick": 0.0049,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "CIFR",
+     "IREN",
+     "HPE",
+     "NVDA",
+     "WULF",
+     "MARA",
+     "NOK",
+     "BMNR",
+     "SPCX",
+     "HL",
+     "AAL",
+     "VALE",
+     "F",
+     "INSM"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -22.8% en pre-market con ATR muy alto y sin soporte claro; es una caída de evento sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Pre-market -6.9% en 39.66; mi disparador en regular es recuperar 41.5 con volumen. Hoy no hay entrada, solo esperar confirmación."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-5.8% en 5.20 con precio bajo y volatilidad alta; sin nivel técnico claro ni tesis."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-5.4% en 12.25 sin setup; caída sin soporte definido y riesgo de stop demasiado amplio."
+     },
+     {
+      "symbol": "HPE",
+      "verdict": "descartar",
+      "reason": "-5.3% en 38.05 sin nivel claro; caída de pre-market sin riesgo definido."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "-5.1% en 147.45, ATR ~10%. Sigo solo con la condición de cierre regular sobre 155.38 con volumen y stop antes de entrar."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-4.6% en 9.55 con volatilidad alta y sin setup definido."
+     },
+     {
+      "symbol": "MARA",
+      "verdict": "descartar",
+      "reason": "-3.5% en 5.22, precio bajo y sin nivel técnico con riesgo definido."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi pre-market con SPY -1.8% y la única posición sigue siendo PDD 80 @86.74 (último 85.84), con stop de venta en 82.0 activo (490255a2).\nEvalué 8 de la pantalla: descarté SNDK, CIFR, IREN, HPE, WULF y MARA por caídas sin nivel ni riesgo definido. CRWV y NVDA quedan en vigilar. No envié órdenes ni cambié stops.\nVigilo en regular: CRWV solo si recupera 41.5 con volumen; NVDA solo si cierra sobre 155.38 con volumen, con stop antes de entrar; PDD sin reentrar si toca 82. Primero confirmar órdenes y posiciones.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -22.8% en pre-market con ATR muy alto y sin soporte claro; es una caída de evento sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Pre-market -6.9% en 39.66; mi disparador en regular es recuperar 41.5 con volumen. Hoy no hay entrada, solo esperar confirmación."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-5.8% en 5.20 con precio bajo y volatilidad alta; sin nivel técnico claro ni tesis."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-5.4% en 12.25 sin setup; caída sin soporte definido y riesgo de stop demasiado amplio."
+       },
+       {
+        "symbol": "HPE",
+        "verdict": "descartar",
+        "reason": "-5.3% en 38.05 sin nivel claro; caída de pre-market sin riesgo definido."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "-5.1% en 147.45, ATR ~10%. Sigo solo con la condición de cierre regular sobre 155.38 con volumen y stop antes de entrar."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-4.6% en 9.55 con volatilidad alta y sin setup definido."
+       },
+       {
+        "symbol": "MARA",
+        "verdict": "descartar",
+        "reason": "-3.5% en 5.22, precio bajo y sin nivel técnico con riesgo definido."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, CIFR, IREN, HPE, NVDA, WULF, MARA. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.002768,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002768,
+      "calls": 2,
+      "tokens": 21844
+     }
+    }
+   },
+   "account": {
+    "equity": 97892.73,
+    "cash": 91025.53,
+    "buying_power": 383330.28,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.015018
+ "spent_usd": 0.017786
 }
