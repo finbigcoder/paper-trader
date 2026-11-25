@@ -6718,7 +6718,192 @@
     "last_equity": 98003.13
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-25T17:08:22-05:00",
+   "time": "17:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.3653,
+    "limit": 4.3375,
+    "ticks_left": 6,
+    "est_tick": 0.0056,
+    "est_research": 0.0477
+   },
+   "screen": {
+    "candidates": 11,
+    "shown": [
+     "AMBA",
+     "SNDK",
+     "RKT",
+     "AMZN",
+     "SPCX",
+     "NOK",
+     "SOFI",
+     "IREN",
+     "AAPL",
+     "AAL",
+     "CRWV"
+    ],
+    "reviews": [
+     {
+      "symbol": "AMBA",
+      "verdict": "descartar",
+      "reason": "Cae -20% con volumen 8x y sin soporte visible; caída de evento sin nivel ni riesgo definido."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -22% en un día; cuchillo cayendo sin base, ATR alto y stop lejos."
+     },
+     {
+      "symbol": "RKT",
+      "verdict": "vigilar",
+      "reason": "+7.4% con volumen 2.8x; ya subió y no sostuvo 15.33. Solo retroceso que sostenga 15.0 con volumen."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "descartar",
+      "reason": "-3% con volumen 3.4x sin nivel de entrada claro ni setup con riesgo definido."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "+1.2% sin nivel ni tesis; el movimiento no justifica entrada."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-0.8% sin setup ni catalizador claro."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "+1.6% con volumen relativo 1.0x; sin movimiento ni nivel."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-0.6% sin setup; ya descartada en días previos por volatilidad."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "+0.3% sin movimiento; no hay setup con riesgo definido."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-0.5% y volumen 1.1x; sin nivel ni tesis."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-0.3% sin setup; ya superó mi disparador previo y perseguirla deja el stop lejos."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla post-market a las 17:08. Las posiciones siguen como estaban: NVDA 70 @147.89 (último 148.73) con stop 140.5 activo, y PDD 80 @86.74 (último 87.21) con stop 82 activo.\nHice: no envié órdenes ni cambié stops. Evalué las 11 de la pantalla: RKT queda en vigilar y el resto descartado (caídas sin soporte, subidas sin nivel o volumen bajo).\nVigilo: NVDA, salgo si la barra de 30 min cierra bajo 147 y vuelve a 141; PDD sin reentrar si toca 82; RKT solo con retroceso que sostenga 15.0 con volumen. Mañana a las 9:30 confirmo órdenes y fills antes de analizar, y reviso ADI, SMCI (>25) e INSM si aparecen.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "AMBA",
+        "verdict": "descartar",
+        "reason": "Cae -20% con volumen 8x y sin soporte visible; caída de evento sin nivel ni riesgo definido."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -22% en un día; cuchillo cayendo sin base, ATR alto y stop lejos."
+       },
+       {
+        "symbol": "RKT",
+        "verdict": "vigilar",
+        "reason": "+7.4% con volumen 2.8x; ya subió y no sostuvo 15.33. Solo retroceso que sostenga 15.0 con volumen."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "descartar",
+        "reason": "-3% con volumen 3.4x sin nivel de entrada claro ni setup con riesgo definido."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "+1.2% sin nivel ni tesis; el movimiento no justifica entrada."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-0.8% sin setup ni catalizador claro."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "+1.6% con volumen relativo 1.0x; sin movimiento ni nivel."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-0.6% sin setup; ya descartada en días previos por volatilidad."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "+0.3% sin movimiento; no hay setup con riesgo definido."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-0.5% y volumen 1.1x; sin nivel ni tesis."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-0.3% sin setup; ya superó mi disparador previo y perseguirla deja el stop lejos."
+       }
+      ]
+     },
+     "result": "Registrado: AMBA, SNDK, RKT, AMZN, SPCX, NOK, SOFI, IREN, AAPL, AAL, CRWV. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "25-nov 17:08 post-market: sin órdenes nuevas. NVDA 70 @147.89 (último 148.73), stop 140.5 activo (ffea31c6); salgo si cierre 30m < 147 y vuelve a 141. PDD 80 @86.74 (último 87.21), stop 82 activo (490255a2), no reentrar si toca 82. RKT vigilar: retroceso que sostenga 15.0 con volumen. Pantalla 11/11 evaluada, resto descartado. Mañana 9:30: confirmar órdenes/posiciones antes de analizar; ADI, SMCI (>25) e INSM si aparecen."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "25-nov 17:08 post-market: sin órdenes nuevas. NVDA 70 @147.89 (último 148.73), stop 140.5 activo (ffea31c6); salgo si cierre 30m < 147 y vuelve a 141. PDD 80 @86.74 (último 87.21), stop 82 activo (490255a2), no reentrar si toca 82. RKT vigilar: retroceso que sostenga 15.0 con volumen. Pantalla 11/11 evaluada, resto descartado. Mañana 9:30: confirmar órdenes/posiciones antes de analizar; ADI, SMCI (>25) e INSM si aparecen."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003423,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003423,
+      "calls": 2,
+      "tokens": 27137
+     }
+    }
+   },
+   "account": {
+    "equity": 98061.35,
+    "cash": 80673.23,
+    "buying_power": 371379.67,
+    "last_equity": 98003.13
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.144299
+ "spent_usd": 0.147722
 }
