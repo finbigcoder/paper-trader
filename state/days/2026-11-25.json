@@ -2852,7 +2852,247 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T07:08:19-05:00",
+   "time": "07:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5235,
+    "limit": 4.4059,
+    "ticks_left": 26,
+    "est_tick": 0.0047,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "IREN",
+     "CIFR",
+     "NVDA",
+     "HPE",
+     "WULF",
+     "MARA",
+     "NOK",
+     "BMNR",
+     "HL",
+     "SPCX",
+     "AAL",
+     "VALE",
+     "F",
+     "INSM"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Caída de -23% sin nivel definido ni volumen relativo confirmado; ATR muy alto para riesgo chico."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Sin setup hoy. Solo reconsidero si en regular recupera 41.5 con volumen y stop debajo de la zona."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Caída de -6.6% en pre-market con ATR alto y sin soporte claro."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Caída de -6.3% con precio bajo 5.2 y volatilidad alta; riesgo mal definido."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "Sin tesis clara; solo reconsidero si la regular cierra sobre 155.38 con volumen, con stop antes de entrar."
+     },
+     {
+      "symbol": "HPE",
+      "verdict": "descartar",
+      "reason": "Caída de -5.3% sin nivel técnico claro en pre-market."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "Caída de -5.2% con volatilidad alta y sin soporte definido."
+     },
+     {
+      "symbol": "MARA",
+      "verdict": "descartar",
+      "reason": "Caída de -3.9%, precio de 5.2 y volatilidad alta; sin setup."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "Caída de -3.7% sin catalizador ni nivel técnico claro."
+     },
+     {
+      "symbol": "BMNR",
+      "verdict": "descartar",
+      "reason": "Caída de -3.1% sin setup; movimiento de pre-market sin nivel."
+     },
+     {
+      "symbol": "HL",
+      "verdict": "descartar",
+      "reason": "Caída de -2.8% con precio bajo y sin nivel técnico."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "Caída de -2.7% sin setup claro."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "Caída de -1.7% sin catalizador ni nivel con riesgo definido."
+     },
+     {
+      "symbol": "VALE",
+      "verdict": "descartar",
+      "reason": "Caída de -1.2% sin setup."
+     },
+     {
+      "symbol": "F",
+      "verdict": "descartar",
+      "reason": "Movimiento de -0.5% sin setup."
+     },
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Gap +14% clavado en 170; vigilo pullback con confirmación de volumen en regular y stop definido antes de entrar."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pre-market con SPY -2% y la única posición sigue siendo PDD 80 @86.74 (último 85.75), con stop de venta en 82.0 activo (490255a2).\nEvalué las 16 de la pantalla: descarté SNDK, IREN, CIFR, HPE, WULF, MARA, NOK, BMNR, HL, SPCX, AAL, VALE y F por caídas sin nivel ni riesgo definido. No envié órdenes ni cambié stops.\nVigilo en regular: CRWV si recupera 41.5 con volumen, NVDA si cierra sobre 155.38 con volumen (stop antes de entrar), INSM en pullback hacia 170 con confirmación de volumen, y PDD sin reentrar si toca 82.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Caída de -23% sin nivel definido ni volumen relativo confirmado; ATR muy alto para riesgo chico."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Sin setup hoy. Solo reconsidero si en regular recupera 41.5 con volumen y stop debajo de la zona."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Caída de -6.6% en pre-market con ATR alto y sin soporte claro."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Caída de -6.3% con precio bajo 5.2 y volatilidad alta; riesgo mal definido."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "Sin tesis clara; solo reconsidero si la regular cierra sobre 155.38 con volumen, con stop antes de entrar."
+       },
+       {
+        "symbol": "HPE",
+        "verdict": "descartar",
+        "reason": "Caída de -5.3% sin nivel técnico claro en pre-market."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "Caída de -5.2% con volatilidad alta y sin soporte definido."
+       },
+       {
+        "symbol": "MARA",
+        "verdict": "descartar",
+        "reason": "Caída de -3.9%, precio de 5.2 y volatilidad alta; sin setup."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "Caída de -3.7% sin catalizador ni nivel técnico claro."
+       },
+       {
+        "symbol": "BMNR",
+        "verdict": "descartar",
+        "reason": "Caída de -3.1% sin setup; movimiento de pre-market sin nivel."
+       },
+       {
+        "symbol": "HL",
+        "verdict": "descartar",
+        "reason": "Caída de -2.8% con precio bajo y sin nivel técnico."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "Caída de -2.7% sin setup claro."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "Caída de -1.7% sin catalizador ni nivel con riesgo definido."
+       },
+       {
+        "symbol": "VALE",
+        "verdict": "descartar",
+        "reason": "Caída de -1.2% sin setup."
+       },
+       {
+        "symbol": "F",
+        "verdict": "descartar",
+        "reason": "Movimiento de -0.5% sin setup."
+       },
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Gap +14% clavado en 170; vigilo pullback con confirmación de volumen en regular y stop definido antes de entrar."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, IREN, CIFR, NVDA, HPE, WULF, MARA, NOK, BMNR, HL, SPCX, AAL, VALE, F, INSM. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "07:08 pre-mkt: sin cambios. Única posición PDD 80 @86.74, stop venta 82.0 activo (490255a2); no reentrar si toca 82. Pantalla evaluada: vigilar CRWV (41.5 con volumen), NVDA (cierre >155.38 con volumen, stop antes de entrar), INSM (pullback 170 con volumen). Resto descartado. Regular: confirmar órdenes/posiciones primero; luego ADI y SMCI (>25)."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "07:08 pre-mkt: sin cambios. Única posición PDD 80 @86.74, stop venta 82.0 activo (490255a2); no reentrar si toca 82. Pantalla evaluada: vigilar CRWV (41.5 con volumen), NVDA (cierre >155.38 con volumen, stop antes de entrar), INSM (pullback 170 con volumen). Resto descartado. Regular: confirmar órdenes/posiciones primero; luego ADI y SMCI (>25)."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003152,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003152,
+      "calls": 2,
+      "tokens": 23569
+     }
+    }
+   },
+   "account": {
+    "equity": 97885.53,
+    "cash": 91025.53,
+    "buying_power": 383310.12,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.017786
+ "spent_usd": 0.020938
 }
