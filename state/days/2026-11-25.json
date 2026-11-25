@@ -2262,7 +2262,135 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T05:08:21-05:00",
+   "time": "05:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5366,
+    "limit": 4.3795,
+    "ticks_left": 30,
+    "est_tick": 0.0054,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "NVDA",
+     "CIFR",
+     "HPE",
+     "IREN",
+     "WULF",
+     "SPCX",
+     "NOK",
+     "BMNR",
+     "MARA",
+     "HL",
+     "AAL",
+     "VALE",
+     "INSM",
+     "F"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -22.7% en pre-market con ATR muy alto y sin soporte claro; caída de evento sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "-5.9% con ATR alto y ya la descarté en sesiones previas; sin disparador medible hoy."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "147.2 (-5.3%), bajo la SMA50 y con caída de 28% en 21 días; solo reconsidero si en regular cierra sobre 155.38 con volumen, y con stop antes de entrar."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-5.2% con precio de $5 y volatilidad alta; spread ancho y sin tesis."
+     },
+     {
+      "symbol": "HPE",
+      "verdict": "descartar",
+      "reason": "-5.2% en pre-market sin setup ni nivel definido; no hay datos de catalizador que justifiquen entrar."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla pre-market: SNDK, CRWV, CIFR y HPE quedan descartadas por caídas sin nivel ni riesgo definido, y NVDA queda en vigilar.\nPDD sigue en 85.94 (-1.5%), con ATR 3.6% y el stop de venta en 82.0 activo (490255a2). No envié órdenes ni cambié stops.\nVigilo en regular: confirmar órdenes y posiciones primero, no reentrar PDD si toca 82, y NVDA solo si cierra sobre 155.38 con volumen, con stop antes de entrar.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -22.7% en pre-market con ATR muy alto y sin soporte claro; caída de evento sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "-5.9% con ATR alto y ya la descarté en sesiones previas; sin disparador medible hoy."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "147.2 (-5.3%), bajo la SMA50 y con caída de 28% en 21 días; solo reconsidero si en regular cierra sobre 155.38 con volumen, y con stop antes de entrar."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-5.2% con precio de $5 y volatilidad alta; spread ancho y sin tesis."
+       },
+       {
+        "symbol": "HPE",
+        "verdict": "descartar",
+        "reason": "-5.2% en pre-market sin setup ni nivel definido; no hay datos de catalizador que justifiquen entrar."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, NVDA, CIFR, HPE. Pantalla evaluada."
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "PDD"
+     },
+     "result": "PDD: cierre previo 87.22 | hoy 85.94 (-1.5%) | 1d +0.1% | 5d +12.7% | 21d +11.6% | 63d +0.5% | vs SMA20 +7.8% | vs SMA50 +9.2% | ATR 3.6% | volumen ayer 1.39x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O86.13 H86.61 L85.46 C85.81 V0\n04:30 O85.71 H85.88 L85.52 C85.88 V0\n05:00 O85.90 H85.97 L85.90 C85.94 V0"
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.002389,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002389,
+      "calls": 2,
+      "tokens": 19480
+     }
+    }
+   },
+   "account": {
+    "equity": 97900.73,
+    "cash": 91025.53,
+    "buying_power": 383352.68,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.007309
+ "spent_usd": 0.009698
 }
