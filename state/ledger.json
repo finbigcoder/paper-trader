@@ -1507,6 +1507,23 @@
    "kind": "tick",
    "usd": 0.005161,
    "aborted": false
+  },
+  {
+   "date": "2026-11-25",
+   "ticker": "DE",
+   "kind": "research",
+   "usd": 0.037559,
+   "calls": 17,
+   "input_tokens": 166875,
+   "output_tokens": 41744,
+   "aborted": false
+  },
+  {
+   "date": "2026-11-25",
+   "ticker": null,
+   "kind": "tick",
+   "usd": 0.008341,
+   "aborted": false
   }
  ]
 }
