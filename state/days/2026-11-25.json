@@ -3703,7 +3703,142 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T09:08:31-05:00",
+   "time": "09:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5077,
+    "limit": 4.4192,
+    "ticks_left": 22,
+    "est_tick": 0.0042,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "IREN",
+     "CIFR",
+     "SPCX",
+     "WULF",
+     "NVDA",
+     "HPE",
+     "MARA",
+     "NOK",
+     "HL",
+     "BMNR",
+     "AAL",
+     "VALE",
+     "F",
+     "INSM"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -24.4% en pre-market sin nivel técnico claro; ATR alto, sin stop definido."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "Último 38.6 (-9.4%), bajo mi disparador 41.5; solo entraría si recupera 41.5 con volumen en regular."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-7.7% sin setup; volatilidad alta y sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "-7.6% a 5.1, precio muy bajo y spread amplio; sin tesis."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "-6.9% sin setup claro; caída en pre-market sin nivel."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Pre-market 09:08. No envié órdenes ni cambié stops.\n\n- **Vi:** SPY -2%. Única posición PDD 80 @86.74 (último 85.8), stop de venta 82.0 activo (490255a2). NVDA cayó a 146.49 (-5.7%), lejos del nivel 155.38 que pedía para vigilarla. INSM sigue clavada en 170.\n- **Hice:** evalué las 5 primeras de la pantalla. Descarté SNDK, IREN, CIFR y SPCX por caídas sin setup ni nivel. CRWV queda en vigilar (38.6, necesita recuperar 41.5 con volumen).\n- **Vigilo en regular:** primero confirmar órdenes y posiciones. PDD sin reentrar si toca 82. INSM solo con pullback a ~170 con volumen y stop definido. Luego ADI y SMCI (>25).",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -24.4% en pre-market sin nivel técnico claro; ATR alto, sin stop definido."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "Último 38.6 (-9.4%), bajo mi disparador 41.5; solo entraría si recupera 41.5 con volumen en regular."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-7.7% sin setup; volatilidad alta y sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "-7.6% a 5.1, precio muy bajo y spread amplio; sin tesis."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "-6.9% sin setup claro; caída en pre-market sin nivel."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, IREN, CIFR, SPCX. Pantalla evaluada."
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "NVDA"
+     },
+     "result": "NVDA: cierre previo 155.38 | hoy 146.49 (-5.7%) | 1d -5.9% | 5d -0.1% | 21d -28.1% | 63d -25.8% | vs SMA20 -11.6% | vs SMA50 -24.2% | ATR 10.4% | volumen ayer 1.19x | momentum 12-1 +21.0% (#51)\nBarras de 30 min de hoy:\n04:00 O149.85 H152.50 L147.10 C147.15 V0\n04:30 O147.19 H147.80 L146.31 C147.62 V0\n05:00 O147.60 H147.80 L147.00 C147.07 V0\n05:30 O147.02 H148.25 L147.02 C148.15 V0\n06:00 O148.15 H148.74 L147.80 C147.93 V0\n06:30 O147.92 H148.08 L147.25 C147.51 V0\n07:00 O147.51 H147.70 L146.80 C147.12 V0\n07:30 O147.10 H147.99 L146.20 C146.55 V0\n08:00 O146.55 H155.77 L146.25 C147.38 V0\n08:30 O147.3"
+    },
+    {
+     "name": "get_chart",
+     "args": {
+      "symbol": "INSM"
+     },
+     "result": "INSM: cierre previo 170.15 | hoy 170.24 (+0.1%) | 1d +14.1% | 5d +39.6% | 21d +82.3% | 63d +36.8% | vs SMA20 +39.9% | vs SMA50 +51.1% | ATR 4.9% | volumen ayer 17.73x | momentum 12-1 — (#None)\nBarras de 30 min de hoy:\n04:00 O169.92 H169.92 L169.92 C169.92 V0\n04:30 O170.00 H170.04 L170.00 C170.04 V0\n05:30 O170.19 H170.19 L170.05 C170.17 V0\n06:00 O170.12 H170.12 L170.10 C170.10 V0\n06:30 O170.10 H170.10 L170.10 C170.10 V0\n07:00 O170.10 H170.16 L170.10 C170.15 V0\n07:30 O170.20 H170.20 L170.15 C170.15 V0\n08:00 O170.20 H170.20 L170.20 C170.20 V0\n08:30 O170.28 H170.28 L170.20 C170.25 V0\n09:00 O170.22"
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.002985,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002985,
+      "calls": 2,
+      "tokens": 24447
+     }
+    }
+   },
+   "account": {
+    "equity": 97889.53,
+    "cash": 91025.53,
+    "buying_power": 383321.32,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.030407
+ "spent_usd": 0.033392
 }
