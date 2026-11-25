@@ -3572,7 +3572,138 @@
     "last_equity": 98003.13
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-25T08:38:30-05:00",
+   "time": "08:38",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.5113,
+    "limit": 4.4173,
+    "ticks_left": 23,
+    "est_tick": 0.0043,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [
+     "SNDK",
+     "CRWV",
+     "CIFR",
+     "IREN",
+     "WULF",
+     "NVDA",
+     "HPE",
+     "MARA",
+     "NOK",
+     "SPCX",
+     "BMNR",
+     "HL",
+     "AAL",
+     "F",
+     "VALE",
+     "INSM"
+    ],
+    "reviews": [
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cayó -23.1% sin nivel definido ni volumen relativo confirmado; ATR alto, riesgo no acotable."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "vigilar",
+      "reason": "En 39.4 (-7.5%), debajo de la zona de 41.5. Solo consideraría si recupera 41.5 con volumen en regular."
+     },
+     {
+      "symbol": "CIFR",
+      "verdict": "descartar",
+      "reason": "Caída de -7.1% en acción de precio bajo $5-10 y ATR alto, sin setup con stop definido."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "-6.6% sin nivel previo ni tesis; volatilidad alta para tamaño razonable."
+     },
+     {
+      "symbol": "WULF",
+      "verdict": "descartar",
+      "reason": "-6.2% sin soporte claro ni catalizador; no hay riesgo definido."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "vigilar",
+      "reason": "146.3 (-5.8%), por debajo de 155.38. Solo reconsidero si regular cierra sobre 155.38 con volumen, con stop antes de entrar."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi pre-market con SPY -2.1% y la única posición sigue siendo PDD 80 @86.74 (último 85.9, -1.5%), con stop de venta en 82.0 activo (490255a2).\nEvalué las 6 primeras de la pantalla: descarté SNDK, CIFR, IREN y WULF por caídas sin nivel ni riesgo definido; CRWV y NVDA quedan en vigilar. No envié órdenes ni cambié stops.\nVigilo en regular: CRWV si recupera 41.5 con volumen, NVDA si cierra sobre 155.38 con volumen (stop antes de entrar), INSM en pullback a ~170 con volumen, y PDD sin reentrar si toca 82. Primero confirmo órdenes y posiciones, luego ADI y SMCI (>25).",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cayó -23.1% sin nivel definido ni volumen relativo confirmado; ATR alto, riesgo no acotable."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "vigilar",
+        "reason": "En 39.4 (-7.5%), debajo de la zona de 41.5. Solo consideraría si recupera 41.5 con volumen en regular."
+       },
+       {
+        "symbol": "CIFR",
+        "verdict": "descartar",
+        "reason": "Caída de -7.1% en acción de precio bajo $5-10 y ATR alto, sin setup con stop definido."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "-6.6% sin nivel previo ni tesis; volatilidad alta para tamaño razonable."
+       },
+       {
+        "symbol": "WULF",
+        "verdict": "descartar",
+        "reason": "-6.2% sin soporte claro ni catalizador; no hay riesgo definido."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "vigilar",
+        "reason": "146.3 (-5.8%), por debajo de 155.38. Solo reconsidero si regular cierra sobre 155.38 con volumen, con stop antes de entrar."
+       }
+      ]
+     },
+     "result": "Registrado: SNDK, CRWV, CIFR, IREN, WULF, NVDA. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.002882,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.002882,
+      "calls": 2,
+      "tokens": 23820
+     }
+    }
+   },
+   "account": {
+    "equity": 97897.53,
+    "cash": 91025.53,
+    "buying_power": 383343.72,
+    "last_equity": 98003.13
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.027525
+ "spent_usd": 0.030407
 }
