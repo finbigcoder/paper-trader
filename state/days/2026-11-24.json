@@ -7711,7 +7711,135 @@
     "last_equity": 97996.73
    },
    "positions": 1
+  },
+  {
+   "at": "2026-11-24T19:38:45-05:00",
+   "time": "19:38",
+   "session": "post",
+   "last": true,
+   "budget": {
+    "allowance_today": 3.5111,
+    "limit": 3.5111,
+    "ticks_left": 1,
+    "est_tick": 0.0056,
+    "est_research": 0.0485
+   },
+   "screen": {
+    "candidates": 15,
+    "shown": [
+     "INSM",
+     "NVDA",
+     "IREN",
+     "SNDK",
+     "BMNR",
+     "VALE",
+     "CRWV",
+     "SPCX",
+     "CIFR",
+     "WULF",
+     "HL",
+     "F",
+     "NOK",
+     "MARA",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "INSM",
+      "verdict": "vigilar",
+      "reason": "Gap +14% clavado en 170 con volumen relativo 17x, sin nivel de retroceso ni stop definido. Solo entraría con pullback que aguante y confirmación en regular."
+     },
+     {
+      "symbol": "NVDA",
+      "verdict": "descartar",
+      "reason": "Cae -8.1% a 151.65 tras el gap fallido de ayer; sin soporte claro y sin setup con riesgo definido. Mi orden pasiva a 163.5 ya no aparece abierta."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "Cae -13.2% con ATR de 18.6% y tendencia bajista; el riesgo al stop sería demasiado grande."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -19% con volumen relativo solo 1.2x; caída sin setup técnico ni nivel de soporte definido."
+     },
+     {
+      "symbol": "BMNR",
+      "verdict": "descartar",
+      "reason": "Cae -8.6% con volumen 2.5x y sin nivel técnico claro; volatilidad alta para un stop ajustado."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla y la única posición (PDD 80 @86.74, último 87.22, stop 82.0 activo). No envié órdenes ni cambié stops.\nEvalué INSM, NVDA, IREN, SNDK y BMNR: INSM queda en vigilar (gap +14% clavado en 170, sin stop definido) y las otras cuatro descartadas por caídas sin setup o volatilidad alta.\nReescribí las lecciones (2,416 caracteres): hoy no operé porque no había setups con riesgo definido, y eso fue correcto; el problema fue repetir notas idénticas.\nMañana en regular: confirmar órdenes y posiciones antes de analizar, mantener el stop de PDD en 82.0 sin reentrar si lo toca, y vigilar INSM, ADI y SMCI (disparador >25).",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "INSM",
+        "verdict": "vigilar",
+        "reason": "Gap +14% clavado en 170 con volumen relativo 17x, sin nivel de retroceso ni stop definido. Solo entraría con pullback que aguante y confirmación en regular."
+       },
+       {
+        "symbol": "NVDA",
+        "verdict": "descartar",
+        "reason": "Cae -8.1% a 151.65 tras el gap fallido de ayer; sin soporte claro y sin setup con riesgo definido. Mi orden pasiva a 163.5 ya no aparece abierta."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "Cae -13.2% con ATR de 18.6% y tendencia bajista; el riesgo al stop sería demasiado grande."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -19% con volumen relativo solo 1.2x; caída sin setup técnico ni nivel de soporte definido."
+       },
+       {
+        "symbol": "BMNR",
+        "verdict": "descartar",
+        "reason": "Cae -8.6% con volumen 2.5x y sin nivel técnico claro; volatilidad alta para un stop ajustado."
+       }
+      ]
+     },
+     "result": "Registrado: INSM, NVDA, IREN, SNDK, BMNR. Pantalla evaluada."
+    },
+    {
+     "name": "update_lessons",
+     "args": {
+      "text": "Lecciones (actualizadas 24-nov-2026, cierre post-market; SPY -0.8%, cuenta +$6 hoy; valor $98,003)\n\nEstado: única posición PDD largo 80 @86.74 (último 87.22) con venta stop 82.0 activa (490255a2). La compra NVDA 85 @163.5 (fc517ea4) ya no aparece abierta y no hay NVDA en cartera. No hay órdenes de entrada.\n\nQué funcionó:\n- Stop de PDD en 82.0 activo; sin promediar ni reentrar.\n- No perseguir CRWV ni NVDA tras el gap; descartar sin setup.\n- Pantalla evaluada en cada despertar con veredicto por nombre.\n\nQué no funcionó:\n- Hoy repetí notas casi idénticas en más de 10 despertares de post-market. Gasté presupuesto sin aportar información.\n- Dejé órdenes pasivas lejos del precio (NVDA 163.5 con precio 150-167) y con stop no adjunto en post-market.\n- Mantuve la misma tesis SMCI (disparador 25) varios despertares sin cambio de datos.\n- Hoy no operé porque la pantalla no ofreció setups con riesgo definido (caídas sin soporte, ATR alto, volumen bajo). Esa decisión fue correcta; no es motivo para relajar reglas de entrada.\n\nQué haré distinto:\n1. Primer paso en regular (9:30): consultar órdenes y posiciones antes de analizar. Si hay fills sin stop, set_stop de inmediato y verificar que quede activo.\n2. Toda entrada nueva en regular con stop_price (OTO). En post-market solo límite con stop anotado para el despertar regular.\n3. Niveles de entrada a menos de ~1 ATR del último precio. Tras un gap grande, esperar confirmación en regular, no límites pasivos bajo el mercado.\n4. Riesgo por operación 0.5-1% de la cuenta; tamaño = riesgo / distancia al stop.\n5. Tesis escrita antes de entrar: disparador medible, stop, tamaño, horizonte.\n6. Condiciones medibles (\"una hora regular cierra sobre 25 con volumen\"), no \"rebota\" ni \"parece\".\n7. Un día de SPY débil o fuerte no es disparador; cada nombre necesita su propio setup.\n8. Sin cambio de datos, la nota es de una línea.\n9. Sin setup, decirlo en una línea y seguir. Quedarme fuera es válido si lo justifico en una frase.\n\nVigilancia para mañana en regular:\n- PDD: stop 82.0; no reentrar si toca.\n- INSM: vigilar pullback tras el gap en 170; entrar solo con confirmación de volumen y stop definido.\n- ADI: reportó resultados hoy (-17.8%); solo con setup claro en regular, sin perseguir la caída.\n- SMCI: disparador en hora regular >25 (no está en pantalla; confirmar precio real al abrir).\n- NVDA cerca de 150-152: sin tesis clara; no comprar sin stop adjunto."
+     },
+     "result": "Lecciones guardadas (2416 caracteres)."
+    }
+   ],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.004493,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.004493,
+      "calls": 2,
+      "tokens": 29958
+     }
+    }
+   },
+   "account": {
+    "equity": 98003.13,
+    "cash": 91025.53,
+    "buying_power": 383639.4,
+    "last_equity": 97996.73
+   },
+   "positions": 1
   }
  ],
- "spent_usd": 0.126339
+ "spent_usd": 0.130832,
+ "lessons_updated": true
 }
