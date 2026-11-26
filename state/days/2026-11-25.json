@@ -7491,7 +7491,203 @@
     "last_equity": 98003.13
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-25T19:08:27-05:00",
+   "time": "19:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 4.346,
+    "limit": 4.3403,
+    "ticks_left": 2,
+    "est_tick": 0.0057,
+    "est_research": 0.0477
+   },
+   "screen": {
+    "candidates": 12,
+    "shown": [
+     "AMBA",
+     "SNDK",
+     "RKT",
+     "SPCX",
+     "NU",
+     "SOFI",
+     "AMZN",
+     "IREN",
+     "CRWV",
+     "AAPL",
+     "NOK",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "AMBA",
+      "verdict": "descartar",
+      "reason": "Cae -19.7% con volumen 12.9x en post-market y sin soporte definido; perseguir una caída de evento con ATR alto no tiene riesgo acotado."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cae -20.4% en post-market sin nivel técnico claro; el rebote sin confirmación no da stop definido."
+     },
+     {
+      "symbol": "RKT",
+      "verdict": "vigilar",
+      "reason": "+7.6% con volumen 4.7x, ya extendida; solo retroceso que sostenga 15.0 con volumen en regular."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "+1.8% con volumen 3.0x, sin nivel previo ni tesis; no hay setup con riesgo definido."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "+6.2% con volumen relativo 0.9x en post-market; subida sin volumen ni nivel."
+     },
+     {
+      "symbol": "SOFI",
+      "verdict": "descartar",
+      "reason": "+2.5% con volumen 1.6x, movimiento pequeño sin nivel de entrada."
+     },
+     {
+      "symbol": "AMZN",
+      "verdict": "descartar",
+      "reason": "-2.4% en post-market con volumen 1.3x; sin nivel ni tesis para operar fuera de regular."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+2.1% con volumen 1.0x y ATR alto; sin setup."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "+1.4% con volumen 1.1x; ya superó mi disparador previo y perseguir deja stop lejos."
+     },
+     {
+      "symbol": "AAPL",
+      "verdict": "descartar",
+      "reason": "+0.4% en post-market; movimiento sin nivel ni catalizador."
+     },
+     {
+      "symbol": "NOK",
+      "verdict": "descartar",
+      "reason": "-0.4% con volumen 1.1x; sin setup."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "-0.1% con volumen 2.2x; plano, sin nivel."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi la pantalla post-market a las 19:08: NVDA en 150.98 (70 @147.89) y PDD en 87.5 (80 @86.74), ambas con stop activo (140.5 y 82.0).\nNo envié órdenes ni cambié stops. Evalué las 12 de la pantalla: RKT queda en vigilar (ya +7.6%, extendida) y las otras 11 descartadas por caídas sin soporte, subidas sin volumen o sin nivel.\nVigilo NVDA (salgo si la barra de 30 min cierra bajo 147 y vuelve a 141) y PDD (no reentrar si toca 82). Mañana a las 9:30 confirmo órdenes y fills antes de analizar; reviso ADI, SMCI (>25) e INSM si aparecen.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "AMBA",
+        "verdict": "descartar",
+        "reason": "Cae -19.7% con volumen 12.9x en post-market y sin soporte definido; perseguir una caída de evento con ATR alto no tiene riesgo acotado."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cae -20.4% en post-market sin nivel técnico claro; el rebote sin confirmación no da stop definido."
+       },
+       {
+        "symbol": "RKT",
+        "verdict": "vigilar",
+        "reason": "+7.6% con volumen 4.7x, ya extendida; solo retroceso que sostenga 15.0 con volumen en regular."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "+1.8% con volumen 3.0x, sin nivel previo ni tesis; no hay setup con riesgo definido."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "+6.2% con volumen relativo 0.9x en post-market; subida sin volumen ni nivel."
+       },
+       {
+        "symbol": "SOFI",
+        "verdict": "descartar",
+        "reason": "+2.5% con volumen 1.6x, movimiento pequeño sin nivel de entrada."
+       },
+       {
+        "symbol": "AMZN",
+        "verdict": "descartar",
+        "reason": "-2.4% en post-market con volumen 1.3x; sin nivel ni tesis para operar fuera de regular."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+2.1% con volumen 1.0x y ATR alto; sin setup."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "+1.4% con volumen 1.1x; ya superó mi disparador previo y perseguir deja stop lejos."
+       },
+       {
+        "symbol": "AAPL",
+        "verdict": "descartar",
+        "reason": "+0.4% en post-market; movimiento sin nivel ni catalizador."
+       },
+       {
+        "symbol": "NOK",
+        "verdict": "descartar",
+        "reason": "-0.4% con volumen 1.1x; sin setup."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "-0.1% con volumen 2.2x; plano, sin nivel."
+       }
+      ]
+     },
+     "result": "Registrado: AMBA, SNDK, RKT, SPCX, NU, SOFI, AMZN, IREN, CRWV, AAPL, NOK, AAL. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "25-nov 19:08 post-market: sin órdenes nuevas. NVDA 70 @147.89 (último 150.98), stop 140.5 activo (ffea31c6); salgo si cierre 30m < 147 y vuelve a 141. PDD 80 @86.74 (último 87.5), stop 82 activo (490255a2), no reentrar si toca 82. RKT vigilar: retroceso que sostenga 15.0 con volumen en regular. Pantalla 12/12 evaluada, resto descartado. Mañana 9:30: confirmar órdenes/posiciones antes de analizar; ADI, SMCI (>25), INSM si aparecen."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "25-nov 19:08 post-market: sin órdenes nuevas. NVDA 70 @147.89 (último 150.98), stop 140.5 activo (ffea31c6); salgo si cierre 30m < 147 y vuelve a 141. PDD 80 @86.74 (último 87.5), stop 82 activo (490255a2), no reentrar si toca 82. RKT vigilar: retroceso que sostenga 15.0 con volumen en regular. Pantalla 12/12 evaluada, resto descartado. Mañana 9:30: confirmar órdenes/posiciones antes de analizar; ADI, SMCI (>25), INSM si aparecen."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003493,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003493,
+      "calls": 2,
+      "tokens": 27611
+     }
+    }
+   },
+   "account": {
+    "equity": 98239.73,
+    "cash": 80673.23,
+    "buying_power": 371879.12,
+    "last_equity": 98003.13
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.159777
+ "spent_usd": 0.16327
 }
