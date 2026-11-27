@@ -5124,7 +5124,133 @@
     "last_equity": 98117.82
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-27T17:38:24-05:00",
+   "time": "17:38",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 8.8571,
+    "limit": 8.8341,
+    "ticks_left": 5,
+    "est_tick": 0.0058,
+    "est_research": 0.0477
+   },
+   "screen": {
+    "candidates": 12,
+    "shown": [
+     "AEHL",
+     "SNDK",
+     "ITUB",
+     "AIOK",
+     "ANT",
+     "RIG",
+     "NU",
+     "SPCX",
+     "VALE",
+     "IREN",
+     "CRWV",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "AEHL",
+      "verdict": "descartar",
+      "reason": "Subió +98.7% con volumen relativo 2.5x sobre una base de $26M/día; perseguir un movimiento de casi duplicar deja el stop lejísimos y no hay nivel previo ni tesis."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "Cayó -9.5% a 85.4 con tendencia bajista (SMA50 -45%, ATR 13.7%); ya rechazó 86.5 dos veces y mi compra límite fue cancelada. Sin setup con stop razonable."
+     },
+     {
+      "symbol": "ITUB",
+      "verdict": "descartar",
+      "reason": "Subió +11.2% con volumen relativo solo 1.3x; movimiento de una sola sesión sin base, sin nivel definido ni tesis de entrada."
+     },
+     {
+      "symbol": "AIOK",
+      "verdict": "descartar",
+      "reason": "Cayó -48.2% con volumen relativo 0.2x y solo $25M/día de liquidez; caída de evento sin volumen que confirme, spreads anchos y riesgo de salto."
+     },
+     {
+      "symbol": "ANT",
+      "verdict": "descartar",
+      "reason": "Subió +10.4% con volumen relativo solo 0.6x; sin catalizador verificado ni nivel con riesgo definido, y no es un nombre que haya trabajado en la lista de vigilancia."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Evalué las cinco con review_screen y todas quedan en descartar:\n- **AEHL:** +98.7% con volumen 2.5x sobre $26M/día; perseguir ese movimiento deja el stop muy lejos.\n- **SNDK:** -9.5% a 85.4 con tendencia bajista y dos rechazos en 86.5; sin setup con stop razonable.\n- **ITUB:** +11.2% con volumen solo 1.3x y sin nivel definido.\n- **AIOK:** -48.2% con volumen 0.2x y liquidez baja; caída de evento sin confirmación.\n- **ANT:** +10.4% con volumen 0.6x y sin catalizador ni nivel con riesgo definido.\n\nNo envié órdenes ni cambié stops. Sigo con NVDA (stop 140.5), PDD (stop 87.0) y RIG en vigilar.",
+   "steps": 4,
+   "error": null,
+   "tools": [
+    {
+     "name": "note",
+     "args": {
+      "text": "17:38 post: sin cambios de datos relevantes. NVDA 70 @147.89, último 149.8, stop activo 140.5 (ffea31c6). PDD 80 @86.74, último 88.89, stop activo 87.0 (62717d6e); el 82.0 de las lecciones ya no está abierto, corregir. Regla de salida NVDA (cierre 30m bajo 147 y vuelta a 141) no se cumple. RIG en vigilar (cierre 30m > 5.22 con volumen, stop 4.98). Pantalla ya evaluada en esta sesión; sin nombres nuevos, sin órdenes. Mañana en regular: confirmar órdenes/posiciones primero."
+     },
+     "result": "Anotado."
+    },
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "AEHL",
+        "verdict": "descartar",
+        "reason": "Subió +98.7% con volumen relativo 2.5x sobre una base de $26M/día; perseguir un movimiento de casi duplicar deja el stop lejísimos y no hay nivel previo ni tesis."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "Cayó -9.5% a 85.4 con tendencia bajista (SMA50 -45%, ATR 13.7%); ya rechazó 86.5 dos veces y mi compra límite fue cancelada. Sin setup con stop razonable."
+       },
+       {
+        "symbol": "ITUB",
+        "verdict": "descartar",
+        "reason": "Subió +11.2% con volumen relativo solo 1.3x; movimiento de una sola sesión sin base, sin nivel definido ni tesis de entrada."
+       },
+       {
+        "symbol": "AIOK",
+        "verdict": "descartar",
+        "reason": "Cayó -48.2% con volumen relativo 0.2x y solo $25M/día de liquidez; caída de evento sin volumen que confirme, spreads anchos y riesgo de salto."
+       },
+       {
+        "symbol": "ANT",
+        "verdict": "descartar",
+        "reason": "Subió +10.4% con volumen relativo solo 0.6x; sin catalizador verificado ni nivel con riesgo definido, y no es un nombre que haya trabajado en la lista de vigilancia."
+       }
+      ]
+     },
+     "result": "Registrado: AEHL, SNDK, ITUB, AIOK, ANT. Pantalla evaluada."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "17:38 post: sin cambios de datos relevantes. NVDA 70 @147.89, último 149.8, stop activo 140.5 (ffea31c6). PDD 80 @86.74, último 88.89, stop activo 87.0 (62717d6e); el 82.0 de las lecciones ya no está abierto, corregir. Regla de salida NVDA (cierre 30m bajo 147 y vuelta a 141) no se cumple. RIG en vigilar (cierre 30m > 5.22 con volumen, stop 4.98). Pantalla ya evaluada en esta sesión; sin nombres nuevos, sin órdenes. Mañana en regular: confirmar órdenes/posiciones primero."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.005827,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.005827,
+      "calls": 4,
+      "tokens": 51169
+     }
+    }
+   },
+   "account": {
+    "equity": 98270.42,
+    "cash": 80673.22,
+    "buying_power": 371965.04,
+    "last_equity": 98117.82
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.100385
+ "spent_usd": 0.106212
 }
