@@ -1,26 +1,26 @@
 {
- "updated_at": "2026-11-27T12:08:25-05:00",
+ "updated_at": "2026-11-27T12:38:32-05:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 98209.52,
+  "equity": 98221.57,
   "cash": 80673.22,
-  "buying_power": 371794.52,
+  "buying_power": 371828.26,
   "last_equity": 98117.82
  },
  "positions": {
   "NVDA": {
    "qty": 70.0,
    "avg_price": 147.89,
-   "price": 148.69,
-   "market_value": 10408.3,
-   "unrealized_pl": 56.0
+   "price": 148.88,
+   "market_value": 10421.6,
+   "unrealized_pl": 69.3
   },
   "PDD": {
    "qty": 80.0,
    "avg_price": 86.74275,
-   "price": 89.1,
-   "market_value": 7128.0,
-   "unrealized_pl": 188.58
+   "price": 89.08,
+   "market_value": 7126.4,
+   "unrealized_pl": 186.98
   }
  },
  "orders": [
