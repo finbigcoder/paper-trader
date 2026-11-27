@@ -1,32 +1,60 @@
 {
- "updated_at": "2026-11-27T12:38:32-05:00",
+ "updated_at": "2026-11-27T13:03:49-05:00",
  "broker": "Alpaca paper",
  "account": {
-  "equity": 98221.57,
+  "equity": 98204.32,
   "cash": 80673.22,
-  "buying_power": 371828.26,
+  "buying_power": 364859.95,
   "last_equity": 98117.82
  },
  "positions": {
   "NVDA": {
    "qty": 70.0,
    "avg_price": 147.89,
-   "price": 148.88,
-   "market_value": 10421.6,
-   "unrealized_pl": 69.3
+   "price": 149.85,
+   "market_value": 10489.5,
+   "unrealized_pl": 137.2
   },
   "PDD": {
    "qty": 80.0,
    "avg_price": 86.74275,
-   "price": 89.08,
-   "market_value": 7126.4,
-   "unrealized_pl": 186.98
+   "price": 88.02,
+   "market_value": 7041.6,
+   "unrealized_pl": 102.18
   }
  },
  "orders": [
   {
+   "id": "bd8f68ab-e94e-4868-8058-2b59935e08f4",
+   "submitted_at": "2026-11-27T18:04:17.748401+00:00",
+   "symbol": "SNDK",
+   "limit_price": 86.5,
+   "stop_price": null,
+   "extended_hours": false,
+   "side": "buy",
+   "type": "limit",
+   "qty": 80.0,
+   "filled_qty": 0.0,
+   "filled_avg_price": null,
+   "status": "accepted"
+  },
+  {
+   "id": "24e2228c-276d-44d1-86d0-db1c0c8e6473",
+   "submitted_at": "2026-11-27T18:04:17.748401+00:00",
+   "symbol": "SNDK",
+   "limit_price": null,
+   "stop_price": 80.5,
+   "extended_hours": false,
+   "side": "sell",
+   "type": "stop",
+   "qty": 80.0,
+   "filled_qty": 0.0,
+   "filled_avg_price": null,
+   "status": "held"
+  },
+  {
    "id": "62717d6e-5143-41a9-85ac-278cf33e4f65",
-   "submitted_at": "2026-11-27T14:39:08.529750+00:00",
+   "submitted_at": "2026-11-27T14:39:08.529751+00:00",
    "symbol": "PDD",
    "limit_price": null,
    "stop_price": 87.0,
