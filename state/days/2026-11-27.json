@@ -2017,7 +2017,51 @@
     "last_equity": 98117.82
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-27T06:08:38-05:00",
+   "time": "06:08",
+   "session": "pre",
+   "last": false,
+   "budget": {
+    "allowance_today": 9.0002,
+    "limit": 8.8764,
+    "ticks_left": 28,
+    "est_tick": 0.0046,
+    "est_research": 0.0477
+   },
+   "screen": {
+    "candidates": 16,
+    "shown": [],
+    "reviews": []
+   },
+   "status": "ok",
+   "final": "- **Vi:** a las 06:08 pre-market, sin cambios: NVDA sigue en 149.3 y PDD en 87.42. Cuenta en $98,697 y P&L de hoy +$579.\n- **Hice:** nada. Sin órdenes ni cambios de stop. No revisé la pantalla ni gasté en investigación, porque en pre-market no hay un nivel con riesgo definido que justifique operar.\n- **Stops activos:** NVDA 140.5 (ffea31c6) y PDD 82.0 (490255a2).\n- **Vigilo en regular:** primero confirmar órdenes y posiciones, y ver si la sesión cierra temprano. Luego NVDA (salgo si la barra de 30 min cierra bajo 147 y vuelve a 141), PDD (no reentro si toca 82), RKT (solo con retroceso que sostenga 15.0 con volumen) y ADI, SMCI (>25) e INSM solo con setup medible.",
+   "steps": 1,
+   "error": null,
+   "tools": [],
+   "orders": [],
+   "notes": [],
+   "research": [],
+   "cost": {
+    "usd": 0.001098,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.001098,
+      "calls": 1,
+      "tokens": 8560
+     }
+    }
+   },
+   "account": {
+    "equity": 98697.22,
+    "cash": 80673.22,
+    "buying_power": 373160.08,
+    "last_equity": 98117.82
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.004953
+ "spent_usd": 0.006051
 }
