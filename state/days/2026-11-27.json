@@ -5584,7 +5584,203 @@
     "last_equity": 98117.82
    },
    "positions": 2
+  },
+  {
+   "at": "2026-11-27T19:08:23-05:00",
+   "time": "19:08",
+   "session": "post",
+   "last": false,
+   "budget": {
+    "allowance_today": 8.8385,
+    "limit": 8.8324,
+    "ticks_left": 2,
+    "est_tick": 0.0062,
+    "est_research": 0.0477
+   },
+   "screen": {
+    "candidates": 12,
+    "shown": [
+     "AEHL",
+     "SNDK",
+     "ITUB",
+     "AIOK",
+     "RIG",
+     "NU",
+     "VALE",
+     "ANT",
+     "SPCX",
+     "IREN",
+     "CRWV",
+     "AAL"
+    ],
+    "reviews": [
+     {
+      "symbol": "AEHL",
+      "verdict": "descartar",
+      "reason": "+98.7% con volumen 2.5x sobre $26M/día; perseguir deja el stop muy lejos."
+     },
+     {
+      "symbol": "SNDK",
+      "verdict": "descartar",
+      "reason": "-9.5% en tendencia bajista, sin setup con stop razonable."
+     },
+     {
+      "symbol": "ITUB",
+      "verdict": "descartar",
+      "reason": "+11.2% con volumen 1.3x, sin nivel definido ni base."
+     },
+     {
+      "symbol": "AIOK",
+      "verdict": "descartar",
+      "reason": "Caída de -48% con volumen 0.2x y liquidez baja; caída de evento sin confirmación."
+     },
+     {
+      "symbol": "RIG",
+      "verdict": "vigilar",
+      "reason": "5.16 con volumen 2.2x; solo entra con cierre de 30 min > 5.22 con volumen, stop 4.98."
+     },
+     {
+      "symbol": "NU",
+      "verdict": "descartar",
+      "reason": "+5.7% con volumen 0.8x, sin nivel con riesgo definido."
+     },
+     {
+      "symbol": "VALE",
+      "verdict": "descartar",
+      "reason": "+4.9% con volumen 0.8x, sin base ni nivel."
+     },
+     {
+      "symbol": "ANT",
+      "verdict": "descartar",
+      "reason": "+10.4% con volumen 0.3x, sin catalizador ni nivel."
+     },
+     {
+      "symbol": "SPCX",
+      "verdict": "descartar",
+      "reason": "+4.1% con volumen 0.8x, sin setup."
+     },
+     {
+      "symbol": "IREN",
+      "verdict": "descartar",
+      "reason": "+5.9% con volumen 0.5x, sin setup."
+     },
+     {
+      "symbol": "CRWV",
+      "verdict": "descartar",
+      "reason": "+2.8% con volumen 0.9x; ya superó el disparador anterior y perseguirla deja stop lejos."
+     },
+     {
+      "symbol": "AAL",
+      "verdict": "descartar",
+      "reason": "+2.0% con volumen 0.5x, sin setup."
+     }
+    ]
+   },
+   "status": "ok",
+   "final": "Vi NVDA en 149.8 (stop 140.5 activo) y PDD en 88.89 (stop 87.0 activo); ninguna regla de salida se cumple.\nEvalué las 12 de la pantalla: RIG queda en vigilar (solo con cierre de 30 min sobre 5.22 con volumen, stop 4.98) y las otras 11 se descartan por volumen bajo, falta de base o nivel sin riesgo definido. No envié órdenes ni cambié stops.\nVigilo mañana en regular: confirmar órdenes y posiciones primero; NVDA sale si cierra 30 min bajo 147 y vuelve a 141, o toca 140.5; PDD no reentra si toca 87.0; RIG con el disparador de 5.22.",
+   "steps": 2,
+   "error": null,
+   "tools": [
+    {
+     "name": "review_screen",
+     "args": {
+      "items": [
+       {
+        "symbol": "AEHL",
+        "verdict": "descartar",
+        "reason": "+98.7% con volumen 2.5x sobre $26M/día; perseguir deja el stop muy lejos."
+       },
+       {
+        "symbol": "SNDK",
+        "verdict": "descartar",
+        "reason": "-9.5% en tendencia bajista, sin setup con stop razonable."
+       },
+       {
+        "symbol": "ITUB",
+        "verdict": "descartar",
+        "reason": "+11.2% con volumen 1.3x, sin nivel definido ni base."
+       },
+       {
+        "symbol": "AIOK",
+        "verdict": "descartar",
+        "reason": "Caída de -48% con volumen 0.2x y liquidez baja; caída de evento sin confirmación."
+       },
+       {
+        "symbol": "RIG",
+        "verdict": "vigilar",
+        "reason": "5.16 con volumen 2.2x; solo entra con cierre de 30 min > 5.22 con volumen, stop 4.98."
+       },
+       {
+        "symbol": "NU",
+        "verdict": "descartar",
+        "reason": "+5.7% con volumen 0.8x, sin nivel con riesgo definido."
+       },
+       {
+        "symbol": "VALE",
+        "verdict": "descartar",
+        "reason": "+4.9% con volumen 0.8x, sin base ni nivel."
+       },
+       {
+        "symbol": "ANT",
+        "verdict": "descartar",
+        "reason": "+10.4% con volumen 0.3x, sin catalizador ni nivel."
+       },
+       {
+        "symbol": "SPCX",
+        "verdict": "descartar",
+        "reason": "+4.1% con volumen 0.8x, sin setup."
+       },
+       {
+        "symbol": "IREN",
+        "verdict": "descartar",
+        "reason": "+5.9% con volumen 0.5x, sin setup."
+       },
+       {
+        "symbol": "CRWV",
+        "verdict": "descartar",
+        "reason": "+2.8% con volumen 0.9x; ya superó el disparador anterior y perseguirla deja stop lejos."
+       },
+       {
+        "symbol": "AAL",
+        "verdict": "descartar",
+        "reason": "+2.0% con volumen 0.5x, sin setup."
+       }
+      ]
+     },
+     "result": "Registrado: AEHL, SNDK, ITUB, AIOK, RIG, NU, VALE, ANT, SPCX, IREN, CRWV, AAL. Pantalla evaluada."
+    },
+    {
+     "name": "note",
+     "args": {
+      "text": "19:08 post (27-nov): sin cambios de datos relevantes. NVDA 70 @147.89, último 149.8, stop activo 140.5 (ffea31c6). PDD 80 @86.74, último 88.89, stop activo 87.0 (62717d6e); el 82.0 de las lecciones NO está abierto: corregir lecciones. Regla de salida NVDA (cierre 30m bajo 147 y vuelta a 141) no se cumple. RIG vigilar: cierre 30m > 5.22 con volumen, stop 4.98. Pantalla ya evaluada en la sesión. Mañana en regular: confirmar órdenes/posiciones primero."
+     },
+     "result": "Anotado."
+    }
+   ],
+   "orders": [],
+   "notes": [
+    "19:08 post (27-nov): sin cambios de datos relevantes. NVDA 70 @147.89, último 149.8, stop activo 140.5 (ffea31c6). PDD 80 @86.74, último 88.89, stop activo 87.0 (62717d6e); el 82.0 de las lecciones NO está abierto: corregir lecciones. Regla de salida NVDA (cierre 30m bajo 147 y vuelta a 141) no se cumple. RIG vigilar: cierre 30m > 5.22 con volumen, stop 4.98. Pantalla ya evaluada en la sesión. Mañana en regular: confirmar órdenes/posiciones primero."
+   ],
+   "research": [],
+   "cost": {
+    "usd": 0.003292,
+    "research_usd": 0,
+    "by_agent": {
+     "Trader": {
+      "usd": 0.003292,
+      "calls": 2,
+      "tokens": 25383
+     }
+    }
+   },
+   "account": {
+    "equity": 98270.42,
+    "cash": 80673.22,
+    "buying_power": 371965.04,
+    "last_equity": 98117.82
+   },
+   "positions": 2
   }
  ],
- "spent_usd": 0.112752
+ "spent_usd": 0.116044
 }
